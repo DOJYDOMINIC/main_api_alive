@@ -19,7 +19,7 @@ class AddData {
   int? dataPhonenumber;
   String? dataClass;
   String? dataClass2;
-  String? dataClass3;
+  List? dataClass3;
   String? dataFamilyincome;
   String? dataNameofNg;
   String? dataNameofNGmember;
@@ -27,7 +27,7 @@ class AddData {
   String? dataHouseOwnership;
   int? dataLanddetailsLandarea;
   int? dataLanddetailsAgricultureland;
-  String? dataAnimalhusbendaryBusinesstype;
+  List? dataAnimalhusbendaryBusinesstype;
   String? dataAnimalhusbendaryOthers0;
   String? dataAnimalhusbendaryCdsregistration;
   String? dataAnimalhusbendaryRegdetailsRegnumber;
@@ -87,7 +87,7 @@ class AddData {
   int? dataPurchaseofrawmaterialsP4;
   int? dataPurchaseofrawmaterialsSubsidy;
   int? dataPurchaseofrawmaterialsP5;
-  List<Member>? members;
+  List<Member> members;
 
   AddData({
     this.dataDistrict,
@@ -167,7 +167,7 @@ class AddData {
      this.dataPurchaseofrawmaterialsP4,
      this.dataPurchaseofrawmaterialsSubsidy,
      this.dataPurchaseofrawmaterialsP5,
-     this.members,
+    required this.members,
   });
 
   factory AddData.fromJson(Map<String, dynamic> json) => AddData(
@@ -329,7 +329,7 @@ class AddData {
     "data_purchaseofrawmaterials_p4": dataPurchaseofrawmaterialsP4,
     "data_purchaseofrawmaterials_subsidy": dataPurchaseofrawmaterialsSubsidy,
     "data_purchaseofrawmaterials_p5": dataPurchaseofrawmaterialsP5,
-    "members": List<dynamic>.from(members!.map((x) => x.toJson())),
+    "members": List<dynamic>.from(members.map((x) => x.toJson())),
   };
 }
 

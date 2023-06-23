@@ -7,23 +7,23 @@ enum CheckboxOption {
 }
 
 class TextMain extends ChangeNotifier {
-
-  bool _isYesSelected = false;
-
-  bool get isYesSelected => _isYesSelected;
-
-  void updateIsYesSelected(bool value) {
-    _isYesSelected = value;
-    notifyListeners();
-  }
-
-  CheckboxOption _selectedOption = CheckboxOption.notApplied;
-  CheckboxOption get selectedOption => _selectedOption;
-
-  void updateSelectedOption(CheckboxOption option) {
-    _selectedOption = option;
-    notifyListeners();
-  }
+  //
+  // bool _isYesSelected = false;
+  //
+  // bool get isYesSelected => _isYesSelected;
+  //
+  // void updateIsYesSelected(bool value) {
+  //   _isYesSelected = value;
+  //   notifyListeners();
+  // }
+  //
+  // CheckboxOption _selectedOption = CheckboxOption.notApplied;
+  // CheckboxOption get selectedOption => _selectedOption;
+  //
+  // void updateSelectedOption(CheckboxOption option) {
+  //   _selectedOption = option;
+  //   notifyListeners();
+  // }
 
   // void updateTextFieldValue1(String? value) {
   //   _dataTotalinvestment = value;
@@ -38,10 +38,10 @@ class TextMain extends ChangeNotifier {
   String? _dataDistrict;
   String? _dataBlock;
   String? _dataPanchayath;
-  String? _dataWard;
+  int? _dataWard;
   String? _dataName;
   String? _dataAddress;
-  String? _dataPhonenumber;
+  int? _dataPhonenumber;
   String? _dataClass;
   String? _dataClass2;
   List? _dataClass3;
@@ -50,18 +50,18 @@ class TextMain extends ChangeNotifier {
   String? _dataNameofNGmember;
   String? _dataRoleinNg;
   String? _dataHouseownership;
-  String? _dataLanddetailsLandarea;
-  String? _dataLanddetailsAgricultureland;
+  int? _dataLanddetailsLandarea;
+  int? _dataLanddetailsAgricultureland;
   List? _dataAnimalhusbendaryBusinesstype;
   String? _dataAnimalhusbendaryOthers0;
   String? _dataAnimalhusbendaryCdsregistration;
   String? _dataAnimalhusbendaryRegdetailsRegnumber;
   String? _dataAnimalhusbendaryRegdetailsCdsunitname;
   String? _dataEnterpisetype;
-  String? _dataNoofgroupmembers;
-  String? _dataYearofstartingagriculture;
-  String? _dataYearofstartingbussiness;
-  String? _dataAmountinvested;
+  int? _dataNoofgroupmembers;
+  int? _dataYearofstartingagriculture;
+  int? _dataYearofstartingbussiness;
+  int? _dataAmountinvested;
   String? _dataSourceofinvestment;
   String? _dataSupportrecived;
   String? _dataLoan;
@@ -91,16 +91,16 @@ class TextMain extends ChangeNotifier {
   String? _dataDateofsurvey;
   String? _dataStarttime;
   String? _dataMetaInstanceId;
-  String? _key;
+  int? _dataLoandetailsTotalinvestment;
+  // String? _key;
 
   //-----------------fsmily--------------
   String? _dataFamilydetailsNameoffailyfmember;
   String? _dataFamilydetailsRelation;
-  String? _dataFamilydetailsAgeoffamilymember;
+  int? _dataFamilydetailsAgeoffamilymember;
   String? _dataFamilydetailsEducation;
   String? _dataFamilydetailsJob;
   String? _dataFamilydetailsSkill;
-  String? _parentKey;
 
   //------------------product--------------
   String? _dataProductsPrdct;
@@ -138,13 +138,13 @@ class TextMain extends ChangeNotifier {
 
   String? get dataPanchayath => _dataPanchayath;
 
-  String? get dataWard => _dataWard;
+  int? get dataWard => _dataWard;
 
   String? get dataName => _dataName;
 
   String? get dataAddress => _dataAddress;
 
-  String? get dataPhonenumber => _dataPhonenumber;
+  int? get dataPhonenumber => _dataPhonenumber;
 
   String? get dataClass => _dataClass;
 
@@ -162,33 +162,31 @@ class TextMain extends ChangeNotifier {
 
   String? get dataHouseownership => _dataHouseownership;
 
-  String? get dataLanddetailsLandarea => _dataLanddetailsLandarea;
+  int? get dataLoandetailsTotalinvestment => _dataLoandetailsTotalinvestment;
 
-  String? get dataLanddetailsAgricultureland => _dataLanddetailsAgricultureland;
+  int? get dataLanddetailsLandarea => _dataLanddetailsLandarea;
 
-  List? get dataAnimalhusbendaryBusinesstype =>
-      _dataAnimalhusbendaryBusinesstype;
+  int? get dataLanddetailsAgricultureland => _dataLanddetailsAgricultureland;
+
+  List? get dataAnimalhusbendaryBusinesstype => _dataAnimalhusbendaryBusinesstype;
 
   String? get dataAnimalhusbendaryOthers0 => _dataAnimalhusbendaryOthers0;
 
-  String? get dataAnimalhusbendaryCdsregistration =>
-      _dataAnimalhusbendaryCdsregistration;
+  String? get dataAnimalhusbendaryCdsregistration => _dataAnimalhusbendaryCdsregistration;
 
-  String? get dataAnimalhusbendaryRegdetailsRegnumber =>
-      _dataAnimalhusbendaryRegdetailsRegnumber;
+  String? get dataAnimalhusbendaryRegdetailsRegnumber => _dataAnimalhusbendaryRegdetailsRegnumber;
 
-  String? get dataAnimalhusbendaryRegdetailsCdsunitname =>
-      _dataAnimalhusbendaryRegdetailsCdsunitname;
+  String? get dataAnimalhusbendaryRegdetailsCdsunitname => _dataAnimalhusbendaryRegdetailsCdsunitname;
 
   String? get dataEnterpisetype => _dataEnterpisetype;
 
-  String? get dataNoofgroupmembers => _dataNoofgroupmembers;
+  int? get dataNoofgroupmembers => _dataNoofgroupmembers;
 
-  String? get dataYearofstartingagriculture => _dataYearofstartingagriculture;
+  int? get dataYearofstartingagriculture => _dataYearofstartingagriculture;
 
-  String? get dataYearofstartingbussiness => _dataYearofstartingbussiness;
+  int? get dataYearofstartingbussiness => _dataYearofstartingbussiness;
 
-  String? get dataAmountinvested => _dataAmountinvested;
+  int? get dataAmountinvested => _dataAmountinvested;
 
   String? get dataSourceofinvestment => _dataSourceofinvestment;
 
@@ -250,7 +248,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataMetaInstanceId => _dataMetaInstanceId;
 
-  String? get key => _key;
+  // String? get key => _key;
 
   //-----------------------family----------------------//
 
@@ -259,7 +257,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataFamilydetailsRelation => _dataFamilydetailsRelation;
 
-  String? get dataFamilydetailsAgeoffamilymember =>
+  int? get dataFamilydetailsAgeoffamilymember =>
       _dataFamilydetailsAgeoffamilymember;
 
   String? get dataFamilydetailsEducation => _dataFamilydetailsEducation;
@@ -328,6 +326,12 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
+  void UpdateDtaLoandetailsTotalinvestment(int?value){
+    _dataLoandetailsTotalinvestment = value;
+    notifyListeners();
+  }
+
+
   void updateDatalivelihoodnumbers(String? value) {
     _datalivelihoodnumbers = value;
     notifyListeners();
@@ -376,10 +380,10 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataparentKey(String? value) {
-    _parentKey = value;
-    notifyListeners();
-  }
+  // void updateDataparentKey(String? value) {
+  //   _parentKey = value;
+  //   notifyListeners();
+  // }
   //--------------------Family----------------------//
 
   void updateDataFamilydetailsSkill(String? value) {
@@ -397,7 +401,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDatadataFamilydetailsAgeoffamilymember(String? value) {
+  void updateDatadataFamilydetailsAgeoffamilymember(int? value) {
     _dataFamilydetailsAgeoffamilymember = value;
     notifyListeners();
   }
@@ -427,7 +431,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataWard(String? value) {
+  void updateDataWard(int? value) {
     _dataWard = value;
     notifyListeners();
   }
@@ -441,7 +445,7 @@ class TextMain extends ChangeNotifier {
     _dataAddress = value;
   }
 
-  void updateDataPhonenumber(String? value) {
+  void updateDataPhonenumber(int? value) {
     _dataPhonenumber = value;
     notifyListeners();
   }
@@ -486,17 +490,17 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLanddetailsLandarea(String? value) {
+  void updateDataLanddetailsLandarea(int? value) {
     _dataLanddetailsLandarea = value;
     notifyListeners();
   }
 
-  void updateDataLanddetailsAgricultureland(String? value) {
+  void updateDataLanddetailsAgricultureland(int? value) {
     _dataLanddetailsAgricultureland = value ;
     notifyListeners();
   }
 
-  void updateDataAnimalhusbendaryBusinesstype(List<dynamic>? value) {
+  void updateDataAnimalhusbendaryBusinesstype(List? value) {
     _dataAnimalhusbendaryBusinesstype = value;
     notifyListeners();
   }
@@ -526,35 +530,35 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataNoofgroupmembers(String? value) {
+  void updateDataNoofgroupmembers(int? value) {
     _dataNoofgroupmembers = value;
     notifyListeners();
   }
 
-  void updateDataYearofstartingagriculture(String? value) {
+  void updateDataYearofstartingagriculture(int? value) {
     _dataYearofstartingagriculture = value;
     notifyListeners();
   }
 
-  void updateDataYearofstartingbussiness(String? value) {
+  void updateDataYearofstartingbussiness(int? value) {
     _dataYearofstartingbussiness = value;
     notifyListeners();
   }
 
-  void updateDataAmountinvested(String? value) {
+  void updateDataAmountinvested(int? value) {
     _dataAmountinvested = value;
     notifyListeners();
   }
 
   void updateDataSourceofinvestment(List<dynamic>? value) {
     _dataSourceofinvestment = "";
-    print('before: ${_dataSourceofinvestment}');
+    // print('before: ${_dataSourceofinvestment}');
     var values = "";
     value?.forEach((element) {
       values+='$element,';
     });
     _dataSourceofinvestment = values;
-    print('After : ${_dataSourceofinvestment}');
+    // print('After : ${_dataSourceofinvestment}');
     notifyListeners();
 
   }
@@ -699,10 +703,10 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateKey(String? value) {
-    _key = value;
-    notifyListeners();
-  }
+  // void updateKey(String? value) {
+  //   _key = value;
+  //   notifyListeners();
+  // }
 
   //-----------------Purchase-------------------------
   void updateDataPurchaseofrawmaterialsItemtype(String? value) {

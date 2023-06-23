@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/purchaseofrawmaterials.dart';
-import 'package:provider/provider.dart';
-import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 

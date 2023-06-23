@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:main200623/view/home_pag.dart';
+import 'package:provider/provider.dart';
+
+import 'control/text_controller.dart';
 
 
 void main(){
@@ -12,9 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage()
+    return MultiProvider(
+      
+      providers: [
+        ChangeNotifierProvider(create: (context) => TextMain(),)
+      ],
+      child: MaterialApp(
+
+        debugShowCheckedModeBanner: false,
+        home: HomePage()
+      ),
     );
   }
 }

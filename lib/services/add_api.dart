@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/add_data.dart';
+import '../model/add_model.dart';
 
 Future<Map<String, dynamic>> postData(AddData data) async {
   const apiUrl = 'http://localhost:5000/api/user/insert'; // Replace with your API endpoint
@@ -18,7 +18,7 @@ Future<Map<String, dynamic>> postData(AddData data) async {
 }
 // import 'dart:convert';
 // import 'package:http/http.dart' as http;
-// import '../model/add_data.dart';
+// import '../model/add_model.dart';
 //
 // // Function to connect UI, model, and API
 // Future<void> connectWithUiModelAndApi(AddData addData) async {
