@@ -1,19 +1,19 @@
-List<String> districts = [
-  'Thiruvananthapuram',
-  'Kollam',
-  'Pathanamthitta',
-  'Alappuzha',
-  'Kottayam',
-  'Idukki',
-  'Ernakulam',
-  'Thrissur',
-  'Palakkad',
-  'Malappuram',
-  'Kozhikode',
-  'Wayanad',
-  'Kannur',
-  'Kasaragod',
-];
+// List<String> districts = [
+//   'Thiruvananthapuram',
+//   'Kollam',
+//   'Pathanamthitta',
+//   'Alappuzha',
+//   'Kottayam',
+//   'Idukki',
+//   'Ernakulam',
+//   'Thrissur',
+//   'Palakkad',
+//   'Malappuram',
+//   'Kozhikode',
+//   'Wayanad',
+//   'Kannur',
+//   'Kasaragod',
+// ];
 List<String> block = [
   "Athiyanoor",
   "Chiyrayinkeezhu",
@@ -183,22 +183,22 @@ List<String> block = [
 
 ];
 List<String> panchayth = [
-  "Chemmaruthy",
-  "Edava",
-  "Elakamon",
-  "Manamboor",
-  "Ottoor",
-  "Cherunniyoor",
-  "Vettoor",
-  "Kilimanoor",
-  "Pazhayakunnumel",
-  "Karavaram",
-  "Madavoor",
-  "Pallickal",
-  "Nagaroor",
-  "Navaikulam",
-  "Pulimath",
-  "Anchuthengu",
+  // ["Chemmaruthy",
+  // "Edava",
+  // "Elakamon",
+  // "Manamboor",
+  // "Ottoor",
+  // "Cherunniyoor",
+  // "Vettoor",],
+  // ["Kilimanoor",
+  // "Pazhayakunnumel",
+  // "Karavaram",
+  // "Madavoor",
+  // "Pallickal",
+  // "Nagaroor",
+  // "Navaikulam",
+  // "Pulimath",]
+  // "Anchuthengu",
   "Vakkom",
   "Chirayinkeezhu",
   "Kizhuvilam",
@@ -1202,7 +1202,7 @@ final List businesstype =  [
 { 'disply': 'മറ്റുള്ളവ ', 'value': 'Others' },
 ];
 
-final List sourceofinvestment = [
+ List sourceofinvestment = [
   {'source': 'bankloan', 'value': 'bankloan'},
   {'source': 'Ng', 'value': 'Ng'},
   {'source': 'family', 'value': 'family'},

@@ -62,7 +62,7 @@ class TextMain extends ChangeNotifier {
   int? _dataYearofstartingagriculture;
   int? _dataYearofstartingbussiness;
   int? _dataAmountinvested;
-  String? _dataSourceofinvestment;
+  List<String>? _dataSourceofinvestment;
   String? _dataSupportrecived;
   String? _dataLoan;
   String? _dataTotalinvestment;
@@ -74,14 +74,14 @@ class TextMain extends ChangeNotifier {
   String? _dataInfraBiogas;
   String? _dataInfraEquipments;
   String? _dataInfraOthers;
-  String? _dataSupport;
+  List ? _dataSupport;
   String? _dataOthers2;
-  String? _dataMgnregAsupport;
+  List? _dataMgnregAsupport;
   String? _dataLanddetails1Landforgrass;
-  String? _dataLanddetails1Qtyofownland;
-  String? _dataLanddetails1Qtyofleasedland;
+  int? _dataLanddetails1Qtyofownland;
+  int? _dataLanddetails1Qtyofleasedland;
   String? _dataLanddetails2Siteforworkshed;
-  String? _dataLanddetails2Qtyofownland;
+  int? _dataLanddetails2Qtyofownland;
   String? _dataOthers4;
   String? _dataTrainingsrequired;
   String? _dataOthers3;
@@ -89,7 +89,7 @@ class TextMain extends ChangeNotifier {
   String? _dataNameofcrp;
   String? _dataNameofrespondent;
   String? _dataDateofsurvey;
-  String? _dataStarttime;
+  int? _dataStarttime;
   String? _dataMetaInstanceId;
   int? _dataLoandetailsTotalinvestment;
   // String? _key;
@@ -104,32 +104,32 @@ class TextMain extends ChangeNotifier {
 
   //------------------product--------------
   String? _dataProductsPrdct;
-  String? _dataProductsQuantum;
-  String? _dataProductsPrice2;
+  int? _dataProductsQuantum;
+  int? _dataProductsPrice2;
 
   //-----------------Purchase-----------------
   String? _dataPurchaseofrawmaterialsItemtype;
-  String? _dataPurchaseofrawmaterialsQuantity;
-  String? _dataPurchaseofrawmaterialsPrice;
+  int? _dataPurchaseofrawmaterialsQuantity;
+  int? _dataPurchaseofrawmaterialsPrice;
   String? _dataPurchaseofrawmaterialsBrand;
   String? _dataPurchaseofrawmaterialsOwn;
-  String? _dataPurchaseofrawmaterialsRetail;
-  String? _dataPurchaseofrawmaterialsP2;
-  String? _dataPurchaseofrawmaterialsWholesale;
-  String? _dataPurchaseofrawmaterialsP3;
-  String? _dataPurchaseofrawmaterialsGroup;
-  String? _dataPurchaseofrawmaterialsP4;
-  String? _dataPurchaseofrawmaterialsSubsidy;
-  String? _dataPurchaseofrawmaterialsP5;
+  int? _dataPurchaseofrawmaterialsRetail;
+  int? _dataPurchaseofrawmaterialsP2;
+  int? _dataPurchaseofrawmaterialsWholesale;
+  int? _dataPurchaseofrawmaterialsP3;
+  int? _dataPurchaseofrawmaterialsGroup;
+  int? _dataPurchaseofrawmaterialsP4;
+  int? _dataPurchaseofrawmaterialsSubsidy;
+  int? _dataPurchaseofrawmaterialsP5;
   // -----------------sales----------
   String? _dataSalesprdct2;
-  String? _dataSalesquntum2;
+  int? _dataSalesquntum2;
   String? _dataSalessalesmethod;
   //------------livelyhood------------
   String? _datalivelihoodincomesource;
-  String? _datalivelihoodnumbers;
+  int? _datalivelihoodnumbers;
   String? _datalivelihoodcapitalsource;
-  String? _datalivelihoodrevenue;
+  int? _datalivelihoodrevenue;
   // --------------------------------------
 
   String? get dataDistrict => _dataDistrict;
@@ -188,7 +188,8 @@ class TextMain extends ChangeNotifier {
 
   int? get dataAmountinvested => _dataAmountinvested;
 
-  String? get dataSourceofinvestment => _dataSourceofinvestment;
+
+  List<String>? get dataSourceofinvestment => _dataSourceofinvestment;
 
   String? get dataSupportrecived => _dataSupportrecived;
 
@@ -212,23 +213,23 @@ class TextMain extends ChangeNotifier {
 
   String? get dataInfraOthers => _dataInfraOthers;
 
-  String? get dataSupport => _dataSupport;
+  List? get dataSupport => _dataSupport;
 
   String? get dataOthers2 => _dataOthers2;
 
-  String? get dataMgnregAsupport => _dataMgnregAsupport;
+  List? get dataMgnregAsupport => _dataMgnregAsupport;
 
   String? get dataLanddetails1Landforgrass => _dataLanddetails1Landforgrass;
 
-  String? get dataLanddetails1Qtyofownland => _dataLanddetails1Qtyofownland;
+  int? get dataLanddetails1Qtyofownland => _dataLanddetails1Qtyofownland;
 
-  String? get dataLanddetails1Qtyofleasedland =>
+  int? get dataLanddetails1Qtyofleasedland =>
       _dataLanddetails1Qtyofleasedland;
 
   String? get dataLanddetails2Siteforworkshed =>
       _dataLanddetails2Siteforworkshed;
 
-  String? get dataLanddetails2Qtyofownland => _dataLanddetails2Qtyofownland;
+  int? get dataLanddetails2Qtyofownland => _dataLanddetails2Qtyofownland;
 
   String? get dataOthers4 => _dataOthers4;
 
@@ -244,7 +245,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataDateofsurvey => _dataDateofsurvey;
 
-  String? get dataStarttime => _dataStarttime;
+  int? get dataStarttime => _dataStarttime;
 
   String? get dataMetaInstanceId => _dataMetaInstanceId;
 
@@ -271,54 +272,54 @@ class TextMain extends ChangeNotifier {
 
   String? get dataProductsPrdct => _dataProductsPrdct;
 
-  String? get dataProductsQuantum => _dataProductsQuantum;
+  int? get dataProductsQuantum => _dataProductsQuantum;
 
-  String? get dataProductsPrice2 => _dataProductsPrice2;
+  int? get dataProductsPrice2 => _dataProductsPrice2;
 
 
   //----------------purchaseofrawmaterials-------------
 
   String? get dataPurchaseofrawmaterialsItemtype => _dataPurchaseofrawmaterialsItemtype;
-  String?
+  int?
  get dataPurchaseofrawmaterialsQuantity => _dataPurchaseofrawmaterialsQuantity;
-  String?
+  int?
  get dataPurchaseofrawmaterialsPrice => _dataPurchaseofrawmaterialsPrice;
   String? get dataPurchaseofrawmaterialsBrand => _dataPurchaseofrawmaterialsBrand;
   String?
  get dataPurchaseofrawmaterialsOwn => _dataPurchaseofrawmaterialsOwn;
-  String?
+  int?
  get dataPurchaseofrawmaterialsRetail => _dataPurchaseofrawmaterialsRetail;
-  String?
+  int?
  get dataPurchaseofrawmaterialsP2 => _dataPurchaseofrawmaterialsP2;
-  String?
+  int?
  get dataPurchaseofrawmaterialsWholesale => _dataPurchaseofrawmaterialsWholesale;
-  String?
+  int?
  get dataPurchaseofrawmaterialsP3 => _dataPurchaseofrawmaterialsP3;
-  String?
+  int?
  get dataPurchaseofrawmaterialsGroup => _dataPurchaseofrawmaterialsGroup;
-  String?
+  int?
  get dataPurchaseofrawmaterialsP4 => _dataPurchaseofrawmaterialsP4;
-  String?
+  int?
  get dataPurchaseofrawmaterialsSubsidy => _dataPurchaseofrawmaterialsSubsidy;
-  String?
+  int?
  get dataPurchaseofrawmaterialsP5 => _dataPurchaseofrawmaterialsP5;
 
 
   //--------------sales----------------------------//
 
   String? get dataSalesprdct2 => _dataSalesprdct2;
-  String? get dataSalesquntum2 => _dataSalesquntum2;
+  int? get dataSalesquntum2 => _dataSalesquntum2;
   String? get dataSalessalesmethod => _dataSalessalesmethod;
 
 
  //-------------------livelihood------------------------
   String? get datalivelihoodincomesource => _datalivelihoodincomesource;
 
-  String? get datalivelihoodnumbers => _datalivelihoodnumbers;
+  int? get datalivelihoodnumbers => _datalivelihoodnumbers;
 
   String? get datalivelihoodcapitalsource => _datalivelihoodcapitalsource;
 
-  String? get datalivelihoodrevenue => _datalivelihoodrevenue;
+  int? get datalivelihoodrevenue => _datalivelihoodrevenue;
 
   //----------------livelihood-----------------
   void updateDatalivelihoodincomesource(String? value) {
@@ -332,7 +333,7 @@ class TextMain extends ChangeNotifier {
   }
 
 
-  void updateDatalivelihoodnumbers(String? value) {
+  void updateDatalivelihoodnumbers(int? value) {
     _datalivelihoodnumbers = value;
     notifyListeners();
   }
@@ -342,7 +343,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDatalivelihoodrevenue(String? value) {
+  void updateDatalivelihoodrevenue(int? value) {
     _datalivelihoodrevenue = value;
     notifyListeners();
   }
@@ -354,7 +355,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataSalesquntum2(String? value) {
+  void updateDataSalesquntum2(int? value) {
     _dataSalesquntum2 = value;
     notifyListeners();
   }
@@ -365,12 +366,12 @@ class TextMain extends ChangeNotifier {
   }
 // ---------------Products-----------------------//
 
-  void updateDataProductsPrice2(String? value) {
+  void updateDataProductsPrice2(int? value) {
     _dataProductsPrice2 = value;
     notifyListeners();
   }
 
-  void updateDataProductsQuantum(String? value) {
+  void updateDataProductsQuantum(int? value) {
     _dataProductsQuantum = value;
     notifyListeners();
   }
@@ -460,7 +461,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataClass3(List<dynamic>? value) {
+  void updateDataClass3(List? value) {
     _dataClass3 = value;
     notifyListeners();
   }
@@ -550,17 +551,9 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataSourceofinvestment(List<dynamic>? value) {
-    _dataSourceofinvestment = "";
-    // print('before: ${_dataSourceofinvestment}');
-    var values = "";
-    value?.forEach((element) {
-      values+='$element,';
-    });
-    _dataSourceofinvestment = values;
-    // print('After : ${_dataSourceofinvestment}');
+  void updateDataSourceofinvestment(List<String>? value) {
+    _dataSourceofinvestment = value;
     notifyListeners();
-
   }
 
   void updateDataSupportrecived(String? value) {
@@ -618,7 +611,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataSupport(String? value) {
+  void updateDataSupport(List? value) {
     _dataSupport = value;
     notifyListeners();
   }
@@ -628,7 +621,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataMgnregAsupport(String? value) {
+  void updateDataMgnregAsupport(List? value) {
     _dataMgnregAsupport = value;
     notifyListeners();
   }
@@ -638,12 +631,12 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLanddetails1Qtyofownland(String? value) {
+  void updateDataLanddetails1Qtyofownland(int? value) {
     _dataLanddetails1Qtyofownland = value;
     notifyListeners();
   }
 
-  void updateDataLanddetails1Qtyofleasedland(String? value) {
+  void updateDataLanddetails1Qtyofleasedland(int? value) {
     _dataLanddetails1Qtyofleasedland = value;
     notifyListeners();
   }
@@ -653,7 +646,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLanddetails2Qtyofownland(String? value) {
+  void updateDataLanddetails2Qtyofownland(int? value) {
     _dataLanddetails2Qtyofownland = value;
     notifyListeners();
   }
@@ -693,7 +686,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataStarttime(String? value) {
+  void updateDataStarttime(int? value) {
     _dataStarttime = value;
     notifyListeners();
   }
@@ -714,12 +707,12 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsQuantity(String? value) {
+  void updateDataPurchaseofrawmaterialsQuantity(int? value) {
     _dataPurchaseofrawmaterialsQuantity = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsPrice(String? value) {
+  void updateDataPurchaseofrawmaterialsPrice(int? value) {
     _dataPurchaseofrawmaterialsPrice = value;
     notifyListeners();
   }
@@ -734,42 +727,42 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsRetail(String? value) {
+  void updateDataPurchaseofrawmaterialsRetail(int? value) {
     _dataPurchaseofrawmaterialsRetail = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsP2(String? value) {
+  void updateDataPurchaseofrawmaterialsP2(int? value) {
     _dataPurchaseofrawmaterialsP2 = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsWholesale(String? value) {
+  void updateDataPurchaseofrawmaterialsWholesale(int? value) {
     _dataPurchaseofrawmaterialsWholesale = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsP3(String? value) {
+  void updateDataPurchaseofrawmaterialsP3(int? value) {
     _dataPurchaseofrawmaterialsP3 = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsGroup(String? value) {
+  void updateDataPurchaseofrawmaterialsGroup(int? value) {
     _dataPurchaseofrawmaterialsGroup = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsP4(String? value) {
+  void updateDataPurchaseofrawmaterialsP4(int? value) {
     _dataPurchaseofrawmaterialsP4 = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsSubsidy(String? value) {
+  void updateDataPurchaseofrawmaterialsSubsidy(int? value) {
     _dataPurchaseofrawmaterialsSubsidy = value;
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsP5(String? value) {
+  void updateDataPurchaseofrawmaterialsP5(int? value) {
     _dataPurchaseofrawmaterialsP5 = value;
     notifyListeners();
   }

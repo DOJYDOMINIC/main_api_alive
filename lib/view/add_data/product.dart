@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/purchaseofrawmaterials.dart';
+import 'package:provider/provider.dart';
+import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 
@@ -22,6 +24,8 @@ class _ProductState extends State<Product> {
 
   @override
   Widget build(BuildContext context) {
+    var providerone = Provider.of<TextMain>(context,listen: false);
+
     return Scaffold(
       appBar: AppBar(backgroundColor: app_theam,),
         body: SingleChildScrollView(
@@ -32,16 +36,19 @@ class _ProductState extends State<Product> {
             hint: 'ഉല്‍പ്പന്നം',
             controller: dataProductsPrdct,
             onchanged: (value) {
+              providerone.updateDataProductsPrdct(value);
             }),
       InputField(
             hint: 'അളവ് /എണ്ണം ',
             controller: dataProductsQuantum,
             onchanged: (value) {
+              providerone.updateDataProductsQuantum(value);
             }),
       InputField(
           hint: 'വില (Rs/KG/Lit/ Number)',
           controller: dataProductsPrice2,
           onchanged: (value) {
+            providerone.updateDataProductsPrice2(value);
           },
           keytype: TextInputType.number,
       ),

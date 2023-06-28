@@ -28,7 +28,7 @@ class SearchEdit extends StatelessWidget {
     ),
     SizedBox(height: 30,),
     NoSearchDropdown(
-        items: districts,
+        items: block,
         onChanged: (value) {},
         selecteditem: 'ജില്ല',
     ),
@@ -40,7 +40,7 @@ class SearchEdit extends StatelessWidget {
     DropdownContainerModel(
           onChanged: (value) {}, items: panchayth, hint: 'പഞ്ചായത്ത്'),
     NoSearchDropdown(
-        items: districts,
+        items: block,
         onChanged: (value) {},
         selecteditem: 'CRP',
     ),

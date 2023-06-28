@@ -24,7 +24,7 @@ class ReportPage extends StatelessWidget {
               child: Icon(Icons.file_copy,size: 50,color: app_theam),
             ),
             NoSearchDropdown(
-              items: districts,
+              items: block,
               onChanged: (value) {
 
               },
@@ -41,12 +41,12 @@ class ReportPage extends StatelessWidget {
               selecteditem: 'ജില്ല',
             ),
             NoSearchDropdown(
-              items: districts,
+              items: block,
               onChanged: (value) {},
               selecteditem: 'ജില്ല',
             ),
             NoSearchDropdown(
-              items: districts,
+              items: block,
               onChanged: (value) {
 
               },

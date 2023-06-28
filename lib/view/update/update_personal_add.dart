@@ -99,7 +99,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(children: [
               NoSearchDropdown(
-                items: districts,
+                items: block,
                 onChanged: (value) {},
                 selecteditem: 'ജില്ല',
               ),

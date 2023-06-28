@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/sales.dart';
+import 'package:provider/provider.dart';
+import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/headings_between.dart';
 import '../widgets/input_field.dart';
@@ -47,6 +49,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
 
   @override
   Widget build(BuildContext context) {
+    var providerone = Provider.of<TextMain>(context,listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -61,25 +64,55 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
               hint: 'ഇനം',
               controller: dataPurchaseofrawmaterialsItemtype,
               onchanged: (value) {
+                providerone.updateDataPurchaseofrawmaterialsItemtype(value);
               },
             ),
             InputField(
               hint: 'വാങ്ങുന്ന അളവ് (മാസം/kg ltr)',
               controller: dataPurchaseofrawmaterialsQuantity,
               onchanged: (value) {
+                providerone.updateDataPurchaseofrawmaterialsQuantity(value);
               },
             ),
-            InputField(hint: 'വാങ്ങുന്ന വില (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsPrice, onchanged: (value){}),
-            InputField(hint: 'ബ്രാൻഡ്', controller: dataPurchaseofrawmaterialsBrand, onchanged:(value){}),
-            InputField(hint: 'സ്വയം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsOwn, onchanged: (value){}),
-            InputField(hint: 'റീറ്റെയ്ൽ (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsRetail, onchanged: (value){}),
-            InputField(hint: 'വില ', controller:dataPurchaseofrawmaterialsP2, onchanged: (value){}),
-            InputField(hint: 'ഹോൾസെയിൽ ', controller: dataPurchaseofrawmaterialsWholesale, onchanged: (value){}),
-            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP3, onchanged: (value){}),
-            InputField(hint: 'സംഘം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsGroup, onchanged: (value){}),
-            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP4, onchanged: (value){}),
-            InputField(hint: 'സബ്‌സിഡി(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsSubsidy, onchanged: (value){}),
-            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP5, onchanged: (value){}),
+            InputField(hint: 'വാങ്ങുന്ന വില (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsPrice, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsPrice(value);
+            }),
+            InputField(hint: 'ബ്രാൻഡ്', controller: dataPurchaseofrawmaterialsBrand, onchanged:(value){
+              providerone.updateDataPurchaseofrawmaterialsBrand(value);
+            }),
+            InputField(hint: 'സ്വയം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsOwn, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsOwn(value);
+            }),
+            InputField(hint: 'റീറ്റെയ്ൽ (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsRetail, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsRetail(value);
+            }),
+            InputField(hint: 'വില ', controller:dataPurchaseofrawmaterialsP2, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsP2(value);
+            }),
+            InputField(hint: 'ഹോൾസെയിൽ ', controller: dataPurchaseofrawmaterialsWholesale, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsWholesale(value);
+
+            }),
+            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP3, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsP3(value);
+
+            }),
+            InputField(hint: 'സംഘം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsGroup, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsGroup(value);
+
+            }),
+            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP4, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsP4(value);
+
+            }),
+            InputField(hint: 'സബ്‌സിഡി(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsSubsidy, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsSubsidy(value);
+
+            }),
+            InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP5, onchanged: (value){
+              providerone.updateDataPurchaseofrawmaterialsP5(value);
+
+            }),
             // Text(DocumentId),
             ElevateClick(
                 ontap: () {

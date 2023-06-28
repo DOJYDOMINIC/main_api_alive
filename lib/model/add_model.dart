@@ -19,7 +19,7 @@ class AddData {
   int? dataPhonenumber;
   String? dataClass;
   String? dataClass2;
-  List? dataClass3;
+  List<String?>? dataClass3;
   String? dataFamilyincome;
   String? dataNameofNg;
   String? dataNameofNGmember;
@@ -27,7 +27,7 @@ class AddData {
   String? dataHouseOwnership;
   int? dataLanddetailsLandarea;
   int? dataLanddetailsAgricultureland;
-  List? dataAnimalhusbendaryBusinesstype;
+  List<String>? dataAnimalhusbendaryBusinesstype;
   String? dataAnimalhusbendaryOthers0;
   String? dataAnimalhusbendaryCdsregistration;
   String? dataAnimalhusbendaryRegdetailsRegnumber;
@@ -37,7 +37,7 @@ class AddData {
   int? dataYearofstartingagriculture;
   int? dataYearofstartingbussiness;
   int? dataAmountinvested;
-  String? dataSourceofinvestment;
+  List? dataSourceofinvestment;
   String? dataSupportrecived;
   String? dataLoan;
   int? dataLoandetailsTotalinvestment;
@@ -51,7 +51,7 @@ class AddData {
   String? dataInfraOthers;
   String? dataSupport;
   String? dataOthers2;
-  String? dataMgnregAsupport;
+  List<String>? dataMgnregAsupport;
   String? dataLanddetails1Landforgrass;
   int? dataLanddetails1Qtyofownland;
   int? dataLanddetails1Qtyofleasedland;
