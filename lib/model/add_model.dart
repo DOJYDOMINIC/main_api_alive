@@ -34,8 +34,8 @@ class AddData {
   String? dataAnimalhusbendaryRegdetailsCdsunitname;
   String? dataEnterpisetype;
   int? dataNoofgroupmembers;
-  int? dataYearofstartingagriculture;
-  int? dataYearofstartingbussiness;
+  String? dataYearofstartingagriculture;
+  String? dataYearofstartingbussiness;
   int? dataAmountinvested;
   List? dataSourceofinvestment;
   String? dataSupportrecived;

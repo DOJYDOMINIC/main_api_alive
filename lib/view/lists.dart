@@ -1202,7 +1202,7 @@ final List businesstype =  [
 { 'disply': 'മറ്റുള്ളവ ', 'value': 'Others' },
 ];
 
- List sourceofinvestment = [
+ final List sourceofinvestment = [
   {'source': 'bankloan', 'value': 'bankloan'},
   {'source': 'Ng', 'value': 'Ng'},
   {'source': 'family', 'value': 'family'},

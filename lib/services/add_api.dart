@@ -15,6 +15,7 @@ Future<void> postData(AddData addData) async {
   final response = await http.post(Uri.parse(apiUrl), headers: headers, body: jsonBody);
 
   if (response.statusCode == 200) {
+    print(response);
     // Post request was successful
     print('Data posted successfully');
   } else {

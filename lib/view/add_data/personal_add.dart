@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
@@ -13,6 +12,8 @@ import '../widgets/elevate_click_button.dart';
 import '../widgets/headings_between.dart';
 import '../widgets/input_field.dart';
 import 'package:http/http.dart' as http;
+import 'familydata.dart';
+
 
 enum CheckboxOption { applied, sanctioned, notApplied }
 
@@ -25,8 +26,11 @@ class PersonalPage extends StatefulWidget {
 }
 
 class _PersonalPageState extends State<PersonalPage> {
-  List<String> districts = [];
-  String selectedDistrict = '';
+
+  String name = '';
+
+  String? selectedDistrict;
+  String? selectedBlocks;
 
   @override
   void initState() {
@@ -35,16 +39,18 @@ class _PersonalPageState extends State<PersonalPage> {
   }
 
 
+  List<String> districts = []; // Declare a global list variable
+
   Future<void> fetchDistricts() async {
     try {
-      final response = await http.get(Uri.parse('http://192.168.1.44:5000/api/user/district'));
+      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/user/district'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          districts = List<String>.from(data);
-          selectedDistrict = districts.isNotEmpty ? districts[0] : '';
-          print(data);
+          districts = List<String>.from(data); // Assign fetched data to the global list
+          // selectedDistrict;
+          // print(selectedDistrict);
         });
       } else {
         throw Exception('Failed to fetch districts');
@@ -55,7 +61,48 @@ class _PersonalPageState extends State<PersonalPage> {
     }
   }
 
+  List<String> blocks = [];
 
+  Future<void> fetchBlocks(String selectedDistrict) async {
+
+    try {
+      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/user/blocks/$selectedDistrict'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          blocks = List<String>.from(data);
+          print(blocks);
+        });
+      } else {
+        throw Exception('Failed to fetch blocks');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching blocks: $e');
+    }
+  }
+
+  List<String> panchaths = [];
+
+  Future<void> fetchPanchayth(String selectedBlocks) async {
+
+    try {
+      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/user/Panchayat/$selectedBlocks'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          panchaths = List<String>.from(data);
+          print(panchaths);
+        });
+      } else {
+        throw Exception('Failed to fetch blocks');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching blocks: $e');
+    }
+  }
 
   String? valueItem;
   List<String> listItem = [];
@@ -86,7 +133,9 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController datalanddetailsagricultureland = TextEditingController();
   TextEditingController dataInfraOthers = TextEditingController();
   TextEditingController dataLanddetails1Landforgrass = TextEditingController();
+  TextEditingController datanumberofgroupmembers = TextEditingController();
   List dataSupport = [];
+  List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
   List dataclass3 = [];
   List dataSourceofinvestment = [];
@@ -98,11 +147,11 @@ class _PersonalPageState extends State<PersonalPage> {
   String totalInvestment = '';
   String dateOfLoanApplication = '';
 
-  // --------------------DateController---------------
-  TextEditingController datePickerController = TextEditingController();
-  TextEditingController selectedDateController = TextEditingController();
-
-  // ----------------------------------------------------
+  // // --------------------DateController---------------
+  // TextEditingController datePickerController = TextEditingController();
+  // TextEditingController selectedDateController = TextEditingController();
+  //
+  // // ----------------------------------------------------
 
   onTapFunction({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
@@ -114,7 +163,7 @@ class _PersonalPageState extends State<PersonalPage> {
 
     if (pickedDate == null) return;
     String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-    datePickerController.text = formattedDate;
+    dataYearofstartingbussiness.text = formattedDate;
   }
 
   onTapFunction2({required BuildContext context}) async {
@@ -127,7 +176,7 @@ class _PersonalPageState extends State<PersonalPage> {
 
     if (pickedDate == null) return;
     String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-    selectedDateController.text = formattedDate;
+    dataYearofstartingagriculture.text = formattedDate;
   }
 
   @override
@@ -141,39 +190,44 @@ class _PersonalPageState extends State<PersonalPage> {
         body: Consumer(
           builder: (context, value, child) => SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10),
               child: Column(children: [
-                // ===================================
+                NoSearchDropdown(
+                  items: districts,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDistrict = value;
+                        fetchBlocks(selectedDistrict!);
+                      });
+                      providerone.updateDataDistrict(value);
+                      },
+                  selecteditem: 'ജില്ല',
+                ),
 
-                // ==============================
-                // NoSearchDropdown(
-                //   items: districts.map((district) => DropdownMenuItem(
-                //                     value: district,
-                //                     child: Text(district),
-                //                   )).toList(),
-                //   onChanged: (value) {
-                //     providerone.updateDataDistrict(value);
-                //   },
-                //   selecteditem: 'ജില്ല',
-                // ),
                 NoSearchDropdown(
                   onChanged: (value) {
+                    setState(() {
+                      selectedBlocks = value;
+                      fetchPanchayth(selectedBlocks!);
+                    });
                     providerone.updateDataBlock(value);
                   },
                   selecteditem: 'ബ്ലോക്ക്',
-                  items: block,
+                  items: blocks,
                 ),
                 NoSearchDropdown(
-                    onChanged: (value) {},
-                    items: panchayth,
+                    onChanged: (value) {
+                      providerone.updateDataPanchayath(value);
+                    },
+                    items: panchaths,
                     selecteditem: 'പഞ്ചായത്ത്'),
                 InputField(
                   hint: 'വാർഡ്',
                   controller: dataWard,
                   keytype: TextInputType.number,
                   onchanged: (value) {
-                    int? parsedValue = int.tryParse(value);
-                    providerone.updateDataWard(parsedValue);
+                    int? valuee = int.tryParse(value);
+                    providerone.updateDataWard(valuee);
                   },
                 ),
                 InputField(
@@ -231,6 +285,7 @@ class _PersonalPageState extends State<PersonalPage> {
                     onSaved: (value) {
                       if (value == null) return;
                       providerone.updateDataClass3(value);
+                      print(value);
                     },
                   ),
                 ),
@@ -278,8 +333,7 @@ class _PersonalPageState extends State<PersonalPage> {
                   controller: datalanddetailsagricultureland,
                   onchanged: (value) {
                     int? parsedValue = int.tryParse(value);
-                    providerone
-                        .updateDataLanddetailsAgricultureland(parsedValue);
+                    providerone.updateDataLanddetailsAgricultureland(parsedValue);
                   },
                   keytype: TextInputType.number,
                 ),
@@ -301,8 +355,7 @@ class _PersonalPageState extends State<PersonalPage> {
                       // hintText: 'Please select one or more options',
                       initialValue: dataAnimalhusbendaryBusinesstype,
                       onSaved: (value) {
-                        providerone
-                            .updateDataAnimalhusbendaryBusinesstype(value);
+                        providerone.updateDataAnimalhusbendaryBusinesstype(value);
                       }),
                 ),
                 SizedBox(
@@ -327,10 +380,8 @@ class _PersonalPageState extends State<PersonalPage> {
                           onChanged: (value) {
                             setState(() {
                               isYesSelected = value!;
-                              providerone
-                                  .updateDataAnimalhusbendaryCdsregistration(
-                                      'Yes');
                             });
+                            providerone.updateDataAnimalhusbendaryCdsregistration('Yes');
                           },
                         ),
                         CheckboxListTile(
@@ -339,10 +390,9 @@ class _PersonalPageState extends State<PersonalPage> {
                           onChanged: (value) {
                             setState(() {
                               isYesSelected = !value!;
-                              providerone
-                                  .updateDataAnimalhusbendaryCdsregistration(
-                                      'No');
+
                             });
+                            providerone.updateDataAnimalhusbendaryCdsregistration('No');
                           },
                         ),
                         if (isYesSelected) ...[
@@ -366,9 +416,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: TextField(
                               onChanged: (value) {
-                                providerone
-                                    .updateDataAnimalhusbendaryRegdetailsCdsunitname(
-                                        value);
+                                providerone.updateDataAnimalhusbendaryRegdetailsCdsunitname(value);
                               },
                               decoration: InputDecoration(
                                 labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത പേര് ',
@@ -386,6 +434,11 @@ class _PersonalPageState extends State<PersonalPage> {
                     },
                     items: enterpricetype,
                     selecteditem: 'സംരഭം തരം'),
+                InputField(keytype: TextInputType.number,
+                    hint: 'no of Group members', controller: datanumberofgroupmembers, onchanged: (value){
+                  providerone.updateDataNoofgroupmembers(value);
+                }),
+
                 SizedBox(
                   height: 10,
                 ),
@@ -397,13 +450,18 @@ class _PersonalPageState extends State<PersonalPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
-                      controller: datePickerController,
+                      controller: dataYearofstartingagriculture,
+                      onChanged: (value){
+                        providerone.updateDataYearofstartingagriculture(value);
+                      },
                       readOnly: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                       ),
-                      onTap: () => onTapFunction(context: context),
+                      onTap: () {
+                        onTapFunction(context: context);
+                      }
                     ),
                   ),
                 ),
@@ -418,20 +476,28 @@ class _PersonalPageState extends State<PersonalPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
-                      controller: selectedDateController,
+                      controller: dataYearofstartingbussiness,
+                      onChanged: (value){
+                        providerone.updateDataYearofstartingbussiness(value);
+                      },
                       readOnly: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                       ),
-                      onTap: () => onTapFunction2(context: context),
+                      onTap: () {
+                        onTapFunction2(context: context);
+                      }
                     ),
                   ),
                 ),
                 InputField(
                   hint: 'ഇതുവരെ സംരംഭത്തിൽ മുടക്കിയ  തുക',
                   controller: dataAmountinvested,
-                  onchanged: (value) {},
+                  onchanged: (value) {
+                    int? valuee = int.tryParse(value);
+                    providerone.updateDataAmountinvested(valuee);
+                  },
                   keytype: TextInputType.number,
                 ),
                 Padding(
@@ -452,9 +518,7 @@ class _PersonalPageState extends State<PersonalPage> {
                     // hintText: 'Please select one or more options',
                     initialValue: dataSourceofinvestment,
                     onSaved: (value) {
-                      if (value == null) return;
-                      providerone.updateDataSourceofinvestment(value);
-                    },
+                      providerone.updateDataSourceofinvestment(value);}
                   ),
                 ),
                 InputField(
@@ -485,6 +549,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             setState(() {
                               selectedOption = CheckboxOption.applied;
                             });
+                            providerone.updateDataLoan('Applied');
                             // updateDataLoan('applied');
                           }
                         },
@@ -497,6 +562,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             setState(() {
                               selectedOption = CheckboxOption.sanctioned;
                             });
+                            providerone.updateDataLoan('Sanctioned');
                             // updateDataLoan('sanctioned');
                           }
                         },
@@ -510,6 +576,8 @@ class _PersonalPageState extends State<PersonalPage> {
                               selectedOption = CheckboxOption.notApplied;
                             });
                             // updateDataLoan('notApplied');
+                            providerone.updateDataLoan('Not Applied');
+
                           }
                         },
                       ),
@@ -521,7 +589,8 @@ class _PersonalPageState extends State<PersonalPage> {
                             children: [
                               TextField(
                                 onChanged: (value) {
-                                  providerone.updateDataTotalinvestment(value);
+                                  int? valuee = int.tryParse(value);
+                                  providerone.updateDataTotalinvestment(valuee);
                                 },
                                 decoration: InputDecoration(
                                   labelText: 'തുക',
@@ -529,9 +598,7 @@ class _PersonalPageState extends State<PersonalPage> {
                               ),
                               TextField(
                                 onChanged: (value) {
-                                  providerone
-                                      .updateDataDateofLoanApplication(value);
-                                },
+                                  providerone.updateDataDateofLoanApplication(value);},
                                 decoration: InputDecoration(
                                   labelText: 'തീയതി',
                                 ),
@@ -610,6 +677,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             .updateDataAnimalhusbendaryBusinesstype(value);
                       }),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -649,16 +717,20 @@ class _PersonalPageState extends State<PersonalPage> {
                     okButtonLabel: 'OK',
                     cancelButtonLabel: 'CANCEL',
                     // hintText: 'Please select one or more options',
-                    initialValue: dataSupport,
+                    initialValue: dataMgnregasupport,
                     onSaved: (value) {
                       if (value == null) return;
-                      providerone.updateDataSupport(value);
+                      providerone.updateDataMgnregAsupport(value);
                     },
                   ),
                 ),
                 ElevateClick(
                     ontap: () {
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => FamilyData(),));
+                      // print(selectedDistrict);
+                      // print(fetchBlocks(selectedDistrict!));
+                      // print(blocks);
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FamilyData(),));
                     },
                     text: 'Next'),
               ]),

@@ -2,18 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/searchresult_update.dart';
-import 'package:main200623/view/update/update_personal_add.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
-
 import '../lists.dart';
 import '../widgets/dropdown_container_model.dart';
 import '../widgets/dropdown_nosearch.dart';
+
 
 class SearchEdit extends StatelessWidget {
   const SearchEdit({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: app_theam,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

@@ -1,8 +1,6 @@
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
 //
-// import '../model/mainmodel.dart';
-// import '../model/personal_model.dart';
 //
 //
 // class PersonalDataAPI {

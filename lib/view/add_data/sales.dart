@@ -6,7 +6,6 @@ import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 import 'crpdreport.dart';
-import 'livelihood.dart';
 
 class SalesData extends StatefulWidget {
   const SalesData({Key? key,}) : super(key: key);
@@ -33,23 +32,27 @@ class _SalesState extends State<SalesData> {
     return Scaffold(
       appBar: AppBar(backgroundColor: app_theam,),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Text(DocumentId),
-            InputField(hint: 'ഉല്‍പ്പന്നം', controller:dataSalesprdct2, onchanged: (value){
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              // Text(DocumentId),
+              InputField(hint: 'ഉല്‍പ്പന്നം', controller:dataSalesprdct2, onchanged: (value){
 providerone.updateDataSalesprdct2(value);
-            }),
-            InputField(hint: 'അളവ്‌', controller: dataSalesquntum2, onchanged: (value){
-              providerone.updateDataSalesquntum2(value);
-            }),
-            InputField(hint: 'വിപണന രീതി ', controller: dataSalessalesmethod, onchanged: (value){
-              providerone.updateDataSalessalesmethod(value);
-            }),
-            ElevateClick(
-                ontap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CrpDetail(),));
-            }, text:'Next'),
-          ],
+              }),
+              InputField(hint: 'അളവ്‌', controller: dataSalesquntum2, onchanged: (value){
+                int? valuee = int.tryParse(value);
+                providerone.updateDataSalesquntum2(valuee);
+              }),
+              InputField(hint: 'വിപണന രീതി ', controller: dataSalessalesmethod, onchanged: (value){
+                providerone.updateDataSalessalesmethod(value);
+              }),
+              ElevateClick(
+                  ontap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CrpDetail(),));
+              }, text:'Next'),
+            ],
+          ),
         ),
       ),
     );

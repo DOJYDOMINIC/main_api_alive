@@ -24,12 +24,12 @@ class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
   }
 
   Future<void> deleteDataById(String dataId) async {
-    final apiUrl = 'http://192.168.1.44:5000/api/user/deleteUsers/$dataId';
+    final apiUrl = 'http://192.168.1.44:5000/api/auth/deleteUsers/$dataId';
 print(dataId);
     try {
       final response = await http.delete(Uri.parse(apiUrl));
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         print('Data deletion successful');
       } else {
         print('Failed to delete data. Status code: ${response.statusCode}');
@@ -40,7 +40,7 @@ print(dataId);
   }
 
   Future<void> updateUser(String userId) async {
-    final apiUrl = 'http://192.168.1.44:5000/api/user/validUser/$userId';
+    final apiUrl = 'http://192.168.1.43:5000/api/auth/validUser/$userId';
     print(userId);
     try {
       final response = await http.put(Uri.parse(apiUrl));
@@ -57,7 +57,7 @@ print(dataId);
 
 
   Future<void> fetchRegisteredPeople() async {
-    String url = 'http://192.168.1.44:5000/api/user/registerUser';
+    String url = 'http://192.168.1.44:5000/api/auth/registerUser';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -138,8 +138,10 @@ print(dataId);
                           TextButton(
                             child: Text('OK'),
                             onPressed: () {
+                              setState(() {
                                 updateUser(person.id);
                                 fetchRegisteredPeople();
+                              });
                                 Navigator.of(context).pop();
                             },
                           ),

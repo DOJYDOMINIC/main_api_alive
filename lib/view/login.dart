@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
   List<String> dropdownOptions = ['Admin', 'User'];
 
   Future<void> login() async {
-    String url = 'http://192.168.1.44:5000/api/user/login';
+    String url = 'http://192.168.1.43:5000/api/auth/login';
 
     Map<String, dynamic> body = {
       'email': _emailController.text,
@@ -39,6 +39,8 @@ class _LoginState extends State<Login> {
         // Successful login
         var data = json.decode(response.body);
         // Process the data or navigate to the next screen
+        _emailController.clear();
+        _passwordController.clear();
         print(data);
         if(dropdownValue == 'Admin'){
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(),));
@@ -236,7 +238,6 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-
                           Center(
                             child: TextButton(
                               child: Text(

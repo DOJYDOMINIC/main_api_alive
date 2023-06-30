@@ -8,32 +8,32 @@ enum CheckboxOption {
 
 class TextMain extends ChangeNotifier {
   //
-  // bool _isYesSelected = false;
-  //
-  // bool get isYesSelected => _isYesSelected;
-  //
-  // void updateIsYesSelected(bool value) {
-  //   _isYesSelected = value;
-  //   notifyListeners();
-  // }
-  //
-  // CheckboxOption _selectedOption = CheckboxOption.notApplied;
-  // CheckboxOption get selectedOption => _selectedOption;
-  //
-  // void updateSelectedOption(CheckboxOption option) {
-  //   _selectedOption = option;
-  //   notifyListeners();
-  // }
+  bool _isYesSelected = false;
+
+  bool get isYesSelected => _isYesSelected;
+
+  void updateIsYesSelected(bool value) {
+    _isYesSelected = value;
+    notifyListeners();
+  }
+
+  CheckboxOption _selectedOption = CheckboxOption.notApplied;
+  CheckboxOption get selectedOption => _selectedOption;
+
+  void updateSelectedOption(CheckboxOption option) {
+    _selectedOption = option;
+    notifyListeners();
+  }
 
   // void updateTextFieldValue1(String? value) {
   //   _dataTotalinvestment = value;
   //   notifyListeners();
   // }
-  //
-  // void updateTextFieldValue2(String? value) {
-  //   _dataDateofLoanApplication = value;
-  //   notifyListeners();
-  // }
+
+  void updateTextFieldValue2(String? value) {
+    _dataDateofLoanApplication = value;
+    notifyListeners();
+  }
 
   String? _dataDistrict;
   String? _dataBlock;
@@ -59,13 +59,13 @@ class TextMain extends ChangeNotifier {
   String? _dataAnimalhusbendaryRegdetailsCdsunitname;
   String? _dataEnterpisetype;
   int? _dataNoofgroupmembers;
-  int? _dataYearofstartingagriculture;
-  int? _dataYearofstartingbussiness;
+  String? _dataYearofstartingagriculture;
+  String? _dataYearofstartingbussiness;
   int? _dataAmountinvested;
-  List<String>? _dataSourceofinvestment;
+  List? _dataSourceofinvestment;
   String? _dataSupportrecived;
   String? _dataLoan;
-  String? _dataTotalinvestment;
+  int? _dataTotalinvestment;
   String? _dataDateofLoanApplication;
   String? _dataBusinessidea;
   String? _dataInfraInfrastructure;
@@ -182,20 +182,20 @@ class TextMain extends ChangeNotifier {
 
   int? get dataNoofgroupmembers => _dataNoofgroupmembers;
 
-  int? get dataYearofstartingagriculture => _dataYearofstartingagriculture;
+  String? get dataYearofstartingagriculture => _dataYearofstartingagriculture;
 
-  int? get dataYearofstartingbussiness => _dataYearofstartingbussiness;
+  String? get dataYearofstartingbussiness => _dataYearofstartingbussiness;
 
   int? get dataAmountinvested => _dataAmountinvested;
 
 
-  List<String>? get dataSourceofinvestment => _dataSourceofinvestment;
+  List? get dataSourceofinvestment => _dataSourceofinvestment;
 
   String? get dataSupportrecived => _dataSupportrecived;
 
   String? get dataLoan => _dataLoan;
 
-  String? get dataTotalinvestment => _dataTotalinvestment;
+  int? get dataTotalinvestment => _dataTotalinvestment;
 
   String? get dataDateofLoanApplication => _dataDateofLoanApplication;
 
@@ -536,12 +536,12 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataYearofstartingagriculture(int? value) {
+  void updateDataYearofstartingagriculture(String? value) {
     _dataYearofstartingagriculture = value;
     notifyListeners();
   }
 
-  void updateDataYearofstartingbussiness(int? value) {
+  void updateDataYearofstartingbussiness(String? value) {
     _dataYearofstartingbussiness = value;
     notifyListeners();
   }
@@ -551,7 +551,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataSourceofinvestment(List<String>? value) {
+  void updateDataSourceofinvestment(List? value) {
     _dataSourceofinvestment = value;
     notifyListeners();
   }
@@ -566,7 +566,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataTotalinvestment(String? value) {
+  void updateDataTotalinvestment(int? value) {
     _dataTotalinvestment = value;
     notifyListeners();
   }

@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       "password": _passwordController.text,
     };
 
-    const apiUrl = "http://192.168.1.44:5000/api/user/register";
+    const apiUrl = "http://192.168.1.43:5000/api/auth/register";
 
     try {
       final response = await http.post(
@@ -45,11 +45,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _emailController.clear();
         _passwordController.clear();
         _confirmPasswordController.clear();
-      } else {
+      } else if (response.statusCode == 400) {
         // Registration failed, handle error response here
+        print("User Exist");
+      }else
         print("Registration failed");
-      }
-    } catch (error) {
+      } catch (error) {
       // Error occurred during registration, handle error here
       print("Error: $error");
     }

@@ -1,7 +1,5 @@
 // import 'package:flutter/material.dart';
 // import 'package:main200623/view/widgets/dropdown_nosearch.dart';
-// import '../../model/personal_model.dart';
-// import '../../services/api_services.dart';
 // import '../constant/color_text.dart';
 // import 'lists.dart';
 //

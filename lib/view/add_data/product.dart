@@ -29,35 +29,40 @@ class _ProductState extends State<Product> {
     return Scaffold(
       appBar: AppBar(backgroundColor: app_theam,),
         body: SingleChildScrollView(
-          child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
       InputField(
-            hint: 'ഉല്‍പ്പന്നം',
-            controller: dataProductsPrdct,
+              hint: 'ഉല്‍പ്പന്നം',
+              controller: dataProductsPrdct,
+              onchanged: (value) {
+                providerone.updateDataProductsPrdct(value);
+              }),
+      InputField(
+              hint: 'അളവ് /എണ്ണം ',
+              controller: dataProductsQuantum,
+              onchanged: (value) {
+                int? valuee = int.tryParse(value);
+                providerone.updateDataProductsQuantum(valuee);
+              }),
+      InputField(
+            hint: 'വില (Rs/KG/Lit/ Number)',
+            controller: dataProductsPrice2,
             onchanged: (value) {
-              providerone.updateDataProductsPrdct(value);
-            }),
-      InputField(
-            hint: 'അളവ് /എണ്ണം ',
-            controller: dataProductsQuantum,
-            onchanged: (value) {
-              providerone.updateDataProductsQuantum(value);
-            }),
-      InputField(
-          hint: 'വില (Rs/KG/Lit/ Number)',
-          controller: dataProductsPrice2,
-          onchanged: (value) {
-            providerone.updateDataProductsPrice2(value);
-          },
-          keytype: TextInputType.number,
+              int? valuee = int.tryParse(value);
+              providerone.updateDataProductsPrice2(valuee);
+            },
+            keytype: TextInputType.number,
       ),
       ElevateClick(
-            ontap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Purchaseofrawmaterials(),));
-            },
-            text: 'Next'),
+              ontap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Purchaseofrawmaterials(),));
+              },
+              text: 'Next'),
     ]),
+          ),
         ));
   }
 }

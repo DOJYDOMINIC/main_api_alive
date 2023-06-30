@@ -6,3 +6,5 @@ TextStyle adj = TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeigh
 ButtonStyle buttonstyle_main = ElevatedButton.styleFrom(
   backgroundColor: Color.fromARGB(255, 38, 87, 66), // Background color
 );
+
+String urls = 'http://192.168.1.44:5000/api' ;

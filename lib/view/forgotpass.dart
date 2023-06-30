@@ -46,7 +46,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       return;
     }
 
-    final url = Uri.parse('http://192.168.1.44:5000/api/user/reset-password');
+    final url = Uri.parse('http://192.168.1.43:5000/api/auth/reset-password');
 
     final headers = <String, String>{
       'Content-Type': 'application/json',

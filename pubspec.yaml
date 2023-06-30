@@ -44,6 +44,8 @@ dependencies:
   shared_preferences: ^2.1.2
   connectivity: ^3.0.6
   connectivity_plus: ^4.0.1
+  excel: ^2.1.0
+
 
 
 dev_dependencies:
