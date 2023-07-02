@@ -10,6 +10,7 @@ class SerachresultUpsate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('വ്യക്തികളുടെ ലിസ്റ്റ് '),
         backgroundColor: app_theam,
       ),
       body: ListView.builder(
@@ -34,9 +35,9 @@ class SerachresultUpsate extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('Name : {name}',style: adj,),
-                          Text('Phone : {Phone}',style: adj,),
-                          Text('Group : {NgName}',style: adj,),
+                          Text('Name : name',style: adj,),
+                          Text('Phone : Phone',style: adj,),
+                          Text('Group : NgName',style: adj,),
                         ],
                       ),
                     ),

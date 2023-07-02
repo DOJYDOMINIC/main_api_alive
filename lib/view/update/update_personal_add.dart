@@ -92,6 +92,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: Text('വ്യക്തിവിവരം '),
+          centerTitle: true,
           backgroundColor: app_theam,
         ),
         body: SingleChildScrollView(

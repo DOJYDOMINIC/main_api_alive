@@ -27,7 +27,10 @@ class _ProductState extends State<Product> {
     var providerone = Provider.of<TextMain>(context,listen: false);
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: app_theam,),
+      appBar: AppBar(
+        title: Text('ഉല്‍പ്പന്ന  വിവരം '),
+        centerTitle: true,
+        backgroundColor: app_theam,),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),

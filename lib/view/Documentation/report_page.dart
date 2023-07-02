@@ -1,11 +1,12 @@
 
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
-import '../../control/text_controller.dart';
+import 'package:path_provider/path_provider.dart';
+import '../../services/add_api.dart';
 import '../lists.dart';
 import '../widgets/dropdown_nosearch.dart';
 
@@ -21,8 +22,45 @@ class ReportPage extends StatefulWidget {
 
 
 class _ReportPageState extends State<ReportPage> {
+  Dio dio = Dio();
+  double progress = 0.0;
+  String? apl;
+  String? dist;
+  List<String> blocklist = [];
+  List<String> panchaths = [];
+  String? panchayth;
+  String? blockss;
 
 
+ Future <void> Dataclassone() async {
+    final String url =
+        '${api}search/class1?data_Panchayath=$panchayth&data_Class=$apl';
+
+    const String fileName = "dataclass.xlsx";
+
+    String path = await _getFilePath(fileName);
+
+    await dio.download(
+      url,
+      path,
+      onReceiveProgress: (recivedBytes, totalBytes) {
+        setState(() {
+          progress = recivedBytes / totalBytes;
+        });
+
+        print(progress);
+      },
+      deleteOnError: true,
+    ).then((_) {
+      Navigator.pop(context);
+    });
+  }
+
+
+  Future<String> _getFilePath(String filename) async {
+    final dir = await getApplicationDocumentsDirectory();
+    return "${dir.path}/$filename";
+  }
 
   @override
   void initState() {
@@ -35,7 +73,7 @@ class _ReportPageState extends State<ReportPage> {
 
   Future<void> fetchDistricts() async {
     try {
-      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listDistricts'));
+      final response = await http.get(Uri.parse('${api}search/listDistricts'));
 
       if (response.statusCode == 200) {
 
@@ -55,14 +93,13 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-  String? dist;
-  List<String> blocklist = [];
+
 
 
   Future<void> fetchBlocks(String selectedDistrict) async {
 
     try {
-      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listBlocks?data_district=$dist'));
+      final response = await http.get(Uri.parse('${api}search/listBlocks?data_district=$dist'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -78,14 +115,12 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-  List<String> panchaths = [];
-  String? panchayth;
-  String? blockss;
+
 
   Future<void> fetchPanchayth(String selectpanchaayth) async {
 
     try {
-      final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
+      final response = await http.get(Uri.parse('${api}search/listPanchayats?data_Block=$blockss'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -102,241 +137,22 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-  String? apl;
 
 
-  // void downloadExcelFile(String apiUrl, String selectedPanchath, String apl) async {
-  //   try {
-  //     final url = '$apiUrl?data_Panchayath=$selectedPanchath&data_Class=$apl';
-  //     final request = http.Request('GET', Uri.parse(url));
-  //
-  //     final http.StreamedResponse response = await http.Client().send(request);
-  //
-  //     final String downloadDir = (await getExternalStorageDirectory())!.path;
-  //     final String fileName = "data.xlsx";
-  //     final String savePath = "$downloadDir/$fileName";
-  //
-  //     final File file = File(savePath);
-  //     await file.writeAsBytes(await response.stream.toBytes());
-  //
-  //     // Show a dialog to inform the user about the successful download.
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //         title: Text('Download Complete'),
-  //         content: Text('The Excel file has been downloaded successfully.'),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () => Navigator.of(context).pop(),
-  //             child: Text('OK'),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     // Handle any errors that occur during the download process.
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //         title: Text('Error'),
-  //         content: Text('An error occurred while downloading the file.'),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () => Navigator.of(context).pop(),
-  //             child: Text('OK'),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   }
-  // }
 
 
-  // Future<void> fetchclss2(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  // Future<void> fetchdataclss3(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatabusinesstype(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatalanddetais(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdataproductdetails(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatapurchaseofrawmaterials(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatatraining(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatamngregasupport(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
-  //
-  // Future<void> fetchdatasupportrequared(String selectedBlocks) async {
-  //
-  //   try {
-  //     final response = await http.get(Uri.parse('http://192.168.1.43:5000/api/search/listPanchayats?data_Block=$blockss'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //       setState(() {
-  //         panchaths = List<String>.from(data);
-  //         print(panchaths);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch blocks');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching blocks: $e');
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
-    var providerone = Provider.of<TextMain>(context, listen: false);
+    String downloadingprogress = (progress * 100).toInt().toString();
+
+    // var providerone = Provider.of<TextMain>(context, listen: false);
+
 
     return Scaffold(
       appBar: AppBar(
+        title: Text('Documentation'),
+        centerTitle: true,
         backgroundColor: app_theam,
       ),
       body: SingleChildScrollView(
@@ -345,7 +161,13 @@ class _ReportPageState extends State<ReportPage> {
           child: Column(children: [
             Padding(
               padding: const EdgeInsets.only(top: 30,bottom: 20),
-              child: Icon(Icons.file_copy,size: 50,color: app_theam),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.file_copy,size: 50,color: app_theam),
+                  Text('Report',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: app_theam),)
+                ],
+              ),
             ),
             NoSearchDropdown(
               items: districts,
@@ -354,7 +176,6 @@ class _ReportPageState extends State<ReportPage> {
                   dist = value;
                   fetchBlocks(dist!);
                 });
-                // providerone.updateDataDistrict(value);
               },
               selecteditem: 'ജില്ല',
             ),
@@ -366,7 +187,6 @@ class _ReportPageState extends State<ReportPage> {
                   blockss = value;
                   fetchPanchayth(blockss!);
                 });
-                // providerone.updateDataBlock(value);
               },
               selecteditem: 'ബ്ലോക്ക്',
               items: blocklist,
@@ -379,7 +199,6 @@ class _ReportPageState extends State<ReportPage> {
                     panchayth = value;
                     // fetchPanchayth(panchayth!);
                   });
-                  // providerone.updateDataPanchayath(value);
                 },
                 items: panchaths,
                 selecteditem: 'പഞ്ചായത്ത്'),
@@ -393,21 +212,30 @@ class _ReportPageState extends State<ReportPage> {
               },
               selecteditem: 'വിഭാഗം',
             ),
-            NoSearchDropdown(
-              items: block,
-              onChanged: (value) {
-
-              },
-              selecteditem: 'ജില്ല',
-            ),
 
             ElevateClick(ontap: (){
-// print(fetchdataclss(panchayth!, apl!));
-//               fetchdataclss(panchayth!,apl!);
-//               final String apiUrl = 'http://192.168.1.43:5000/api/search/class1';
-//               final String selectedPanchath = '$panchayth';
-//               final String classnew = '$apl';
-//               downloadExcelFile(apiUrl, selectedPanchath, classnew);
+              Dataclassone();
+              showDialog(context: context, builder: (context) {
+                return AlertDialog(
+                  backgroundColor: Colors.black,
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const CircularProgressIndicator.adaptive(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Downloading: $downloadingprogress%",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },);
             }, text:'Download')
            ],
           ),

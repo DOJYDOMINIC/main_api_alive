@@ -27,6 +27,8 @@ TextEditingController dataFamilydetailsJob = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('കുടുംബവിവരം') ,
+        centerTitle: true,
         backgroundColor: app_theam,
       ),
       body: SingleChildScrollView(

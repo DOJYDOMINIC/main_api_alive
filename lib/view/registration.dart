@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:main200623/constant/color_text.dart';
 import 'dart:convert';
-
+import '../services/add_api.dart';
 import 'login.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       "password": _passwordController.text,
     };
 
-    const apiUrl = "http://192.168.1.43:5000/api/auth/register";
+    const apiUrl = "${api}auth/register";
 
     try {
       final response = await http.post(
@@ -39,6 +39,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       );
 
       if (response.statusCode == 201) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text("Success"),
+                content: Text("Registration successful!"),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("OK"),
+                  ),
+                ],
+              );});
         // Registration successful, handle success response here
         print("Registration successful");
         _nameController.clear();

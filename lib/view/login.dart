@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:main200623/view/registration.dart';
 import 'package:main200623/view/screenone.dart';
 import '../constant/color_text.dart';
+import '../services/add_api.dart';
 import 'forgotpass.dart';
 
 class Login extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoginState extends State<Login> {
   List<String> dropdownOptions = ['Admin', 'User'];
 
   Future<void> login() async {
-    String url = 'http://192.168.1.43:5000/api/auth/login';
+    String url = '${api}auth/login';
 
     Map<String, dynamic> body = {
       'email': _emailController.text,

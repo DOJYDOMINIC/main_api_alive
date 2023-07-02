@@ -49,6 +49,7 @@ class _UpdatePurchaseofrawmaterialsState extends State<UpdatePurchaseofrawmateri
 
     return Scaffold(
       appBar: AppBar(
+        title: Text('അസംസ്‌കൃത വസ്തുക്കൾ\nവാങ്ങുന്നരീതി'),
         backgroundColor: app_theam,
       ),
       body: SingleChildScrollView(

@@ -29,7 +29,10 @@ class _SalesState extends State<UpdateSalesData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: app_theam,),
+      appBar: AppBar(
+        title: Text('വിൽക്കുന്ന രീതി') ,
+        centerTitle: true,
+        backgroundColor: app_theam,),
       body: Column(
         children: [
           // Text(DocumentId),

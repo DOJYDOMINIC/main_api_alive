@@ -4,6 +4,7 @@ import 'package:main200623/view/screenone.dart';
 import 'dart:convert';
 
 import '../constant/color_text.dart';
+import '../services/add_api.dart';
 
 class RegisteredPeopleList extends StatefulWidget {
   const RegisteredPeopleList({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class RegisteredPeopleList extends StatefulWidget {
 
 class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
   List<User> registeredPeople = [];
-  // final userId = '64916f204baa91202ec7d31e';
+  final userId = '64916f204baa91202ec7d31e';
 
 
   @override
@@ -24,12 +25,12 @@ class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
   }
 
   Future<void> deleteDataById(String dataId) async {
-    final apiUrl = 'http://192.168.1.44:5000/api/auth/deleteUsers/$dataId';
+    final apiUrl = '${api}auth/deleteUsers/$dataId';
 print(dataId);
     try {
       final response = await http.delete(Uri.parse(apiUrl));
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         print('Data deletion successful');
       } else {
         print('Failed to delete data. Status code: ${response.statusCode}');
@@ -40,8 +41,9 @@ print(dataId);
   }
 
   Future<void> updateUser(String userId) async {
-    final apiUrl = 'http://192.168.1.43:5000/api/auth/validUser/$userId';
+    final apiUrl = '${api}auth/validUser/$userId';
     print(userId);
+
     try {
       final response = await http.put(Uri.parse(apiUrl));
 
@@ -57,7 +59,7 @@ print(dataId);
 
 
   Future<void> fetchRegisteredPeople() async {
-    String url = 'http://192.168.1.44:5000/api/auth/registerUser';
+    String url = '${api}auth/registerUser';
 
     try {
       final response = await http.get(Uri.parse(url));

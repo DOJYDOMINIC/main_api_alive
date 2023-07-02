@@ -28,7 +28,10 @@ class _SalesState extends State<UpdateLivelihood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: app_theam),
+      appBar: AppBar(
+          title: Text('ഉപജീവന വിവരം '),
+          centerTitle: true,
+          backgroundColor: app_theam),
       body: Column(
         children: [
           // Text(DocumentId),

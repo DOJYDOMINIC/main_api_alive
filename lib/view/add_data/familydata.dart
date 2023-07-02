@@ -32,6 +32,8 @@ TextEditingController dataFamilydetailsJob = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
+        title: Text('കുടുംബവിവരം') ,
+        centerTitle: true,
         backgroundColor: app_theam,
       ),
       body: SingleChildScrollView(

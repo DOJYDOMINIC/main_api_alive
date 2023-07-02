@@ -53,6 +53,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
 
     return Scaffold(
       appBar: AppBar(
+        title: Text('അസംസ്‌കൃത വസ്തുക്കൾ\nവാങ്ങുന്നരീതി'),
         backgroundColor: app_theam,
       ),
       body: SingleChildScrollView(
@@ -61,7 +62,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Headings(text: 'അസംസ്‌കൃത വസ്തുക്കൾ വാങ്ങുന്നരീതി'),
+              // Headings(text: 'അസംസ്‌കൃത വസ്തുക്കൾ വാങ്ങുന്നരീതി'),
               InputField(
                 hint: 'ഇനം',
                 controller: dataPurchaseofrawmaterialsItemtype,

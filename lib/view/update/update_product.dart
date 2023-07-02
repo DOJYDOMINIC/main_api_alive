@@ -28,7 +28,10 @@ class _UpdateProductState extends State<UpdateProduct> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: app_theam,),
+        appBar: AppBar(
+          title: Text('ഉല്‍പ്പന്ന  വിവരം '),
+          centerTitle: true,
+          backgroundColor: app_theam,),
         body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       InputField(
           hint: 'ഉല്‍പ്പന്നം',

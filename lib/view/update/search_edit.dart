@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/searchresult_update.dart';
@@ -15,6 +16,8 @@ class SearchEdit extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: app_theam,
+        title: Text('Search'),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

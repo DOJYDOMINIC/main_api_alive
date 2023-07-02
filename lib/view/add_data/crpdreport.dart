@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import '../screenone.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 
+
 class CrpDetail extends StatefulWidget {
   const CrpDetail({Key? key}) : super(key: key);
 
@@ -18,6 +18,7 @@ class CrpDetail extends StatefulWidget {
 }
 
 class _SalesState extends State<CrpDetail> {
+
   TextEditingController datacomments = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
@@ -163,9 +164,8 @@ class _SalesState extends State<CrpDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('സി.ആർ.പിയുടെ നിർദേശങ്ങൾ'),
+        title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
         backgroundColor: app_theam,
-
       ),
       body: SingleChildScrollView(
         child: Padding(

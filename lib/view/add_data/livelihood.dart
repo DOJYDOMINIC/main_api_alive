@@ -32,7 +32,10 @@ class _SalesState extends State<LivelihoodValue> {
     var providerone = Provider.of<TextMain>(context,listen: false);
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: app_theam),
+      appBar: AppBar(
+          title: Text('ഉപജീവന വിവരം '),
+          centerTitle: true,
+          backgroundColor: app_theam),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

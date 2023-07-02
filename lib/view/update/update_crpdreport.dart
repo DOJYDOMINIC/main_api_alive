@@ -23,9 +23,8 @@ class _SalesState extends State<UpdateCrpDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('സി.ആർ.പിയുടെ നിർദേശങ്ങൾ'),
+        title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
         backgroundColor: app_theam,
-
       ),
       body: Column(
         children: [

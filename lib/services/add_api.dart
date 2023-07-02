@@ -2,8 +2,17 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../model/add_model.dart';
 
+
+
+
+const api = 'http://192.168.1.36:5000/api/';
+
+
+
+
+
 Future<void> postData(AddData addData) async {
-  const apiUrl = 'http://192.168.1.44:5000/api/user/insert'; // Replace with your API endpoint
+  const apiUrl = '${api}user/insert'; // Replace with your API endpoint
 
   final headers = {
     'Content-Type': 'application/json',
