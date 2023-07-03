@@ -50,6 +50,7 @@ dependencies:
   dio: ^5.2.1+1
   permission_handler: ^10.4.1
   open_file: ^3.3.2
+  get_storage: ^2.1.1
 
 
 

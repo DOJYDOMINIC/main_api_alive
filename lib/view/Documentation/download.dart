@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'package:intl/intl.dart';
 import '../../services/add_api.dart';
 
 class DownloadingDialog extends StatefulWidget {
@@ -20,7 +20,8 @@ class _DownloadingDialogState extends State<DownloadingDialog> {
     const String url =
         '${api}search/class1?data_Panchayath=Pavithreswaram_&data_Class=APL';
 
-    const String fileName = "dataone.xlsx";
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String fileName = "data_${timeStamp}.xlsx";
 
     String path = await _getFilePath(fileName);
     print('Download Path: $path');
@@ -49,7 +50,35 @@ class _DownloadingDialogState extends State<DownloadingDialog> {
       var status = await Permission.storage.request();
       if (status.isGranted) {
         // Permission granted by the user, start the download
-        startDownloading();
+        await startDownloading();
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
       } else {
         // Permission denied by the user, show an error message or handle accordingly
         print("Permission denied by the user");
@@ -61,8 +90,9 @@ class _DownloadingDialogState extends State<DownloadingDialog> {
   }
 
   Future<String> _getFilePath(String filename) async {
-    final dir = await getApplicationDocumentsDirectory();
-    return "${dir.path}/$filename";
+    // final dir = await getApplicationDocumentsDirectory();
+    // ${dir.path}
+    return "/storage/emulated/0/Download/$filename";
   }
 
   @override

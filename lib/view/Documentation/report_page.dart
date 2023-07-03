@@ -2,11 +2,13 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/login.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
+// import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
 import '../widgets/dropdown_nosearch.dart';
@@ -33,43 +35,88 @@ class _ReportPageState extends State<ReportPage> {
   String? blockss;
 
 
-  Future<void> Dataclassone(String panchayth, String apl, String authToken) async {
-    final String url = '${api}search/class1?data_Panchayath=$panchayth&data_Class=$apl';
+  Future<void> startDownloading(String panchayth,String apl, String token) async {
+    final String url =
+        '${api}search/class1?data_Panchayath=$panchayth&data_Class=$apl';
 
-    const String fileName = "dataclass.xlsx";
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String fileName = "dataclass_${timeStamp}.xlsx";
+
     String path = await _getFilePath(fileName);
+    print('Download Path: $path');
 
-    final dio = Dio();
+    // Check if the storage permission is granted
+    if (await Permission.storage.isGranted) {
+      // Permission is granted, proceed with the download
+      try {
+        await dio.download(
+          url,
+          path,
+          options: Options(
+            headers: {'Authorization': 'Bearer $authToken'}, // Pass the token in the request headers
 
-    try {
-      await dio.download(
-        url,
-        path,
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $authToken', // Include the token in the headers
+          ),
+          onReceiveProgress: (receivedBytes, totalBytes) {
+            setState(() {
+              progress = receivedBytes / totalBytes;
+            });
+            print(progress);
           },
-        ),
-        onReceiveProgress: (recivedBytes, totalBytes) {
-          setState(() {
-            progress = recivedBytes / totalBytes;
-          });
-
-          print(progress);
-        },
-        deleteOnError: true,
-      ).then((_) {
-        Navigator.pop(context);
-      });
-    } catch (error) {
-      print('Error occurred while downloading file: $error');
+          deleteOnError: true,
+        );
+      } catch (e) {
+        // Handle the error here (e.g., show an error message).
+        print("Error while downloading: $e");
+      }
+    } else {
+      // Permission is not granted, request the storage permission
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        // Permission granted by the user, start the download
+        // await startDownloading();
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Permission denied by the user, show an error message or handle accordingly
+        print("Permission denied by the user");
+        Navigator.pop(context); // Close the dialog if the download cannot be started
+      }
     }
+
+    Navigator.pop(context);
   }
 
 
   Future<String> _getFilePath(String filename) async {
-    final dir = await getApplicationDocumentsDirectory();
-    return "${dir.path}/$filename";
+    // final dir = await getApplicationDocumentsDirectory();
+    // ${dir.path}
+    return "/storage/emulated/0/Download/$filename";
   }
 
   @override
@@ -218,7 +265,7 @@ class _ReportPageState extends State<ReportPage> {
             ),
 
             ElevateClick(ontap: (){
-              Dataclassone(panchayth!,apl!,authToken!);
+              startDownloading(panchayth!,apl!,authToken!);
               showDialog(context: context, builder: (context) {
                 return AlertDialog(
                   backgroundColor: Colors.black,
