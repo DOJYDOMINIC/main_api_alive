@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/search_edit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Documentation/report_page.dart';
 import 'add_data/personal_add.dart';
+import 'login.dart';
 
 class Screenone extends StatefulWidget {
   const Screenone({Key? key}) : super(key: key);
@@ -11,14 +13,40 @@ class Screenone extends StatefulWidget {
   State<Screenone> createState() => _ScreenoneState();
 }
 
+
 class _ScreenoneState extends State<Screenone> {
+
+  Future<void> clearAuthTokenFromPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('authToken');
+    // print(clearAuthTokenFromPreferences());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: app_theam,
-      // ),
+      appBar: AppBar(
+        backgroundColor: app_theam,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 25),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  Login(),));
+                clearAuthTokenFromPreferences();
+              },
+              child: Row(
+                children: [
+                  Text('Exit'),
+                  SizedBox(width: 5),
+                  Icon(Icons.exit_to_app),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+
       body: Center(
         child: SingleChildScrollView(
           child: Column(

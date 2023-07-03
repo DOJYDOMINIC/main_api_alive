@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:main200623/view/login.dart';
 import 'package:main200623/view/screenone.dart';
 import 'dart:convert';
-
 import '../constant/color_text.dart';
 import '../services/add_api.dart';
 
+
 class RegisteredPeopleList extends StatefulWidget {
-  const RegisteredPeopleList({Key? key}) : super(key: key);
+  const RegisteredPeopleList({Key? key, String? token}) : super(key: key);
 
   @override
   State<RegisteredPeopleList> createState() => _RegisteredPeopleListState();
@@ -15,7 +16,7 @@ class RegisteredPeopleList extends StatefulWidget {
 
 class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
   List<User> registeredPeople = [];
-  final userId = '64916f204baa91202ec7d31e';
+  // final userId = '64916f204baa91202ec7d31e';
 
 
   @override
@@ -24,13 +25,17 @@ class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
     fetchRegisteredPeople();
   }
 
-  Future<void> deleteDataById(String dataId) async {
+  Future<void> deleteDataById(String dataId, String token) async {
     final apiUrl = '${api}auth/deleteUsers/$dataId';
-print(dataId);
-    try {
-      final response = await http.delete(Uri.parse(apiUrl));
+    print(dataId);
 
-      if (response.statusCode == 201) {
+    try {
+      final response = await http.delete(
+        Uri.parse(apiUrl),
+        headers: {'Authorization': 'Bearer $token'}, // Pass the token in the request headers
+      );
+
+      if (response.statusCode == 200) {
         print('Data deletion successful');
       } else {
         print('Failed to delete data. Status code: ${response.statusCode}');
@@ -40,12 +45,15 @@ print(dataId);
     }
   }
 
-  Future<void> updateUser(String userId) async {
+  Future<void> updateUser(String userId, String token) async {
     final apiUrl = '${api}auth/validUser/$userId';
     print(userId);
 
     try {
-      final response = await http.put(Uri.parse(apiUrl));
+      final response = await http.put(
+        Uri.parse(apiUrl),
+        headers: {'Authorization': 'Bearer $token'}, // Pass the token in the request headers
+      );
 
       if (response.statusCode == 200) {
         print('User update successful');
@@ -56,6 +64,7 @@ print(dataId);
       print('Error occurred during user update: $error');
     }
   }
+
 
 
   Future<void> fetchRegisteredPeople() async {
@@ -141,7 +150,7 @@ print(dataId);
                             child: Text('OK'),
                             onPressed: () {
                               setState(() {
-                                updateUser(person.id);
+                                updateUser(person.id,authToken!);
                                 fetchRegisteredPeople();
                               });
                                 Navigator.of(context).pop();
@@ -165,7 +174,7 @@ print(dataId);
                   trailing: IconButton(
                     onPressed: (){
                       setState(() {
-                        deleteDataById(person.id);
+                        deleteDataById(person.id,authToken!);
                         fetchRegisteredPeople();
                       });
                     }, icon: Icon(Icons.delete,color: Colors.red,),

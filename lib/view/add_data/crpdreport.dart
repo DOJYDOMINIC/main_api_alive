@@ -5,6 +5,8 @@ import 'package:main200623/constant/color_text.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
 import '../../model/add_model.dart';
+import '../../services/add_api.dart';
+import '../login.dart';
 import '../screenone.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
@@ -137,13 +139,22 @@ class _SalesState extends State<CrpDetail> {
         )
       ],
     );
-    const url = 'http://192.168.1.43:5000/api/user/insert'; // Replace with your API endpoint URL
-    final headers = {'Content-Type': 'application/json'};
-    final jsonData =jsonEncode(data.toJson());
+    const url = '$api/user/insert'; // Replace with your API endpoint URL
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $authToken', // Include the token in the headers
+    };
+
+    final jsonData = jsonEncode(data.toJson());
 
     try {
-      final response = await http.post(Uri.parse(url), headers: headers, body: jsonData);
+      final response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonData,
+      );
       if (response.statusCode == 201) {
+        // Data submitted successfully
         print(jsonData);
         print('Data submitted successfully.');
       } else {
@@ -152,12 +163,7 @@ class _SalesState extends State<CrpDetail> {
     } catch (error) {
       print('Error occurred while submitting data: $error');
     }
-
-    // if (mounted) {
-    //   Provider.of<TextMain>(context, listen: false).dispose();
-    // }
   }
-
   @override
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context,listen: false);

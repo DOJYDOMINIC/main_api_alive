@@ -4,9 +4,12 @@ import 'package:main200623/view/registed%20people.dart';
 import 'dart:convert';
 import 'package:main200623/view/registration.dart';
 import 'package:main200623/view/screenone.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constant/color_text.dart';
 import '../services/add_api.dart';
 import 'forgotpass.dart';
+
+String? authToken;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -24,7 +27,16 @@ class _LoginState extends State<Login> {
   TextEditingController _passwordController = TextEditingController();
   List<String> dropdownOptions = ['Admin', 'User'];
 
+
+  Future<void> saveAuthTokenToPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('authToken', authToken!);
+  }
+
+
+
   Future<void> login() async {
+
     String url = '${api}auth/login';
 
     Map<String, dynamic> body = {
@@ -39,13 +51,16 @@ class _LoginState extends State<Login> {
       if (response.statusCode == 200) {
         // Successful login
         var data = json.decode(response.body);
+        authToken = data['token'];
         // Process the data or navigate to the next screen
         _emailController.clear();
         _passwordController.clear();
+        print(authToken);
         print(data);
         if(dropdownValue == 'Admin'){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(token : authToken),));
         }else if (dropdownValue == 'User'){
+
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Screenone(),));
         }

@@ -5,7 +5,7 @@ import '../model/add_model.dart';
 
 
 
-const api = 'http://192.168.1.36:5000/api/';
+const api = 'http://192.168.151.151:5000/api/';
 
 
 

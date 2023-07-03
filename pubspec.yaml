@@ -48,6 +48,8 @@ dependencies:
   html: ^0.15.0
   path_provider: ^2.0.15
   dio: ^5.2.1+1
+  permission_handler: ^10.4.1
+  open_file: ^3.3.2
 
 
 

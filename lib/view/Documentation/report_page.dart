@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
+import 'package:main200623/view/login.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -32,28 +33,37 @@ class _ReportPageState extends State<ReportPage> {
   String? blockss;
 
 
- Future <void> Dataclassone() async {
-    final String url =
-        '${api}search/class1?data_Panchayath=$panchayth&data_Class=$apl';
+  Future<void> Dataclassone(String panchayth, String apl, String authToken) async {
+    final String url = '${api}search/class1?data_Panchayath=$panchayth&data_Class=$apl';
 
     const String fileName = "dataclass.xlsx";
-
     String path = await _getFilePath(fileName);
 
-    await dio.download(
-      url,
-      path,
-      onReceiveProgress: (recivedBytes, totalBytes) {
-        setState(() {
-          progress = recivedBytes / totalBytes;
-        });
+    final dio = Dio();
 
-        print(progress);
-      },
-      deleteOnError: true,
-    ).then((_) {
-      Navigator.pop(context);
-    });
+    try {
+      await dio.download(
+        url,
+        path,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $authToken', // Include the token in the headers
+          },
+        ),
+        onReceiveProgress: (recivedBytes, totalBytes) {
+          setState(() {
+            progress = recivedBytes / totalBytes;
+          });
+
+          print(progress);
+        },
+        deleteOnError: true,
+      ).then((_) {
+        Navigator.pop(context);
+      });
+    } catch (error) {
+      print('Error occurred while downloading file: $error');
+    }
   }
 
 
@@ -72,12 +82,14 @@ class _ReportPageState extends State<ReportPage> {
   List<String> districts = []; // Declare a global list variable
 
   Future<void> fetchDistricts() async {
+
     try {
       final response = await http.get(Uri.parse('${api}search/listDistricts'));
 
       if (response.statusCode == 200) {
 
         final data = json.decode(response.body);
+
 
         setState(() {
           districts = List.from(data); // Assign fetched data to the global list
@@ -92,8 +104,6 @@ class _ReportPageState extends State<ReportPage> {
       print('Error fetching districts: $e');
     }
   }
-
-
 
 
   Future<void> fetchBlocks(String selectedDistrict) async {
@@ -115,8 +125,6 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-
-
   Future<void> fetchPanchayth(String selectpanchaayth) async {
 
     try {
@@ -136,10 +144,6 @@ class _ReportPageState extends State<ReportPage> {
       print('Error fetching blocks: $e');
     }
   }
-
-
-
-
 
 
   @override
@@ -207,14 +211,14 @@ class _ReportPageState extends State<ReportPage> {
               onChanged: (value) {
                 setState(() {
                   apl = value;
-                  print(apl);
+                  // print(apl);
                 });
               },
               selecteditem: 'വിഭാഗം',
             ),
 
             ElevateClick(ontap: (){
-              Dataclassone();
+              Dataclassone(panchayth!,apl!,authToken!);
               showDialog(context: context, builder: (context) {
                 return AlertDialog(
                   backgroundColor: Colors.black,

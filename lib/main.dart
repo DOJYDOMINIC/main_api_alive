@@ -1,11 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:main200623/view/Documentation/download.dart';
-import 'package:main200623/view/Documentation/report_page.dart';
-import 'package:main200623/view/add_data/personal_add.dart';
 import 'package:main200623/view/login.dart';
-import 'package:main200623/view/screenone.dart';
-import 'package:main200623/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'control/text_controller.dart';
 
@@ -26,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ReportPage()
+        home: DownloadingDialog()
       ),
     );
   }
