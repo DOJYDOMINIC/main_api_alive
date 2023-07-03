@@ -263,9 +263,8 @@ class _ReportPageState extends State<ReportPage> {
               },
               selecteditem: 'വിഭാഗം',
             ),
-
             ElevateClick(ontap: (){
-              startDownloading(panchayth!,apl!,authToken!);
+                startDownloading(panchayth!,apl!,authToken!);
               showDialog(context: context, builder: (context) {
                 return AlertDialog(
                   backgroundColor: Colors.black,
