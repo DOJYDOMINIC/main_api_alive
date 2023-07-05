@@ -174,8 +174,8 @@ class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
                   trailing: IconButton(
                     onPressed: (){
                       setState(() {
+                        fetchRegisteredPeople;
                         deleteDataById(person.id,authToken!);
-                        fetchRegisteredPeople();
                       });
                     }, icon: Icon(Icons.delete,color: Colors.red,),
                   ),

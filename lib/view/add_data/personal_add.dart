@@ -40,14 +40,12 @@ class _PersonalPageState extends State<PersonalPage> {
 
   Future<void> fetchDistricts() async {
     try {
-      final response = await http
-          .get(Uri.parse('${api}user/district'));
+      final response = await http.get(Uri.parse('${api}user/district'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          districts =
-              List<String>.from(data); // Assign fetched data to the global list
+          districts = List<String>.from(data); // Assign fetched data to the global list
           // selectedDistrict;
           // print(selectedDistrict);
         });
@@ -86,7 +84,7 @@ class _PersonalPageState extends State<PersonalPage> {
   Future<void> fetchPanchayth(String selectedBlocks) async {
     try {
       final response = await http.get(Uri.parse(
-          '${api}Panchayat/$selectedBlocks'));
+          '${api}user/Panchayat/$selectedBlocks'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -103,12 +101,13 @@ class _PersonalPageState extends State<PersonalPage> {
     }
   }
 
-  String? valueItem;
-  List<String> listItem = [];
-  String? newval;
-  List<String> newvalitem = [];
-  String? panchaythvalue;
-  List<String> panchaythvaluelist = [];
+  // String? valueItem;
+  // List<String> listItem = [];
+  // String? newval;
+  // List<String> newvalitem = [];
+  // String? panchaythvalue;
+  // List<String> panchaythvaluelist = [];
+
 
   TextEditingController dataName = TextEditingController();
   TextEditingController dataAddress = TextEditingController();
@@ -134,6 +133,9 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController dataInfraOthers = TextEditingController();
   TextEditingController dataLanddetails1Landforgrass = TextEditingController();
   TextEditingController datanumberofgroupmembers = TextEditingController();
+  TextEditingController dataothers2 = TextEditingController();
+
+
   List dataSupport = [];
   List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
@@ -142,41 +144,55 @@ class _PersonalPageState extends State<PersonalPage> {
   bool isYesSelected = false;
   String cdsNumber = '';
   String cdsName = '';
+  String? group;
+
 
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
   String dateOfLoanApplication = '';
 
-  // // --------------------DateController---------------
+  //  --------------------DateController---------------
   // TextEditingController datePickerController = TextEditingController();
   // TextEditingController selectedDateController = TextEditingController();
-  //
-  // // ----------------------------------------------------
+  //  ----------------------------------------------------
 
   onTapFunction({required BuildContext context}) async {
+    var providerone = context.read<TextMain>();
+
     DateTime? pickedDate = await showDatePicker(
       context: context,
       lastDate: DateTime.now(),
-      firstDate: DateTime(2015),
+      firstDate: DateTime(1990),
       initialDate: DateTime.now(),
     );
 
     if (pickedDate == null) return;
-    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-    dataYearofstartingbussiness.text = formattedDate;
+    String yearbusiness = DateFormat('dd-MM-yyyy').format(pickedDate);
+    setState(() {
+      dataYearofstartingbussiness.text = yearbusiness;
+    });
+    providerone.updateDataYearofstartingbussiness(yearbusiness);
+    print(yearbusiness);
   }
 
   onTapFunction2({required BuildContext context}) async {
+    var providerone = Provider.of<TextMain>(context, listen: false);
+
     DateTime? pickedDate = await showDatePicker(
       context: context,
       lastDate: DateTime.now(),
-      firstDate: DateTime(2015),
+      firstDate: DateTime(1990),
       initialDate: DateTime.now(),
     );
 
     if (pickedDate == null) return;
-    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-    dataYearofstartingagriculture.text = formattedDate;
+    String yearagriculture = DateFormat('dd-MM-yyyy').format(pickedDate);
+    setState(() {
+      dataYearofstartingagriculture.text = yearagriculture;
+    });
+    providerone.updateDataYearofstartingagriculture(yearagriculture);
+    print(yearagriculture);
+
   }
 
   @override
@@ -216,8 +232,12 @@ class _PersonalPageState extends State<PersonalPage> {
                   selecteditem: 'ബ്ലോക്ക്',
                   items: blocks,
                 ),
-                NoSearchDropdown(
+                  NoSearchDropdown(
                     onChanged: (value) {
+                      // setState(() {
+                      //   selectedBlocks = value;
+                      //   fetchPanchayth(selectedBlocks!);
+                      // });
                       providerone.updateDataPanchayath(value);
                     },
                     items: panchaths,
@@ -238,6 +258,7 @@ class _PersonalPageState extends State<PersonalPage> {
                     providerone.updateDataName(value);
                   },
                 ),
+
                 InputField(
                     hint: 'വിലാസം',
                     controller: dataAddress,
@@ -438,13 +459,17 @@ class _PersonalPageState extends State<PersonalPage> {
                 ),
                 NoSearchDropdown(
                     onChanged: (value) {
+                      setState(() {
+                        group =value;
+                      });
                       providerone.updateDataEnterpisetype(value);
                     },
                     items: enterpricetype,
                     selecteditem: 'സംരഭം തരം'),
+               if(group == 'Group')
                 InputField(
                     keytype: TextInputType.number,
-                    hint: 'no of Group members',
+                    hint: 'അംഗങ്ങളുടെ എണ്ണം',
                     controller: datanumberofgroupmembers,
                     onchanged: (value) {
                       providerone.updateDataNoofgroupmembers(value);
@@ -460,18 +485,14 @@ class _PersonalPageState extends State<PersonalPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
-                        controller: dataYearofstartingagriculture,
-                        onChanged: (value) {
-                          providerone
-                              .updateDataYearofstartingagriculture(value);
-                        },
+                        controller:dataYearofstartingagriculture,
                         readOnly: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                         ),
                         onTap: () {
-                          onTapFunction(context: context);
+                          onTapFunction2(context: context);
                         }),
                   ),
                 ),
@@ -487,16 +508,13 @@ class _PersonalPageState extends State<PersonalPage> {
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
                         controller: dataYearofstartingbussiness,
-                        onChanged: (value) {
-                          providerone.updateDataYearofstartingbussiness(value);
-                        },
                         readOnly: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                         ),
                         onTap: () {
-                          onTapFunction2(context: context);
+                          onTapFunction(context: context);
                         }),
                   ),
                 ),
@@ -665,28 +683,28 @@ class _PersonalPageState extends State<PersonalPage> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.black)),
-                      title: Text(
-                        'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      dataSource: businesstype,
-                      textField: 'disply',
-                      valueField: 'value',
-                      okButtonLabel: 'OK',
-                      cancelButtonLabel: 'CANCEL',
-                      // hintText: 'Please select one or more options',
-                      initialValue: dataAnimalhusbendaryBusinesstype,
-                      onSaved: (value) {
-                        providerone
-                            .updateDataAnimalhusbendaryBusinesstype(value);
-                      }),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 10),
+                //   child: MultiSelectFormField(
+                //       border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(15),
+                //           borderSide: BorderSide(color: Colors.black)),
+                //       title: Text(
+                //         'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                //         style: TextStyle(fontWeight: FontWeight.bold),
+                //       ),
+                //       dataSource: businesstype,
+                //       textField: 'disply',
+                //       valueField: 'value',
+                //       okButtonLabel: 'OK',
+                //       cancelButtonLabel: 'CANCEL',
+                //       // hintText: 'Please select one or more options',
+                //       initialValue: dataAnimalhusbendaryBusinesstype,
+                //       onSaved: (value) {
+                //         providerone
+                //             .updateDataAnimalhusbendaryBusinesstype(value);
+                //       }),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -694,7 +712,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(color: Colors.black)),
                     title: Text(
-                      'ആവശ്യമായ പിൻതുണ/സഹായം  ',
+                      'ആവശ്യമായ പിൻതുണ/സഹായം ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     dataSource: datasupprtlist,
@@ -705,15 +723,30 @@ class _PersonalPageState extends State<PersonalPage> {
                     // hintText: 'Please select one or more options',
                     initialValue: dataSupport,
                     onSaved: (value) {
-                      // setState(() {
-                      //   dataSupport = value;
-                      // });
+                      setState(() {
+                        dataSupport = value;
+                      });
                       if (value == null) return;
                       providerone.updateDataSupport(value);
                     },
                   ),
                 ),
-                // if (dataSupport.contains('Bank Account')) TextField(),
+                SizedBox(height: 10,),
+                if (dataSupport.contains('Other Supports'))
+                  TextField(
+                    controller: dataothers2,
+                    decoration:InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.black)),
+                            labelText: 'മറ്റു പിന്തുണകൾ',labelStyle: TextStyle(color: Colors.black)
+                    ),
+                    onChanged: (value){
+                      providerone.updateDataOthers2(value);
+                    },
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -742,7 +775,6 @@ class _PersonalPageState extends State<PersonalPage> {
                       // print(selectedDistrict);
                       // print(fetchBlocks(selectedDistrict!));
                       // print(blocks);
-
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -753,6 +785,7 @@ class _PersonalPageState extends State<PersonalPage> {
               ]),
             ),
           ),
-        ));
+        )
+        );
   }
 }

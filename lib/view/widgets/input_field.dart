@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-
 class InputField extends StatelessWidget {
-  InputField({Key? key, required this.hint,  required this.controller, this.hintvalue,  required this.onchanged,  this.keytype, }) : super(key: key);
+  InputField({
+    Key? key,
+    required this.hint,
+    required this.controller,
+    this.hintvalue,
+    required this.onchanged,
+    this.keytype,
+  }) : super(key: key);
   final String hint;
   final String? hintvalue;
   final TextEditingController controller;
@@ -13,16 +19,19 @@ class InputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.black),
-          ),
-          child: TextFormField(
-            onChanged: onchanged,
-            keyboardType: keytype,
-            controller: controller, decoration: InputDecoration(
-              hintText: '${hint} : ${hintvalue ?? ''} ',border: OutlineInputBorder(borderSide: BorderSide.none) ),)
+      child: TextFormField(
+        onChanged: onchanged,
+        keyboardType: keytype,
+        controller: controller,
+        decoration: InputDecoration(
+          focusedBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Colors.black)),
+          labelText: '${hint}',
+          labelStyle: TextStyle(color: Colors.grey),
+        ),
       ),
     );
   }

@@ -29,6 +29,7 @@ class _SalesState extends State<CrpDetail> {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
     final AddData data = AddData(
+
       dataName: providerone.dataName,
       dataAddress: providerone.dataAddress,
       dataDistrict: providerone.dataDistrict,
@@ -37,15 +38,13 @@ class _SalesState extends State<CrpDetail> {
       dataWard: providerone.dataWard,
       dataClass: providerone.dataClass,
       dataClass2: providerone.dataClass2,
-      dataClass3: providerone.dataClass3?.map((dynamic item) => item.toString())
-          .toList(),
+      dataClass3 : providerone.dataClass3?.map((dynamic item) => item.toString()).toList(),
       dataAmountinvested: providerone.dataAmountinvested,
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
       dataHouseOwnership: providerone.dataHouseownership,
       dataAnimalhusbendaryBusinesstype: providerone
-          .dataAnimalhusbendaryBusinesstype?.map((dynamic item) =>
-          item.toString()).toList(),
+          .dataAnimalhusbendaryBusinesstype?.map((dynamic item) => item.toString()).toList(),
       dataAnimalhusbendaryCdsregistration: providerone
           .dataAnimalhusbendaryCdsregistration,
       dataAnimalhusbendaryRegdetailsRegnumber: providerone
@@ -84,8 +83,7 @@ class _SalesState extends State<CrpDetail> {
       dataNameofNg: providerone.dataNameofNg,
       dataLivelihoodRevenue: providerone.datalivelihoodrevenue,
       dataNameofNGmember: providerone.dataNameofNGmember,
-      dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) =>
-          item.toString()).toList(),
+      dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) => item.toString()).toList(),
       dataProductsQuantum: providerone.dataProductsQuantum,
       dataProductsPrdct: providerone.dataProductsPrdct,
       dataLanddetails1Qtyofleasedland: providerone
@@ -201,11 +199,6 @@ class _SalesState extends State<CrpDetail> {
                     providerone.updateDataNameofrespondent(value);
 
                   }),
-              // ElevateClick(
-              //     ontap: () {
-              //       Crp();
-              //     },
-              //     text: 'Submit'),
               ElevateClick(
                 ontap: () {
                   showDialog(

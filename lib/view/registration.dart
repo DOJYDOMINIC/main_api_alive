@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:main200623/constant/color_text.dart';
 import 'dart:convert';
+import '../constant/color_text.dart';
 import '../services/add_api.dart';
 import 'login.dart';
 
@@ -18,28 +18,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   Future<void> _registerUser() async {
-    final registrationData = {
-      "name": _nameController.text,
-      "email": _emailController.text,
-      "password": _passwordController.text,
-    };
+    if (_formKey.currentState!.validate()) {
+      final registrationData = {
+        "name": _nameController.text,
+        "email": _emailController.text,
+        "password": _passwordController.text,
+      };
 
-    const apiUrl = "${api}auth/register";
+      const apiUrl = "${api}auth/register";
 
-    try {
-      final response = await http.post(
-        Uri.parse(apiUrl),
+      try {
+        final response = await http.post(
+          Uri.parse(apiUrl),
+          body: json.encode(registrationData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        );
 
-        body: json.encode(registrationData),
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-      );
-
-      if (response.statusCode == 201) {
-        showDialog(
+        if (response.statusCode == 201) {
+          showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
@@ -53,21 +54,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: Text("OK"),
                   ),
                 ],
-              );});
-        // Registration successful, handle success response here
-        print("Registration successful");
-        _nameController.clear();
-        _emailController.clear();
-        _passwordController.clear();
-        _confirmPasswordController.clear();
-      } else if (response.statusCode == 400) {
-        // Registration failed, handle error response here
-        print("User Exist");
-      }else
-        print("Registration failed");
+              );
+            },
+          );
+          // Registration successful, handle success response here
+          print("Registration successful");
+          _nameController.clear();
+          _emailController.clear();
+          _passwordController.clear();
+          _confirmPasswordController.clear();
+        } else if (response.statusCode == 400) {
+          // Registration failed, handle error response here
+          print("User Exist");
+        } else {
+          print("Registration failed");
+        }
       } catch (error) {
-      // Error occurred during registration, handle error here
-      print("Error: $error");
+        // Error occurred during registration, handle error here
+        print("Error: $error");
+      }
     }
   }
 
@@ -144,46 +149,79 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                             ],
                           ),
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                controller: _nameController,
-                                decoration: InputDecoration(
-                                  hintText: 'Name',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  controller: _nameController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your name';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Name',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
+                                  ),
                                 ),
-                              ),
-                              Divider(color: Colors.grey),
-                              TextFormField(
-                                controller: _emailController,
-                                decoration: InputDecoration(
-                                  hintText: 'Email',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                                Divider(color: Colors.grey),
+                                TextFormField(
+                                  controller: _emailController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your email';
+                                    } else if (!value.contains('@')) {
+                                      return 'Invalid email format';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Email',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
+                                  ),
                                 ),
-                              ),
-                              Divider(color: Colors.grey),
-                              TextFormField(
-                                controller: _passwordController,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                                Divider(color: Colors.grey),
+                                TextFormField(
+                                  controller: _passwordController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your password';
+                                    } else if (value.length < 6) {
+                                      return 'Password must be at least 6 characters';
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
+                                  ),
                                 ),
-                              ),
-                              Divider(color: Colors.grey),
-                              TextFormField(
-                                controller: _confirmPasswordController,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: 'Confirm Password',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                                Divider(color: Colors.grey),
+                                TextFormField(
+                                  controller: _confirmPasswordController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please confirm your password';
+                                    } else if (value != _passwordController.text) {
+                                      return 'Passwords do not match';
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    hintText: 'Confirm Password',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 40),
@@ -193,9 +231,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             width: 100,
                             child: ElevatedButton(
                               onPressed: _registerUser,
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>Login(),));
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:app_theam,
+                                backgroundColor: app_theam,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
@@ -226,8 +263,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Login()),
+                                  );
                                 },
                                 child: Text(
                                   'Login',

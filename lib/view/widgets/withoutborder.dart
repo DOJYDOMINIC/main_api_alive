@@ -23,10 +23,18 @@ class DropNoBorder extends StatelessWidget {
         ),
         items: items,
         onChanged: onChanged,
-        selectedItem: selecteditem,
-        dropdownDecoratorProps: DropDownDecoratorProps(dropdownSearchDecoration:InputDecoration(
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
-            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)))),
+          dropdownDecoratorProps: DropDownDecoratorProps(
+              dropdownSearchDecoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.black)),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.black)),
+                labelText: '${selecteditem}',
+                labelStyle: TextStyle(color: Colors.grey),
+              ))
       ),
     );
   }

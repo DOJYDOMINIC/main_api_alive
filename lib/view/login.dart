@@ -60,7 +60,6 @@ class _LoginState extends State<Login> {
         if(dropdownValue == 'Admin'){
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(token : authToken),));
         }else if (dropdownValue == 'User'){
-
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Screenone(),));
         }

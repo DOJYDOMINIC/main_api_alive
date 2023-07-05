@@ -1133,6 +1133,19 @@ List<String> dataclass2 = [
   "SC",
   "ST",
 ];
+List<String> datacls3 = [
+  "Coastal",
+  "Minority",
+  "Extreampoor",
+  "Asraya",
+  "Physicallychallenged",
+  "MentalChallenge_Buds",
+  "Thoseabove60yearsofage",
+  "widow",
+  "femaleleaded",
+
+];
+
 List<String> salesmethod = [
   'direct'
       'localmarket'
@@ -1257,20 +1270,19 @@ final List datasupprtlist = [
   {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
 ];
 
-
 final List datamgnregasupportlist = [
-  {'text':'പശു തൊഴുത്','value' :'Cattleshed'},
-  {'text':'ആട്ടിൻ കൂട്','value' :'Sheep Shed'},
-  {'text':'കോഴിക്കൂട്','value' :'Kozhikood'},
-  {'text':'കമ്പമ്പോസ്റ്റ് പിറ്റ്','value' :'Compost pit'},
-  {'text':'വർക്ക് ഷെഡ്','value' :'Work Shed'},
-  {'text':'പുൽകൃഷി ഭൂമിയൊരിക്കൽ','value' :'Fodder grass land preparation'},
-  {'text':'ജൈവ വേലി','value' :'Geofencing'},
-  {'text':'സോക്ക് പിറ്റ്','value' :'Sock pit'},
-  {'text':'അസസോള ടാങ്ക് /കുളം','value' :'Asola Tank / Pond'},
-  {'text':'കുളം വെട്ട്','value' :'Pond renovation'},
-  {'text':'കിണർ റീച്ചാർജ്','value' :'Well Recharging'},
-  {'text':'കിണർ നിർമ്മാണം','value' :'Construction of wells'},
+  {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
+  {'text': 'ആട്ടിൻ കൂട്', 'value': 'Sheep Shed'},
+  {'text': 'കോഴിക്കൂട്', 'value': 'Kozhikood'},
+  {'text': 'കമ്പമ്പോസ്റ്റ് പിറ്റ്', 'value': 'Compost pit'},
+  {'text': 'വർക്ക് ഷെഡ്', 'value': 'Work Shed'},
+  {'text': 'പുൽകൃഷി ഭൂമിയൊരിക്കൽ', 'value': 'Fodder grass land preparation'},
+  {'text': 'ജൈവ വേലി', 'value': 'Geofencing'},
+  {'text': 'സോക്ക് പിറ്റ്', 'value': 'Sock pit'},
+  {'text': 'അസസോള ടാങ്ക് /കുളം', 'value': 'Asola Tank / Pond'},
+  {'text': 'കുളം വെട്ട്', 'value': 'Pond renovation'},
+  {'text': 'കിണർ റീച്ചാർജ്', 'value': 'Well Recharging'},
+  {'text': 'കിണർ നിർമ്മാണം', 'value': 'Construction of wells'},
   // {'text': 'other','value': 'other'},
 ];
 
@@ -1286,4 +1298,3 @@ final List datamgnregasupportlist = [
 //
 //
 //
-

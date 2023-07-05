@@ -36,8 +36,9 @@ class _ScreenoneState extends State<Screenone> {
                 clearAuthTokenFromPreferences();
               },
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Exit'),
+                  Text('Logout'),
                   SizedBox(width: 5),
                   Icon(Icons.exit_to_app),
                 ],
