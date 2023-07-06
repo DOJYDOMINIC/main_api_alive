@@ -20,7 +20,7 @@ class SerachresultUpsate extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(),));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(),));
               },
               child: Container(
                 decoration: BoxDecoration(

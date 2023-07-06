@@ -86,7 +86,7 @@ class _ScreenoneState extends State<Screenone> {
               SizedBox(height: 30,),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
+                  // Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
                 },
                 child: SizedBox(
                   height: 150,
