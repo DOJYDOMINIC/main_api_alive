@@ -1,10 +1,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/view/update/update_personal_add.dart';
+import 'package:main200623/view/update/updatepersonal_add.dart';
 
-class SerachresultUpsate extends StatelessWidget {
-  const SerachresultUpsate({Key? key}) : super(key: key);
+import '../add_data/personal_add.dart';
+
+class SerachresultUpsate extends StatefulWidget {
+  const SerachresultUpsate({Key? key, this.item,}) : super(key: key);
+final List<dynamic>? item;
+  @override
+  State<SerachresultUpsate> createState() => _SerachresultUpsateState();
+}
+
+class _SerachresultUpsateState extends State<SerachresultUpsate> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +23,16 @@ class SerachresultUpsate extends StatelessWidget {
         backgroundColor: app_theam,
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: widget.item!.length,
         itemBuilder: (context, index) {
+          Map<String, dynamic> data = widget.item![index]['data'][0];
+          // String dataName = data['data_Name'];
+
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (){
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(),));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(items: widget.item![index],),));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -31,14 +43,17 @@ class SerachresultUpsate extends StatelessWidget {
                     Icon(Icons.person,size: 50,color: app_theam,),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('Name : name',style: adj,),
-                          Text('Phone : Phone',style: adj,),
-                          Text('Group : NgName',style: adj,),
-                        ],
+                      child: Container(
+                        width: 300,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('Name  : ${data['data_Name']}',style: adj,overflow: TextOverflow.ellipsis,),
+                            Text('Phone : ${data['data_Phonenumber']}',style: adj,overflow: TextOverflow.ellipsis,),
+                            Text('Group : ${data['data_Panchayath']}',style: adj,overflow: TextOverflow.ellipsis,),
+                          ],
+                        ),
                       ),
                     ),
                   ],

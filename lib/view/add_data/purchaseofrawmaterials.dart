@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/sales.dart';
@@ -9,11 +8,11 @@ import '../widgets/headings_between.dart';
 import '../widgets/input_field.dart';
 
 class Purchaseofrawmaterials extends StatefulWidget {
-  const Purchaseofrawmaterials({Key? key,})
-      : super(key: key);
+  const Purchaseofrawmaterials({
+    Key? key,
+  }) : super(key: key);
 
   @override
-
   State<Purchaseofrawmaterials> createState() => _PurchaseofrawmaterialsState();
 }
 
@@ -26,30 +25,23 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
       TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsBrand =
       TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsOwn =
-      TextEditingController();
+  TextEditingController dataPurchaseofrawmaterialsOwn = TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsRetail =
       TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP2 =
-      TextEditingController();
+  TextEditingController dataPurchaseofrawmaterialsP2 = TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsWholesale =
       TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP3 =
-      TextEditingController();
+  TextEditingController dataPurchaseofrawmaterialsP3 = TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsGroup =
       TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP4 =
-      TextEditingController();
+  TextEditingController dataPurchaseofrawmaterialsP4 = TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsSubsidy =
       TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP5 =
-      TextEditingController();
-
-
+  TextEditingController dataPurchaseofrawmaterialsP5 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    var providerone = Provider.of<TextMain>(context,listen: false);
+    var providerone = Provider.of<TextMain>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -67,68 +59,100 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                 hint: 'ഇനം',
                 controller: dataPurchaseofrawmaterialsItemtype,
                 onchanged: (value) {
-                  providerone.updateDataPurchaseofrawmaterialsItemtype(value);
+                  providerone.setDataPurchaseofrawmaterialsItemtype(value);
                 },
               ),
+              // InputField(
+              //   hint: 'വാങ്ങുന്ന അളവ് (മാസം/kg ltr)',
+              //   controller: dataPurchaseofrawmaterialsQuantity,
+              //   onchanged: (value) {
+              //     int? valuee = int.tryParse(value);
+              //     providerone.updateDataPurchaseofrawmaterialsQuantity(valuee);
+              //   },
+              // ),
+              // InputField(
+              //     hint: 'വാങ്ങുന്ന വില (മാസം/kg ltr)',
+              //     controller: dataPurchaseofrawmaterialsPrice,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone.updateDataPurchaseofrawmaterialsPrice(valuee);
+              //     }),
               InputField(
-                hint: 'വാങ്ങുന്ന അളവ് (മാസം/kg ltr)',
-                controller: dataPurchaseofrawmaterialsQuantity,
-                onchanged: (value) {
-                  int? valuee = int.tryParse(value);
-                  providerone.updateDataPurchaseofrawmaterialsQuantity(valuee);
-                },
-              ),
-              InputField(hint: 'വാങ്ങുന്ന വില (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsPrice, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsPrice(valuee);
-              }),
-              InputField(hint: 'ബ്രാൻഡ്', controller: dataPurchaseofrawmaterialsBrand, onchanged:(value){
-                providerone.updateDataPurchaseofrawmaterialsBrand(value);
-              }),
-              InputField(hint: 'സ്വയം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsOwn, onchanged: (value){
-                providerone.updateDataPurchaseofrawmaterialsOwn(value);
-              }),
-              InputField(hint: 'റീറ്റെയ്ൽ (മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsRetail, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsRetail(valuee);
-              }),
-              InputField(hint: 'വില ', controller:dataPurchaseofrawmaterialsP2, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsP2(valuee);
-              }),
-              InputField(hint: 'ഹോൾസെയിൽ ', controller: dataPurchaseofrawmaterialsWholesale, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsWholesale(valuee);
-
-              }),
-              InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP3, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsP3(valuee);
-
-              }),
-              InputField(hint: 'സംഘം(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsGroup, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDataPurchaseofrawmaterialsGroup(valuee);
-
-              }),
-              InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP4, onchanged: (value){
-                providerone.updateDataPurchaseofrawmaterialsP4(value);
-
-              }),
-              InputField(hint: 'സബ്‌സിഡി(മാസം/kg ltr)', controller: dataPurchaseofrawmaterialsSubsidy, onchanged: (value){
-                providerone.updateDataPurchaseofrawmaterialsSubsidy(value);
-
-              }),
-              InputField(hint: 'വില ', controller: dataPurchaseofrawmaterialsP5, onchanged: (value){
-                providerone.updateDataPurchaseofrawmaterialsP5(value);
-
-              }),
+                  hint: 'ബ്രാൻഡ്',
+                  controller: dataPurchaseofrawmaterialsBrand,
+                  onchanged: (value) {
+                    providerone.updateDataPurchaseofrawmaterialsBrand(value);
+                  }),
+              // InputField(
+              //     hint: 'സ്വയം(മാസം/kg ltr)',
+              //     controller: dataPurchaseofrawmaterialsOwn,
+              //     onchanged: (value) {
+              //       providerone.updateDataPurchaseofrawmaterialsOwn(value);
+              //     }),
+              // InputField(
+              //     hint: 'റീറ്റെയ്ൽ (മാസം/kg ltr)',
+              //     controller: dataPurchaseofrawmaterialsRetail,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone.updateDataPurchaseofrawmaterialsRetail(valuee);
+              //     }),
+              // InputField(
+              //     hint: 'വില ',
+              //     controller: dataPurchaseofrawmaterialsP2,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone.updateDataPurchaseofrawmaterialsP2(valuee);
+              //     }),
+              // InputField(
+              //     hint: 'ഹോൾസെയിൽ ',
+              //     controller: dataPurchaseofrawmaterialsWholesale,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone
+              //           .updateDataPurchaseofrawmaterialsWholesale(valuee);
+              //     }),
+              // InputField(
+              //     hint: 'വില ',
+              //     controller: dataPurchaseofrawmaterialsP3,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone.updateDataPurchaseofrawmaterialsP3(valuee);
+              //     }),
+              // InputField(
+              //     hint: 'സംഘം(മാസം/kg ltr)',
+              //     controller: dataPurchaseofrawmaterialsGroup,
+              //     onchanged: (value) {
+              //       int? valuee = int.tryParse(value);
+              //       providerone.updateDataPurchaseofrawmaterialsGroup(valuee);
+              //     }),
+              // InputField(
+              //     hint: 'വില ',
+              //     controller: dataPurchaseofrawmaterialsP4,
+              //     onchanged: (value) {
+              //       providerone.updateDataPurchaseofrawmaterialsP4(value);
+              //     }),
+              // InputField(
+              //     hint: 'സബ്‌സിഡി(മാസം/kg ltr)',
+              //     controller: dataPurchaseofrawmaterialsSubsidy,
+              //     onchanged: (value) {
+              //       providerone.updateDataPurchaseofrawmaterialsSubsidy(value);
+              //     }),
+              // InputField(
+              //     hint: 'വില ',
+              //     controller: dataPurchaseofrawmaterialsP5,
+              //     onchanged: (value) {
+              //       providerone.updateDataPurchaseofrawmaterialsP5(value);
+              //     }),
               // Text(DocumentId),
               ElevateClick(
                   ontap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SalesData(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SalesData(),
+                        ));
                   },
-                  text: 'Next')
+                  text: 'Next'),
             ],
           ),
         ),

@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
-import '../../global.dart';
 import '../../model/model.dart';
 import '../../services/add_api.dart';
 import '../login.dart';
@@ -14,23 +12,26 @@ import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 
 
-class CrpDetail extends StatefulWidget {
-  const CrpDetail({Key? key}) : super(key: key);
+class UpdateCrpDetail extends StatefulWidget {
+  const UpdateCrpDetail({Key? key, this.items}) : super(key: key);
 
+  final items;
   @override
-  State<CrpDetail> createState() => _SalesState();
+  State<UpdateCrpDetail> createState() => _SalesState();
 }
 
-class _SalesState extends State<CrpDetail> {
+class _SalesState extends State<UpdateCrpDetail> {
 
   TextEditingController datacomments = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
-  void submitForm() async {
+  void updateForm() async {
+
+    print('id:  ${widget.items['data'][0]['_id']}');
     var providerone = Provider.of<TextMain>(context, listen: false);
 
-    final AddData data = AddData(
+    final AddData updateData = AddData(
 
       dataName: providerone.dataName,
       dataAddress: providerone.dataAddress,
@@ -45,7 +46,8 @@ class _SalesState extends State<CrpDetail> {
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
       dataHouseOwnership: providerone.dataHouseownership,
-      dataAnimalhusbendaryBusinesstype: providerone.dataAnimalhusbendaryBusinesstype?.map((dynamic item) => item.toString()).toList(),
+      dataAnimalhusbendaryBusinesstype: providerone
+          .dataAnimalhusbendaryBusinesstype?.map((dynamic item) => item.toString()).toList(),
       dataAnimalhusbendaryCdsregistration: providerone
           .dataAnimalhusbendaryCdsregistration,
       dataAnimalhusbendaryRegdetailsRegnumber: providerone
@@ -69,14 +71,16 @@ class _SalesState extends State<CrpDetail> {
       dataInfraOthers: providerone.dataInfraOthers,
       dataInfraWastage: providerone.dataInfraWastage,
       dataLanddetails1Landforgrass: providerone.dataLanddetails1Landforgrass,
-      dataTrainingsrequired: providerone.dataTrainingsrequired?.map((dynamic item) => item.toString()).toList(),
+      // dataTrainingsrequired: providerone.dataTrainingsrequired,
       dataSupportrecived: providerone.dataSupportrecived,
       // dataSupport: providerone.dataSupport?.join(','),
-      dataSupport: providerone.dataSupport?.map((dynamic item) => item.toString()).toList(),
       dataStarttime: providerone.dataStarttime,
-      dataSourceofinvestment: providerone.dataSourceofinvestment?.map((dynamic item) => item.toString()).toList(),
-      dataLanddetailsAgricultureland: providerone.dataLanddetailsAgricultureland,
-      dataSalesPrdct2: providerone.dataSalesprdct2?.map((dynamic item) => item.toString()).toList(),
+      // dataSourceofinvestment: providerone.dataSourceofinvestment,
+      // dataSalesSalesmethod: providerone.dataSalessalesmethod,
+      dataLanddetailsAgricultureland: providerone
+          .dataLanddetailsAgricultureland,
+      // dataSalesPrdct2: providerone.dataSalesprdct2,
+      // dataSalesQuntum2: providerone.dataSalesquntum2,
       dataLivelihoodNumbers: providerone.datalivelihoodnumbers,
       dataNameofcrp: providerone.dataNameofcrp,
       dataNameofNg: providerone.dataNameofNg,
@@ -84,8 +88,9 @@ class _SalesState extends State<CrpDetail> {
       dataNameofNGmember: providerone.dataNameofNGmember,
       dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) => item.toString()).toList(),
       dataProductsQuantum: providerone.dataProductsQuantum,
-      dataProductsPrdct: providerone.dataProductsPrdct?.map((dynamic item) => item.toString()).toList(),
-      dataLanddetails1Qtyofleasedland: providerone.dataLanddetails1Qtyofleasedland,
+      dataProductsPrdct: providerone.dataProductsPrdct,
+      dataLanddetails1Qtyofleasedland: providerone
+          .dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,
       dataLanddetails2Qtyofownland: providerone.dataLanddetails2Qtyofownland,
       dataLanddetails2Siteforworkshed: providerone
@@ -102,75 +107,26 @@ class _SalesState extends State<CrpDetail> {
       dataOthers3: providerone.dataOthers3,
       dataOthers4: providerone.dataOthers4,
       dataProductsPrice2: providerone.dataProductsPrice2,
-      dataPurchaseofrawmaterialsBrand: providerone.dataPurchaseofrawmaterialsBrand?.map((dynamic item) => item.toString()).toList(),
-      dataSalesSalesmethod: providerone.dataSalesSalesmethod,
-      beiferQnty: providerone.beiferQnty,
-      brandQnty: providerone.brandQnty,
-      byPassFatQnty: providerone.byPassFatQnty,
-      byPassProteinQnty: providerone.byPassProteinQnty,
-      calfQnty: providerone.calfQnty,
-      calvesList: providerone.calvesList,
-      calvesQnty: providerone.calvesQnty,
-      cattleFeedList: providerone.cattleFeedList,
-      cattleFeedQnty: providerone.cattleFeedQnty,
-      cowsList: providerone.cowsList,
-      dataPurchaseofrawmaterialsItemtype: providerone.dataPurchaseofrawmaterialsItemtype,
-      dayOldChickQnty: providerone.dayOldChickQnty,
-      eggQnty: providerone.eggQnty,
-      eggTraysQnty: providerone.eggTraysQnty,
-      energyRichFeedList: providerone.energyRichFeedList,
-      energyRichFeedQnty: providerone.energyRichFeedQnty,
-      feedQnty: providerone.feedQnty,
-      fodderSlipsList: providerone.fodderSlipsList,
-      fodderSlipsQnty: providerone.fodderSlipsQnty,
-      goatFeeDqnty: providerone.goatFeeDqnty,
-      grasFooderQnty: providerone.grasFooderQnty,
-      hayQnty: providerone.hayQnty,
-      heipersList: providerone.heipersList,
-      heipersQnty: providerone.heipersQnty,
-      kidQnty: providerone.kidQnty,
-      kidStarterQnty: providerone.kidStarterQnty,
-      layerList: providerone.layerList,
-      malabariGoatsQnty: providerone.malabariGoatsQnty,
-      maleBuffaloCalfQnty: providerone.maleBuffaloCalfQnty,
-      maleBuffaloCalvesQnty: providerone.maleBuffaloCalvesQnty,
-      manureList:providerone.manureList,
-      manureQnty: providerone.manureQnty,
-      materialForPoultryQnty: providerone.materialForPoultryQnty,
-      meatQnty: providerone.meatQnty,
-      milkQnty: providerone.milkQnty,
-      milkReplacerList: providerone.milkReplacerList,
-      modePurchaseofrawmaterials: providerone.modePurchaseofrawmaterials,
-      poultryFeedQnty: providerone.poultryFeedQnty,
-      pulletsList: providerone.pulletsList,
-      pulletsQnty: providerone.pulletsQnty,
-      salesManureQnty: providerone.salesManureQnty,
-      silageQnty: providerone.silageQnty,
-      tmrQnty: providerone.tmrQnty,
-      treeFooderQnty: providerone.treeFooderQnty,
-      ureaTreatedStrawQnty: providerone.ureaTreatedStrawQnty,
+      dataPurchaseofrawmaterialsBrand: providerone.dataPurchaseofrawmaterialsBrand,
 
-      members: familyMembers,
-      // members: [
-      //   Member(
-      //     dataFamilydetailsAgeoffamilymember: providerone
-      //         .dataFamilydetailsAgeoffamilymember,
-      //     dataFamilydetailsEducation: providerone.dataFamilydetailsEducation,
-      //     dataFamilydetailsJob: providerone.dataFamilydetailsJob,
-      //     dataFamilydetailsNameoffailyfmember: providerone
-      //         .dataFamilydetailsNameoffailyfmember,
-      //     dataFamilydetailsRelation: providerone.dataFamilydetailsRelation,
-      //     dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
-      //   )
-      // ],
+
+      members: [
+        Member(
+          dataFamilydetailsAgeoffamilymember: providerone.dataFamilydetailsAgeoffamilymember,
+          dataFamilydetailsEducation: providerone.dataFamilydetailsEducation,
+          dataFamilydetailsJob: providerone.dataFamilydetailsJob,
+          dataFamilydetailsNameoffailyfmember: providerone.dataFamilydetailsNameoffailyfmember,
+          dataFamilydetailsRelation: providerone.dataFamilydetailsRelation,
+          dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
+        )
+      ],
     );
-    const url = '$api/user/insert'; // Replace with your API endpoint URL
+    final url = '$api/user/update/${widget.items['data'][0]['_id']}'; // Replace with your API endpoint URL
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $authToken', // Include the token in the headers
     };
-
-    final jsonData = jsonEncode(data.toJson());
+    final jsonData = jsonEncode(updateData.toJson());
 
     try {
       final response = await http.post(
@@ -180,9 +136,7 @@ class _SalesState extends State<CrpDetail> {
       );
       if (response.statusCode == 201) {
         // Data submitted successfully
-        log(jsonData);
-        print('..........................');
-        log(response.body);
+        print(jsonData);
         print('Data submitted successfully.');
       } else {
         print('Failed to submit data. Status code: ${response.statusCode}');
@@ -241,8 +195,7 @@ class _SalesState extends State<CrpDetail> {
                           TextButton(
                             child: Text('OK'),
                             onPressed: () {
-                              submitForm();
-
+                              updateForm();
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
                             },
                           ),

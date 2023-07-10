@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
+import 'package:main200623/model/model.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
@@ -13,19 +14,18 @@ import '../widgets/elevate_click_button.dart';
 import '../widgets/headings_between.dart';
 import '../widgets/input_field.dart';
 import 'package:http/http.dart' as http;
-import 'familydata.dart';
+import 'updatefamilydata.dart';
 
 enum CheckboxOption { applied, sanctioned, notApplied }
 
-class PersonalPage extends StatefulWidget {
-  const PersonalPage({Key? key}) : super(key: key);
-
-
+class UpdatePersonalPage extends StatefulWidget {
+  const UpdatePersonalPage({Key? key, this.items}) : super(key: key);
+final items;
   @override
-  State<PersonalPage> createState() => _PersonalPageState();
+  State<UpdatePersonalPage> createState() => _UpdatePersonalPageState();
 }
 
-class _PersonalPageState extends State<PersonalPage> {
+class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String name = '';
 
   String? selectedDistrict;
@@ -36,6 +36,7 @@ class _PersonalPageState extends State<PersonalPage> {
   void initState() {
     super.initState();
     fetchDistricts();
+    getData();
 
   }
 
@@ -81,7 +82,6 @@ class _PersonalPageState extends State<PersonalPage> {
       print('Error fetching blocks: $e');
     }
   }
-
 
   List<String> panchaths = [];
 
@@ -158,7 +158,7 @@ class _PersonalPageState extends State<PersonalPage> {
   //  --------------------DateController---------------
   // TextEditingController datePickerController = TextEditingController();
   // TextEditingController selectedDateController = TextEditingController();
-  //  -------------------------------------------------
+  //  ----------------------------------------------------
 
   onTapFunction({required BuildContext context}) async {
     var providerone = context.read<TextMain>();
@@ -196,6 +196,7 @@ class _PersonalPageState extends State<PersonalPage> {
     });
     providerone.updateDataYearofstartingagriculture(yearagriculture);
     print(yearagriculture);
+
   }
 
   @override
@@ -686,6 +687,28 @@ class _PersonalPageState extends State<PersonalPage> {
                     ],
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 10),
+                //   child: MultiSelectFormField(
+                //       border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(15),
+                //           borderSide: BorderSide(color: Colors.black)),
+                //       title: Text(
+                //         'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                //         style: TextStyle(fontWeight: FontWeight.bold),
+                //       ),
+                //       dataSource: businesstype,
+                //       textField: 'disply',
+                //       valueField: 'value',
+                //       okButtonLabel: 'OK',
+                //       cancelButtonLabel: 'CANCEL',
+                //       // hintText: 'Please select one or more options',
+                //       initialValue: dataAnimalhusbendaryBusinesstype,
+                //       onSaved: (value) {
+                //         providerone
+                //             .updateDataAnimalhusbendaryBusinesstype(value);
+                //       }),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -759,7 +782,7 @@ class _PersonalPageState extends State<PersonalPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => FamilyData(),
+                            builder: (context) => UpdateFamilyData(items: widget.items),
                           ));
                     },
                     text: 'Next'),
@@ -768,5 +791,14 @@ class _PersonalPageState extends State<PersonalPage> {
           ),
         )
     );
+  }
+
+  void getData() {
+    var dataup = widget.items['data'][0];
+    setState(() {
+      dataName.text = dataup['data_Name'];
+      dataAddress.text = dataup['data_Address'];
+      // dataPhonenumber.text = dataup['Phonenumber'];
+    });
   }
 }

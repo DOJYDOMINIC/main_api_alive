@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:main200623/view/registed%20people.dart';
 import 'dart:convert';
 import 'package:main200623/view/registration.dart';
-import 'package:main200623/view/screenone.dart';
+import 'package:main200623/view/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constant/color_text.dart';
 import '../services/add_api.dart';
@@ -34,7 +34,6 @@ class _LoginState extends State<Login> {
   }
 
 
-
   Future<void> login() async {
 
     String url = '${api}auth/login';
@@ -52,11 +51,20 @@ class _LoginState extends State<Login> {
         // Successful login
         var data = json.decode(response.body);
         authToken = data['token'];
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('authToken', authToken!);
+        prefs.setString('email', _emailController.text);
+
+
         // Process the data or navigate to the next screen
         _emailController.clear();
         _passwordController.clear();
         print(authToken);
         print(data);
+
+
+
         if(dropdownValue == 'Admin'){
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(token : authToken),));
         }else if (dropdownValue == 'User'){
@@ -156,6 +164,7 @@ class _LoginState extends State<Login> {
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: [
+
                           SizedBox(height: heightM*.05),
                           Container(
                             padding: EdgeInsets.all(20),
@@ -266,7 +275,6 @@ class _LoginState extends State<Login> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => RegistrationScreen(),
-
                                   ),
                                 );
                               },

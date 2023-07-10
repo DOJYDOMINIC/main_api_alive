@@ -214,7 +214,7 @@ class _ReportPageState extends State<ReportPage> {
         '${api}search/detailsofAnimalHusbandryBusiness?selectedPanchayath=$panchayth&selectedBusinessType=$businessString';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "dataclass_${timeStamp}.xlsx";
+    String fileName = "business type ${timeStamp}.xlsx";
 
     String path = await _getFilePath(fileName);
     print('Download Path: $path');
@@ -722,7 +722,6 @@ class _ReportPageState extends State<ReportPage> {
                 ],
               ),
             ),
-
             NoSearchDropdown(
               items: districts,
               onChanged: (value) {
@@ -756,276 +755,281 @@ class _ReportPageState extends State<ReportPage> {
                 selecteditem: 'പഞ്ചായത്ത്'),
             SizedBox(height: 10,),
             // ======================
-            Container(
-              child: Row(
-                children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .8,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: DropdownSearch<String>(
-                      popupProps: PopupProps<String>.menu(
-                        showSelectedItems: true,
-                        // disabledItemFn: (String s) => s.startsWith('I'),
-                      ),
-                      items: dataclass,
-                      onChanged: (value) {
-                        setState(() {
-                          dataone = value;
-                        });
-                      },
-                      selectedItem: 'കുടുംബ അവസ്ഥ',
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              border: OutlineInputBorder(borderSide: BorderSide(
-                                  color: Colors.white)))),
-                    ),
-                  ),
-                  IconButton(onPressed: () {
-                    startDownloading(panchayth!, dataone!, authToken!);
-                  }, icon: Icon(Icons.download))
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            //  =======================
-            Container(
-              child: Row(
-                children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .8,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: DropdownSearch<String>(
-                      popupProps: PopupProps<String>.menu(
-                        showSelectedItems: true,
-                        // disabledItemFn: (String s) => s.startsWith('I'),
-                      ),
-                      items: dataclass2,
-                      onChanged: (value) {
-                        setState(() {
-                          datatwo = value;
-                        });
-                      },
-                      selectedItem: 'വിഭാഗം',
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              border: OutlineInputBorder(borderSide: BorderSide(
-                                  color: Colors.white)))),
-                    ),
-                  ),
-                  IconButton(onPressed: () {
-                    print(datatwo);
-                    dataclasstwo(panchayth!, datatwo!, authToken!);
-                  }, icon: Icon(Icons.download))
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            //=======================
-            Container(
-              child: Row(
-                children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .8,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: DropdownSearch<String>(
-                      popupProps: PopupProps<String>.menu(
-                        showSelectedItems: true,
-                        // disabledItemFn: (String s) => s.startsWith('I'),
-                      ),
-                      items: datacls3,
-                      onChanged: (value) {
-                        setState(() {
-                          datathree = value;
-                        });
-                      },
-                      selectedItem: 'പ്രത്യേക വിഭാഗം',
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              border: OutlineInputBorder(borderSide: BorderSide(
-                                  color: Colors.white)))),
-                    ),
-                  ),
-                  IconButton(onPressed: () {
-                    setState(() {
-                      dtaclassThree(panchayth!, datathree!, authToken!);
-                    });
-                  }, icon: Icon(Icons.download))
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            Row(
+            if(panchayth != null)
+            Column(
               children: [
                 Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width * .8,
-                  child: MultiSelectFormField(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.black)),
-                      title: Text(
-                        'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * .8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: DropdownSearch<String>(
+                          popupProps: PopupProps<String>.menu(
+                            showSelectedItems: true,
+                            // disabledItemFn: (String s) => s.startsWith('I'),
+                          ),
+                          items: dataclass,
+                          onChanged: (value) {
+                            setState(() {
+                              dataone = value;
+                            });
+                          },
+                          selectedItem: 'കുടുംബ അവസ്ഥ',
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  border: OutlineInputBorder(borderSide: BorderSide(
+                                      color: Colors.white)))),
+                        ),
                       ),
-                      dataSource: businesstype,
-                      textField: 'disply',
-                      valueField: 'value',
-                      okButtonLabel: 'OK',
-                      cancelButtonLabel: 'CANCEL',
-                      // hintText: 'Please select one or more options',
-                      initialValue: business,
-                      onSaved: (value) {
-                        setState(() {
-                          business = value;
-                          businessString = business!.join(',');
-                        });
-                      }),
+                      IconButton(onPressed: () {
+                        startDownloading(panchayth!, dataone!, authToken!);
+                      }, icon: Icon(Icons.download))
+                    ],
+                  ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        Businesstype(panchayth!,businessString!,authToken!);
-                        print(businessString);
-                        // print(businessString);
-                      });
-                    }, icon: Icon(Icons.download))
-              ],
-            ),
-            SizedBox(height: 10,),
-            Row(
-              children: [
+                SizedBox(height: 10,),
+                //  =======================
                 Container(
-                  width: MediaQuery.of(context).size.width * .8,
-                  child: MultiSelectFormField(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.black)),
-                      title: Text(
-                        'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * .8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: DropdownSearch<String>(
+                          popupProps: PopupProps<String>.menu(
+                            showSelectedItems: true,
+                            // disabledItemFn: (String s) => s.startsWith('I'),
+                          ),
+                          items: dataclass2,
+                          onChanged: (value) {
+                            setState(() {
+                              datatwo = value;
+                            });
+                          },
+                          selectedItem: 'വിഭാഗം',
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  border: OutlineInputBorder(borderSide: BorderSide(
+                                      color: Colors.white)))),
+                        ),
                       ),
-                      dataSource: traingrequared,
-                      textField: 'text',
-                      valueField: 'value',
-                      okButtonLabel: 'OK',
-                      cancelButtonLabel: 'CANCEL',
-                      // hintText: 'Please select one or more options',
-                      initialValue: traninglist,
-                      onSaved: (value) {
-                        setState(() {
-                          traninglist = value;
-                          traning = traninglist!.join(',');
-                        });
-                      }),
+                      IconButton(onPressed: () {
+                        print(datatwo);
+                        dataclasstwo(panchayth!, datatwo!, authToken!);
+                      }, icon: Icon(Icons.download))
+                    ],
+                  ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        TraningRequaredd(panchayth!,traning!,authToken!);
-                        print('value :$traninglist');
-                        // print(businessString);
-                      });
-                    }, icon: Icon(Icons.download))
-              ],
-            ),
-            SizedBox(height: 10,),
-            Container(
-              child: Row(
-                children: [
-                  Container(
-                      height: 60,
+                SizedBox(height: 10,),
+                //=======================
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * .8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: DropdownSearch<String>(
+                          popupProps: PopupProps<String>.menu(
+                            showSelectedItems: true,
+                            // disabledItemFn: (String s) => s.startsWith('I'),
+                          ),
+                          items: datacls3,
+                          onChanged: (value) {
+                            setState(() {
+                              datathree = value;
+                            });
+                          },
+                          selectedItem: 'പ്രത്യേക വിഭാഗം',
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  border: OutlineInputBorder(borderSide: BorderSide(
+                                      color: Colors.white)))),
+                        ),
+                      ),
+                      IconButton(onPressed: () {
+                        setState(() {
+                          dtaclassThree(panchayth!, datathree!, authToken!);
+                        });
+                      }, icon: Icon(Icons.download))
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Container(
                       width: MediaQuery
                           .of(context)
                           .size
                           .width * .8,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.black),
+                      child: MultiSelectFormField(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(color: Colors.black)),
+                          title: Text(
+                            'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          dataSource: businesstype,
+                          textField: 'disply',
+                          valueField: 'value',
+                          okButtonLabel: 'OK',
+                          cancelButtonLabel: 'CANCEL',
+                          // hintText: 'Please select one or more options',
+                          initialValue: business,
+                          onSaved: (value) {
+                            setState(() {
+                              business = value;
+                              businessString = business!.join(',');
+                            });
+                          }),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          setState(() {
+                            Businesstype(panchayth!,businessString!,authToken!);
+                            print(businessString);
+                            // print(businessString);
+                          });
+                        }, icon: Icon(Icons.download))
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * .8,
+                      child: MultiSelectFormField(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(color: Colors.black)),
+                          title: Text(
+                            'പരിശീലനം വേണ്ട മേഘല ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          dataSource: traingrequared,
+                          textField: 'text',
+                          valueField: 'value',
+                          okButtonLabel: 'OK',
+                          cancelButtonLabel: 'CANCEL',
+                          // hintText: 'Please select one or more options',
+                          initialValue: traninglist,
+                          onSaved: (value) {
+                            setState(() {
+                              traninglist = value;
+                              traning = traninglist!.join(',');
+                            });
+                          }),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          setState(() {
+                            TraningRequaredd(panchayth!,traning!,authToken!);
+                            print('value :$traninglist');
+                            // print(businessString);
+                          });
+                        }, icon: Icon(Icons.download))
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
+                          height: 60,
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width * .8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Text('പുരയിടം/നിലം'),
+                          )),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              landdetails(panchayth!, authToken!);
+                            });
+                          }, icon: Icon(Icons.download))
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10,),
+                //=======================
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * .8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: DropdownSearch<String>(
+                          popupProps: PopupProps<String>.menu(
+                            showSelectedItems: true,
+                            // disabledItemFn: (String s) => s.startsWith('I'),
+                          ),
+                          items: products,
+                          onChanged: (value) {
+                            setState(() {
+                              productname = value;
+                            });
+                          },
+                          selectedItem: 'ഉല്‍പ്പന്നം',
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  border: OutlineInputBorder(borderSide: BorderSide(
+                                      color: Colors.white)))),
+                        ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Text('പുരയിടം/നിലം'),
-                      )),
-                  IconButton(
-                      onPressed: () {
+                      IconButton(onPressed: () {
                         setState(() {
-                          landdetails(panchayth!, authToken!);
+                          productName(panchayth!, productname!, authToken!);
                         });
                       }, icon: Icon(Icons.download))
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            //=======================
-            Container(
-              child: Row(
-                children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .8,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: DropdownSearch<String>(
-                      popupProps: PopupProps<String>.menu(
-                        showSelectedItems: true,
-                        // disabledItemFn: (String s) => s.startsWith('I'),
-                      ),
-                      items: products,
-                      onChanged: (value) {
-                        setState(() {
-                          productname = value;
-                        });
-                      },
-                      selectedItem: 'ഉല്‍പ്പന്നം',
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              border: OutlineInputBorder(borderSide: BorderSide(
-                                  color: Colors.white)))),
-                    ),
+                    ],
                   ),
-                  IconButton(onPressed: () {
-                    setState(() {
-                      productName(panchayth!, productname!, authToken!);
-                    });
-                  }, icon: Icon(Icons.download))
-                ],
-              ),
+                ),
+              ],
             ),
           ],
           ),

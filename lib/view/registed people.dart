@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:main200623/view/login.dart';
-import 'package:main200623/view/screenone.dart';
+import 'package:main200623/view/home_page.dart';
 import 'dart:convert';
 import '../constant/color_text.dart';
 import '../services/add_api.dart';

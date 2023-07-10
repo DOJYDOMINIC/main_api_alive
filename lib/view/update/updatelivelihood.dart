@@ -1,20 +1,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/view/add_data/product.dart';
+import 'package:main200623/view/update/updateproduct.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 
-class LivelihoodValue extends StatefulWidget {
-  const LivelihoodValue({Key? key, this.id,}) : super(key: key);
-final id;
+class UpdateLivelihoodValue extends StatefulWidget {
+  const UpdateLivelihoodValue({Key? key, this.items,}) : super(key: key);
+
+  final items;
+
   @override
-  State<LivelihoodValue> createState() => _SalesState();
+  State<UpdateLivelihoodValue> createState() => _SalesState();
 }
 
-class _SalesState extends State<LivelihoodValue> {
+class _SalesState extends State<UpdateLivelihoodValue> {
 
   TextEditingController datalivelihoodincomesource =
   TextEditingController();
@@ -58,7 +60,7 @@ class _SalesState extends State<LivelihoodValue> {
               }),
               ElevateClick(
                   ontap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Product(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProduct(items: widget.items),));
                   }, text:'Next'),
             ],
           ),

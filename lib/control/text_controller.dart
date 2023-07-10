@@ -83,7 +83,7 @@ class TextMain extends ChangeNotifier {
   String? _dataLanddetails2Siteforworkshed;
   int? _dataLanddetails2Qtyofownland;
   String? _dataOthers4;
-  String? _dataTrainingsrequired;
+  List? _dataTrainingsrequired;
   String? _dataOthers3;
   String? _dataComments;
   String? _dataNameofcrp;
@@ -104,15 +104,15 @@ class TextMain extends ChangeNotifier {
   String? _dataFamilydetailsSkill;
 
   //------------------product--------------
-  String? _dataProductsPrdct;
+  List? _dataProductsPrdct;
   int? _dataProductsQuantum;
   int? _dataProductsPrice2;
 
   //-----------------Purchase-----------------
-  String? _dataPurchaseofrawmaterialsItemtype;
+  // String? _dataPurchaseofrawmaterialsItemtype;
   int? _dataPurchaseofrawmaterialsQuantity;
   int? _dataPurchaseofrawmaterialsPrice;
-  String? _dataPurchaseofrawmaterialsBrand;
+  List? _dataPurchaseofrawmaterialsBrand;
   String? _dataPurchaseofrawmaterialsOwn;
   int? _dataPurchaseofrawmaterialsRetail;
   int? _dataPurchaseofrawmaterialsP2;
@@ -123,7 +123,7 @@ class TextMain extends ChangeNotifier {
   int? _dataPurchaseofrawmaterialsSubsidy;
   int? _dataPurchaseofrawmaterialsP5;
   // -----------------sales----------
-  String? _dataSalesprdct2;
+  List? _dataSalesprdct2;
   int? _dataSalesquntum2;
   String? _dataSalessalesmethod;
   //------------livelyhood------------
@@ -132,6 +132,61 @@ class TextMain extends ChangeNotifier {
   String? _datalivelihoodcapitalsource;
   int? _datalivelihoodrevenue;
   // --------------------------------------
+
+  int? milkQnty;
+  int? meatQnty;
+  int? eggQnty;
+  int? salesManureQnty;
+  int? feedQnty;
+  int? maleBuffaloCalfQnty;
+  int? grasFooderQnty;
+  int? treeFooderQnty;
+  int? kidQnty;
+  int? dayOldChickQnty;
+  int? pulletsQnty;
+  int? calfQnty;
+  int? beiferQnty;
+  List<String>? dataSalesSalesmethod;
+  List<String>? dataProductsPrdct;
+  int? dataProductsQuantum;
+  int? dataProductsPrice2;
+  String? dataLivelihoodIncomesource;
+  int? dataLivelihoodNumbers;
+  String? dataLivelihoodCapitalsource;
+  int? dataLivelihoodRevenue;
+  List<String>? dataPurchaseofrawmaterialsItemtype;
+  List<String>? pulletsList;
+  List<String>? manureList;
+  int? manureQnty;
+  List<String>? fodderSlipsList;
+  int? fodderSlipsQnty;
+  String? maleBuffaloCalvesQnty;
+  List<String>? calvesList;
+  int? calvesQnty;
+  List<String>? heipersList;
+  int? heipersQnty;
+  List<String>? cowsList;
+  int? malabariGoatsQnty;
+  int? materialForPoultryQnty;
+  int? eggTraysQnty;
+  int? poultryFeedQnty;
+  List<String>? layerList;
+  List<String>? cattleFeedList;
+  int? cattleFeedQnty;
+  List<String>? milkReplacerList;
+  List<String>? energyRichFeedList;
+  int? energyRichFeedQnty;
+  int? byPassProteinQnty;
+  int? byPassFatQnty;
+  int? tmrQnty;
+  int? silageQnty;
+  int? hayQnty;
+  int? ureaTreatedStrawQnty;
+  int? goatFeeDqnty;
+  int? kidStarterQnty;
+  List<String>? modePurchaseofrawmaterials;
+  List<String>? dataPurchaseofrawmaterialsBrand;
+  int? brandQnty;
 
   String? get dataDistrict => _dataDistrict;
 
@@ -234,7 +289,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataOthers4 => _dataOthers4;
 
-  String? get dataTrainingsrequired => _dataTrainingsrequired;
+  List? get dataTrainingsrequired => _dataTrainingsrequired;
 
   String? get dataOthers3 => _dataOthers3;
 
@@ -271,21 +326,21 @@ class TextMain extends ChangeNotifier {
 
   //-----------------product-----------------
 
-  String? get dataProductsPrdct => _dataProductsPrdct;
-
-  int? get dataProductsQuantum => _dataProductsQuantum;
-
-  int? get dataProductsPrice2 => _dataProductsPrice2;
+  // List? get dataProductsPrdct => _dataProductsPrdct;
+  //
+  // int? get dataProductsQuantum => _dataProductsQuantum;
+  //
+  // int? get dataProductsPrice2 => _dataProductsPrice2;
 
 
   //----------------purchaseofrawmaterials-------------
 
-  String? get dataPurchaseofrawmaterialsItemtype => _dataPurchaseofrawmaterialsItemtype;
+  // String? get dataPurchaseofrawmaterialsItemtype => _dataPurchaseofrawmaterialsItemtype;
   int?
  get dataPurchaseofrawmaterialsQuantity => _dataPurchaseofrawmaterialsQuantity;
   int?
  get dataPurchaseofrawmaterialsPrice => _dataPurchaseofrawmaterialsPrice;
-  String? get dataPurchaseofrawmaterialsBrand => _dataPurchaseofrawmaterialsBrand;
+  // List? get dataPurchaseofrawmaterialsBrand => _dataPurchaseofrawmaterialsBrand;
   String?
  get dataPurchaseofrawmaterialsOwn => _dataPurchaseofrawmaterialsOwn;
   int?
@@ -308,7 +363,7 @@ class TextMain extends ChangeNotifier {
 
   //--------------sales----------------------------//
 
-  String? get dataSalesprdct2 => _dataSalesprdct2;
+  List? get dataSalesprdct2 => _dataSalesprdct2;
   int? get dataSalesquntum2 => _dataSalesquntum2;
   String? get dataSalessalesmethod => _dataSalessalesmethod;
 
@@ -321,6 +376,65 @@ class TextMain extends ChangeNotifier {
   String? get datalivelihoodcapitalsource => _datalivelihoodcapitalsource;
 
   int? get datalivelihoodrevenue => _datalivelihoodrevenue;
+
+
+  // new
+
+  int? get getMilkQnty => milkQnty;
+  int? get getMeatQnty => meatQnty;
+  int? get getEggQnty => eggQnty;
+  int? get getSalesManureQnty => salesManureQnty;
+  int? get getFeedQnty => feedQnty;
+  int? get getMaleBuffaloCalfQnty => maleBuffaloCalfQnty;
+  int? get getGrasFooderQnty => grasFooderQnty;
+  int? get getTreeFooderQnty => treeFooderQnty;
+  int? get getKidQnty => kidQnty;
+  int? get getDayOldChickQnty => dayOldChickQnty;
+  int? get getPulletsQnty => pulletsQnty;
+  int? get getCalfQnty => calfQnty;
+  int? get getBeiferQnty => beiferQnty;
+  List<String>? get getDataSalesSalesmethod => dataSalesSalesmethod;
+  List<String>? get getDataProductsPrdct => dataProductsPrdct;
+  int? get getDataProductsQuantum => dataProductsQuantum;
+  int? get getDataProductsPrice2 => dataProductsPrice2;
+  String? get getDataLivelihoodIncomesource => dataLivelihoodIncomesource;
+  int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
+  String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
+  int? get getDataLivelihoodRevenue => dataLivelihoodRevenue;
+  List<String>? get DataPurchaseofrawmaterialsItemtype => dataPurchaseofrawmaterialsItemtype;
+  List<String>? get getPulletsList => pulletsList;
+  List<String>? get getManureList => manureList;
+  int? get getManureQnty => manureQnty;
+  List<String>? get getFodderSlipsList => fodderSlipsList;
+  int? get getFodderSlipsQnty => fodderSlipsQnty;
+  String? get getMaleBuffaloCalvesQnty => maleBuffaloCalvesQnty;
+  List<String>? get getCalvesList => calvesList;
+  int? get getCalvesQnty => calvesQnty;
+  List<String>? get getHeipersList => heipersList;
+  int? get getHeipersQnty => heipersQnty;
+  List<String>? get getCowsList => cowsList;
+  int? get getMalabariGoatsQnty => malabariGoatsQnty;
+  int? get getMaterialForPoultryQnty => materialForPoultryQnty;
+  int? get getEggTraysQnty => eggTraysQnty;
+  int? get getPoultryFeedQnty => poultryFeedQnty;
+  List<String>? get getLayerList => layerList;
+  List<String>? get getCattleFeedList => cattleFeedList;
+  int? get getCattleFeedQnty => cattleFeedQnty;
+  List<String>? get getMilkReplacerList => milkReplacerList;
+  List<String>? get getEnergyRichFeedList => energyRichFeedList;
+  int? get getEnergyRichFeedQnty => energyRichFeedQnty;
+  int? get getByPassProteinQnty => byPassProteinQnty;
+  int? get getByPassFatQnty => byPassFatQnty;
+  int? get getTmrQnty => tmrQnty;
+  int? get getSilageQnty => silageQnty;
+  int? get getHayQnty => hayQnty;
+  int? get getUreaTreatedStrawQnty => ureaTreatedStrawQnty;
+  int? get getGoatFeeDqnty => goatFeeDqnty;
+  int? get getKidStarterQnty => kidStarterQnty;
+  List<String>? get getModePurchaseofrawmaterials => modePurchaseofrawmaterials;
+  List<String>? get getDataPurchaseofrawmaterialsBrand => dataPurchaseofrawmaterialsBrand;
+  int? get getBrandQnty => brandQnty;
+
 
   //----------------livelihood-----------------
   void updateDatalivelihoodincomesource(String? value) {
@@ -361,7 +475,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataSalesprdct2(String? value) {
+  void updateDataSalesprdct2(List? value) {
     _dataSalesprdct2 = value;
     notifyListeners();
   }
@@ -377,7 +491,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataProductsPrdct(String? value) {
+  void updateDataProductsPrdct(List? value) {
     _dataProductsPrdct = value;
     notifyListeners();
   }
@@ -502,7 +616,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataAnimalhusbendaryBusinesstype(List? value) {
+  void updateDataAnimalhusbendaryBusinesstype(List<String>? value) {
     _dataAnimalhusbendaryBusinesstype = value;
     notifyListeners();
   }
@@ -657,7 +771,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataTrainingsrequired(String? value) {
+  void updateDataTrainingsrequired(List? value) {
     _dataTrainingsrequired = value;
     notifyListeners();
   }
@@ -703,10 +817,10 @@ class TextMain extends ChangeNotifier {
   // }
 
   //-----------------Purchase-------------------------
-  void updateDataPurchaseofrawmaterialsItemtype(String? value) {
-    _dataPurchaseofrawmaterialsItemtype = value;
-    notifyListeners();
-  }
+  // void updateDataPurchaseofrawmaterialsItemtype(String? value) {
+  //   _dataPurchaseofrawmaterialsItemtype = value;
+  //   notifyListeners();
+  // }
 
   void updateDataPurchaseofrawmaterialsQuantity(int? value) {
     _dataPurchaseofrawmaterialsQuantity = value;
@@ -718,7 +832,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsBrand(String? value) {
+  void updateDataPurchaseofrawmaterialsBrand(List? value) {
     _dataPurchaseofrawmaterialsBrand = value;
     notifyListeners();
   }
@@ -766,5 +880,224 @@ class TextMain extends ChangeNotifier {
   void updateDataPurchaseofrawmaterialsP5(int? value) {
     _dataPurchaseofrawmaterialsP5 = value;
     notifyListeners();
+  }
+
+  // newval
+
+
+  void setMilkQnty(int? value) {
+    milkQnty = value;
+  }
+
+  void setMeatQnty(int? value) {
+    meatQnty = value;
+  }
+
+  void setEggQnty(int? value) {
+    eggQnty = value;
+  }
+
+  void setSalesManureQnty(int? value) {
+    salesManureQnty = value;
+  }
+
+  void setFeedQnty(int? value) {
+    feedQnty = value;
+  }
+
+  void setMaleBuffaloCalfQnty(int? value) {
+    maleBuffaloCalfQnty = value;
+  }
+
+  void setGrasFooderQnty(int? value) {
+    grasFooderQnty = value;
+  }
+
+  void setTreeFooderQnty(int? value) {
+    treeFooderQnty = value;
+  }
+
+  void setKidQnty(int? value) {
+    kidQnty = value;
+  }
+
+  void setDayOldChickQnty(int? value) {
+    dayOldChickQnty = value;
+  }
+
+  void setPulletsQnty(int? value) {
+    pulletsQnty = value;
+  }
+
+  void setCalfQnty(int? value) {
+    calfQnty = value;
+  }
+
+  void setBeiferQnty(int? value) {
+    beiferQnty = value;
+  }
+
+  void setDataSalesSalesmethod(List<String>? value) {
+    dataSalesSalesmethod = value;
+  }
+
+  void setDataProductsPrdct(List<String>? value) {
+    dataProductsPrdct = value;
+  }
+
+  void setDataProductsQuantum(int? value) {
+    dataProductsQuantum = value;
+  }
+
+  void setDataProductsPrice2(int? value) {
+    dataProductsPrice2 = value;
+  }
+
+  void setDataLivelihoodIncomesource(String? value) {
+    dataLivelihoodIncomesource = value;
+  }
+
+  void setDataLivelihoodNumbers(int? value) {
+    dataLivelihoodNumbers = value;
+  }
+
+  void setDataLivelihoodCapitalsource(String? value) {
+    dataLivelihoodCapitalsource = value;
+  }
+
+  void setDataLivelihoodRevenue(int? value) {
+    dataLivelihoodRevenue = value;
+  }
+
+  void setDataPurchaseofrawmaterialsItemtype(List<String>? value) {
+    dataPurchaseofrawmaterialsItemtype = value;
+  }
+
+  void setPulletsList(List<String>? value) {
+    pulletsList = value;
+  }
+
+  void setManureList(List<String>? value) {
+    manureList = value;
+  }
+
+  void setManureQnty(int? value) {
+    manureQnty = value;
+  }
+
+  void setFodderSlipsList(List<String>? value) {
+    fodderSlipsList = value;
+  }
+
+  void setFodderSlipsQnty(int? value) {
+    fodderSlipsQnty = value;
+  }
+
+  void setMaleBuffaloCalvesQnty(String? value) {
+    maleBuffaloCalvesQnty = value;
+  }
+
+  void setCalvesList(List<String>? value) {
+    calvesList = value;
+  }
+
+  void setCalvesQnty(int? value) {
+    calvesQnty = value;
+  }
+
+  void setHeipersList(List<String>? value) {
+    heipersList = value;
+  }
+
+  void setHeipersQnty(int? value) {
+    heipersQnty = value;
+  }
+
+  void setCowsList(List<String>? value) {
+    cowsList = value;
+  }
+
+  void setMalabariGoatsQnty(int? value) {
+    malabariGoatsQnty = value;
+  }
+
+  void setMaterialForPoultryQnty(int? value) {
+    materialForPoultryQnty = value;
+  }
+
+  void setEggTraysQnty(int? value) {
+    eggTraysQnty = value;
+  }
+
+  void setPoultryFeedQnty(int? value) {
+    poultryFeedQnty = value;
+  }
+
+  void setLayerList(List<String>? value) {
+    layerList = value;
+  }
+
+  void setCattleFeedList(List<String>? value) {
+    cattleFeedList = value;
+  }
+
+  void setCattleFeedQnty(int? value) {
+    cattleFeedQnty = value;
+  }
+
+  void setMilkReplacerList(List<String>? value) {
+    milkReplacerList = value;
+  }
+
+  void setEnergyRichFeedList(List<String>? value) {
+    energyRichFeedList = value;
+  }
+
+  void setEnergyRichFeedQnty(int? value) {
+    energyRichFeedQnty = value;
+  }
+
+  void setByPassProteinQnty(int? value) {
+    byPassProteinQnty = value;
+  }
+
+  void setByPassFatQnty(int? value) {
+    byPassFatQnty = value;
+  }
+
+  void setTmrQnty(int? value) {
+    tmrQnty = value;
+  }
+
+  void setSilageQnty(int? value) {
+    silageQnty = value;
+  }
+
+  void setHayQnty(int? value) {
+    hayQnty = value;
+  }
+
+  void setUreaTreatedStrawQnty(int? value) {
+    ureaTreatedStrawQnty = value;
+  }
+
+  void setGoatFeeDqnty(int? value) {
+    goatFeeDqnty = value;
+  }
+
+  void setKidStarterQnty(int? value) {
+    kidStarterQnty = value;
+  }
+
+  void setModePurchaseofrawmaterials(List<String>? value) {
+    modePurchaseofrawmaterials = value;
+  }
+
+  // void setDataPurchaseofrawmaterialsBrand(List<String>? value) {
+  //   dataPurchaseofrawmaterialsBrand = value;
+  // }
+
+  void setBrandQnty(int? value) {
+    brandQnty = value;
   }
 }

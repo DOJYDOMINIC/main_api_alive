@@ -18,7 +18,8 @@ class _ScreenoneState extends State<Screenone> {
 
   Future<void> clearAuthTokenFromPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('authToken');
+    prefs.clear();
+    // prefs.remove('authToken');
     // print(clearAuthTokenFromPreferences());
   }
 
@@ -86,7 +87,7 @@ class _ScreenoneState extends State<Screenone> {
               SizedBox(height: 30,),
               GestureDetector(
                 onTap: (){
-                  // Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
+                  Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
                 },
                 child: SizedBox(
                   height: 150,

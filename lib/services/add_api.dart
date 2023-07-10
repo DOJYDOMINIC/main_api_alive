@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/add_model.dart';
+import '../model/model.dart';
 
 
 
 //base URL
 
-const api = 'http://192.168.1.43:5000/api/';
-
+const api = 'http://192.168.1.38:5000/api/';
 
 
 
@@ -26,7 +25,9 @@ Future<void> postData(AddData addData) async {
 
   if (response.statusCode == 200) {
     print(response);
+
     // Post request was successful
+
     print('Data posted successfully');
   } else {
     // Error occurred during the post request
