@@ -26,7 +26,7 @@ class AddData {
   String? dataHouseOwnership;
   int? dataLanddetailsLandarea;
   int? dataLanddetailsAgricultureland;
-  List? dataAnimalhusbendaryBusinesstype;
+  List<String>? dataAnimalhusbendaryBusinesstype;
   String? dataAnimalhusbendaryOthers0;
   String? dataAnimalhusbendaryCdsregistration;
   String? dataAnimalhusbendaryRegdetailsRegnumber;
@@ -89,24 +89,39 @@ class AddData {
   List<String>? dataPurchaseofrawmaterialsItemtype;
   List<String>? pulletsList;
   List<String>? manureList;
-  int? manureQnty;
+  int? cowDungQnty;
+  int? goatManureQnty;
+  int? poultryManureQnty;
+  int? vermyCompostQnty;
   List<String>? fodderSlipsList;
-  int? fodderSlipsQnty;
-  String? maleBuffaloCalvesQnty;
+  int? napierQnty;
+  int? co4Qnty;
+  int? co5Qnty;
+  int? redNapierQnty;
+  int? superNapierQnty;
+  int? guineaGrassQnty;
+  int? paraGrassQnty;
+  int? congoSignalQnty;
+  int? maleBuffaloCalvesQnty;
   List<String>? calvesList;
-  int? calvesQnty;
+  int? calvesHfQnty;
+  int? calvesGerseyQnty;
   List<String>? heipersList;
-  int? heipersQnty;
+  int? heipersHfQnty;
+  int? heipersGerseyQnty;
   List<String>? cowsList;
+  int? cowsHfQnty;
+  int? cowsGerseyQnty;
   int? malabariGoatsQnty;
   int? materialForPoultryQnty;
   int? eggTraysQnty;
   int? poultryFeedQnty;
-  List<String>? layerList;
-  List<String>? cattleFeedList;
+  String? layerList;
+  String? cattleFeedList;
   int? cattleFeedQnty;
-  List<String>? milkReplacerList;
-  List<String>? energyRichFeedList;
+  String? milkReplacerList;
+  int? milkReplacerQnty;
+  String? energyRichFeedList;
   int? energyRichFeedQnty;
   int? byPassProteinQnty;
   int? byPassFatQnty;
@@ -119,7 +134,7 @@ class AddData {
   List<String>? modePurchaseofrawmaterials;
   List<String>? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
-  List<Member>? members;
+  List<Member> members;
 
   AddData({
      this.dataDistrict,
@@ -202,15 +217,29 @@ class AddData {
      this.dataPurchaseofrawmaterialsItemtype,
      this.pulletsList,
      this.manureList,
-     this.manureQnty,
+     this.cowDungQnty,
+     this.goatManureQnty,
+     this.poultryManureQnty,
+     this.vermyCompostQnty,
      this.fodderSlipsList,
-     this.fodderSlipsQnty,
+     this.napierQnty,
+     this.co4Qnty,
+     this.co5Qnty,
+     this.redNapierQnty,
+     this.superNapierQnty,
+     this.guineaGrassQnty,
+     this.paraGrassQnty,
+     this.congoSignalQnty,
      this.maleBuffaloCalvesQnty,
      this.calvesList,
-     this.calvesQnty,
+     this.calvesHfQnty,
+     this.calvesGerseyQnty,
      this.heipersList,
-     this.heipersQnty,
+     this.heipersHfQnty,
+     this.heipersGerseyQnty,
      this.cowsList,
+     this.cowsHfQnty,
+     this.cowsGerseyQnty,
      this.malabariGoatsQnty,
      this.materialForPoultryQnty,
      this.eggTraysQnty,
@@ -219,6 +248,7 @@ class AddData {
      this.cattleFeedList,
      this.cattleFeedQnty,
      this.milkReplacerList,
+     this.milkReplacerQnty,
      this.energyRichFeedList,
      this.energyRichFeedQnty,
      this.byPassProteinQnty,
@@ -232,7 +262,7 @@ class AddData {
      this.modePurchaseofrawmaterials,
      this.dataPurchaseofrawmaterialsBrand,
      this.brandQnty,
-     this.members,
+    required this.members,
   });
 
   factory AddData.fromJson(Map<String, dynamic> json) => AddData(
@@ -284,7 +314,7 @@ class AddData {
     dataLanddetails2Siteforworkshed: json["data_landdetails2_siteforworkshed"],
     dataLanddetails2Qtyofownland: json["data_landdetails2_qtyofownland"],
     dataOthers4: json["data_others4"],
-    dataTrainingsrequired : List<String>.from(json["data_Trainingsrequired"].map((x) => x)),
+    dataTrainingsrequired: List<String>.from(json["data_Trainingsrequired"].map((x) => x)),
     dataOthers3: json["data_others3"],
     dataComments: json["data_comments"],
     dataNameofcrp: json["data_nameofcrp"],
@@ -316,24 +346,39 @@ class AddData {
     dataPurchaseofrawmaterialsItemtype: List<String>.from(json["data_purchaseofrawmaterials_itemtype"].map((x) => x)),
     pulletsList: List<String>.from(json["PULLETS_List"].map((x) => x)),
     manureList: List<String>.from(json["MANURE_List"].map((x) => x)),
-    manureQnty: json["MANURE_qnty"],
+    cowDungQnty: json["COW_DUNG_qnty"],
+    goatManureQnty: json["GOAT_MANURE_qnty"],
+    poultryManureQnty: json["POULTRY_MANURE_qnty"],
+    vermyCompostQnty: json["VERMY_COMPOST_qnty"],
     fodderSlipsList: List<String>.from(json["FODDER_SLIPS_List"].map((x) => x)),
-    fodderSlipsQnty: json["FODDER_SLIPS_qnty"],
+    napierQnty: json["NAPIER_qnty"],
+    co4Qnty: json["CO4_qnty"],
+    co5Qnty: json["CO5_qnty"],
+    redNapierQnty: json["RED_NAPIER_qnty"],
+    superNapierQnty: json["SUPER_NAPIER_qnty"],
+    guineaGrassQnty: json["GUINEA_GRASS_qnty"],
+    paraGrassQnty: json["PARA_GRASS_qnty"],
+    congoSignalQnty: json["CONGO_SIGNAL_qnty"],
     maleBuffaloCalvesQnty: json["MALE_BUFFALO_CALVES_qnty"],
     calvesList: List<String>.from(json["CALVES_List"].map((x) => x)),
-    calvesQnty: json["CALVES_qnty"],
+    calvesHfQnty: json["CALVES_HF_qnty"],
+    calvesGerseyQnty: json["CALVES_GERSEY_qnty"],
     heipersList: List<String>.from(json["HEIPERS_List"].map((x) => x)),
-    heipersQnty: json["HEIPERS_qnty"],
+    heipersHfQnty: json["HEIPERS_HF_qnty"],
+    heipersGerseyQnty: json["HEIPERS_GERSEY_qnty"],
     cowsList: List<String>.from(json["COWS_List"].map((x) => x)),
+    cowsHfQnty: json["COWS_HF_qnty"],
+    cowsGerseyQnty: json["COWS_GERSEY_qnty"],
     malabariGoatsQnty: json["MALABARI_GOATS_qnty"],
     materialForPoultryQnty: json["MATERIAL_FOR_POULTRY_qnty"],
     eggTraysQnty: json["EGG_TRAYS_qnty"],
     poultryFeedQnty: json["POULTRY_FEED_qnty"],
-    layerList: List<String>.from(json["LAYER_List"].map((x) => x)),
-    cattleFeedList: List<String>.from(json["CATTLE_FEED_List"].map((x) => x)),
+    layerList: json["LAYER_List"],
+    cattleFeedList: json["CATTLE_FEED_List"],
     cattleFeedQnty: json["CATTLE_FEED_qnty"],
-    milkReplacerList: List<String>.from(json["MILK_REPLACER_List"].map((x) => x)),
-    energyRichFeedList: List<String>.from(json["ENERGY_RICH_FEED_List"].map((x) => x)),
+    milkReplacerList: json["MILK_REPLACER_List"],
+    milkReplacerQnty: json["MILK_REPLACER_qnty"],
+    energyRichFeedList: json["ENERGY_RICH_FEED_List"],
     energyRichFeedQnty: json["ENERGY_RICH_FEED_qnty"],
     byPassProteinQnty: json["BY_PASS_PROTEIN_qnty"],
     byPassFatQnty: json["BY_PASS_FAT_qnty"],
@@ -344,7 +389,7 @@ class AddData {
     goatFeeDqnty: json["GOAT_FEEDqnty"],
     kidStarterQnty: json["KID_STARTER_qnty"],
     modePurchaseofrawmaterials: List<String>.from(json["Mode_purchaseofrawmaterials"].map((x) => x)),
-    dataPurchaseofrawmaterialsBrand: List<String>.from(json["data_purchaseofrawmaterials_brand"].map((x) => x)),
+    dataPurchaseofrawmaterialsBrand: json["data_purchaseofrawmaterials_brand"],
     brandQnty: json["BRAND_qnty"],
     members: List<Member>.from(json["members"].map((x) => Member.fromJson(x))),
   );
@@ -430,24 +475,39 @@ class AddData {
     "data_purchaseofrawmaterials_itemtype": List<dynamic>.from(dataPurchaseofrawmaterialsItemtype!.map((x) => x)),
     "PULLETS_List": List<dynamic>.from(pulletsList!.map((x) => x)),
     "MANURE_List": List<dynamic>.from(manureList!.map((x) => x)),
-    "MANURE_qnty": manureQnty,
+    "COW_DUNG_qnty": cowDungQnty,
+    "GOAT_MANURE_qnty": goatManureQnty,
+    "POULTRY_MANURE_qnty": poultryManureQnty,
+    "VERMY_COMPOST_qnty": vermyCompostQnty,
     "FODDER_SLIPS_List": List<dynamic>.from(fodderSlipsList!.map((x) => x)),
-    "FODDER_SLIPS_qnty": fodderSlipsQnty,
+    "NAPIER_qnty": napierQnty,
+    "CO4_qnty": co4Qnty,
+    "CO5_qnty": co5Qnty,
+    "RED_NAPIER_qnty": redNapierQnty,
+    "SUPER_NAPIER_qnty": superNapierQnty,
+    "GUINEA_GRASS_qnty": guineaGrassQnty,
+    "PARA_GRASS_qnty": paraGrassQnty,
+    "CONGO_SIGNAL_qnty": congoSignalQnty,
     "MALE_BUFFALO_CALVES_qnty": maleBuffaloCalvesQnty,
     "CALVES_List": List<dynamic>.from(calvesList!.map((x) => x)),
-    "CALVES_qnty": calvesQnty,
+    "CALVES_HF_qnty": calvesHfQnty,
+    "CALVES_GERSEY_qnty": calvesGerseyQnty,
     "HEIPERS_List": List<dynamic>.from(heipersList!.map((x) => x)),
-    "HEIPERS_qnty": heipersQnty,
+    "HEIPERS_HF_qnty": heipersHfQnty,
+    "HEIPERS_GERSEY_qnty": heipersGerseyQnty,
     "COWS_List": List<dynamic>.from(cowsList!.map((x) => x)),
+    "COWS_HF_qnty": cowsHfQnty,
+    "COWS_GERSEY_qnty": cowsGerseyQnty,
     "MALABARI_GOATS_qnty": malabariGoatsQnty,
     "MATERIAL_FOR_POULTRY_qnty": materialForPoultryQnty,
     "EGG_TRAYS_qnty": eggTraysQnty,
     "POULTRY_FEED_qnty": poultryFeedQnty,
-    "LAYER_List": List<dynamic>.from(layerList!.map((x) => x)),
-    "CATTLE_FEED_List": List<dynamic>.from(cattleFeedList!.map((x) => x)),
+    "LAYER_List": layerList,
+    "CATTLE_FEED_List": cattleFeedList,
     "CATTLE_FEED_qnty": cattleFeedQnty,
-    "MILK_REPLACER_List": List<dynamic>.from(milkReplacerList!.map((x) => x)),
-    "ENERGY_RICH_FEED_List": List<dynamic>.from(energyRichFeedList!.map((x) => x)),
+    "MILK_REPLACER_List": milkReplacerList,
+    "MILK_REPLACER_qnty": milkReplacerQnty,
+    "ENERGY_RICH_FEED_List": energyRichFeedList,
     "ENERGY_RICH_FEED_qnty": energyRichFeedQnty,
     "BY_PASS_PROTEIN_qnty": byPassProteinQnty,
     "BY_PASS_FAT_qnty": byPassFatQnty,
@@ -458,9 +518,9 @@ class AddData {
     "GOAT_FEEDqnty": goatFeeDqnty,
     "KID_STARTER_qnty": kidStarterQnty,
     "Mode_purchaseofrawmaterials": List<dynamic>.from(modePurchaseofrawmaterials!.map((x) => x)),
-    "data_purchaseofrawmaterials_brand": List<dynamic>.from(dataPurchaseofrawmaterialsBrand!.map((x) => x)),
+    "data_purchaseofrawmaterials_brand": dataPurchaseofrawmaterialsBrand,
     "BRAND_qnty": brandQnty,
-    "members": List<dynamic>.from(members!.map((x) => x.toJson())),
+    "members": List<dynamic>.from(members.map((x) => x.toJson())),
   };
 }
 
@@ -473,12 +533,12 @@ class Member {
   String? dataFamilydetailsSkill;
 
   Member({
-      this.dataFamilydetailsNameoffailyfmember,
-      this.dataFamilydetailsRelation,
-     this.dataFamilydetailsAgeoffamilymember,
-      this.dataFamilydetailsEducation,
-      this.dataFamilydetailsJob,
-      this.dataFamilydetailsSkill,
+    required this.dataFamilydetailsNameoffailyfmember,
+    required this.dataFamilydetailsRelation,
+    required this.dataFamilydetailsAgeoffamilymember,
+    required this.dataFamilydetailsEducation,
+    required this.dataFamilydetailsJob,
+    required this.dataFamilydetailsSkill,
   });
 
   factory Member.fromJson(Map<String, dynamic> json) => Member(

@@ -191,3 +191,67 @@ final List datamgnregasupportlist = [
   // {'text': 'other','value': 'other'},
 ];
 
+final List?   rawmaterials= [
+  {'text': 'INGREDIENTS FOR CTTLE FEED', 'value': 'INGREDIENTS FOR CTTLE FEED'},
+  {'text': 'INGREDIENTS FOR POULTRY FEED', 'value': 'INGREDIENTS FOR POULTRY FEED'},
+  {'text': 'PULLETS', 'value': 'PULLETS'},
+  {'text': 'MANURE', 'value': 'MANURE'},
+  {'text': 'CHEMICAL FERTILIZERS', 'value': 'CHEMICAL FERTILIZERS'},
+  {'text': 'FODDER SLIPS', 'value': 'FODDER SLIPS'},
+  {'text': 'FODDER SEEDS', 'value': 'FODDER SEEDS'},
+  {'text': 'GRASS FOODER', 'value': 'GRASS FOODER'},
+  {'text': 'TREE FOODER', 'value': 'TREE FOODER'},
+  {'text': 'MALE BUFFALO CALVES', 'value': 'MALE BUFFALO CALVES'},
+  {'text': 'CALVES', 'value': 'CALVES'},
+  {'text': 'HEIFERS', 'value': 'HEIFERS'},
+  {'text': 'COWS', 'value': 'COWS'},
+  {'text': 'MALABARI GOATS', 'value': 'MALABARI GOATS'},
+  {'text': 'MALABARI GOAT-KIDS', 'value': 'MALABARI GOAT-KIDS'},
+  {'text': 'MATERIAL FOR POULTRY CAGE FABRICATION', 'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'},
+  {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
+  {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
+  {'text': 'LAYER', 'value': 'LAYER'},
+  {'text': 'GROWER', 'value': 'GROWER'},
+  {'text': 'CATTLE FEED', 'value': 'CATTLE FEED'},
+  {'text': 'CAFF STARTER', 'value': 'CAFF STARTER'},
+  {'text': 'ENERGY RICH FEED', 'value': 'ENERGY RICH FEED'},
+  {'text': 'BYPASS PROTIN', 'value': 'BYPASS PROTIN'},
+  {'text': 'BYPASS FAT', 'value': 'BYPASS FAT'},
+  {'text': 'TOTAL MIXED RATION', 'value': 'TOTAL MIXED RATION'},
+  {'text': 'SILAGER', 'value': 'SILAGER'},
+  {'text': 'HAY', 'value': 'HAY'},
+  {'text': 'UREA TREATED STRAW', 'value': 'UREA TREATED STRAW'},
+  {'text': 'UREA MOLASS BLOCK', 'value': 'UREA MOLASS BLOCK'},
+  {'text': 'GOAT FEED', 'value': 'GOAT FEED'},
+  {'text': 'KID STARTER', 'value': 'KID STARTER'},
+  // {'text': 'other','value': 'other'},
+];
+
+
+ final List? pullets = [
+  {'text': 'BV380', 'value': 'BV380'},
+  {'text': 'GRAMALAKSHMI', 'value': 'GRAMALAKSHMI'},
+  {'text': 'GRAMAPRIYA', 'value': 'GRAMAPRIYA'},
+  {'text': 'OTHER…..', 'value': 'OTHER…..'},
+
+];
+
+final List? manure = [
+{'text': 'COW DUNG', 'value': 'COW DUNG'},
+  {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
+  {'text': 'POULTRY MANURE', 'value': 'POULTRY MANURE'},
+  {'text': 'VERMY COMPOST', 'value': 'VERMY COMPOST'},
+];
+
+final List? fodderslip = [
+  {'text': 'NAPIER', 'value': 'NAPIER'},
+  {'text': 'CO4', 'value': 'CO4'},
+  {'text': 'CO5', 'value': 'CO5'},
+  {'text': 'RED NAPIER', 'value': 'RED NAPIER'},
+  {'text': 'SUPER NAPIER', 'value': 'SUPER NAPIER'},
+  {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
+  {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
+  {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
+
+];
+

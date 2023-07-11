@@ -160,7 +160,7 @@ class TextMain extends ChangeNotifier {
   int? manureQnty;
   List<String>? fodderSlipsList;
   int? fodderSlipsQnty;
-  String? maleBuffaloCalvesQnty;
+  int? maleBuffaloCalvesQnty;
   List<String>? calvesList;
   int? calvesQnty;
   List<String>? heipersList;
@@ -170,11 +170,11 @@ class TextMain extends ChangeNotifier {
   int? materialForPoultryQnty;
   int? eggTraysQnty;
   int? poultryFeedQnty;
-  List<String>? layerList;
-  List<String>? cattleFeedList;
+  String? layerList;
+  String? cattleFeedList;
   int? cattleFeedQnty;
-  List<String>? milkReplacerList;
-  List<String>? energyRichFeedList;
+  String? milkReplacerList;
+  String? energyRichFeedList;
   int? energyRichFeedQnty;
   int? byPassProteinQnty;
   int? byPassFatQnty;
@@ -187,6 +187,48 @@ class TextMain extends ChangeNotifier {
   List<String>? modePurchaseofrawmaterials;
   List<String>? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
+
+
+
+  int? _calvesGerseyQnty;
+  int? _calvesHfQnty;
+  int? _co4Qnty;
+  int? _co5Qnty;
+  int? _congoSignalQnty;
+  int? _cowDungQnty;
+  int? _cowsGerseyQnty;
+  int? _cowsHfQnty;
+  int? _goatManureQnty;
+  int? _guineaGrassQnty;
+  int? _heipersGerseyQnty;
+  int? _heipersHfQnty;
+  int? _milkReplacerQnty;
+  int? _napierQnty;
+  int? _paraGrassQnty;
+  int? _poultryManureQnty;
+  int? _redNapierQnty;
+  int? _superNapierQnty;
+  int? _vermyCompostQnty;
+
+  int? get calvesGerseyQnty => _calvesGerseyQnty;
+  int? get calvesHfQnty => _calvesHfQnty;
+  int? get co4Qnty => _co4Qnty;
+  int? get co5Qnty => _co5Qnty;
+  int? get congoSignalQnty => _congoSignalQnty;
+  int? get cowDungQnty => _cowDungQnty;
+  int? get cowsGerseyQnty => _cowsGerseyQnty;
+  int? get cowsHfQnty => _cowsHfQnty;
+  int? get goatManureQnty => _goatManureQnty;
+  int? get guineaGrassQnty => _guineaGrassQnty;
+  int? get heipersGerseyQnty => _heipersGerseyQnty;
+  int? get heipersHfQnty => _heipersHfQnty;
+  int? get milkReplacerQnty => _milkReplacerQnty;
+  int? get napierQnty => _napierQnty;
+  int? get paraGrassQnty => _paraGrassQnty;
+  int? get poultryManureQnty => _poultryManureQnty;
+  int? get redNapierQnty => _redNapierQnty;
+  int? get superNapierQnty => _superNapierQnty;
+  int? get vermyCompostQnty => _vermyCompostQnty;
 
   String? get dataDistrict => _dataDistrict;
 
@@ -407,7 +449,7 @@ class TextMain extends ChangeNotifier {
   int? get getManureQnty => manureQnty;
   List<String>? get getFodderSlipsList => fodderSlipsList;
   int? get getFodderSlipsQnty => fodderSlipsQnty;
-  String? get getMaleBuffaloCalvesQnty => maleBuffaloCalvesQnty;
+  int? get getMaleBuffaloCalvesQnty => maleBuffaloCalvesQnty;
   List<String>? get getCalvesList => calvesList;
   int? get getCalvesQnty => calvesQnty;
   List<String>? get getHeipersList => heipersList;
@@ -417,11 +459,11 @@ class TextMain extends ChangeNotifier {
   int? get getMaterialForPoultryQnty => materialForPoultryQnty;
   int? get getEggTraysQnty => eggTraysQnty;
   int? get getPoultryFeedQnty => poultryFeedQnty;
-  List<String>? get getLayerList => layerList;
-  List<String>? get getCattleFeedList => cattleFeedList;
+  String? get getLayerList => layerList;
+  String? get getCattleFeedList => cattleFeedList;
   int? get getCattleFeedQnty => cattleFeedQnty;
-  List<String>? get getMilkReplacerList => milkReplacerList;
-  List<String>? get getEnergyRichFeedList => energyRichFeedList;
+  String? get getMilkReplacerList => milkReplacerList;
+  String? get getEnergyRichFeedList => energyRichFeedList;
   int? get getEnergyRichFeedQnty => energyRichFeedQnty;
   int? get getByPassProteinQnty => byPassProteinQnty;
   int? get getByPassFatQnty => byPassFatQnty;
@@ -885,219 +927,319 @@ class TextMain extends ChangeNotifier {
   // newval
 
 
-  void setMilkQnty(int? value) {
+  void updateDataMilkQnty(int? value) {
     milkQnty = value;
+    notifyListeners();
   }
 
-  void setMeatQnty(int? value) {
+  void updateDataMeatQnty(int? value) {
     meatQnty = value;
   }
 
-  void setEggQnty(int? value) {
+  void updateDataEggQnty(int? value) {
     eggQnty = value;
   }
 
-  void setSalesManureQnty(int? value) {
+  void updateDataSalesManureQnty(int? value) {
     salesManureQnty = value;
   }
 
-  void setFeedQnty(int? value) {
+  void updateDataFeedQnty(int? value) {
     feedQnty = value;
   }
 
-  void setMaleBuffaloCalfQnty(int? value) {
+  void updateDataMaleBuffaloCalfQnty(int? value) {
     maleBuffaloCalfQnty = value;
   }
 
-  void setGrasFooderQnty(int? value) {
+  void updateDataGrasFooderQnty(int? value) {
     grasFooderQnty = value;
   }
 
-  void setTreeFooderQnty(int? value) {
+  void updateDataTreeFooderQnty(int? value) {
     treeFooderQnty = value;
   }
 
-  void setKidQnty(int? value) {
+  void updateDataKidQnty(int? value) {
     kidQnty = value;
   }
 
-  void setDayOldChickQnty(int? value) {
+  void updateDataDayOldChickQnty(int? value) {
     dayOldChickQnty = value;
   }
 
-  void setPulletsQnty(int? value) {
+  void updateDataPulletsQnty(int? value) {
     pulletsQnty = value;
   }
 
-  void setCalfQnty(int? value) {
+  void updateDataCalfQnty(int? value) {
     calfQnty = value;
   }
 
-  void setBeiferQnty(int? value) {
+  void updateDataBeiferQnty(int? value) {
     beiferQnty = value;
   }
 
-  void setDataSalesSalesmethod(List<String>? value) {
+  void updateDataDataSalesSalesmethod(List<String>? value) {
     dataSalesSalesmethod = value;
   }
 
-  void setDataProductsPrdct(List<String>? value) {
+  void updateDataDataProductsPrdct(List<String>? value) {
     dataProductsPrdct = value;
   }
 
-  void setDataProductsQuantum(int? value) {
+  void updateDataDataProductsQuantum(int? value) {
     dataProductsQuantum = value;
   }
 
-  void setDataProductsPrice2(int? value) {
+  void updateDataDataProductsPrice2(int? value) {
     dataProductsPrice2 = value;
   }
 
-  void setDataLivelihoodIncomesource(String? value) {
+  void updateDataDataLivelihoodIncomesource(String? value) {
     dataLivelihoodIncomesource = value;
   }
 
-  void setDataLivelihoodNumbers(int? value) {
+  void updateDataDataLivelihoodNumbers(int? value) {
     dataLivelihoodNumbers = value;
   }
 
-  void setDataLivelihoodCapitalsource(String? value) {
+  void updateDataDataLivelihoodCapitalsource(String? value) {
     dataLivelihoodCapitalsource = value;
   }
 
-  void setDataLivelihoodRevenue(int? value) {
+  void updateDataDataLivelihoodRevenue(int? value) {
     dataLivelihoodRevenue = value;
   }
 
-  void setDataPurchaseofrawmaterialsItemtype(List<String>? value) {
+  void updateDataDataPurchaseofrawmaterialsItemtype(List<String>? value) {
     dataPurchaseofrawmaterialsItemtype = value;
   }
 
-  void setPulletsList(List<String>? value) {
+  void updateDataPulletsList(List<String>? value) {
     pulletsList = value;
   }
 
-  void setManureList(List<String>? value) {
+  void updateDataManureList(List<String>? value) {
     manureList = value;
   }
 
-  void setManureQnty(int? value) {
+  void updateDataManureQnty(int? value) {
     manureQnty = value;
   }
 
-  void setFodderSlipsList(List<String>? value) {
+  void updateDataFodderSlipsList(List<String>? value) {
     fodderSlipsList = value;
   }
 
-  void setFodderSlipsQnty(int? value) {
+  void updateDataFodderSlipsQnty(int? value) {
     fodderSlipsQnty = value;
   }
 
-  void setMaleBuffaloCalvesQnty(String? value) {
+  void updateDataMaleBuffaloCalvesQnty(int? value) {
     maleBuffaloCalvesQnty = value;
   }
 
-  void setCalvesList(List<String>? value) {
+  void updateDataCalvesList(List<String>? value) {
     calvesList = value;
   }
 
-  void setCalvesQnty(int? value) {
+  void updateDataCalvesQnty(int? value) {
     calvesQnty = value;
   }
 
-  void setHeipersList(List<String>? value) {
+  void updateDataHeipersList(List<String>? value) {
     heipersList = value;
   }
 
-  void setHeipersQnty(int? value) {
+  void updateDataHeipersQnty(int? value) {
     heipersQnty = value;
   }
 
-  void setCowsList(List<String>? value) {
+  void updateDataCowsList(List<String>? value) {
     cowsList = value;
   }
 
-  void setMalabariGoatsQnty(int? value) {
+  void updateDataMalabariGoatsQnty(int? value) {
     malabariGoatsQnty = value;
   }
 
-  void setMaterialForPoultryQnty(int? value) {
+  void updateDataMaterialForPoultryQnty(int? value) {
     materialForPoultryQnty = value;
   }
 
-  void setEggTraysQnty(int? value) {
+  void updateDataEggTraysQnty(int? value) {
     eggTraysQnty = value;
   }
 
-  void setPoultryFeedQnty(int? value) {
+  void updateDataPoultryFeedQnty(int? value) {
     poultryFeedQnty = value;
   }
 
-  void setLayerList(List<String>? value) {
+  void updateDataLayerList(String? value) {
     layerList = value;
   }
 
-  void setCattleFeedList(List<String>? value) {
+  void updateDataCattleFeedList(String? value) {
     cattleFeedList = value;
   }
 
-  void setCattleFeedQnty(int? value) {
+  void updateDataCattleFeedQnty(int? value) {
     cattleFeedQnty = value;
   }
 
-  void setMilkReplacerList(List<String>? value) {
+  void updateDataMilkReplacerList(String? value) {
     milkReplacerList = value;
   }
 
-  void setEnergyRichFeedList(List<String>? value) {
+  void updateDataEnergyRichFeedList(String? value) {
     energyRichFeedList = value;
   }
 
-  void setEnergyRichFeedQnty(int? value) {
+  void updateDataEnergyRichFeedQnty(int? value) {
     energyRichFeedQnty = value;
   }
 
-  void setByPassProteinQnty(int? value) {
+  void updateDataByPassProteinQnty(int? value) {
     byPassProteinQnty = value;
   }
 
-  void setByPassFatQnty(int? value) {
+  void updateDataByPassFatQnty(int? value) {
     byPassFatQnty = value;
   }
 
-  void setTmrQnty(int? value) {
+  void updateDataTmrQnty(int? value) {
     tmrQnty = value;
   }
 
-  void setSilageQnty(int? value) {
+  void updateDataSilageQnty(int? value) {
     silageQnty = value;
   }
 
-  void setHayQnty(int? value) {
+  void updateDataHayQnty(int? value) {
     hayQnty = value;
   }
 
-  void setUreaTreatedStrawQnty(int? value) {
+  void updateDataUreaTreatedStrawQnty(int? value) {
     ureaTreatedStrawQnty = value;
   }
 
-  void setGoatFeeDqnty(int? value) {
+  void updateDataGoatFeeDqnty(int? value) {
     goatFeeDqnty = value;
+    notifyListeners();
   }
 
-  void setKidStarterQnty(int? value) {
+  void updateDataKidStarterQnty(int? value) {
     kidStarterQnty = value;
+    notifyListeners();
   }
 
-  void setModePurchaseofrawmaterials(List<String>? value) {
+  void updateDataModePurchaseofrawmaterials(List<String>? value) {
     modePurchaseofrawmaterials = value;
+    notifyListeners();
   }
 
-  // void setDataPurchaseofrawmaterialsBrand(List<String>? value) {
+  // void updateDataDataPurchaseofrawmaterialsBrand(List<String>? value) {
   //   dataPurchaseofrawmaterialsBrand = value;
   // }
 
-  void setBrandQnty(int? value) {
+  void updateDataBrandQnty(int? value) {
     brandQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCalvesGerseyQnty(int? value) {
+    _calvesGerseyQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCalvesHfQnty(int? value) {
+    _calvesHfQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCo4Qnty(int? value) {
+    _co4Qnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCo5Qnty(int? value) {
+    _co5Qnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCongoSignalQnty(int? value) {
+    _congoSignalQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCowDungQnty(int? value) {
+    _cowDungQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCowsGerseyQnty(int? value) {
+    _cowsGerseyQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataCowsHfQnty(int? value) {
+    _cowsHfQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataGoatManureQnty(int? value) {
+    _goatManureQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataGuineaGrassQnty(int? value) {
+    _guineaGrassQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataHeipersGerseyQnty(int? value) {
+    _heipersGerseyQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataHeipersHfQnty(int? value) {
+    _heipersHfQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataMilkReplacerQnty(int? value) {
+    _milkReplacerQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataNapierQnty(int? value) {
+    _napierQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataParaGrassQnty(int? value) {
+    _paraGrassQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataPoultryManureQnty(int? value) {
+    _poultryManureQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataRedNapierQnty(int? value) {
+    _redNapierQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataSuperNapierQnty(int? value) {
+    _superNapierQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataVermyCompostQnty(int? value) {
+    _vermyCompostQnty = value;
+    notifyListeners();
   }
 }

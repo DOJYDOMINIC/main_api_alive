@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/sales.dart';
+import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
+import '../lists.dart';
 import '../widgets/elevate_click_button.dart';
-import '../widgets/headings_between.dart';
 import '../widgets/input_field.dart';
+
 
 class Purchaseofrawmaterials extends StatefulWidget {
   const Purchaseofrawmaterials({
@@ -17,27 +19,20 @@ class Purchaseofrawmaterials extends StatefulWidget {
 }
 
 class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
-  TextEditingController dataPurchaseofrawmaterialsItemtype =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsQuantity =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsPrice =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsBrand =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsOwn = TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsRetail =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP2 = TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsWholesale =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP3 = TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsGroup =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP4 = TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsSubsidy =
-      TextEditingController();
-  TextEditingController dataPurchaseofrawmaterialsP5 = TextEditingController();
+
+
+  List? rawmaterial;
+  List? pulletsselected;
+  List? manureselected;
+  List? fodderslipselected;
+
+
+  TextEditingController dataPurchaseofrawmaterialsItemtype = TextEditingController();
+  TextEditingController dataPurchaseofrawmaterialsBrand = TextEditingController();
+  TextEditingController cowdungqnty = TextEditingController();
+  TextEditingController goatmanureqnty = TextEditingController();
+  TextEditingController poultrymanureqnty = TextEditingController();
+  TextEditingController vermycompostqnty = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,94 +50,169 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Headings(text: 'അസംസ്‌കൃത വസ്തുക്കൾ വാങ്ങുന്നരീതി'),
-              InputField(
-                hint: 'ഇനം',
-                controller: dataPurchaseofrawmaterialsItemtype,
-                onchanged: (value) {
-                  providerone.setDataPurchaseofrawmaterialsItemtype(value);
-                },
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  title: Text(
+                    'ഇനം',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  dataSource: rawmaterials,
+                  textField: 'text',
+                  valueField: 'value',
+                  okButtonLabel: 'OK',
+                  cancelButtonLabel: 'CANCEL',
+                  // hintText: 'Please select one or more options',
+                  initialValue: rawmaterial,
+                  onSaved: (value) {
+                    setState(() {
+                      rawmaterial = value;
+                    });
+                    if (value == null) return;
+                    providerone.updateDataDataPurchaseofrawmaterialsItemtype(value);
+                  },
+                ),
               ),
-              // InputField(
-              //   hint: 'വാങ്ങുന്ന അളവ് (മാസം/kg ltr)',
-              //   controller: dataPurchaseofrawmaterialsQuantity,
-              //   onchanged: (value) {
-              //     int? valuee = int.tryParse(value);
-              //     providerone.updateDataPurchaseofrawmaterialsQuantity(valuee);
-              //   },
-              // ),
-              // InputField(
-              //     hint: 'വാങ്ങുന്ന വില (മാസം/kg ltr)',
-              //     controller: dataPurchaseofrawmaterialsPrice,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone.updateDataPurchaseofrawmaterialsPrice(valuee);
-              //     }),
-              InputField(
-                  hint: 'ബ്രാൻഡ്',
-                  controller: dataPurchaseofrawmaterialsBrand,
-                  onchanged: (value) {
-                    providerone.updateDataPurchaseofrawmaterialsBrand(value);
-                  }),
-              // InputField(
-              //     hint: 'സ്വയം(മാസം/kg ltr)',
-              //     controller: dataPurchaseofrawmaterialsOwn,
-              //     onchanged: (value) {
-              //       providerone.updateDataPurchaseofrawmaterialsOwn(value);
-              //     }),
-              // InputField(
-              //     hint: 'റീറ്റെയ്ൽ (മാസം/kg ltr)',
-              //     controller: dataPurchaseofrawmaterialsRetail,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone.updateDataPurchaseofrawmaterialsRetail(valuee);
-              //     }),
-              // InputField(
-              //     hint: 'വില ',
-              //     controller: dataPurchaseofrawmaterialsP2,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone.updateDataPurchaseofrawmaterialsP2(valuee);
-              //     }),
-              // InputField(
-              //     hint: 'ഹോൾസെയിൽ ',
-              //     controller: dataPurchaseofrawmaterialsWholesale,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone
-              //           .updateDataPurchaseofrawmaterialsWholesale(valuee);
-              //     }),
-              // InputField(
-              //     hint: 'വില ',
-              //     controller: dataPurchaseofrawmaterialsP3,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone.updateDataPurchaseofrawmaterialsP3(valuee);
-              //     }),
-              // InputField(
-              //     hint: 'സംഘം(മാസം/kg ltr)',
-              //     controller: dataPurchaseofrawmaterialsGroup,
-              //     onchanged: (value) {
-              //       int? valuee = int.tryParse(value);
-              //       providerone.updateDataPurchaseofrawmaterialsGroup(valuee);
-              //     }),
-              // InputField(
-              //     hint: 'വില ',
-              //     controller: dataPurchaseofrawmaterialsP4,
-              //     onchanged: (value) {
-              //       providerone.updateDataPurchaseofrawmaterialsP4(value);
-              //     }),
-              // InputField(
-              //     hint: 'സബ്‌സിഡി(മാസം/kg ltr)',
-              //     controller: dataPurchaseofrawmaterialsSubsidy,
-              //     onchanged: (value) {
-              //       providerone.updateDataPurchaseofrawmaterialsSubsidy(value);
-              //     }),
-              // InputField(
-              //     hint: 'വില ',
-              //     controller: dataPurchaseofrawmaterialsP5,
-              //     onchanged: (value) {
-              //       providerone.updateDataPurchaseofrawmaterialsP5(value);
-              //     }),
+              if (rawmaterial != null && rawmaterial!.contains('PULLETS')) // Conditional statement starts here
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: MultiSelectFormField(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    title: Text(
+                      'PULLET',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    dataSource: pullets,
+                    textField: 'text',
+                    valueField: 'value',
+                    okButtonLabel: 'OK',
+                    cancelButtonLabel: 'CANCEL',
+                    // hintText: 'Please select one or more options',
+                    initialValue: pulletsselected,
+                    onSaved: (value) {
+                      setState(() {
+                        pulletsselected = value;
+                      });
+                      if (value == null) return;
+                      providerone.updateDataPulletsList(value);
+                    },
+                  ),
+                ),
+
+                if(rawmaterial != null && rawmaterial!.contains('MANURE'))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: MultiSelectFormField(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      title: Text(
+                        'MANURE',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      dataSource: manure,
+                      textField: 'text',
+                      valueField: 'value',
+                      okButtonLabel: 'OK',
+                      cancelButtonLabel: 'CANCEL',
+                      // hintText: 'Please select one or more options',
+                      initialValue: manureselected,
+                      onSaved: (value) {
+                        setState(() {
+                          manureselected = value;
+                        });
+                        if (value == null) return;
+                        providerone.updateDataPulletsList(value);
+                      },
+                    ),
+                  ),
+              if(manureselected != null && manureselected!.contains('COW DUNG'))
+                InputField(
+                    hint: 'COW DUNG qty',
+                    controller: cowdungqnty,
+                    onchanged: (value) {
+                      providerone.updateDataCowDungQnty(value);
+                    }),
+              if(manureselected != null && manureselected!.contains('GOAT MANURE'))
+                InputField(
+                    hint: 'GOAT MANURE QTY',
+                    controller: goatmanureqnty,
+                    onchanged: (value) {
+                      providerone.updateDataGoatManureQnty(value);
+                    }),
+              if(manureselected != null && manureselected!.contains('POULTRY MANURE'))
+                InputField(
+                    hint: 'POULTRY MANURE QTY',
+                    controller: poultrymanureqnty,
+                    onchanged: (value) {
+                      providerone.updateDataPoultryManureQnty(value);
+                    }),
+              if(manureselected != null && manureselected!.contains('VERMY COMPOST'))
+                InputField(
+                    hint: 'VERMY COMPOST QTY',
+                    controller: vermycompostqnty,
+                    onchanged: (value) {
+                      providerone.updateDataVermyCompostQnty(value);
+                    }),
+              if(rawmaterial != null && rawmaterial!.contains('FODDER SLIPS'))
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: MultiSelectFormField(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    title: Text(
+                      'FODDER SLIPS',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    dataSource: fodderslip,
+                    textField: 'text',
+                    valueField: 'value',
+                    okButtonLabel: 'OK',
+                    cancelButtonLabel: 'CANCEL',
+                    // hintText: 'Please select one or more options',
+                    initialValue: fodderslipselected,
+                    onSaved: (value) {
+                      setState(() {
+                        fodderslipselected = value;
+                      });
+                      if (value == null) return;
+                      providerone.updateDataPulletsList(value);
+                    },
+                  ),
+                ),
+              if(fodderslipselected != null && fodderslipselected!.contains('NAPIER'))
+                InputField(
+                    hint: 'NAPIER QTY',
+                    controller: goatmanureqnty,
+                    onchanged: (value) {
+                      providerone.updateDataNapierQnty(value);
+                    }),
+              if(fodderslipselected != null && fodderslipselected!.contains('CO4'))
+                InputField(
+                    hint: 'CO4 QTY',
+                    controller: poultrymanureqnty,
+                    onchanged: (value) {
+                      providerone.updateDataCo4Qnty(value);
+                    }),
+              if(fodderslipselected != null && fodderslipselected!.contains('CO5'))
+                InputField(
+                    hint: 'CO5 QTY',
+                    controller: vermycompostqnty,
+                    onchanged: (value) {
+                      providerone.updateDataCo5Qnty(value);
+                    }),
+
+              //
               // Text(DocumentId),
               ElevateClick(
                   ontap: () {

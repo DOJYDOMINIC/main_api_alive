@@ -68,7 +68,7 @@ class _UpdatePurchaseofrawmaterialsState extends State<UpdatePurchaseofrawmateri
                 hint: 'ഇനം',
                 controller: dataPurchaseofrawmaterialsItemtype,
                 onchanged: (value) {
-                  providerone.updateDataPurchaseofrawmaterialsItemtype(value);
+                  providerone.updateDataDataPurchaseofrawmaterialsItemtype(value);
                 },
               ),
               InputField(

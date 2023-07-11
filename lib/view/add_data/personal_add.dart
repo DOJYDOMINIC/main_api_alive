@@ -597,6 +597,7 @@ class _PersonalPageState extends State<PersonalPage> {
                           }
                         },
                       ),
+
                       CheckboxListTile(
                         title: Text('Not Applied'),
                         value: selectedOption == CheckboxOption.notApplied,
