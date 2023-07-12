@@ -88,7 +88,7 @@ class _SalesState extends State<UpdateCrpDetail> {
       dataNameofNGmember: providerone.dataNameofNGmember,
       dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) => item.toString()).toList(),
       dataProductsQuantum: providerone.dataProductsQuantum,
-      dataProductsPrdct: providerone.dataProductsPrdct,
+      dataProductsPrdct: providerone.dataProductsPrdct?.map((dynamic item) => item.toString()).toList(),
       dataLanddetails1Qtyofleasedland: providerone
           .dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,

@@ -132,7 +132,7 @@ class AddData {
   int? goatFeeDqnty;
   int? kidStarterQnty;
   List<String>? modePurchaseofrawmaterials;
-  List<String>? dataPurchaseofrawmaterialsBrand;
+  String? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
   List<Member> members;
 

@@ -223,7 +223,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     });
                     providerone.updateDataDistrict(value);
                   },
-                  selecteditem: 'ജില്ല',
+                  item: 'ജില്ല',
                 ),
                 NoSearchDropdown(
                   onChanged: (value) {
@@ -233,7 +233,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     });
                     providerone.updateDataBlock(value);
                   },
-                  selecteditem: 'ബ്ലോക്ക്',
+                  item: 'ബ്ലോക്ക്',
                   items: blocks,
                 ),
                   NoSearchDropdown(
@@ -245,7 +245,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataPanchayath(value);
                     },
                     items: panchaths,
-                    selecteditem: 'പഞ്ചായത്ത്'),
+                    item: 'പഞ്ചായത്ത്'),
                 InputField(
                   hint: 'വാർഡ്',
                   controller: dataWard,
@@ -284,13 +284,13 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataClass(value);
                     },
                     items: dataclass,
-                    selecteditem: 'കുടുംബ അവസ്ഥ'),
+                    item: 'കുടുംബ അവസ്ഥ'),
                 NoSearchDropdown(
                     onChanged: (value) {
                       providerone.updateDataClass2(value);
                     },
                     items: dataclass2,
-                    selecteditem: 'വിഭാഗം'),
+                    item: 'വിഭാഗം'),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -320,7 +320,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataFamilyincome(value);
                     },
                     items: familyincome,
-                    selecteditem: 'കുടുംബ മാസവരുമാനം'),
+                    item: 'കുടുംബ മാസവരുമാനം'),
                 InputField(
                     hint: 'അയൽക്കൂട്ടത്തിന്റെ പേര്',
                     controller: dataNameofNg,
@@ -338,13 +338,13 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataRoleinNg(value);
                     },
                     items: position,
-                    selecteditem: 'അയൽക്കൂട്ടത്തിലെ പദവി'),
+                    item: 'അയൽക്കൂട്ടത്തിലെ പദവി'),
                 NoSearchDropdown(
                     onChanged: (value) {
                       providerone.updateDataHouseownership(value);
                     },
                     items: house,
-                    selecteditem: 'വീട് '),
+                    item: 'വീട് '),
                 InputField(
                   hint: 'പുരയിടം ( സെന്റ്)',
                   controller: datalanddetailslandarea,
@@ -469,7 +469,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataEnterpisetype(value);
                     },
                     items: enterpricetype,
-                    selecteditem: 'സംരഭം തരം'),
+                    item: 'സംരഭം തരം'),
                if(group == 'Group')
                 InputField(
                     keytype: TextInputType.number,

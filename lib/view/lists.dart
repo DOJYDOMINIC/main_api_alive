@@ -236,6 +236,11 @@ final List?   rawmaterials= [
 
 ];
 
+ final List? hfg = [
+   {'text': 'H F', 'value': 'H F'},
+   {'text': 'GERSEY', 'value': 'GERSEY'},
+ ];
+
 final List? manure = [
 {'text': 'COW DUNG', 'value': 'COW DUNG'},
   {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
@@ -255,3 +260,40 @@ final List? fodderslip = [
 
 ];
 
+ List<String> branditem = [
+   'VHC',
+   'SKM',
+   'KRISHI',
+   'SUGUNA',
+   'GODREJ',
+ ];
+
+List<String> layeritems = [
+  'VHC',
+  'SKM',
+  'KRISHI',
+  'SUGUNA',
+  'GODREJ',
+];
+
+List<String> cattlefeed = [
+  'BRAND',
+  'KERALA FEEDS',
+  'KS',
+  'MILMA',
+  'SKM',
+  'GODREJ',
+  'KRISHI',
+];
+
+List<String> milkreplacer = ['AMUL','GEEVAN'];
+
+List<String> enrgyrichfeed = [
+  'MILMA',
+  'VHC',
+  'SKM',
+  'KRISHI',
+  'SUGUNA',
+  'GODREJ',
+
+];

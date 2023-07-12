@@ -188,7 +188,7 @@ class _SearchEditState extends State<SearchEdit> {
                 });
                 // providerone.updateDataDistrict(value);
               },
-              selecteditem: 'ജില്ല',
+              item: 'ജില്ല',
             ),
             NoSearchDropdown(
               onChanged: (value) {
@@ -198,7 +198,7 @@ class _SearchEditState extends State<SearchEdit> {
                 });
                 // providerone.updateDataBlock(value);
               },
-              selecteditem: 'ബ്ലോക്ക്',
+              item: 'ബ്ലോക്ക്',
               items: blocks,
             ),
             NoSearchDropdown(
@@ -209,7 +209,7 @@ class _SearchEditState extends State<SearchEdit> {
                   });
                 },
                 items: panchaths,
-                selecteditem: 'പഞ്ചായത്ത്'),
+                item: 'പഞ്ചായത്ത്'),
             NoSearchDropdown(
                 onChanged: (value) {
                   setState(() {
@@ -218,7 +218,7 @@ class _SearchEditState extends State<SearchEdit> {
                   });
                 },
                 items: crplist,
-                selecteditem: 'CRP'),
+                item: 'CRP'),
             ElevateClick(
                 ontap: () {
                   Fetchdata(selectedcrp!);

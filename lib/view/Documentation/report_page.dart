@@ -730,7 +730,7 @@ class _ReportPageState extends State<ReportPage> {
                   fetchBlocks(dist!);
                 });
               },
-              selecteditem: 'ജില്ല',
+              item: 'ജില്ല',
             ),
 
             NoSearchDropdown(
@@ -740,7 +740,7 @@ class _ReportPageState extends State<ReportPage> {
                   fetchPanchayth(blockss!);
                 });
               },
-              selecteditem: 'ബ്ലോക്ക്',
+              item: 'ബ്ലോക്ക്',
               items: blocklist,
             ),
 
@@ -752,7 +752,7 @@ class _ReportPageState extends State<ReportPage> {
                   });
                 },
                 items: panchaths,
-                selecteditem: 'പഞ്ചായത്ത്'),
+                item: 'പഞ്ചായത്ത്'),
             SizedBox(height: 10,),
             // ======================
             if(panchayth != null)

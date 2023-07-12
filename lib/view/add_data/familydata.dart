@@ -160,7 +160,6 @@ class _FamilyDataState extends State<FamilyData> {
 
               ElevateClick(
                 ontap: () {
-                  print(familyMembers);
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
                 },
                 text:'Next',

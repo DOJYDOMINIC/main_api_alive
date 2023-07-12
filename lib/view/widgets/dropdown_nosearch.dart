@@ -5,11 +5,14 @@ class NoSearchDropdown extends StatelessWidget {
   NoSearchDropdown({
     required this.onChanged,
     required this.items,
-    required this.selecteditem,
+    required this.item,
+    this.selecteditem,
+
   });
 
   final List<String> items;
   final ValueChanged onChanged;
+  final String? item;
   final String? selecteditem;
 
   @override
@@ -23,7 +26,7 @@ class NoSearchDropdown extends StatelessWidget {
           ),
           items: items,
           onChanged: onChanged,
-          // selectedItem: selecteditem,
+          selectedItem: selecteditem,
           dropdownDecoratorProps: DropDownDecoratorProps(
               dropdownSearchDecoration: InputDecoration(
             focusedBorder:
@@ -34,7 +37,7 @@ class NoSearchDropdown extends StatelessWidget {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(color: Colors.black)),
-            labelText: '${selecteditem}',
+            labelText: '${item}',
             labelStyle: TextStyle(color: Colors.grey),
           ))),
     );

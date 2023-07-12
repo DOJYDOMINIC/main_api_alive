@@ -112,7 +112,7 @@ class TextMain extends ChangeNotifier {
   // String? _dataPurchaseofrawmaterialsItemtype;
   int? _dataPurchaseofrawmaterialsQuantity;
   int? _dataPurchaseofrawmaterialsPrice;
-  List? _dataPurchaseofrawmaterialsBrand;
+  String? _dataPurchaseofrawmaterialsBrand;
   String? _dataPurchaseofrawmaterialsOwn;
   int? _dataPurchaseofrawmaterialsRetail;
   int? _dataPurchaseofrawmaterialsP2;
@@ -146,26 +146,26 @@ class TextMain extends ChangeNotifier {
   int? pulletsQnty;
   int? calfQnty;
   int? beiferQnty;
-  List<String>? dataSalesSalesmethod;
-  List<String>? dataProductsPrdct;
+  List? dataSalesSalesmethod;
+  List? dataProductsPrdct;
   int? dataProductsQuantum;
   int? dataProductsPrice2;
   String? dataLivelihoodIncomesource;
   int? dataLivelihoodNumbers;
   String? dataLivelihoodCapitalsource;
   int? dataLivelihoodRevenue;
-  List<String>? dataPurchaseofrawmaterialsItemtype;
-  List<String>? pulletsList;
-  List<String>? manureList;
+  List? dataPurchaseofrawmaterialsItemtype;
+  List? pulletsList;
+  List? manureList;
   int? manureQnty;
-  List<String>? fodderSlipsList;
+  List? fodderSlipsList;
   int? fodderSlipsQnty;
   int? maleBuffaloCalvesQnty;
-  List<String>? calvesList;
+  List? calvesList;
   int? calvesQnty;
-  List<String>? heipersList;
+  List? heipersList;
   int? heipersQnty;
-  List<String>? cowsList;
+  List? cowsList;
   int? malabariGoatsQnty;
   int? materialForPoultryQnty;
   int? eggTraysQnty;
@@ -184,8 +184,8 @@ class TextMain extends ChangeNotifier {
   int? ureaTreatedStrawQnty;
   int? goatFeeDqnty;
   int? kidStarterQnty;
-  List<String>? modePurchaseofrawmaterials;
-  List<String>? dataPurchaseofrawmaterialsBrand;
+  List? modePurchaseofrawmaterials;
+  String? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
 
 
@@ -435,26 +435,26 @@ class TextMain extends ChangeNotifier {
   int? get getPulletsQnty => pulletsQnty;
   int? get getCalfQnty => calfQnty;
   int? get getBeiferQnty => beiferQnty;
-  List<String>? get getDataSalesSalesmethod => dataSalesSalesmethod;
-  List<String>? get getDataProductsPrdct => dataProductsPrdct;
+  List? get getDataSalesSalesmethod => dataSalesSalesmethod;
+  List? get getDataProductsPrdct => dataProductsPrdct;
   int? get getDataProductsQuantum => dataProductsQuantum;
   int? get getDataProductsPrice2 => dataProductsPrice2;
   String? get getDataLivelihoodIncomesource => dataLivelihoodIncomesource;
   int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
   String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
   int? get getDataLivelihoodRevenue => dataLivelihoodRevenue;
-  List<String>? get DataPurchaseofrawmaterialsItemtype => dataPurchaseofrawmaterialsItemtype;
-  List<String>? get getPulletsList => pulletsList;
-  List<String>? get getManureList => manureList;
+  List? get DataPurchaseofrawmaterialsItemtype => dataPurchaseofrawmaterialsItemtype;
+  List? get getPulletsList => pulletsList;
+  List? get getManureList => manureList;
   int? get getManureQnty => manureQnty;
-  List<String>? get getFodderSlipsList => fodderSlipsList;
+  List? get getFodderSlipsList => fodderSlipsList;
   int? get getFodderSlipsQnty => fodderSlipsQnty;
   int? get getMaleBuffaloCalvesQnty => maleBuffaloCalvesQnty;
-  List<String>? get getCalvesList => calvesList;
+  List? get getCalvesList => calvesList;
   int? get getCalvesQnty => calvesQnty;
-  List<String>? get getHeipersList => heipersList;
+  List? get getHeipersList => heipersList;
   int? get getHeipersQnty => heipersQnty;
-  List<String>? get getCowsList => cowsList;
+  List? get getCowsList => cowsList;
   int? get getMalabariGoatsQnty => malabariGoatsQnty;
   int? get getMaterialForPoultryQnty => materialForPoultryQnty;
   int? get getEggTraysQnty => eggTraysQnty;
@@ -473,8 +473,8 @@ class TextMain extends ChangeNotifier {
   int? get getUreaTreatedStrawQnty => ureaTreatedStrawQnty;
   int? get getGoatFeeDqnty => goatFeeDqnty;
   int? get getKidStarterQnty => kidStarterQnty;
-  List<String>? get getModePurchaseofrawmaterials => modePurchaseofrawmaterials;
-  List<String>? get getDataPurchaseofrawmaterialsBrand => dataPurchaseofrawmaterialsBrand;
+  List? get getModePurchaseofrawmaterials => modePurchaseofrawmaterials;
+  String? get getDataPurchaseofrawmaterialsBrand => dataPurchaseofrawmaterialsBrand;
   int? get getBrandQnty => brandQnty;
 
 
@@ -658,7 +658,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataAnimalhusbendaryBusinesstype(List<String>? value) {
+  void updateDataAnimalhusbendaryBusinesstype(List? value) {
     _dataAnimalhusbendaryBusinesstype = value;
     notifyListeners();
   }
@@ -874,7 +874,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataPurchaseofrawmaterialsBrand(List? value) {
+  void updateDataPurchaseofrawmaterialsBrand(String? value) {
     _dataPurchaseofrawmaterialsBrand = value;
     notifyListeners();
   }
@@ -980,11 +980,11 @@ class TextMain extends ChangeNotifier {
     beiferQnty = value;
   }
 
-  void updateDataDataSalesSalesmethod(List<String>? value) {
+  void updateDataDataSalesSalesmethod(List? value) {
     dataSalesSalesmethod = value;
   }
 
-  void updateDataDataProductsPrdct(List<String>? value) {
+  void updateDataDataProductsPrdct(List? value) {
     dataProductsPrdct = value;
   }
 
@@ -1012,15 +1012,15 @@ class TextMain extends ChangeNotifier {
     dataLivelihoodRevenue = value;
   }
 
-  void updateDataDataPurchaseofrawmaterialsItemtype(List<String>? value) {
+  void updateDataDataPurchaseofrawmaterialsItemtype(List? value) {
     dataPurchaseofrawmaterialsItemtype = value;
   }
 
-  void updateDataPulletsList(List<String>? value) {
+  void updateDataPulletsList(List? value) {
     pulletsList = value;
   }
 
-  void updateDataManureList(List<String>? value) {
+  void updateDataManureList(List? value) {
     manureList = value;
   }
 
@@ -1028,7 +1028,7 @@ class TextMain extends ChangeNotifier {
     manureQnty = value;
   }
 
-  void updateDataFodderSlipsList(List<String>? value) {
+  void updateDataFodderSlipsList(List? value) {
     fodderSlipsList = value;
   }
 
@@ -1040,7 +1040,7 @@ class TextMain extends ChangeNotifier {
     maleBuffaloCalvesQnty = value;
   }
 
-  void updateDataCalvesList(List<String>? value) {
+  void updateDataCalvesList(List? value) {
     calvesList = value;
   }
 
@@ -1048,7 +1048,7 @@ class TextMain extends ChangeNotifier {
     calvesQnty = value;
   }
 
-  void updateDataHeipersList(List<String>? value) {
+  void updateDataHeipersList(List? value) {
     heipersList = value;
   }
 
@@ -1056,7 +1056,7 @@ class TextMain extends ChangeNotifier {
     heipersQnty = value;
   }
 
-  void updateDataCowsList(List<String>? value) {
+  void updateDataCowsList(List? value) {
     cowsList = value;
   }
 
@@ -1134,12 +1134,12 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataModePurchaseofrawmaterials(List<String>? value) {
+  void updateDataModePurchaseofrawmaterials(List? value) {
     modePurchaseofrawmaterials = value;
     notifyListeners();
   }
 
-  // void updateDataDataPurchaseofrawmaterialsBrand(List<String>? value) {
+  // void updateDataDataPurchaseofrawmaterialsBrand(List? value) {
   //   dataPurchaseofrawmaterialsBrand = value;
   // }
 
