@@ -177,6 +177,7 @@ class _SalesState extends State<CrpDetail> {
       //     dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
       //   )
       // ],
+
     );
     const url = '$api/user/insert'; // Replace with your API endpoint URL
     final headers = {

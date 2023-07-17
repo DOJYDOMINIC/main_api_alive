@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
@@ -35,9 +36,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   @override
   void initState() {
     super.initState();
-    fetchDistricts();
     getData();
-
+    fetchDistricts();
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -105,39 +105,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     }
   }
 
-  // String? valueItem;
-  // List<String> listItem = [];
-  // String? newval;
-  // List<String> newvalitem = [];
-  // String? panchaythvalue;
-  // List<String> panchaythvaluelist = [];
 
-
-  TextEditingController dataName = TextEditingController();
-  TextEditingController dataAddress = TextEditingController();
-  TextEditingController dataPhonenumber = TextEditingController();
-  TextEditingController dataNameofNg = TextEditingController();
-  TextEditingController dataNameofNGmember = TextEditingController();
-  TextEditingController dataYearofstartingagriculture = TextEditingController();
-  TextEditingController dataYearofstartingbussiness = TextEditingController();
-  TextEditingController dataAmountinvested = TextEditingController();
-  TextEditingController dataSupportrecived = TextEditingController();
-  TextEditingController dataBusinessidea = TextEditingController();
-  TextEditingController dataDistrict = TextEditingController();
-  TextEditingController dataBlock = TextEditingController();
-  TextEditingController dataPanchayth = TextEditingController();
-  TextEditingController dataWard = TextEditingController();
-  TextEditingController dataClass = TextEditingController();
-  TextEditingController dataClass2 = TextEditingController();
-  TextEditingController dataClass3 = TextEditingController();
-  TextEditingController dataFamilyincome = TextEditingController();
-  TextEditingController datalanddetailslandarea = TextEditingController();
-  TextEditingController datalanddetailsagricultureland =
-      TextEditingController();
-  TextEditingController dataInfraOthers = TextEditingController();
-  TextEditingController dataLanddetails1Landforgrass = TextEditingController();
-  TextEditingController datanumberofgroupmembers = TextEditingController();
-  TextEditingController dataothers2 = TextEditingController();
 
 
   List dataSupport = [];
@@ -146,9 +114,41 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   List dataclass3 = [];
   List dataSourceofinvestment = [];
   bool isYesSelected = false;
-  String cdsNumber = '';
-  String cdsName = '';
   String? group;
+
+
+  String? dataDistrict;
+  String? dataBlock;
+  String? dataPanchayath;
+  String? dataClass;
+  String? dataClass2;
+  List? dataClass3;
+  String? dataFamilyincome;
+  String? dataRoleinNg;
+  String? dataHouseOwnership;
+  String? dataEnterpisetype;
+ String? dataInfraShed;
+  String? dataInfraWastage;
+  String? dataInfraBiogas;
+  String? dataInfraEquipments;
+  TextEditingController dataWard = TextEditingController();
+  TextEditingController dataName = TextEditingController();
+  TextEditingController dataAddress = TextEditingController();
+  TextEditingController dataPhonenumber = TextEditingController();
+  TextEditingController dataNameofNg = TextEditingController();
+  TextEditingController dataNameofNGmember = TextEditingController();
+  TextEditingController datalanddetailslandarea = TextEditingController();
+  TextEditingController datalanddetailsagricultureland = TextEditingController();
+  TextEditingController datanumberofgroupmembers = TextEditingController();
+  TextEditingController dataYearofstartingagriculture = TextEditingController();
+  TextEditingController dataYearofstartingbussiness = TextEditingController();
+  TextEditingController dataInfraOthers = TextEditingController();
+  TextEditingController dataothers2 = TextEditingController();
+  TextEditingController dataSupportrecived = TextEditingController();
+  TextEditingController dataAmountinvested = TextEditingController();
+  TextEditingController dataAnimalhusbendaryRegdetailsRegnumber = TextEditingController();
+  TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname = TextEditingController();
+
 
 
   CheckboxOption selectedOption = CheckboxOption.notApplied;
@@ -176,7 +176,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataYearofstartingbussiness.text = yearbusiness;
     });
     providerone.updateDataYearofstartingbussiness(yearbusiness);
-    print(yearbusiness);
+    // print(yearbusiness);
   }
 
   onTapFunction2({required BuildContext context}) async {
@@ -195,7 +195,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataYearofstartingagriculture.text = yearagriculture;
     });
     providerone.updateDataYearofstartingagriculture(yearagriculture);
-    print(yearagriculture);
+    // print(yearagriculture);
 
   }
 
@@ -216,6 +216,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
               child: Column(children: [
                 NoSearchDropdown(
                   items: districts,
+                  selecteditem: dataDistrict,
                   onChanged: (value) {
                     setState(() {
                       selectedDistrict = value;
@@ -226,6 +227,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   item: 'ജില്ല',
                 ),
                 NoSearchDropdown(
+                  selecteditem: dataBlock,
                   onChanged: (value) {
                     setState(() {
                       selectedBlocks = value;
@@ -237,6 +239,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   items: blocks,
                 ),
                   NoSearchDropdown(
+                    selecteditem: dataPanchayath,
                     onChanged: (value) {
                       // setState(() {
                       //   selectedBlocks = value;
@@ -280,12 +283,14 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     },
                     keytype: TextInputType.number),
                 NoSearchDropdown(
+                    selecteditem: dataClass,
                     onChanged: (value) {
                       providerone.updateDataClass(value);
                     },
                     items: dataclass,
                     item: 'കുടുംബ അവസ്ഥ'),
                 NoSearchDropdown(
+                    selecteditem: dataClass2,
                     onChanged: (value) {
                       providerone.updateDataClass2(value);
                     },
@@ -316,6 +321,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   ),
                 ),
                 NoSearchDropdown(
+                    selecteditem: dataFamilyincome,
                     onChanged: (value) {
                       providerone.updateDataFamilyincome(value);
                     },
@@ -334,12 +340,14 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       providerone.updateDataNameofNGmember(value);
                     }),
                 NoSearchDropdown(
+                    selecteditem: dataRoleinNg,
                     onChanged: (value) {
                       providerone.updateDataRoleinNg(value);
                     },
                     items: position,
                     item: 'അയൽക്കൂട്ടത്തിലെ പദവി'),
                 NoSearchDropdown(
+                    selecteditem: dataHouseOwnership,
                     onChanged: (value) {
                       providerone.updateDataHouseownership(value);
                     },
@@ -430,10 +438,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextField(
+                              controller: dataAnimalhusbendaryRegdetailsRegnumber,
                               onChanged: (value) {
-                                // setState(() {
-                                //   cdsNumber = value;
-                                // });
                                 providerone
                                     .updateDataAnimalhusbendaryRegdetailsRegnumber(
                                         value);
@@ -446,6 +452,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextField(
+                              controller: dataAnimalhusbendaryRegdetailsCdsunitname,
                               onChanged: (value) {
                                 providerone
                                     .updateDataAnimalhusbendaryRegdetailsCdsunitname(
@@ -462,6 +469,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   ),
                 ),
                 NoSearchDropdown(
+                    selecteditem: dataEnterpisetype,
                     onChanged: (value) {
                       setState(() {
                         group =value;
@@ -654,24 +662,28 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     children: [
                       Headings(text: 'അടിസ്ഥാന സൗകര്യം '),
                       DropNoBorder(
+                        select: dataInfraShed,
                           onChanged: (value) {
                             providerone.updateDataInfraShed(value);
                           },
                           items: condition,
                           selecteditem: 'ഷെഡ് / കൂട്'),
                       DropNoBorder(
+                        select: dataInfraWastage,
                           onChanged: (value) {
                             providerone.updateDataInfraWastage(value);
                           },
                           items: condition,
                           selecteditem: 'വെസ്റ്റേജ്'),
                       DropNoBorder(
+                        select: dataInfraBiogas,
                           onChanged: (value) {
                             providerone.updateDataInfraBiogas(value);
                           },
                           items: condition,
                           selecteditem: 'ബയോഗ്യാസ്'),
                       DropNoBorder(
+                        select: dataInfraEquipments,
                           onChanged: (value) {
                             providerone.updateDataInfraEquipments(value);
                           },
@@ -794,11 +806,40 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   }
 
   void getData() {
+    var providerone = context.read<TextMain>();
+
     var dataup = widget.items['data'][0];
+
     setState(() {
-      dataName.text = dataup['data_Name'];
-      dataAddress.text = dataup['data_Address'];
-      // dataPhonenumber.text = dataup['Phonenumber'];
+      dataDistrict = dataup['data_district'];
+      dataBlock = dataup['data_Block'];
+      dataPanchayath = dataup['data_pancahayth'].toString();
+      dataWard.text = dataup["data_Ward"].toString();
+      dataName.text = dataup["data_Name"];
+      dataAddress.text= dataup["data_Address"];
+      dataPhonenumber.text = dataup["data_Phonenumber"].toString();
+      dataClass = dataup["data_Class"];
+      dataClass2= dataup["data_Class2"];
+      dataClass3 = dataup["data_Class3"];
+      dataFamilyincome= dataup["data_familyincome"];
+      dataNameofNg.text= dataup["data_NameofNG"];
+      dataNameofNGmember.text= dataup["data_NameofNGmember"];
+      dataRoleinNg= dataup["data_roleinNG"];
+      dataHouseOwnership = dataup["data_houseOwnership"].toString();
+      datalanddetailslandarea.text = dataup["data_landdetails_landarea"].toString();
+      datalanddetailsagricultureland.text = dataup['data_landdetails_agricultureland'].toString();
+      dataEnterpisetype = dataup["data_enterpisetype"];
+      dataYearofstartingbussiness.text = dataup["data_yearofstartingbussiness"].toString();
+      dataYearofstartingagriculture.text = dataup["data_Yearofstartingagriculture"].toString();
+      dataAmountinvested.text = dataup["data_amountinvested"].toString();
+      dataSupportrecived.text = dataup["data_supportrecived"].toString();
+      dataInfraShed = dataup[  "data_Infra_Shed"].toString();
+      dataInfraWastage = dataup["data_Infra_wastage"].toString();
+      dataInfraBiogas = dataup["data_Infra_biogas"].toString();
+      dataInfraEquipments = dataup["data_Infra_equipments"].toString();
+      dataInfraOthers.text = dataup["data_Infra_others"].toString();
+      dataAnimalhusbendaryRegdetailsCdsunitname.text =dataup ["data_Animalhusbendary_regdetails_cdsunitname"].toString();
+      dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
     });
   }
 }

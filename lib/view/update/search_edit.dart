@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/login.dart';
 import 'package:main200623/view/update/searchresult_update.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
+import '../../model/model.dart';
 import '../../services/add_api.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/dropdown_nosearch.dart';
@@ -21,6 +23,7 @@ class _SearchEditState extends State<SearchEdit> {
   String? selectedBlocks;
   String? selectedpanchayth;
   String? selectedcrp;
+
 
   @override
   void initState() {
@@ -56,6 +59,7 @@ class _SearchEditState extends State<SearchEdit> {
   List<String> blocks = [];
 
   Future<void> fetchBlocks(String selectedDistrict) async {
+
     try {
       final response = await http.get(
           Uri.parse('${api}search/listBlocks?data_district=$selectedDistrict'));
@@ -63,7 +67,7 @@ class _SearchEditState extends State<SearchEdit> {
         final data = json.decode(response.body);
         setState(() {
           blocks = List<String>.from(data);
-          print(blocks);
+          print(data);
         });
       } else {
         throw Exception('Failed to fetch blocks');
@@ -88,11 +92,11 @@ class _SearchEditState extends State<SearchEdit> {
           print(panchaths);
         });
       } else {
-        throw Exception('Failed to fetch blocks');
+        throw Exception('Failed to fetch Panchayth');
       }
     } catch (e) {
       // Handle error
-      print('Error fetching blocks: $e');
+      print('Error fetching Panchayth: $e');
     }
   }
 
@@ -110,43 +114,42 @@ class _SearchEditState extends State<SearchEdit> {
           print(crplist);
         });
       } else {
-        throw Exception('Failed to fetch blocks');
+        throw Exception('Failed to fetch Crp');
       }
     } catch (e) {
       // Handle error
-      print('Error fetching blocks: $e');
+      print('Error fetching Crp: $e');
     }
   }
 
-  List? peopledata = [];
+  List? peopleData = [];
 
-  Future<void> Fetchdata(String selectedcrp) async {
+  Future<void> fetchData(String selectedCrp,String token) async {
     try {
       final response = await http.get(
-        Uri.parse('${api}search/searchByCpr?data_nameofcrp=$selectedcrp'),
-        headers: {'Authorization': 'Bearer $authToken'},
+        Uri.parse('${api}search/searchByCpr?data_nameofcrp=$selectedCrp'),
+        headers: {'Authorization': 'Bearer $token'},
       );
-
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          peopledata = List<Map<String, dynamic>>.from(data);
-          print(peopledata);
+          peopleData = List<Map<String, dynamic>>.from(data);
         });
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SerachresultUpsate(item: peopledata),
+            builder: (context) => SerachresultUpsate(item: peopleData),
           ),
         );
       } else {
-        throw Exception('Failed to fetch blocks');
+        throw Exception('Failed to fetch data');
       }
     } catch (e) {
       // Handle error
-      print('Error fetching blocks: $e');
+      print('Error fetching data: $e');
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +224,8 @@ class _SearchEditState extends State<SearchEdit> {
                 item: 'CRP'),
             ElevateClick(
                 ontap: () {
-                  Fetchdata(selectedcrp!);
+                  print(authToken);
+                  fetchData(selectedcrp!,authToken!);
                 },
                 text: 'Search'),
           ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/updatepersonal_add.dart';
 
-import '../add_data/personal_add.dart';
+// import '../add_data/personal_add.dart';
 
 class SerachresultUpsate extends StatefulWidget {
   const SerachresultUpsate({Key? key, this.item,}) : super(key: key);
@@ -24,8 +24,7 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
       ),
       body: ListView.builder(
         itemCount: widget.item!.length,
-        itemBuilder: (context, index) {
-          Map<String, dynamic> data = widget.item![index]['data'][0];
+        itemBuilder: (context, index) { Map<String, dynamic> data = widget.item![index]['data'][0];
           // String dataName = data['data_Name'];
 
           return Padding(

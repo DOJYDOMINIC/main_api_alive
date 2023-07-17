@@ -5,12 +5,13 @@ class DropNoBorder extends StatelessWidget {
   DropNoBorder({
     required this.onChanged,
     required this.items,
-    required this.selecteditem,
+    required this.selecteditem, this.select,
   });
 
   final List<String> items;
   final ValueChanged onChanged;
   final String? selecteditem;
+  final String? select;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class DropNoBorder extends StatelessWidget {
           // disabledItemFn: (String s) => s.startsWith('I'),
         ),
         items: items,
+        selectedItem: select,
         onChanged: onChanged,
           dropdownDecoratorProps: DropDownDecoratorProps(
               dropdownSearchDecoration: InputDecoration(

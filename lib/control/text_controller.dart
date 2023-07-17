@@ -125,7 +125,7 @@ class TextMain extends ChangeNotifier {
   // -----------------sales----------
   List? _dataSalesprdct2;
   int? _dataSalesquntum2;
-  String? _dataSalessalesmethod;
+  // String? _dataSalessalesmethod;
   //------------livelyhood------------
   String? _datalivelihoodincomesource;
   int? _datalivelihoodnumbers;
@@ -407,7 +407,7 @@ class TextMain extends ChangeNotifier {
 
   List? get dataSalesprdct2 => _dataSalesprdct2;
   int? get dataSalesquntum2 => _dataSalesquntum2;
-  String? get dataSalessalesmethod => _dataSalessalesmethod;
+  // String? get dataSalessalesmethod => _dataSalessalesmethod;
 
 
  //-------------------livelihood------------------------
@@ -507,10 +507,10 @@ class TextMain extends ChangeNotifier {
 
   //------------------Sales-----------------------//
 
-  void updateDataSalessalesmethod(String? value) {
-    _dataSalessalesmethod = value;
-    notifyListeners();
-  }
+  // void updateDataSalessalesmethod(String? value) {
+  //   _dataSalessalesmethod = value;
+  //   notifyListeners();
+  // }
 
   void updateDataSalesquntum2(int? value) {
     _dataSalesquntum2 = value;
@@ -662,6 +662,13 @@ class TextMain extends ChangeNotifier {
     _dataAnimalhusbendaryBusinesstype = value;
     notifyListeners();
   }
+
+  void updateSelectedOptions(CheckboxOption option, List<String> newDataClass3) {
+    _selectedOption = option;
+    _dataClass3 = newDataClass3;
+    notifyListeners();
+  }
+
 
   void updateDataAnimalhusbendaryOthers0(String? value) {
     _dataAnimalhusbendaryOthers0 = value;

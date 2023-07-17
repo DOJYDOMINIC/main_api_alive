@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 List traingrequared = [
   {'text': 'MANAGEMENT', 'value': 'MANAGEMENT'},
   {'text': 'COW REARING', 'value': 'COW REARING'},
@@ -10,10 +12,14 @@ List traingrequared = [
   {'text': 'BUFFALO MALE CALF REARING', 'value': 'BUFFALO MALE CALF REARING'},
   {'text': 'BUFFALO REARING', 'value': 'BUFFALO REARING'},
   {'text': 'QUAILREARING', 'value': 'QUAILREARING'},
-  {'text': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT', 'value': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT'},
-  {'text': 'KEEPING AND MANAGEMENT OF PET BIRDS.', 'value': 'KEEPING AND MANAGEMENT OF PET BIRDS.'},
-
-
+  {
+    'text': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT',
+    'value': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT'
+  },
+  {
+    'text': 'KEEPING AND MANAGEMENT OF PET BIRDS.',
+    'value': 'KEEPING AND MANAGEMENT OF PET BIRDS.'
+  },
 ];
 List<String> dataclass = ['APL', 'BPL', 'APL,BPL'];
 List<String> dataclass2 = [
@@ -48,7 +54,6 @@ List<String> datacls3 = [
   "Thoseabove60yearsofage",
   "widow",
   "femaleleaded",
-
 ];
 
 List<String> salesmethod = [
@@ -191,9 +196,12 @@ final List datamgnregasupportlist = [
   // {'text': 'other','value': 'other'},
 ];
 
-final List?   rawmaterials= [
+final List? rawmaterials = [
   {'text': 'INGREDIENTS FOR CTTLE FEED', 'value': 'INGREDIENTS FOR CTTLE FEED'},
-  {'text': 'INGREDIENTS FOR POULTRY FEED', 'value': 'INGREDIENTS FOR POULTRY FEED'},
+  {
+    'text': 'INGREDIENTS FOR POULTRY FEED',
+    'value': 'INGREDIENTS FOR POULTRY FEED'
+  },
   {'text': 'PULLETS', 'value': 'PULLETS'},
   {'text': 'MANURE', 'value': 'MANURE'},
   {'text': 'CHEMICAL FERTILIZERS', 'value': 'CHEMICAL FERTILIZERS'},
@@ -207,7 +215,10 @@ final List?   rawmaterials= [
   {'text': 'COWS', 'value': 'COWS'},
   {'text': 'MALABARI GOATS', 'value': 'MALABARI GOATS'},
   {'text': 'MALABARI GOAT-KIDS', 'value': 'MALABARI GOAT-KIDS'},
-  {'text': 'MATERIAL FOR POULTRY CAGE FABRICATION', 'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'},
+  {
+    'text': 'MATERIAL FOR POULTRY CAGE FABRICATION',
+    'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'
+  },
   {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
   {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
   {'text': 'LAYER', 'value': 'LAYER'},
@@ -224,25 +235,23 @@ final List?   rawmaterials= [
   {'text': 'UREA MOLASS BLOCK', 'value': 'UREA MOLASS BLOCK'},
   {'text': 'GOAT FEED', 'value': 'GOAT FEED'},
   {'text': 'KID STARTER', 'value': 'KID STARTER'},
-  // {'text': 'other','value': 'other'},
+  {'text': 'MILK REPLACER', 'value': 'MILK REPLACER'},
 ];
 
-
- final List? pullets = [
+final List? pullets = [
   {'text': 'BV380', 'value': 'BV380'},
   {'text': 'GRAMALAKSHMI', 'value': 'GRAMALAKSHMI'},
   {'text': 'GRAMAPRIYA', 'value': 'GRAMAPRIYA'},
   {'text': 'OTHER…..', 'value': 'OTHER…..'},
-
 ];
 
- final List? hfg = [
-   {'text': 'H F', 'value': 'H F'},
-   {'text': 'GERSEY', 'value': 'GERSEY'},
- ];
+final List? hfg = [
+  {'text': 'H F', 'value': 'H F'},
+  {'text': 'GERSEY', 'value': 'GERSEY'},
+];
 
 final List? manure = [
-{'text': 'COW DUNG', 'value': 'COW DUNG'},
+  {'text': 'COW DUNG', 'value': 'COW DUNG'},
   {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
   {'text': 'POULTRY MANURE', 'value': 'POULTRY MANURE'},
   {'text': 'VERMY COMPOST', 'value': 'VERMY COMPOST'},
@@ -257,16 +266,15 @@ final List? fodderslip = [
   {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
   {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
   {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
-
 ];
 
- List<String> branditem = [
-   'VHC',
-   'SKM',
-   'KRISHI',
-   'SUGUNA',
-   'GODREJ',
- ];
+List<String> branditem = [
+  'VHC',
+  'SKM',
+  'KRISHI',
+  'SUGUNA',
+  'GODREJ',
+];
 
 List<String> layeritems = [
   'VHC',
@@ -286,7 +294,7 @@ List<String> cattlefeed = [
   'KRISHI',
 ];
 
-List<String> milkreplacer = ['AMUL','GEEVAN'];
+List<String> milkreplacer = ['AMUL', 'GEEVAN'];
 
 List<String> enrgyrichfeed = [
   'MILMA',
@@ -295,5 +303,46 @@ List<String> enrgyrichfeed = [
   'KRISHI',
   'SUGUNA',
   'GODREJ',
-
 ];
+
+final List? produceproduction = [
+  {'text': 'NAPIER', 'value': 'NAPIER'},
+  {'text': 'CO4', 'value': 'CO4'},
+  {'text': 'CO5', 'value': 'CO5'},
+  {'text': 'RED NAPIER', 'value': 'RED NAPIER'},
+  {'text': 'SUPER NAPIER', 'value': 'SUPER NAPIER'},
+  {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
+  {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
+  {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
+];
+
+final List? produceproductavilable = [
+  {'text': 'MILK', 'value': 'MILK'},
+  {'text': 'MEAT', 'value': 'MEAT'},
+  {'text': 'EGG', 'value': 'EGG'},
+  {'text': 'MANURE', 'value': 'MANURE'},
+  {'text': 'FEED', 'value': 'FEED'},
+  {'text': 'MALE BUFFALO CALF', 'value': 'MALE BUFFALO CALF'},
+  {'text': 'GRASS FOODER', 'value': 'GRASS FOODER'},
+  {'text': 'TREE FOODER', 'value': 'TREE FOODER'},
+  {'text': 'KID', 'value': 'KID'},
+  {'text': 'DAY OLD CHICK', 'value': 'DAY OLD CHICK'},
+  {'text': 'PULLETS', 'value': 'PULLETS'},
+  {'text': 'CALF', 'value': 'CALF'},
+  {'text': 'BEIFER', 'value': 'BEIFER'},
+];
+
+final List? mode_of_marketing = [
+  {'text': 'DIRECT MARKET', 'value': 'DIRECT MARKET'},
+  {'text': 'LOCAL MARKET', 'value': 'LOCAL MARKET'},
+  {'text': 'WHOLESALE MARKET', 'value': 'WHOLESALE MARKET'},
+  {'text': 'SOCIETY', 'value': 'SOCIETY'},
+  {'text': 'CLUSTER', 'value': 'CLUSTER'},
+  {'text': 'ONLINE', 'value': 'ONLINE'},
+];
+
+
+
+
+
+

@@ -20,7 +20,6 @@ enum CheckboxOption { applied, sanctioned, notApplied }
 class PersonalPage extends StatefulWidget {
   const PersonalPage({Key? key}) : super(key: key);
 
-
   @override
   State<PersonalPage> createState() => _PersonalPageState();
 }
@@ -31,12 +30,10 @@ class _PersonalPageState extends State<PersonalPage> {
   String? selectedDistrict;
   String? selectedBlocks;
 
-
   @override
   void initState() {
     super.initState();
     fetchDistricts();
-
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -48,7 +45,8 @@ class _PersonalPageState extends State<PersonalPage> {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          districts = List<String>.from(data); // Assign fetched data to the global list
+          districts =
+              List<String>.from(data); // Assign fetched data to the global list
           // selectedDistrict;
           // print(selectedDistrict);
         });
@@ -65,8 +63,8 @@ class _PersonalPageState extends State<PersonalPage> {
 
   Future<void> fetchBlocks(String selectedDistrict) async {
     try {
-      final response = await http.get(Uri.parse(
-          '${api}user/blocks/$selectedDistrict'));
+      final response =
+          await http.get(Uri.parse('${api}user/blocks/$selectedDistrict'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -82,13 +80,12 @@ class _PersonalPageState extends State<PersonalPage> {
     }
   }
 
-
   List<String> panchaths = [];
 
   Future<void> fetchPanchayth(String selectedBlocks) async {
     try {
-      final response = await http.get(Uri.parse(
-          '${api}user/Panchayat/$selectedBlocks'));
+      final response =
+          await http.get(Uri.parse('${api}user/Panchayat/$selectedBlocks'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -111,7 +108,6 @@ class _PersonalPageState extends State<PersonalPage> {
   // List<String> newvalitem = [];
   // String? panchaythvalue;
   // List<String> panchaythvaluelist = [];
-
 
   TextEditingController dataName = TextEditingController();
   TextEditingController dataAddress = TextEditingController();
@@ -139,7 +135,7 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController datanumberofgroupmembers = TextEditingController();
   TextEditingController dataothers2 = TextEditingController();
 
-
+  List traningrequaredlist = [];
   List dataSupport = [];
   List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
@@ -149,7 +145,6 @@ class _PersonalPageState extends State<PersonalPage> {
   String cdsNumber = '';
   String cdsName = '';
   String? group;
-
 
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
@@ -235,7 +230,7 @@ class _PersonalPageState extends State<PersonalPage> {
                   item: 'ബ്ലോക്ക്',
                   items: blocks,
                 ),
-                  NoSearchDropdown(
+                NoSearchDropdown(
                     onChanged: (value) {
                       // setState(() {
                       //   selectedBlocks = value;
@@ -261,7 +256,6 @@ class _PersonalPageState extends State<PersonalPage> {
                     providerone.updateDataName(value);
                   },
                 ),
-
                 InputField(
                     hint: 'വിലാസം',
                     controller: dataAddress,
@@ -307,6 +301,12 @@ class _PersonalPageState extends State<PersonalPage> {
                     cancelButtonLabel: 'CANCEL',
                     // hintText: 'Please select one or more options',
                     initialValue: dataclass3,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'This field is required';
+                      }
+                      return null;
+                    },
                     onSaved: (value) {
                       if (value == null) return;
                       providerone.updateDataClass3(value);
@@ -434,7 +434,8 @@ class _PersonalPageState extends State<PersonalPage> {
                                 //   cdsNumber = value;
                                 // });
 
-                                providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(
+                                providerone
+                                    .updateDataAnimalhusbendaryRegdetailsRegnumber(
                                         value);
                               },
                               decoration: InputDecoration(
@@ -463,20 +464,20 @@ class _PersonalPageState extends State<PersonalPage> {
                 NoSearchDropdown(
                     onChanged: (value) {
                       setState(() {
-                        group =value;
+                        group = value;
                       });
                       providerone.updateDataEnterpisetype(value);
                     },
                     items: enterpricetype,
                     item: 'സംരഭം തരം'),
-               if(group == 'Group')
-                InputField(
-                    keytype: TextInputType.number,
-                    hint: 'അംഗങ്ങളുടെ എണ്ണം',
-                    controller: datanumberofgroupmembers,
-                    onchanged: (value) {
-                      providerone.updateDataNoofgroupmembers(value);
-                    }),
+                if (group == 'Group')
+                  InputField(
+                      keytype: TextInputType.number,
+                      hint: 'അംഗങ്ങളുടെ എണ്ണം',
+                      controller: datanumberofgroupmembers,
+                      onchanged: (value) {
+                        providerone.updateDataNoofgroupmembers(value);
+                      }),
                 SizedBox(
                   height: 10,
                 ),
@@ -488,7 +489,7 @@ class _PersonalPageState extends State<PersonalPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
-                        controller:dataYearofstartingagriculture,
+                        controller: dataYearofstartingagriculture,
                         readOnly: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -597,7 +598,6 @@ class _PersonalPageState extends State<PersonalPage> {
                           }
                         },
                       ),
-
                       CheckboxListTile(
                         title: Text('Not Applied'),
                         value: selectedOption == CheckboxOption.notApplied,
@@ -618,6 +618,7 @@ class _PersonalPageState extends State<PersonalPage> {
                           child: Column(
                             children: [
                               TextField(
+                                keyboardType: TextInputType.number,
                                 onChanged: (value) {
                                   int? valuee = int.tryParse(value);
                                   providerone.updateDataTotalinvestment(valuee);
@@ -713,22 +714,49 @@ class _PersonalPageState extends State<PersonalPage> {
                     },
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 if (dataSupport.contains('Other Supports'))
                   TextField(
                     controller: dataothers2,
-                    decoration:InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black)),
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(color: Colors.black)),
-                            labelText: 'മറ്റു പിന്തുണകൾ',labelStyle: TextStyle(color: Colors.black)
-                    ),
-                    onChanged: (value){
+                        labelText: 'മറ്റു പിന്തുണകൾ',
+                        labelStyle: TextStyle(color: Colors.black)),
+                    onChanged: (value) {
                       providerone.updateDataOthers2(value);
                     },
                   ),
+                Container(
+                  // width: MediaQuery.of(context).size.width * .8,
+                  child: MultiSelectFormField(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black)),
+                      title: Text(
+                        'പരിശീലനം വേണ്ട മേഘല ',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      dataSource: traingrequared,
+                      textField: 'text',
+                      valueField: 'value',
+                      okButtonLabel: 'OK',
+                      cancelButtonLabel: 'CANCEL',
+                      // hintText: 'Please select one or more options',
+                      initialValue: traningrequaredlist,
+                      onSaved: (value) {
+                        providerone.updateDataTrainingsrequired(value);
+                        // setState(() {
+                        //   traninglist = value;
+                        //   traning = traninglist!.join(',');
+                        // });
+                      }),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
@@ -754,9 +782,6 @@ class _PersonalPageState extends State<PersonalPage> {
                 ),
                 ElevateClick(
                     ontap: () {
-                      // print(selectedDistrict);
-                      // print(fetchBlocks(selectedDistrict!));
-                      // print(blocks);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -767,7 +792,6 @@ class _PersonalPageState extends State<PersonalPage> {
               ]),
             ),
           ),
-        )
-    );
+        ));
   }
 }

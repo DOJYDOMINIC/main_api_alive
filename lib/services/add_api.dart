@@ -6,8 +6,7 @@ import '../model/model.dart';
 
 //base URL
 
-const api = 'http://192.168.1.38:5000/api/';
-
+const api = 'http://192.168.1.46:5000/api/';
 
 
 
