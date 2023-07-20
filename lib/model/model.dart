@@ -391,7 +391,7 @@ class AddData {
     modePurchaseofrawmaterials: List<String>.from(json["Mode_purchaseofrawmaterials"].map((x) => x)),
     dataPurchaseofrawmaterialsBrand: json["data_purchaseofrawmaterials_brand"],
     brandQnty: json["BRAND_qnty"],
-    members: List<Member>.from(json["members"].map((x) => Member.fromJson(x))),
+    members: List<Member>.from(json["familyDetails"].map((x) => Member.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -520,7 +520,7 @@ class AddData {
     "Mode_purchaseofrawmaterials": modePurchaseofrawmaterials != null ?  List<dynamic>.from(modePurchaseofrawmaterials!.map((x) => x)) : [],
     "data_purchaseofrawmaterials_brand": dataPurchaseofrawmaterialsBrand,
     "BRAND_qnty": brandQnty,
-    "members": List<dynamic>.from(members!.map((x) => x.toJson())),
+    "familyDetails": List<dynamic>.from(members!.map((x) => x.toJson())),
   };
 }
 

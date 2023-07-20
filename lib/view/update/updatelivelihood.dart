@@ -76,8 +76,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                     int? valuee = int.tryParse(value);
                     providerone.updateDatalivelihoodrevenue(valuee);
                   }),
+
               ElevateClick(
                   ontap: () {
+                    changeData();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -94,16 +96,31 @@ class _SalesState extends State<UpdateLivelihoodValue> {
   }
 
   void getproductData() {
-    var providerone = context.read<TextMain>();
-
     var dataup = widget.items['livelihoods'][0];
-
+    print(dataup);
     setState(() {
-      // dataDistrict: dataDistrict.toString()
       dataLivelihoodIncomesource.text = dataup["data_livelihood_incomesource"].toString();
       dataLivelihoodNumbers.text = dataup["data_livelihood_numbers"].toString();
       dataLivelihoodCapitalsource.text = dataup["data_livelihood_capitalsource"].toString();
       dataLivelihoodRevenue.text = dataup["data_livelihood_revenue"].toString();
     });
+  }
+
+  changeData() {
+    var providerone = context.read<TextMain>();
+
+    providerone.updateDatalivelihoodincomesource(dataLivelihoodIncomesource.text);
+
+    String livelihoodnumbers = dataLivelihoodNumbers.text;
+    int dataLivelihoodNumber = int.parse(livelihoodnumbers);
+    providerone.updateDatalivelihoodnumbers(dataLivelihoodNumber);
+
+    providerone.updateDatalivelihoodcapitalsource(dataLivelihoodNumbers.text);
+
+    String revenue = dataLivelihoodRevenue.text;
+    int livelihoodrevenue = int.parse(revenue);
+    providerone.updateDatalivelihoodrevenue(livelihoodrevenue);
+
+
   }
 }

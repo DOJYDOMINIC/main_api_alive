@@ -18,15 +18,19 @@ class UpdateProduct extends StatefulWidget {
 }
 
 class _UpdateProductState extends State<UpdateProduct> {
-  TextEditingController dataProductsPrdct = TextEditingController();
-  TextEditingController dataProductsQuantum = TextEditingController();
-  TextEditingController dataProductsPrice2 = TextEditingController();
-
   @override
   void initState() {
     super.initState();
     getproductData();
   }
+
+  // String? data_products_quantum;
+  // String? dataProductsQuantum;
+  // String? dataProductsPrice2 ;
+
+  TextEditingController dataProductsPrdct = TextEditingController();
+  TextEditingController dataProductsQuantum = TextEditingController();
+  TextEditingController dataProductsPrice2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +88,9 @@ class _UpdateProductState extends State<UpdateProduct> {
 
   void getproductData() {
     try {
-      var providerone = context.read<TextMain>();
-
+      // var providerone = context.read<TextMain>();
       var dataup = widget.items['products'][0];
+      print(dataup);
       setState(() {
         dataProductsPrdct.text = dataup["data_products_prdct"].toString();
         dataProductsPrice2.text = dataup["data_products_price2"].toString();
@@ -99,4 +103,11 @@ class _UpdateProductState extends State<UpdateProduct> {
     }
   }
 
+  changeData() {
+    var providerone = context.read<TextMain>();
+
+
+    providerone.updateDataComments(dataProductsPrice2.text);
+    providerone.updateDataNameofrespondent(dataProductsQuantum.text);
+  }
 }

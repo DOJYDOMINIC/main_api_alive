@@ -134,6 +134,7 @@ class _SearchEditState extends State<SearchEdit> {
         final data = json.decode(response.body);
         setState(() {
           peopleData = List<Map<String, dynamic>>.from(data);
+          print(peopleData);
         });
         Navigator.push(
           context,
@@ -224,7 +225,6 @@ class _SearchEditState extends State<SearchEdit> {
                 item: 'CRP'),
             ElevateClick(
                 ontap: () {
-                  print(authToken);
                   fetchData(selectedcrp!,authToken!);
                 },
                 text: 'Search'),

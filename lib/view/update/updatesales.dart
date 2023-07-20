@@ -43,7 +43,6 @@ class _SalesState extends State<UpdateSalesData> {
   TextEditingController pulletsqty = TextEditingController();
   TextEditingController calfqty = TextEditingController();
   TextEditingController beiferqty = TextEditingController();
-
   TextEditingController dataSalesprdct2 = TextEditingController();
   TextEditingController dataSalesquntum2 = TextEditingController();
   TextEditingController dataSalessalesmethod = TextEditingController();
@@ -91,7 +90,7 @@ class _SalesState extends State<UpdateSalesData> {
                   },
                 ),
               ),
-              if(productavilable != null && productavilable =='MILK')
+              if(productavilable != null && productavilable!.contains('MILK'))
                 InputField(
                     hint: 'MILK QTY',
                     keytype: TextInputType.number,
@@ -100,7 +99,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataMilkQnty(valuee);
                     }),
-              if(productavilable != null && productavilable== 'MEAT')
+              if(productavilable != null && productavilable!.contains('MEAT'))
                 InputField(
                     hint: 'MEAT QTY',
                     keytype: TextInputType.number,
@@ -109,7 +108,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataMeatQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'EGG')
+              if(productavilable != null && productavilable!.contains('EGG'))
                 InputField(
                     hint: 'EGG QTY/KG',
                     keytype: TextInputType.number,
@@ -118,7 +117,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataEggQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'MANURE')
+              if(productavilable != null && productavilable!.contains('MANURE'))
                 InputField(
                     hint: 'MANURE QTY',
                     keytype: TextInputType.number,
@@ -127,7 +126,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataManureQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'FEED')
+              if(productavilable != null && productavilable!.contains('FEED'))
                 InputField(
                     hint: 'FEED QTY',
                     keytype: TextInputType.number,
@@ -136,7 +135,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataFeedQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'MALE BUFFALO CALF')
+              if(productavilable != null && productavilable!.contains('MALE BUFFALO CALF'))
                 InputField(
                     hint: 'MALE BUFFALO CALF QTY',
                     keytype: TextInputType.number,
@@ -145,7 +144,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataMaleBuffaloCalfQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'GRASS FOODER')
+              if(productavilable != null && productavilable!.contains('GRASS FOODER'))
                 InputField(
                     hint: 'GRASS FOODER QTY',
                     keytype: TextInputType.number,
@@ -154,7 +153,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataGrasFooderQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'TREE FOODER')
+              if(productavilable != null && productavilable!.contains('TREE FOODER'))
                 InputField(
                     hint: 'TREE FOODER QTY',
                     keytype: TextInputType.number,
@@ -163,7 +162,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataTreeFooderQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'KID')
+              if(productavilable != null && productavilable!.contains('KID'))
                 InputField(
                     hint: 'KID QTY',
                     keytype: TextInputType.number,
@@ -172,7 +171,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataKidQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'DAY OLD CHICK')
+              if(productavilable != null && productavilable!.contains('DAY OLD CHICK'))
                 InputField(
                     hint: 'DAY OLD CHICK QTY',
                     keytype: TextInputType.number,
@@ -181,7 +180,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataDayOldChickQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'PULLETS')
+              if(productavilable != null && productavilable!.contains('PULLETS'))
                 InputField(
                     hint: 'PULLETS QTY',
                     keytype: TextInputType.number,
@@ -190,7 +189,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataPulletsQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'CALF')
+              if(productavilable != null && productavilable!.contains('CALF'))
                 InputField(
                     hint: 'CALF QTY',
                     keytype: TextInputType.number,
@@ -199,7 +198,7 @@ class _SalesState extends State<UpdateSalesData> {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataCalfQnty(valuee);
                     }),
-              if(productavilable != null && productavilable == 'BEIFER')
+              if(productavilable != null && productavilable!.contains('BEIFER'))
                 InputField(
                     hint: 'BEIFER QTY',
                     keytype: TextInputType.number,
@@ -244,11 +243,13 @@ class _SalesState extends State<UpdateSalesData> {
       ),
     );
   }
+
   void getsaleData() {
     try {
       var dataup = widget.items['sales'][0];
 
       setState(() {
+        dataup;
         // productavilable = dataup['data_Sales_prdct2'];
       });
     } catch (e) {

@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/model/model.dart';
+import 'package:main200623/view/login.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +37,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     super.initState();
     getData();
     fetchDistricts();
+    // fetchBlocks(dataDistrict!);
+    // fetchPanchayth(dataBlock!);
+
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -105,6 +107,25 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     }
   }
 
+  Future<void> deleteDataonId(String dataId, String token) async {
+    final apiUrl = '${api}auth/deleteUsers/$dataId';
+    print(dataId);
+
+    try {
+      final response = await http.delete(
+        Uri.parse(apiUrl),
+        headers: {'Authorization': 'Bearer $token'}, // Pass the token in the request headers
+      );
+
+      if (response.statusCode == 200) {
+        print('Data deletion successful');
+      } else {
+        print('Failed to delete data. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error occurred during data deletion: $error');
+    }
+  }
 
 
 
@@ -150,7 +171,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname = TextEditingController();
 
 
-
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
   String dateOfLoanApplication = '';
@@ -161,7 +181,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   //  ----------------------------------------------------
 
   onTapFunction({required BuildContext context}) async {
-    var providerone = context.read<TextMain>();
+    var providerone = Provider.of<TextMain>(context);
+    // var providerone = context.read();
 
     DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -208,6 +229,40 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
           title: Text('വ്യക്തിവിവരം '),
           centerTitle: true,
           backgroundColor: app_theam,
+          actions: [
+            IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Delete Confirmation'),
+                      content: Text('Do you want to delete?'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text('Cancel'),
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                        ),
+                        TextButton(
+                          child: Text('OK'),
+                          onPressed: () {
+                            var id = widget.items['data'][0]['_id'];
+                            deleteDataonId(id,authToken!);
+                            // Perform delete operation
+                            // Add your delete logic here
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: Icon(Icons.delete),
+            )
+          ],
         ),
         body: Consumer(
           builder: (context, value, child) => SingleChildScrollView(
@@ -219,8 +274,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   selecteditem: dataDistrict,
                   onChanged: (value) {
                     setState(() {
-                      selectedDistrict = value;
-                      fetchBlocks(selectedDistrict!);
+                        dataDistrict = value;
+                        fetchBlocks(dataDistrict!);
                     });
                     providerone.updateDataDistrict(value);
                   },
@@ -230,8 +285,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   selecteditem: dataBlock,
                   onChanged: (value) {
                     setState(() {
-                      selectedBlocks = value;
-                      fetchPanchayth(selectedBlocks!);
+                      if(blocks.contains(dataBlock))
+                      dataBlock = value;
+                      fetchPanchayth(dataBlock!);
                     });
                     providerone.updateDataBlock(value);
                   },
@@ -262,6 +318,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                   hint: 'സംരംഭകയുടെ പേര്',
                   controller: dataName,
                   onchanged: (value) {
+                    setState(() {
+                      dataName;
+                    });
                     providerone.updateDataName(value);
                   },
                 ),
@@ -788,7 +847,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                 ),
                 ElevateClick(
                     ontap: () {
-                      // print(selectedDistrict);
+                      changeData();
+                      // print(widget.items['data'][0]['_id']);
                       // print(fetchBlocks(selectedDistrict!));
                       // print(blocks);
                       Navigator.push(
@@ -806,17 +866,21 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   }
 
   void getData() {
-    var providerone = context.read<TextMain>();
+    // var providerone = context.read<TextMain>();
+
 
     var dataup = widget.items['data'][0];
+
+ // providerone.updateDataBlock(dataup['data_Block'].toString());
+
 
     setState(() {
       dataDistrict = dataup['data_district'];
       dataBlock = dataup['data_Block'];
-      dataPanchayath = dataup['data_pancahayth'].toString();
+      dataPanchayath = dataup['data_Panchayath'].toString();
       dataWard.text = dataup["data_Ward"].toString();
-      dataName.text = dataup["data_Name"];
-      dataAddress.text= dataup["data_Address"];
+      dataName.text = dataup["data_Name"].toString();
+      dataAddress.text= dataup["data_Address"].toString();
       dataPhonenumber.text = dataup["data_Phonenumber"].toString();
       dataClass = dataup["data_Class"];
       dataClass2= dataup["data_Class2"];
@@ -833,13 +897,57 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataYearofstartingagriculture.text = dataup["data_Yearofstartingagriculture"].toString();
       dataAmountinvested.text = dataup["data_amountinvested"].toString();
       dataSupportrecived.text = dataup["data_supportrecived"].toString();
-      dataInfraShed = dataup[  "data_Infra_Shed"].toString();
-      dataInfraWastage = dataup["data_Infra_wastage"].toString();
-      dataInfraBiogas = dataup["data_Infra_biogas"].toString();
-      dataInfraEquipments = dataup["data_Infra_equipments"].toString();
+      dataInfraShed = dataup[  "data_Infra_Shed"];
+      dataInfraWastage = dataup["data_Infra_wastage"];
+      dataInfraBiogas = dataup["data_Infra_biogas"];
+      dataInfraEquipments = dataup["data_Infra_equipments"];
       dataInfraOthers.text = dataup["data_Infra_others"].toString();
       dataAnimalhusbendaryRegdetailsCdsunitname.text =dataup ["data_Animalhusbendary_regdetails_cdsunitname"].toString();
       dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
     });
+  }
+
+  void changeData() {
+    var providerone = context.read<TextMain>();
+    providerone.updateDataDistrict(dataDistrict);
+    providerone.updateDataBlock(dataBlock);
+    providerone.updateDataPanchayath(dataPanchayath);
+    String dataWardText = dataWard.text;
+    int dataward = int.parse(dataWardText);
+    providerone.updateDataWard(dataward);
+    providerone.updateDataName(dataName.text);
+    providerone.updateDataAddress(dataAddress.text);
+    String phonenumber = dataPhonenumber.text;
+    int phoneNumber = int.parse(phonenumber);
+    providerone.updateDataPhonenumber(phoneNumber);
+    providerone.updateDataClass(dataClass);
+    providerone.updateDataClass2(dataClass2);
+    providerone.updateDataClass3(dataClass3);
+    providerone.updateDataFamilyincome(dataFamilyincome);
+    providerone.updateDataNameofNg(dataNameofNg.text);
+    providerone.updateDataNameofNGmember(dataNameofNGmember.text);
+    providerone.updateDataRoleinNg(dataRoleinNg);
+    providerone.updateDataHouseownership(dataHouseOwnership);
+    String landarea = datalanddetailslandarea.text;
+    int detailslandarea = int.parse(landarea);
+    providerone.updateDataLanddetailsLandarea(detailslandarea);
+    String agricultureland = datalanddetailsagricultureland.text;
+    int detailsagricultureland = int.parse(agricultureland);
+    providerone.updateDataLanddetailsAgricultureland(detailsagricultureland);
+    providerone.updateDataEnterpisetype(dataEnterpisetype);
+    providerone.updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
+    providerone.updateDataYearofstartingagriculture(dataYearofstartingagriculture.text);
+    String invested = dataAmountinvested.text;
+    int amountinvested = int.parse(invested);
+    providerone.updateDataAmountinvested(amountinvested);
+    providerone.updateDataSupportrecived(dataSupportrecived.text);
+    providerone.updateDataInfraShed(dataInfraShed);
+    providerone.updateDataInfraWastage(dataInfraWastage);
+    providerone.updateDataInfraBiogas(dataInfraBiogas);
+    providerone.updateDataInfraEquipments(dataInfraEquipments);
+    providerone.updateDataInfraOthers(dataInfraOthers.text );
+    providerone.updateDataAnimalhusbendaryRegdetailsCdsunitname(dataAnimalhusbendaryRegdetailsCdsunitname.text );
+    providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(dataAnimalhusbendaryRegdetailsRegnumber.text);
+
   }
 }

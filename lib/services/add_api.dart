@@ -6,8 +6,7 @@ import '../model/model.dart';
 
 //base URL
 
-const api = 'http://192.168.1.46:5000/api/';
-
+const api = 'http://192.168.1.53:5000/api/';
 
 
 Future<void> postData(AddData addData) async {
@@ -15,6 +14,7 @@ Future<void> postData(AddData addData) async {
 
   final headers = {
     'Content-Type': 'application/json',
+
     // Add any additional headers if required
   };
 

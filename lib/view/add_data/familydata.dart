@@ -134,18 +134,18 @@ class _FamilyDataState extends State<FamilyData> {
               ),
 
               // Display the list of family members
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: familyMembers.length,
-                itemBuilder: (context, index) {
-                  var member = familyMembers[index];
-                  return ListTile(
-                    title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
-                    subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
-                    trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
-                  );
-                },
-              ),
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: familyMembers.length,
+              //   itemBuilder: (context, index) {
+              //     var member = familyMembers[index];
+              //     return ListTile(
+              //       title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
+              //       subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
+              //       trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
+              //     );
+              //   },
+              // ),
 
               GestureDetector(
                 onTap: (){

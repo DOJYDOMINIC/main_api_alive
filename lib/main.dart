@@ -1,14 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:main200623/view/login.dart';
 import 'package:main200623/view/splash_screen.dart';
-import 'package:main200623/view/test/test.dart';
 import 'package:provider/provider.dart';
 import 'control/text_controller.dart';
 
-
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
@@ -20,14 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      
       providers: [
-        ChangeNotifierProvider(create: (context) => TextMain(),)
+        ChangeNotifierProvider(
+          create: (context) => TextMain(),
+        ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SlpashScreen()
-      ),
+      child:
+          MaterialApp(debugShowCheckedModeBanner: false, home: SlpashScreen()),
     );
   }
 }

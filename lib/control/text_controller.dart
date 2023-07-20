@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 enum CheckboxOption {
   applied,
@@ -478,6 +479,7 @@ class TextMain extends ChangeNotifier {
   int? get getBrandQnty => brandQnty;
 
 
+
   //----------------livelihood-----------------
   void updateDatalivelihoodincomesource(String? value) {
     _datalivelihoodincomesource = value;
@@ -846,7 +848,9 @@ class TextMain extends ChangeNotifier {
   }
 
   void updateDataDateofsurvey(String? value) {
-    _dataDateofsurvey = value;
+    DateTime now = DateTime.now();
+    String? formattedDate = DateFormat('yyyy-MM-dd').format(now);
+    formattedDate = value;
     notifyListeners();
   }
 

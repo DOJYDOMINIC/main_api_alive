@@ -29,6 +29,7 @@ class _SalesState extends State<UpdateCrpDetail> {
   void initState() {
     super.initState();
     getproductData();
+
   }
 
 
@@ -36,12 +37,8 @@ class _SalesState extends State<UpdateCrpDetail> {
   TextEditingController dataNameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
-  void updateForm() async {
+  void updateForm(String id) async {
 
-
-    String? id = widget.items['data'][0]['_id'];
-
-    print('id:${id}');
     var providerone = Provider.of<TextMain>(context, listen: false);
 
     final AddData updateData = AddData(
@@ -180,6 +177,9 @@ class _SalesState extends State<UpdateCrpDetail> {
       co4Qnty: providerone.co5Qnty,
       members: familyMembers,
     );
+    
+    log(updateData.toJson().toString());
+    
     final url = '$api/user/update/$id'; // Replace with your API endpoint URL
     final headers = {
       'Content-Type': 'application/json',
@@ -188,16 +188,18 @@ class _SalesState extends State<UpdateCrpDetail> {
     final jsonData = jsonEncode(updateData.toJson());
 
     try {
-      final response = await http.post(
+      final response = await http.put(
         Uri.parse(url),
         headers: headers,
         body: jsonData,
       );
       if (response.statusCode == 200) {
+        print(jsonData);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Screenone()));
         // Data submitted successfully
-        log(jsonData);
         print('Data submitted successfully.');
       } else {
+        print(id);
         print('Failed to submit data. Status code: ${response.statusCode}');
       }
     } catch (error) {
@@ -243,6 +245,9 @@ class _SalesState extends State<UpdateCrpDetail> {
                   }),
               ElevateClick(
                 ontap: () {
+                  var id = widget.items['data'][0]['_id'];
+                  print(id);
+                  changeData();
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -254,8 +259,8 @@ class _SalesState extends State<UpdateCrpDetail> {
                           TextButton(
                             child: Text('OK'),
                             onPressed: () {
-                              updateForm();
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => Screenone(),));
+
+                              updateForm(id);
                             },
                           ),
                           TextButton(
@@ -279,15 +284,29 @@ class _SalesState extends State<UpdateCrpDetail> {
   }
 
   void getproductData() {
-    var providerone = context.read<TextMain>();
+    // var providerone = context.read<TextMain>();
 
     var dataup = widget.items['data'][0];
 
+    // try{
+    //   providerone.updateDataNameofcrp(dataup["data_nameofcrp"].toString());
+    //   providerone.updateDataComments(dataup["data_comments"].toString());
+    // }catch(e){
+    //   print(e);
+    // }
+
     setState(() {
       // dataDistrict: dataDistrict.toString()
-      dataComments.text = dataup["data_comments"].toString();
+dataComments.text = dataup["data_comments"].toString();
       dataNameofcrp.text = dataup["data_nameofcrp"].toString();
       dataNameofrespondent.text = dataup["data_Nameofrespondent"].toString();
     });
+  }
+  changeData() {
+    var providerone = context.read<TextMain>();
+    providerone.updateDataNameofcrp(dataNameofcrp.text);
+    providerone.updateDataComments(dataComments.text);
+    providerone.updateDataNameofrespondent(dataNameofrespondent.text);
+
   }
 }

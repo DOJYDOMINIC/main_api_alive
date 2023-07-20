@@ -228,12 +228,14 @@ class _SalesState extends State<CrpDetail> {
                   onchanged: (value) {
                     providerone.updateDataNameofcrp(value);
                   }),
-
               InputField(
                   hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
                   controller: datacomments,
                   onchanged: (value) {
-                    providerone.updateDataComments(value);
+                    setState(() {
+                      providerone.updateDataComments(value);
+                    });
+
 
                   }),
               InputField(
