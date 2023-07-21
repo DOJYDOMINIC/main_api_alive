@@ -12,14 +12,12 @@ import '../../services/add_api.dart';
 import '../lists.dart';
 import '../widgets/dropdown_nosearch.dart';
 
-
 class ReportPage extends StatefulWidget {
   const ReportPage({Key? key}) : super(key: key);
 
   @override
   State<ReportPage> createState() => _ReportPageState();
 }
-
 
 class _ReportPageState extends State<ReportPage> {
   Dio dio = Dio();
@@ -33,26 +31,30 @@ class _ReportPageState extends State<ReportPage> {
   String? businessString;
   List? traninglist = [];
   String? traning;
-
-
+  List? mgnreg = [];
+  String? mgnregstr;
 
   String? dist;
   String? panchayth;
   String? blockss;
+  String? purchase;
+  String? sublist;
+  String? salesvalue;
+List<String> saleslist = [];
   List<String> blocklist = [];
   List<String> panchaths = [];
+  List<String> listpurchase = [];
+  List<String> sublistlist = [];
 
-
-
-  Future<void> startDownloading(String panchayth, String dataone,
-      String token) async {
+  Future<void> startDownloading(
+      String panchayth, String dataone, String token) async {
     final String url =
         '${api}search/class1?data_Panchayath=$panchayth&data_Class=$dataone';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "dataclass_${timeStamp}.xlsx";
+    String dataclass = "dataclass_${timeStamp}.xlsx";
 
-    String path = await _getFilePath(fileName);
+    String path = await _getFilePath(dataclass);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -66,7 +68,6 @@ class _ReportPageState extends State<ReportPage> {
             headers: {
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -85,7 +86,7 @@ class _ReportPageState extends State<ReportPage> {
       var status = await Permission.storage.request();
       if (status.isGranted) {
         // Permission granted by the user, start the download
-        // await startDownloading();
+        await startDownloading(panchayth, dataone, token);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -126,15 +127,14 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
-  Future<void> dataclasstwo(String panchayth, String datatwo,
-      String token) async {
+  Future<void> dataclasstwo(
+      String panchayth, String datatwo, String token) async {
     final String url =
-        '${api}search/class1?data_Panchayath=$panchayth&data_Class=$datatwo';
-
+        '${api}search/class2?data_Panchayath=$panchayth&data_Class2=$datatwo';
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "dataclass2_${timeStamp}.xlsx";
+    String class2 = "dataclass2_${timeStamp}.xlsx";
 
-    String path = await _getFilePath(fileName);
+    String path = await _getFilePath(class2);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -146,9 +146,9 @@ class _ReportPageState extends State<ReportPage> {
           path,
           options: Options(
             headers: {
+              // 'Content-Type': 'application/json',
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -208,15 +208,15 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
-
-  Future<void> Businesstype(String panchayth, String businessString, String token) async {
+  Future<void> Businesstype(
+      String panchayth, String businessString, String token) async {
     final String url =
         '${api}search/detailsofAnimalHusbandryBusiness?selectedPanchayath=$panchayth&selectedBusinessType=$businessString';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "business type ${timeStamp}.xlsx";
+    String business = "business type ${timeStamp}.xlsx";
 
-    String path = await _getFilePath(fileName);
+    String path = await _getFilePath(business);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -230,7 +230,6 @@ class _ReportPageState extends State<ReportPage> {
             headers: {
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -290,14 +289,15 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
-  Future<void> TraningRequaredd(String panchayth, String traning, String token) async {
+  Future<void> TraningRequaredd(
+      String panchayth, String traning, String token) async {
     final String url =
         '${api}search/TrainingsRequired?data_Panchayath=$panchayth&data_Trainingsrequired=$traning';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "Trainingsrequired${timeStamp}.xlsx";
+    String trainingsrequired = "Trainingsrequired${timeStamp}.xlsx";
 
-    String path = await _getFilePath(fileName);
+    String path = await _getFilePath(trainingsrequired);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -311,7 +311,6 @@ class _ReportPageState extends State<ReportPage> {
             headers: {
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -371,15 +370,15 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
-  Future<void> dtaclassThree(String panchayth, String datathree,
-      String token) async {
+  Future<void> dtaclassThree(
+      String panchayth, String datathree, String token) async {
     final String url =
         '${api}search/class3?data_Panchayath=$panchayth&data_Class3=$datathree';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "data class3 ${timeStamp}.xlsx";
+    String class3 = "data_class3_${timeStamp}.xlsx";
 
-    String path = await _getFilePath(fileName);
+    String path = await _getFilePath(class3);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -393,7 +392,6 @@ class _ReportPageState extends State<ReportPage> {
             headers: {
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -452,15 +450,14 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
-  Future<void> productName(String panchayth, String productname,
-      String token) async {
+  Future<void> productName(
+      String panchayth, String productname, String token) async {
     final String url =
         '${api}search/productDetails?panchayath=$panchayth&products_Name=$productname';
 
-
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String fileName = "product detail${timeStamp}.xlsx";
-    String path = await _getFilePath(fileName);
+    String product = "product detail${timeStamp}.xlsx";
+    String path = await _getFilePath(product);
     print('Download Path: $path');
 
     // Check if the storage permission is granted
@@ -474,7 +471,6 @@ class _ReportPageState extends State<ReportPage> {
             headers: {
               'Authorization': 'Bearer $authToken'
             }, // Pass the token in the request headers
-
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
             setState(() {
@@ -533,11 +529,86 @@ class _ReportPageState extends State<ReportPage> {
     Navigator.pop(context);
   }
 
+  Future<void> Sales(String panchayth, String sales, String token) async {
+    final String url =
+        '${api}search/salesReport?panchayath=$panchayth&products_Name=$sales';
 
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String product = "Sales_${timeStamp}.xlsx";
+    String path = await _getFilePath(product);
+    print('Download Path: $path');
+
+    // Check if the storage permission is granted
+    if (await Permission.storage.isGranted) {
+      // Permission is granted, proceed with the download
+      try {
+        await dio.download(
+          url,
+          path,
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $authToken'
+            }, // Pass the token in the request headers
+          ),
+          onReceiveProgress: (receivedBytes, totalBytes) {
+            setState(() {
+              progress = receivedBytes / totalBytes;
+            });
+            print(progress);
+          },
+          deleteOnError: true,
+        );
+      } catch (e) {
+        // Handle the error here (e.g., show an error message).
+        print("Error while downloading: $e");
+      }
+    } else {
+      // Permission is not granted, request the storage permission
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        // Permission granted by the user, start the download
+        // await startDownloading();
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context)
+                        .pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Permission denied by the user, show an error message or handle accordingly
+        print("Permission denied by the user");
+        Navigator.pop(
+            context); // Close the dialog if the download cannot be started
+      }
+    }
+    Navigator.pop(context);
+  }
 
   Future<void> landdetails(String panchayth, String token) async {
     final String url = '${api}search/landdetails?selectedPanchayath=$panchayth';
-
 
     String timeStamp = DateFormat("ddMMyyyy_hh:mm:ss").format(DateTime.now());
     String fileName = "Land Details ${timeStamp}.xlsx";
@@ -573,6 +644,87 @@ class _ReportPageState extends State<ReportPage> {
       var status = await Permission.storage.request();
       if (status.isGranted) {
         // Permission granted by the user, start the download
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context)
+                        .pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Permission denied by the user, show an error message or handle accordingly
+        print("Permission denied by the user");
+        Navigator.pop(
+            context); // Close the dialog if the download cannot be started
+      }
+    }
+    Navigator.pop(context);
+  }
+
+  Future<void> Mgnreg(
+    String panchayth,
+    String mgnreg,
+  ) async {
+    final String url =
+        '${api}search/detailsofMGNREGASupport?selectedPanchayath=$panchayth&MGNREGA_Support=$mgnreg';
+
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String mgnre = "Mgnreg ${timeStamp}.xlsx";
+
+    String path = await _getFilePath(mgnre);
+    print('Download Path: $path');
+
+    // Check if the storage permission is granted
+    if (await Permission.storage.isGranted) {
+      // Permission is granted, proceed with the download
+      try {
+        await dio.download(
+          url,
+          path,
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $authToken'
+            }, // Pass the token in the request headers
+          ),
+          onReceiveProgress: (receivedBytes, totalBytes) {
+            setState(() {
+              progress = receivedBytes / totalBytes;
+            });
+            print(progress);
+          },
+          deleteOnError: true,
+        );
+      } catch (e) {
+        // Handle the error here (e.g., show an error message).
+        print("Error while downloading: $e");
+      }
+    } else {
+      // Permission is not granted, request the storage permission
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        // Permission granted by the user, start the download
         // await startDownloading();
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
@@ -610,11 +762,94 @@ class _ReportPageState extends State<ReportPage> {
             context); // Close the dialog if the download cannot be started
       }
     }
-
     Navigator.pop(context);
   }
 
-  //==========================================
+  Future<void> Purchasedata(
+      String panchayth, String item, String? item2) async {
+    String url =
+        '${api}search/purchaseReport?panchayath=$panchayth&itemtype=$item';
+    if (item2 != null) {
+      url += '&subList=$item2';
+    }
+
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String purchase = "purchase_item${timeStamp}.xlsx";
+
+    String path = await _getFilePath(purchase);
+    // print('Download Path: $path');
+    // print('$url');
+
+    // Check if the storage permission is granted
+    if (await Permission.storage.isGranted) {
+      // Permission is granted, proceed with the download
+      try {
+        await dio.download(
+          url,
+          path,
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $authToken'
+            }, // Pass the token in the request headers
+          ),
+          onReceiveProgress: (receivedBytes, totalBytes) {
+            setState(() {
+              progress = receivedBytes / totalBytes;
+            });
+            print(progress);
+          },
+          deleteOnError: true,
+        );
+      } catch (e) {
+        // Handle the error here (e.g., show an error message).
+        print("Error while downloading: $e");
+      }
+    } else {
+      // Permission is not granted, request the storage permission
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        // Permission granted by the user, start the download
+        await Purchasedata(panchayth, purchase, sublist);
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context)
+                        .pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Permission denied by the user, show an error message or handle accordingly
+        print("Permission denied by the user");
+        Navigator.pop(
+            context); // Close the dialog if the download cannot be started
+      }
+    }
+    Navigator.pop(context);
+  }
+
+  //==================================
 
   Future<String> _getFilePath(String filename) async {
     // final dir = await getApplicationDocumentsDirectory();
@@ -623,7 +858,6 @@ class _ReportPageState extends State<ReportPage> {
   }
 
   //==========================================
-
 
   List<String> districts = []; // Declare a global list variable
 
@@ -650,8 +884,8 @@ class _ReportPageState extends State<ReportPage> {
 
   Future<void> fetchBlocks(String selectedDistrict) async {
     try {
-      final response = await http.get(
-          Uri.parse('${api}search/listBlocks?data_district=$dist'));
+      final response = await http
+          .get(Uri.parse('${api}search/listBlocks?data_district=$dist'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -669,8 +903,8 @@ class _ReportPageState extends State<ReportPage> {
 
   Future<void> fetchPanchayth(String selectpanchaayth) async {
     try {
-      final response = await http.get(
-          Uri.parse('${api}search/listPanchayats?data_Block=$blockss'));
+      final response = await http
+          .get(Uri.parse('${api}search/listPanchayats?data_Block=$blockss'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -687,10 +921,77 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
+  Future<void> Fetchpurchase() async {
+    try {
+      final response =
+          await http.get(Uri.parse('${api}report/listpurchaserawmaterials'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        setState(() {
+          listpurchase =
+              List.from(data); // Assign fetched data to the global list
+          // selectedDistrict;
+          print(listpurchase);
+        });
+      } else {
+        throw Exception('Failed to fetch districts');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching districts: $e');
+    }
+  }
+
+  Future<void> Fetchpurchasesublist(String purchase) async {
+    try {
+      final response = await http.get(Uri.parse(
+          '${api}report/listpurchaserawmaterials/sublist?data_purchaseofrawmaterials_itemtype=$purchase'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        setState(() {
+          sublistlist =
+              List.from(data); // Assign fetched data to the global list
+          // selectedDistrict;
+          print(sublistlist);
+        });
+      } else {
+        throw Exception('Failed to fetch districts');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching districts: $e');
+    }
+  }
+
+  Future<void> fetchsales() async {
+    try {
+      final response = await http
+          .get(Uri.parse('${api}report/Sales'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          saleslist = List<String>.from(data);
+          print(blocklist);
+        });
+      } else {
+        throw Exception('Failed to fetch blocks');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching blocks: $e');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     fetchDistricts();
+    Fetchpurchase();
+    fetchsales();
   }
 
   @override
@@ -698,7 +999,6 @@ class _ReportPageState extends State<ReportPage> {
     String downloadingprogress = (progress * 100).toInt().toString();
 
     // var providerone = Provider.of<TextMain>(context, listen: false);
-
 
     return Scaffold(
       appBar: AppBar(
@@ -709,329 +1009,487 @@ class _ReportPageState extends State<ReportPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.file_copy, size: 50, color: app_theam),
-                  Text('Report', style: TextStyle(fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: app_theam),)
-                ],
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30, bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.file_copy, size: 50, color: app_theam),
+                    Text(
+                      'Report',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: app_theam),
+                    )
+                  ],
+                ),
               ),
-            ),
-            NoSearchDropdown(
-              items: districts,
-              onChanged: (value) {
-                setState(() {
-                  dist = value;
-                  fetchBlocks(dist!);
-                });
-              },
-              item: 'ജില്ല',
-            ),
-
-            NoSearchDropdown(
-              onChanged: (value) {
-                setState(() {
-                  blockss = value;
-                  fetchPanchayth(blockss!);
-                });
-              },
-              item: 'ബ്ലോക്ക്',
-              items: blocklist,
-            ),
-
-            NoSearchDropdown(
+              NoSearchDropdown(
+                items: districts,
                 onChanged: (value) {
                   setState(() {
-                    panchayth = value;
-                    // fetchPanchayth(panchayth!);
+                    dist = value;
+                    fetchBlocks(dist!);
                   });
                 },
-                items: panchaths,
-                item: 'പഞ്ചായത്ത്'),
-            SizedBox(height: 10,),
-            // ======================
-            if(panchayth != null)
-            Column(
-              children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: DropdownSearch<String>(
-                          popupProps: PopupProps<String>.menu(
-                            showSelectedItems: true,
-                            // disabledItemFn: (String s) => s.startsWith('I'),
-                          ),
-                          items: dataclass,
-                          onChanged: (value) {
-                            setState(() {
-                              dataone = value;
-                            });
-                          },
-                          selectedItem: 'കുടുംബ അവസ്ഥ',
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  border: OutlineInputBorder(borderSide: BorderSide(
-                                      color: Colors.white)))),
-                        ),
-                      ),
-                      IconButton(onPressed: () {
-                        startDownloading(panchayth!, dataone!, authToken!);
-                      }, icon: Icon(Icons.download))
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10,),
-                //  =======================
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: DropdownSearch<String>(
-                          popupProps: PopupProps<String>.menu(
-                            showSelectedItems: true,
-                            // disabledItemFn: (String s) => s.startsWith('I'),
-                          ),
-                          items: dataclass2,
-                          onChanged: (value) {
-                            setState(() {
-                              datatwo = value;
-                            });
-                          },
-                          selectedItem: 'വിഭാഗം',
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  border: OutlineInputBorder(borderSide: BorderSide(
-                                      color: Colors.white)))),
-                        ),
-                      ),
-                      IconButton(onPressed: () {
-                        print(datatwo);
-                        dataclasstwo(panchayth!, datatwo!, authToken!);
-                      }, icon: Icon(Icons.download))
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10,),
-                //=======================
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: DropdownSearch<String>(
-                          popupProps: PopupProps<String>.menu(
-                            showSelectedItems: true,
-                            // disabledItemFn: (String s) => s.startsWith('I'),
-                          ),
-                          items: datacls3,
-                          onChanged: (value) {
-                            setState(() {
-                              datathree = value;
-                            });
-                          },
-                          selectedItem: 'പ്രത്യേക വിഭാഗം',
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  border: OutlineInputBorder(borderSide: BorderSide(
-                                      color: Colors.white)))),
-                        ),
-                      ),
-                      IconButton(onPressed: () {
-                        setState(() {
-                          dtaclassThree(panchayth!, datathree!, authToken!);
-                        });
-                      }, icon: Icon(Icons.download))
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Row(
+                item: 'ജില്ല',
+              ),
+
+              NoSearchDropdown(
+                onChanged: (value) {
+                  setState(() {
+                    blockss = value;
+                    fetchPanchayth(blockss!);
+                  });
+                },
+                item: 'ബ്ലോക്ക്',
+                items: blocklist,
+              ),
+
+              NoSearchDropdown(
+                  onChanged: (value) {
+                    setState(() {
+                      panchayth = value;
+                      // fetchPanchayth(panchayth!);
+                    });
+                  },
+                  items: panchaths,
+                  item: 'പഞ്ചായത്ത്'),
+              SizedBox(
+                height: 10,
+              ),
+              // ======================
+              if (panchayth != null)
+                Column(
                   children: [
                     Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .8,
-                      child: MultiSelectFormField(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(color: Colors.black)),
-                          title: Text(
-                            'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: dataclass,
+                              onChanged: (value) {
+                                setState(() {
+                                  dataone = value;
+                                });
+                              },
+                              selectedItem: 'കുടുംബ അവസ്ഥ',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
                           ),
-                          dataSource: businesstype,
-                          textField: 'disply',
-                          valueField: 'value',
-                          okButtonLabel: 'OK',
-                          cancelButtonLabel: 'CANCEL',
-                          // hintText: 'Please select one or more options',
-                          initialValue: business,
-                          onSaved: (value) {
-                            setState(() {
-                              business = value;
-                              businessString = business!.join(',');
-                            });
-                          }),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            Businesstype(panchayth!,businessString!,authToken!);
-                            print(businessString);
-                            // print(businessString);
-                          });
-                        }, icon: Icon(Icons.download))
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * .8,
-                      child: MultiSelectFormField(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(color: Colors.black)),
-                          title: Text(
-                            'പരിശീലനം വേണ്ട മേഘല ',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          dataSource: traingrequared,
-                          textField: 'text',
-                          valueField: 'value',
-                          okButtonLabel: 'OK',
-                          cancelButtonLabel: 'CANCEL',
-                          // hintText: 'Please select one or more options',
-                          initialValue: traninglist,
-                          onSaved: (value) {
-                            setState(() {
-                              traninglist = value;
-                              traning = traninglist!.join(',');
-                            });
-                          }),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            TraningRequaredd(panchayth!,traning!,authToken!);
-                            print('value :$traninglist');
-                            // print(businessString);
-                          });
-                        }, icon: Icon(Icons.download))
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                          height: 60,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width * .8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Text('പുരയിടം/നിലം'),
-                          )),
-                      IconButton(
-                          onPressed: () {
-                            setState(() {
-                              landdetails(panchayth!, authToken!);
-                            });
-                          }, icon: Icon(Icons.download))
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10,),
-                //=======================
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: DropdownSearch<String>(
-                          popupProps: PopupProps<String>.menu(
-                            showSelectedItems: true,
-                            // disabledItemFn: (String s) => s.startsWith('I'),
-                          ),
-                          items: products,
-                          onChanged: (value) {
-                            setState(() {
-                              productname = value;
-                            });
-                          },
-                          selectedItem: 'ഉല്‍പ്പന്നം',
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  border: OutlineInputBorder(borderSide: BorderSide(
-                                      color: Colors.white)))),
-                        ),
+                          IconButton(
+                              onPressed: () {
+                                startDownloading(
+                                    panchayth!, dataone!, authToken!);
+                              },
+                              icon: Icon(Icons.download))
+                        ],
                       ),
-                      IconButton(onPressed: () {
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //  =======================
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: dataclass2,
+                              onChanged: (value) {
+                                setState(() {
+                                  datatwo = value;
+                                });
+                              },
+                              selectedItem: 'വിഭാഗം',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                print(datatwo);
+                                dataclasstwo(panchayth!, datatwo!, authToken!);
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //=======================
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: datacls3,
+                              onChanged: (value) {
+                                setState(() {
+                                  datathree = value;
+                                });
+                              },
+                              selectedItem: 'പ്രത്യേക വിഭാഗം',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  dtaclassThree(
+                                      panchayth!, datathree!, authToken!);
+                                });
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: businesstype,
+                              textField: 'disply',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: business,
+                              onSaved: (value) {
+                                setState(() {
+                                  business = value;
+                                  businessString = business!.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                Businesstype(
+                                    panchayth!, businessString!, authToken!);
+                                print(businessString);
+                                // print(businessString);
+                              });
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'പരിശീലനം വേണ്ട മേഘല ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: traingrequared,
+                              textField: 'text',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: traninglist,
+                              onSaved: (value) {
+                                setState(() {
+                                  traninglist = value;
+                                  traning = traninglist!.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                TraningRequaredd(
+                                    panchayth!, traning!, authToken!);
+                                print('value :$traninglist');
+                                // print(businessString);
+                              });
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'MGNREG ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: datamgnregasupportlist,
+                              textField: 'text',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: mgnreg,
+                              onSaved: (value) {
+                                setState(() {
+                                  mgnreg = value;
+                                  mgnregstr = mgnreg!.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                Mgnreg(
+                                  panchayth!,
+                                  mgnregstr!,
+                                );
+                                // print('value :$traninglist');
+                                // print(businessString);
+                              });
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                              height: 60,
+                              width: MediaQuery.of(context).size.width * .8,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.black),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Text('പുരയിടം/നിലം'),
+                              )),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  landdetails(panchayth!, authToken!);
+                                });
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //=======================
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 65,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: products,
+                              onChanged: (value) {
+                                setState(() {
+                                  productname = value;
+                                });
+                              },
+                              selectedItem: 'ഉല്‍പ്പന്നം',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  productName(
+                                      panchayth!, productname!, authToken!);
+                                });
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 65,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: saleslist,
+                              onChanged: (value) {
+                                setState(() {
+                                  salesvalue = value;
+                                });
+                              },
+                              selectedItem: 'Sales',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  Sales(panchayth!, salesvalue!, authToken!);
+                                });
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: listpurchase,
+                              onChanged: (value) {
+                                setState(() {
+                                  purchase = value;
+                                  sublistlist.clear();
+                                  Fetchpurchasesublist(purchase!);
+                                  print(purchase);
+                                });
+                              },
+                              selectedItem: 'purcaahse',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  Purchasedata(panchayth!, purchase!, sublist);
+                                });
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    NoSearchDropdown(
+                      items: sublistlist,
+                      onChanged: (value) {
                         setState(() {
-                          productName(panchayth!, productname!, authToken!);
+                          sublist = value;
+                          print(sublistlist);
                         });
-                      }, icon: Icon(Icons.download))
-                    ],
-                  ),
+                      },
+                      item: 'purchaseSublist',
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+            ],
           ),
         ),
       ),

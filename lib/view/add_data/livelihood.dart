@@ -45,14 +45,14 @@ class _SalesState extends State<LivelihoodValue> {
               InputField(hint: 'ഉപജീവന തൊഴിൽ', controller:datalivelihoodincomesource, onchanged: (value){
                 providerone.updateDatalivelihoodincomesource(value);
               }),
-              InputField(hint: 'എണ്ണം‌', controller: datalivelihoodnumbers, onchanged: (value){
+              InputField(hint: 'എണ്ണം‌', controller: datalivelihoodnumbers,keytype: TextInputType.number, onchanged: (value){
                 int? valuee = int.tryParse(value);
                 providerone.updateDatalivelihoodnumbers(valuee);
               }),
               InputField(hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക', controller: datalivelihoodcapitalsource, onchanged: (value){
                 providerone.updateDatalivelihoodcapitalsource(value);
               }),
-              InputField(hint: 'പ്രീതിമാസം വരുമാനം ', controller: datalivelihoodrevenue, onchanged: (value){
+              InputField(hint: 'പ്രീതിമാസം വരുമാനം ', controller: datalivelihoodrevenue,keytype: TextInputType.number, onchanged: (value){
                 int? valuee = int.tryParse(value);
                 providerone.updateDatalivelihoodrevenue(valuee);
               }),

@@ -20,7 +20,8 @@ enum CheckboxOption { applied, sanctioned, notApplied }
 
 class UpdatePersonalPage extends StatefulWidget {
   const UpdatePersonalPage({Key? key, this.items}) : super(key: key);
-final items;
+  final items;
+
   @override
   State<UpdatePersonalPage> createState() => _UpdatePersonalPageState();
 }
@@ -31,7 +32,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? selectedDistrict;
   String? selectedBlocks;
 
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +39,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     fetchDistricts();
     // fetchBlocks(dataDistrict!);
     // fetchPanchayth(dataBlock!);
-
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -51,7 +50,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          districts = List<String>.from(data); // Assign fetched data to the global list
+          districts =
+              List<String>.from(data); // Assign fetched data to the global list
           // selectedDistrict;
           // print(selectedDistrict);
         });
@@ -68,8 +68,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
 
   Future<void> fetchBlocks(String selectedDistrict) async {
     try {
-      final response = await http.get(Uri.parse(
-          '${api}user/blocks/$selectedDistrict'));
+      final response =
+          await http.get(Uri.parse('${api}user/blocks/$selectedDistrict'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -89,8 +89,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
 
   Future<void> fetchPanchayth(String selectedBlocks) async {
     try {
-      final response = await http.get(Uri.parse(
-          '${api}user/Panchayat/$selectedBlocks'));
+      final response =
+          await http.get(Uri.parse('${api}user/Panchayat/$selectedBlocks'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -114,7 +114,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     try {
       final response = await http.delete(
         Uri.parse(apiUrl),
-        headers: {'Authorization': 'Bearer $token'}, // Pass the token in the request headers
+        headers: {
+          'Authorization': 'Bearer $token'
+        }, // Pass the token in the request headers
       );
 
       if (response.statusCode == 200) {
@@ -127,8 +129,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     }
   }
 
-
-
   List dataSupport = [];
   List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
@@ -136,7 +136,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   List dataSourceofinvestment = [];
   bool isYesSelected = false;
   String? group;
-
 
   String? dataDistrict;
   String? dataBlock;
@@ -148,7 +147,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? dataRoleinNg;
   String? dataHouseOwnership;
   String? dataEnterpisetype;
- String? dataInfraShed;
+  String? dataInfraShed;
   String? dataInfraWastage;
   String? dataInfraBiogas;
   String? dataInfraEquipments;
@@ -159,7 +158,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   TextEditingController dataNameofNg = TextEditingController();
   TextEditingController dataNameofNGmember = TextEditingController();
   TextEditingController datalanddetailslandarea = TextEditingController();
-  TextEditingController datalanddetailsagricultureland = TextEditingController();
+  TextEditingController datalanddetailsagricultureland =
+      TextEditingController();
   TextEditingController datanumberofgroupmembers = TextEditingController();
   TextEditingController dataYearofstartingagriculture = TextEditingController();
   TextEditingController dataYearofstartingbussiness = TextEditingController();
@@ -167,9 +167,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   TextEditingController dataothers2 = TextEditingController();
   TextEditingController dataSupportrecived = TextEditingController();
   TextEditingController dataAmountinvested = TextEditingController();
-  TextEditingController dataAnimalhusbendaryRegdetailsRegnumber = TextEditingController();
-  TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname = TextEditingController();
-
+  TextEditingController dataAnimalhusbendaryRegdetailsRegnumber =
+      TextEditingController();
+  TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname =
+      TextEditingController();
 
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
@@ -217,7 +218,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     });
     providerone.updateDataYearofstartingagriculture(yearagriculture);
     // print(yearagriculture);
-
   }
 
   @override
@@ -225,319 +225,314 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('വ്യക്തിവിവരം '),
-          centerTitle: true,
-          backgroundColor: app_theam,
-          actions: [
-            IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Delete Confirmation'),
-                      content: Text('Do you want to delete?'),
-                      actions: <Widget>[
-                        TextButton(
-                          child: Text('Cancel'),
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                        ),
-                        TextButton(
-                          child: Text('OK'),
-                          onPressed: () {
-                            var id = widget.items['data'][0]['_id'];
-                            deleteDataonId(id,authToken!);
-                            // Perform delete operation
-                            // Add your delete logic here
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              icon: Icon(Icons.delete),
-            )
-          ],
-        ),
-        body: Consumer(
-          builder: (context, value, child) => SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(children: [
-                NoSearchDropdown(
-                  items: districts,
-                  selecteditem: dataDistrict,
+      appBar: AppBar(
+        title: Text('വ്യക്തിവിവരം '),
+        centerTitle: true,
+        backgroundColor: app_theam,
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Delete Confirmation'),
+                    content: Text('Do you want to delete?'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('Cancel'),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                      ),
+                      TextButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                          var id = widget.items['data'][0]['_id'];
+                          deleteDataonId(id, authToken!);
+                          // Perform delete operation
+                          // Add your delete logic here
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            icon: Icon(Icons.delete),
+          )
+        ],
+      ),
+      body: Consumer(
+        builder: (context, value, child) => SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(children: [
+              NoSearchDropdown(
+                items: districts,
+                selecteditem: dataDistrict,
+                onChanged: (value) {
+                  setState(() {
+                    if (districts.contains(dataDistrict)) dataDistrict = value;
+                    fetchBlocks(dataDistrict!);
+                  });
+                  providerone.updateDataDistrict(value);
+                },
+                item: 'ജില്ല',
+              ),
+              NoSearchDropdown(
+                selecteditem: dataBlock,
+                onChanged: (value) {
+                  setState(() {
+                    dataBlock = value;
+                    fetchPanchayth(dataBlock!);
+                  });
+                  providerone.updateDataBlock(value);
+                },
+                item: 'ബ്ലോക്ക്',
+                items: blocks,
+              ),
+              NoSearchDropdown(
+                  selecteditem: dataPanchayath,
                   onChanged: (value) {
-                    setState(() {
-                        dataDistrict = value;
-                        fetchBlocks(dataDistrict!);
-                    });
-                    providerone.updateDataDistrict(value);
+                    // setState(() {
+                    //   selectedBlocks = value;
+                    //   fetchPanchayth(selectedBlocks!);
+                    // });
+                    providerone.updateDataPanchayath(value);
                   },
-                  item: 'ജില്ല',
-                ),
-                NoSearchDropdown(
-                  selecteditem: dataBlock,
+                  items: panchaths,
+                  item: 'പഞ്ചായത്ത്'),
+              InputField(
+                hint: 'വാർഡ്',
+                controller: dataWard,
+                keytype: TextInputType.number,
+                onchanged: (value) {
+                  int? valuee = int.tryParse(value);
+                  providerone.updateDataWard(valuee);
+                },
+              ),
+              InputField(
+                hint: 'സംരംഭകയുടെ പേര്',
+                controller: dataName,
+                onchanged: (value) {
+                  setState(() {
+                    dataName;
+                  });
+                  providerone.updateDataName(value);
+                },
+              ),
+              InputField(
+                  hint: 'വിലാസം',
+                  controller: dataAddress,
+                  onchanged: (value) {
+                    setState(() {
+                      providerone.updateDataAddress(value);
+                    });
+                  }),
+              InputField(
+                  hint: 'ഫോൺ നമ്പർ',
+                  controller: dataPhonenumber,
+                  onchanged: (value) {
+                    int? parsedValue = int.tryParse(value);
+                    providerone.updateDataPhonenumber(parsedValue);
+                  },
+                  keytype: TextInputType.number),
+              NoSearchDropdown(
+                  selecteditem: dataClass,
                   onChanged: (value) {
-                    setState(() {
-                      if(blocks.contains(dataBlock))
-                      dataBlock = value;
-                      fetchPanchayth(dataBlock!);
-                    });
-                    providerone.updateDataBlock(value);
+                    providerone.updateDataClass(value);
                   },
-                  item: 'ബ്ലോക്ക്',
-                  items: blocks,
+                  items: dataclass,
+                  item: 'കുടുംബ അവസ്ഥ'),
+              NoSearchDropdown(
+                  selecteditem: dataClass2,
+                  onChanged: (value) {
+                    providerone.updateDataClass2(value);
+                  },
+                  items: dataclass2,
+                  item: 'വിഭാഗം'),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.black)),
+                  title: Text(
+                    'പ്രത്യേക വിഭാഗം',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  dataSource: options,
+                  textField: 'text',
+                  valueField: 'value',
+                  okButtonLabel: 'OK',
+                  cancelButtonLabel: 'CANCEL',
+                  // hintText: 'Please select one or more options',
+                  initialValue: dataclass3,
+                  onSaved: (value) {
+                    if (value == null) return;
+                    providerone.updateDataClass3(value);
+                    print(value);
+                  },
                 ),
-                  NoSearchDropdown(
-                    selecteditem: dataPanchayath,
-                    onChanged: (value) {
-                      // setState(() {
-                      //   selectedBlocks = value;
-                      //   fetchPanchayth(selectedBlocks!);
-                      // });
-                      providerone.updateDataPanchayath(value);
-                    },
-                    items: panchaths,
-                    item: 'പഞ്ചായത്ത്'),
-                InputField(
-                  hint: 'വാർഡ്',
-                  controller: dataWard,
-                  keytype: TextInputType.number,
+              ),
+              NoSearchDropdown(
+                  selecteditem: dataFamilyincome,
+                  onChanged: (value) {
+                    providerone.updateDataFamilyincome(value);
+                  },
+                  items: familyincome,
+                  item: 'കുടുംബ മാസവരുമാനം'),
+              InputField(
+                  hint: 'അയൽക്കൂട്ടത്തിന്റെ പേര്',
+                  controller: dataNameofNg,
                   onchanged: (value) {
-                    int? valuee = int.tryParse(value);
-                    providerone.updateDataWard(valuee);
-                  },
-                ),
-                InputField(
-                  hint: 'സംരംഭകയുടെ പേര്',
-                  controller: dataName,
+                    providerone.updateDataNameofNg(value);
+                  }),
+              InputField(
+                  hint: 'അയൽക്കൂട്ട അംഗത്തിന്റെ പേര്',
+                  controller: dataNameofNGmember,
                   onchanged: (value) {
-                    setState(() {
-                      dataName;
-                    });
-                    providerone.updateDataName(value);
+                    providerone.updateDataNameofNGmember(value);
+                  }),
+              NoSearchDropdown(
+                  selecteditem: dataRoleinNg,
+                  onChanged: (value) {
+                    providerone.updateDataRoleinNg(value);
                   },
-                ),
-
-                InputField(
-                    hint: 'വിലാസം',
-                    controller: dataAddress,
-                    onchanged: (value) {
-                      setState(() {
-                        providerone.updateDataAddress(value);
-                      });
-                    }),
-                InputField(
-                    hint: 'ഫോൺ നമ്പർ',
-                    controller: dataPhonenumber,
-                    onchanged: (value) {
-                      int? parsedValue = int.tryParse(value);
-                      providerone.updateDataPhonenumber(parsedValue);
-                    },
-                    keytype: TextInputType.number),
-                NoSearchDropdown(
-                    selecteditem: dataClass,
-                    onChanged: (value) {
-                      providerone.updateDataClass(value);
-                    },
-                    items: dataclass,
-                    item: 'കുടുംബ അവസ്ഥ'),
-                NoSearchDropdown(
-                    selecteditem: dataClass2,
-                    onChanged: (value) {
-                      providerone.updateDataClass2(value);
-                    },
-                    items: dataclass2,
-                    item: 'വിഭാഗം'),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
+                  items: position,
+                  item: 'അയൽക്കൂട്ടത്തിലെ പദവി'),
+              NoSearchDropdown(
+                  selecteditem: dataHouseOwnership,
+                  onChanged: (value) {
+                    providerone.updateDataHouseownership(value);
+                  },
+                  items: house,
+                  item: 'വീട് '),
+              InputField(
+                hint: 'പുരയിടം ( സെന്റ്)',
+                controller: datalanddetailslandarea,
+                onchanged: (value) {
+                  int? parsedValue = int.tryParse(value);
+                  providerone.updateDataLanddetailsLandarea(parsedValue);
+                },
+                keytype: TextInputType.number,
+              ),
+              InputField(
+                hint: ' നിലം (സെന്റ്)',
+                controller: datalanddetailsagricultureland,
+                onchanged: (value) {
+                  int? parsedValue = int.tryParse(value);
+                  providerone.updateDataLanddetailsAgricultureland(parsedValue);
+                },
+                keytype: TextInputType.number,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(color: Colors.black)),
                     title: Text(
-                      'പ്രത്യേക വിഭാഗം',
+                      'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    dataSource: options,
-                    textField: 'text',
+                    dataSource: businesstype,
+                    textField: 'disply',
                     valueField: 'value',
                     okButtonLabel: 'OK',
                     cancelButtonLabel: 'CANCEL',
                     // hintText: 'Please select one or more options',
-                    initialValue: dataclass3,
+                    initialValue: dataAnimalhusbendaryBusinesstype,
                     onSaved: (value) {
-                      if (value == null) return;
-                      providerone.updateDataClass3(value);
-                      print(value);
-                    },
-                  ),
-                ),
-                NoSearchDropdown(
-                    selecteditem: dataFamilyincome,
-                    onChanged: (value) {
-                      providerone.updateDataFamilyincome(value);
-                    },
-                    items: familyincome,
-                    item: 'കുടുംബ മാസവരുമാനം'),
-                InputField(
-                    hint: 'അയൽക്കൂട്ടത്തിന്റെ പേര്',
-                    controller: dataNameofNg,
-                    onchanged: (value) {
-                      providerone.updateDataNameofNg(value);
+                      providerone.updateDataAnimalhusbendaryBusinesstype(value);
                     }),
-                InputField(
-                    hint: 'അയൽക്കൂട്ട അംഗത്തിന്റെ പേര്',
-                    controller: dataNameofNGmember,
-                    onchanged: (value) {
-                      providerone.updateDataNameofNGmember(value);
-                    }),
-                NoSearchDropdown(
-                    selecteditem: dataRoleinNg,
-                    onChanged: (value) {
-                      providerone.updateDataRoleinNg(value);
-                    },
-                    items: position,
-                    item: 'അയൽക്കൂട്ടത്തിലെ പദവി'),
-                NoSearchDropdown(
-                    selecteditem: dataHouseOwnership,
-                    onChanged: (value) {
-                      providerone.updateDataHouseownership(value);
-                    },
-                    items: house,
-                    item: 'വീട് '),
-                InputField(
-                  hint: 'പുരയിടം ( സെന്റ്)',
-                  controller: datalanddetailslandarea,
-                  onchanged: (value) {
-                    int? parsedValue = int.tryParse(value);
-                    providerone.updateDataLanddetailsLandarea(parsedValue);
-                  },
-                  keytype: TextInputType.number,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black),
                 ),
-                InputField(
-                  hint: ' നിലം (സെന്റ്)',
-                  controller: datalanddetailsagricultureland,
-                  onchanged: (value) {
-                    int? parsedValue = int.tryParse(value);
-                    providerone
-                        .updateDataLanddetailsAgricultureland(parsedValue);
-                  },
-                  keytype: TextInputType.number,
-                ),
-                Padding(
+                child: Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.black)),
-                      title: Text(
-                        'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                  child: Column(
+                    children: [
+                      Text(
+                        'സംരംഭം CDSൽ  രജിസ്റ്റർ ചെയ്‌തിട്ടുണ്ടോ ? ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      dataSource: businesstype,
-                      textField: 'disply',
-                      valueField: 'value',
-                      okButtonLabel: 'OK',
-                      cancelButtonLabel: 'CANCEL',
-                      // hintText: 'Please select one or more options',
-                      initialValue: dataAnimalhusbendaryBusinesstype,
-                      onSaved: (value) {
-                        providerone
-                            .updateDataAnimalhusbendaryBusinesstype(value);
-                      }),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Column(
-                      children: [
-                        Text(
-                          'സംരംഭം CDSൽ  രജിസ്റ്റർ ചെയ്‌തിട്ടുണ്ടോ ? ',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        CheckboxListTile(
-                          title: Text('Yes'),
-                          value: isYesSelected,
-                          onChanged: (value) {
-                            setState(() {
-                              isYesSelected = value!;
-                            });
-                            providerone
-                                .updateDataAnimalhusbendaryCdsregistration(
-                                    'Yes');
-                          },
-                        ),
-                        CheckboxListTile(
-                          title: Text('No'),
-                          value: !isYesSelected,
-                          onChanged: (value) {
-                            setState(() {
-                              isYesSelected = !value!;
-                            });
-                            providerone
-                                .updateDataAnimalhusbendaryCdsregistration(
-                                    'No');
-                          },
-                        ),
-                        if (isYesSelected) ...[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              controller: dataAnimalhusbendaryRegdetailsRegnumber,
-                              onChanged: (value) {
-                                providerone
-                                    .updateDataAnimalhusbendaryRegdetailsRegnumber(
-                                        value);
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത നമ്പർ ',
-                              ),
+                      CheckboxListTile(
+                        title: Text('Yes'),
+                        value: isYesSelected,
+                        onChanged: (value) {
+                          setState(() {
+                            isYesSelected = value!;
+                          });
+                          providerone
+                              .updateDataAnimalhusbendaryCdsregistration('Yes');
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('No'),
+                        value: !isYesSelected,
+                        onChanged: (value) {
+                          setState(() {
+                            isYesSelected = !value!;
+                          });
+                          providerone
+                              .updateDataAnimalhusbendaryCdsregistration('No');
+                        },
+                      ),
+                      if (isYesSelected) ...[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: dataAnimalhusbendaryRegdetailsRegnumber,
+                            onChanged: (value) {
+                              providerone
+                                  .updateDataAnimalhusbendaryRegdetailsRegnumber(
+                                      value);
+                            },
+                            decoration: InputDecoration(
+                              labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത നമ്പർ ',
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              controller: dataAnimalhusbendaryRegdetailsCdsunitname,
-                              onChanged: (value) {
-                                providerone
-                                    .updateDataAnimalhusbendaryRegdetailsCdsunitname(
-                                        value);
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത പേര് ',
-                              ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller:
+                                dataAnimalhusbendaryRegdetailsCdsunitname,
+                            onChanged: (value) {
+                              providerone
+                                  .updateDataAnimalhusbendaryRegdetailsCdsunitname(
+                                      value);
+                            },
+                            decoration: InputDecoration(
+                              labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത പേര് ',
                             ),
                           ),
-                        ],
+                        ),
                       ],
-                    ),
+                    ],
                   ),
                 ),
-                NoSearchDropdown(
-                    selecteditem: dataEnterpisetype,
-                    onChanged: (value) {
-                      setState(() {
-                        group =value;
-                      });
-                      providerone.updateDataEnterpisetype(value);
-                    },
-                    items: enterpricetype,
-                    item: 'സംരഭം തരം'),
-               if(group == 'Group')
+              ),
+              NoSearchDropdown(
+                  selecteditem: dataEnterpisetype,
+                  onChanged: (value) {
+                    setState(() {
+                      group = value;
+                    });
+                    providerone.updateDataEnterpisetype(value);
+                  },
+                  items: enterpricetype,
+                  item: 'സംരഭം തരം'),
+              if (group == 'Group')
                 InputField(
                     keytype: TextInputType.number,
                     hint: 'അംഗങ്ങളുടെ എണ്ണം',
@@ -545,334 +540,334 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     onchanged: (value) {
                       providerone.updateDataNoofgroupmembers(value);
                     }),
-                SizedBox(
-                  height: 10,
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: TextField(
-                        controller:dataYearofstartingagriculture,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
-                        ),
-                        onTap: () {
-                          onTapFunction2(context: context);
-                        }),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: TextField(
-                        controller: dataYearofstartingbussiness,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
-                        ),
-                        onTap: () {
-                          onTapFunction(context: context);
-                        }),
-                  ),
-                ),
-                InputField(
-                  hint: 'ഇതുവരെ സംരംഭത്തിൽ മുടക്കിയ  തുക',
-                  controller: dataAmountinvested,
-                  onchanged: (value) {
-                    int? valuee = int.tryParse(value);
-                    providerone.updateDataAmountinvested(valuee);
-                  },
-                  keytype: TextInputType.number,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.black)),
-                      title: Text(
-                        'മുടക്കുമുതൽ കണ്ടെത്തിയത് എവിടെനിന്ന് ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: TextField(
+                      controller: dataYearofstartingagriculture,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                       ),
-                      dataSource: sourceofinvestment,
-                      textField: 'source',
-                      valueField: 'value',
-                      okButtonLabel: 'OK',
-                      cancelButtonLabel: 'CANCEL',
-                      // hintText: 'Please select one or more options',
-                      initialValue: dataSourceofinvestment,
-                      onSaved: (value) {
-                        providerone.updateDataSourceofinvestment(value);
+                      onTap: () {
+                        onTapFunction2(context: context);
                       }),
                 ),
-                InputField(
-                    hint: 'ലഭിച്ച പിന്തുണകൾ',
-                    controller: dataSupportrecived,
-                    onchanged: (value) {
-                      providerone.updateDataSupportrecived(value);
-                    }),
-                SizedBox(
-                  height: 10,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: Column(
-                    children: [
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: TextField(
+                      controller: dataYearofstartingbussiness,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
+                      ),
+                      onTap: () {
+                        onTapFunction(context: context);
+                      }),
+                ),
+              ),
+              InputField(
+                hint: 'ഇതുവരെ സംരംഭത്തിൽ മുടക്കിയ  തുക',
+                controller: dataAmountinvested,
+                onchanged: (value) {
+                  int? valuee = int.tryParse(value);
+                  providerone.updateDataAmountinvested(valuee);
+                },
+                keytype: TextInputType.number,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.black)),
+                    title: Text(
+                      'മുടക്കുമുതൽ കണ്ടെത്തിയത് എവിടെനിന്ന് ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    dataSource: sourceofinvestment,
+                    textField: 'source',
+                    valueField: 'value',
+                    okButtonLabel: 'OK',
+                    cancelButtonLabel: 'CANCEL',
+                    // hintText: 'Please select one or more options',
+                    initialValue: dataSourceofinvestment,
+                    onSaved: (value) {
+                      providerone.updateDataSourceofinvestment(value);
+                    }),
+              ),
+              InputField(
+                  hint: 'ലഭിച്ച പിന്തുണകൾ',
+                  controller: dataSupportrecived,
+                  onchanged: (value) {
+                    providerone.updateDataSupportrecived(value);
+                  }),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Headings(text: 'ലോൺ'),
+                    ),
+                    CheckboxListTile(
+                      title: Text('Applied'),
+                      value: selectedOption == CheckboxOption.applied,
+                      onChanged: (value) {
+                        if (value ?? false) {
+                          setState(() {
+                            selectedOption = CheckboxOption.applied;
+                          });
+                          providerone.updateDataLoan('Applied');
+                          // updateDataLoan('applied');
+                        }
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text('Sanctioned'),
+                      value: selectedOption == CheckboxOption.sanctioned,
+                      onChanged: (value) {
+                        if (value ?? false) {
+                          setState(() {
+                            selectedOption = CheckboxOption.sanctioned;
+                          });
+                          providerone.updateDataLoan('Sanctioned');
+                          // updateDataLoan('sanctioned');
+                        }
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text('Not Applied'),
+                      value: selectedOption == CheckboxOption.notApplied,
+                      onChanged: (value) {
+                        if (value ?? false) {
+                          setState(() {
+                            selectedOption = CheckboxOption.notApplied;
+                          });
+                          // updateDataLoan('notApplied');
+                          providerone.updateDataLoan('Not Applied');
+                        }
+                      },
+                    ),
+                    if (selectedOption == CheckboxOption.applied ||
+                        selectedOption == CheckboxOption.sanctioned) ...[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Headings(text: 'ലോൺ'),
-                      ),
-                      CheckboxListTile(
-                        title: Text('Applied'),
-                        value: selectedOption == CheckboxOption.applied,
-                        onChanged: (value) {
-                          if (value ?? false) {
-                            setState(() {
-                              selectedOption = CheckboxOption.applied;
-                            });
-                            providerone.updateDataLoan('Applied');
-                            // updateDataLoan('applied');
-                          }
-                        },
-                      ),
-                      CheckboxListTile(
-                        title: Text('Sanctioned'),
-                        value: selectedOption == CheckboxOption.sanctioned,
-                        onChanged: (value) {
-                          if (value ?? false) {
-                            setState(() {
-                              selectedOption = CheckboxOption.sanctioned;
-                            });
-                            providerone.updateDataLoan('Sanctioned');
-                            // updateDataLoan('sanctioned');
-                          }
-                        },
-                      ),
-                      CheckboxListTile(
-                        title: Text('Not Applied'),
-                        value: selectedOption == CheckboxOption.notApplied,
-                        onChanged: (value) {
-                          if (value ?? false) {
-                            setState(() {
-                              selectedOption = CheckboxOption.notApplied;
-                            });
-                            // updateDataLoan('notApplied');
-                            providerone.updateDataLoan('Not Applied');
-                          }
-                        },
-                      ),
-                      if (selectedOption == CheckboxOption.applied ||
-                          selectedOption == CheckboxOption.sanctioned) ...[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              TextField(
-                                onChanged: (value) {
-                                  int? valuee = int.tryParse(value);
-                                  providerone.updateDataTotalinvestment(valuee);
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'തുക',
-                                ),
+                        child: Column(
+                          children: [
+                            TextField(
+                              onChanged: (value) {
+                                int? valuee = int.tryParse(value);
+                                providerone.updateDataTotalinvestment(valuee);
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'തുക',
                               ),
-                              TextField(
-                                onChanged: (value) {
-                                  providerone
-                                      .updateDataDateofLoanApplication(value);
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'തീയതി',
-                                ),
+                            ),
+                            TextField(
+                              onChanged: (value) {
+                                providerone
+                                    .updateDataDateofLoanApplication(value);
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'തീയതി',
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black),
-                  ),
-                  child: Column(
-                    children: [
-                      Headings(text: 'അടിസ്ഥാന സൗകര്യം '),
-                      DropNoBorder(
-                        select: dataInfraShed,
-                          onChanged: (value) {
-                            providerone.updateDataInfraShed(value);
-                          },
-                          items: condition,
-                          selecteditem: 'ഷെഡ് / കൂട്'),
-                      DropNoBorder(
-                        select: dataInfraWastage,
-                          onChanged: (value) {
-                            providerone.updateDataInfraWastage(value);
-                          },
-                          items: condition,
-                          selecteditem: 'വെസ്റ്റേജ്'),
-                      DropNoBorder(
-                        select: dataInfraBiogas,
-                          onChanged: (value) {
-                            providerone.updateDataInfraBiogas(value);
-                          },
-                          items: condition,
-                          selecteditem: 'ബയോഗ്യാസ്'),
-                      DropNoBorder(
-                        select: dataInfraEquipments,
-                          onChanged: (value) {
-                            providerone.updateDataInfraEquipments(value);
-                          },
-                          items: condition,
-                          selecteditem: 'ഉപകരണങ്ങൾ'),
-                      InputField(
-                        hint: 'മറ്റുള്ളവ ',
-                        controller: dataInfraOthers,
-                        onchanged: (value) {
-                          providerone.updateDataInfraOthers(value);
-                        },
                       ),
                     ],
-                  ),
+                  ],
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 10),
-                //   child: MultiSelectFormField(
-                //       border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(15),
-                //           borderSide: BorderSide(color: Colors.black)),
-                //       title: Text(
-                //         'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                //         style: TextStyle(fontWeight: FontWeight.bold),
-                //       ),
-                //       dataSource: businesstype,
-                //       textField: 'disply',
-                //       valueField: 'value',
-                //       okButtonLabel: 'OK',
-                //       cancelButtonLabel: 'CANCEL',
-                //       // hintText: 'Please select one or more options',
-                //       initialValue: dataAnimalhusbendaryBusinesstype,
-                //       onSaved: (value) {
-                //         providerone
-                //             .updateDataAnimalhusbendaryBusinesstype(value);
-                //       }),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Column(
+                  children: [
+                    Headings(text: 'അടിസ്ഥാന സൗകര്യം '),
+                    DropNoBorder(
+                        select: dataInfraShed,
+                        onChanged: (value) {
+                          providerone.updateDataInfraShed(value);
+                        },
+                        items: condition,
+                        selecteditem: 'ഷെഡ് / കൂട്'),
+                    DropNoBorder(
+                        select: dataInfraWastage,
+                        onChanged: (value) {
+                          providerone.updateDataInfraWastage(value);
+                        },
+                        items: condition,
+                        selecteditem: 'വെസ്റ്റേജ്'),
+                    DropNoBorder(
+                        select: dataInfraBiogas,
+                        onChanged: (value) {
+                          providerone.updateDataInfraBiogas(value);
+                        },
+                        items: condition,
+                        selecteditem: 'ബയോഗ്യാസ്'),
+                    DropNoBorder(
+                        select: dataInfraEquipments,
+                        onChanged: (value) {
+                          providerone.updateDataInfraEquipments(value);
+                        },
+                        items: condition,
+                        selecteditem: 'ഉപകരണങ്ങൾ'),
+                    InputField(
+                      hint: 'മറ്റുള്ളവ ',
+                      controller: dataInfraOthers,
+                      onchanged: (value) {
+                        providerone.updateDataInfraOthers(value);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(color: Colors.black)),
                     title: Text(
-                      'ആവശ്യമായ പിൻതുണ/സഹായം ',
+                      'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    dataSource: datasupprtlist,
-                    textField: 'text',
+                    dataSource: businesstype,
+                    textField: 'disply',
                     valueField: 'value',
                     okButtonLabel: 'OK',
                     cancelButtonLabel: 'CANCEL',
                     // hintText: 'Please select one or more options',
-                    initialValue: dataSupport,
+                    initialValue: dataAnimalhusbendaryBusinesstype,
                     onSaved: (value) {
-                      setState(() {
-                        dataSupport = value;
-                      });
-                      if (value == null) return;
-                      providerone.updateDataSupport(value);
-                    },
+                      providerone.updateDataAnimalhusbendaryBusinesstype(value);
+                    }),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black)),
+                  title: Text(
+                    'ആവശ്യമായ പിൻതുണ/സഹായം ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  dataSource: datasupprtlist,
+                  textField: 'text',
+                  valueField: 'value',
+                  okButtonLabel: 'OK',
+                  cancelButtonLabel: 'CANCEL',
+                  // hintText: 'Please select one or more options',
+                  initialValue: dataSupport,
+                  onSaved: (value) {
+                    setState(() {
+                      dataSupport = value;
+                    });
+                    if (value == null) return;
+                    providerone.updateDataSupport(value);
+                  },
                 ),
-                SizedBox(height: 10,),
-                if (dataSupport.contains('Other Supports'))
-                  TextField(
-                    controller: dataothers2,
-                    decoration:InputDecoration(
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              if (dataSupport.contains('Other Supports'))
+                TextField(
+                  controller: dataothers2,
+                  decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.black)),
-                            labelText: 'മറ്റു പിന്തുണകൾ',labelStyle: TextStyle(color: Colors.black)
-                    ),
-                    onChanged: (value){
-                      providerone.updateDataOthers2(value);
-                    },
-                  ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: MultiSelectFormField(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: Colors.black)),
-                    title: Text(
-                      'തൊഴിലുറപ്പ് സഹായം ആവശ്യമാണോ  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    dataSource: datamgnregasupportlist,
-                    textField: 'text',
-                    valueField: 'value',
-                    okButtonLabel: 'OK',
-                    cancelButtonLabel: 'CANCEL',
-                    // hintText: 'Please select one or more options',
-                    initialValue: dataMgnregasupport,
-                    onSaved: (value) {
-                      if (value == null) return;
-                      providerone.updateDataMgnregAsupport(value);
-                    },
-                  ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.black)),
+                      labelText: 'മറ്റു പിന്തുണകൾ',
+                      labelStyle: TextStyle(color: Colors.black)),
+                  onChanged: (value) {
+                    providerone.updateDataOthers2(value);
+                  },
                 ),
-                ElevateClick(
-                    ontap: () {
-                      changeData();
-                      // print(widget.items['data'][0]['_id']);
-                      // print(fetchBlocks(selectedDistrict!));
-                      // print(blocks);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => UpdateFamilyData(items: widget.items),
-                          ));
-                    },
-                    text: 'Next'),
-              ]),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: MultiSelectFormField(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.black)),
+                  title: Text(
+                    'തൊഴിലുറപ്പ് സഹായം ആവശ്യമാണോ  ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  dataSource: datamgnregasupportlist,
+                  textField: 'text',
+                  valueField: 'value',
+                  okButtonLabel: 'OK',
+                  cancelButtonLabel: 'CANCEL',
+                  // hintText: 'Please select one or more options',
+                  initialValue: dataMgnregasupport,
+                  onSaved: (value) {
+                    if (value == null) return;
+                    providerone.updateDataMgnregAsupport(value);
+                  },
+                ),
+              ),
+              ElevateClick(
+                  ontap: () {
+                    changeData();
+                    // print(widget.items['data'][0]['_id']);
+                    // print(fetchBlocks(selectedDistrict!));
+                    // print(blocks);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UpdateFamilyData(items: widget.items),
+                        ),);
+                  },
+                  text: 'Next'),
+            ],),
           ),
-        )
+        ),
+      ),
     );
   }
 
   void getData() {
     // var providerone = context.read<TextMain>();
 
-
     var dataup = widget.items['data'][0];
 
- // providerone.updateDataBlock(dataup['data_Block'].toString());
-
+    // providerone.updateDataBlock(dataup['data_Block'].toString());
 
     setState(() {
       dataDistrict = dataup['data_district'];
@@ -880,35 +875,42 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataPanchayath = dataup['data_Panchayath'].toString();
       dataWard.text = dataup["data_Ward"].toString();
       dataName.text = dataup["data_Name"].toString();
-      dataAddress.text= dataup["data_Address"].toString();
+      dataAddress.text = dataup["data_Address"].toString();
       dataPhonenumber.text = dataup["data_Phonenumber"].toString();
       dataClass = dataup["data_Class"];
-      dataClass2= dataup["data_Class2"];
+      dataClass2 = dataup["data_Class2"];
       dataClass3 = dataup["data_Class3"];
-      dataFamilyincome= dataup["data_familyincome"];
-      dataNameofNg.text= dataup["data_NameofNG"];
-      dataNameofNGmember.text= dataup["data_NameofNGmember"];
-      dataRoleinNg= dataup["data_roleinNG"];
+      dataFamilyincome = dataup["data_familyincome"];
+      dataNameofNg.text = dataup["data_NameofNG"];
+      dataNameofNGmember.text = dataup["data_NameofNGmember"];
+      dataRoleinNg = dataup["data_roleinNG"];
       dataHouseOwnership = dataup["data_houseOwnership"].toString();
-      datalanddetailslandarea.text = dataup["data_landdetails_landarea"].toString();
-      datalanddetailsagricultureland.text = dataup['data_landdetails_agricultureland'].toString();
+      datalanddetailslandarea.text =
+          dataup["data_landdetails_landarea"].toString();
+      datalanddetailsagricultureland.text =
+          dataup['data_landdetails_agricultureland'].toString();
       dataEnterpisetype = dataup["data_enterpisetype"];
-      dataYearofstartingbussiness.text = dataup["data_yearofstartingbussiness"].toString();
-      dataYearofstartingagriculture.text = dataup["data_Yearofstartingagriculture"].toString();
+      dataYearofstartingbussiness.text =
+          dataup["data_yearofstartingbussiness"].toString();
+      dataYearofstartingagriculture.text =
+          dataup["data_Yearofstartingagriculture"].toString();
       dataAmountinvested.text = dataup["data_amountinvested"].toString();
       dataSupportrecived.text = dataup["data_supportrecived"].toString();
-      dataInfraShed = dataup[  "data_Infra_Shed"];
+      dataInfraShed = dataup["data_Infra_Shed"];
       dataInfraWastage = dataup["data_Infra_wastage"];
       dataInfraBiogas = dataup["data_Infra_biogas"];
       dataInfraEquipments = dataup["data_Infra_equipments"];
       dataInfraOthers.text = dataup["data_Infra_others"].toString();
-      dataAnimalhusbendaryRegdetailsCdsunitname.text =dataup ["data_Animalhusbendary_regdetails_cdsunitname"].toString();
-      dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
+      dataAnimalhusbendaryRegdetailsCdsunitname.text =
+          dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
+      dataAnimalhusbendaryRegdetailsRegnumber.text =
+          dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
     });
   }
 
   void changeData() {
     var providerone = context.read<TextMain>();
+
     providerone.updateDataDistrict(dataDistrict);
     providerone.updateDataBlock(dataBlock);
     providerone.updateDataPanchayath(dataPanchayath);
@@ -935,8 +937,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     int detailsagricultureland = int.parse(agricultureland);
     providerone.updateDataLanddetailsAgricultureland(detailsagricultureland);
     providerone.updateDataEnterpisetype(dataEnterpisetype);
-    providerone.updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
-    providerone.updateDataYearofstartingagriculture(dataYearofstartingagriculture.text);
+    providerone
+        .updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
+    providerone.updateDataYearofstartingagriculture(
+        dataYearofstartingagriculture.text);
     String invested = dataAmountinvested.text;
     int amountinvested = int.parse(invested);
     providerone.updateDataAmountinvested(amountinvested);
@@ -945,9 +949,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataInfraWastage(dataInfraWastage);
     providerone.updateDataInfraBiogas(dataInfraBiogas);
     providerone.updateDataInfraEquipments(dataInfraEquipments);
-    providerone.updateDataInfraOthers(dataInfraOthers.text );
-    providerone.updateDataAnimalhusbendaryRegdetailsCdsunitname(dataAnimalhusbendaryRegdetailsCdsunitname.text );
-    providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(dataAnimalhusbendaryRegdetailsRegnumber.text);
-
+    providerone.updateDataInfraOthers(dataInfraOthers.text);
+    providerone.updateDataAnimalhusbendaryRegdetailsCdsunitname(
+        dataAnimalhusbendaryRegdetailsCdsunitname.text);
+    providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(
+        dataAnimalhusbendaryRegdetailsRegnumber.text);
   }
 }

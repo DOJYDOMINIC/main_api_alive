@@ -476,7 +476,8 @@ class _PersonalPageState extends State<PersonalPage> {
                       hint: 'അംഗങ്ങളുടെ എണ്ണം',
                       controller: datanumberofgroupmembers,
                       onchanged: (value) {
-                        providerone.updateDataNoofgroupmembers(value);
+                        int valuee = int.parse(value);
+                        providerone.updateDataNoofgroupmembers(valuee);
                       }),
                 SizedBox(
                   height: 10,
@@ -493,7 +494,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
+                          labelText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                         ),
                         onTap: () {
                           onTapFunction2(context: context);
@@ -515,7 +516,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
+                          labelText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
                         ),
                         onTap: () {
                           onTapFunction(context: context);

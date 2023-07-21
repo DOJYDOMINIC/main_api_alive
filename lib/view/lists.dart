@@ -180,7 +180,7 @@ final List datasupprtlist = [
   {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
 ];
 
-final List datamgnregasupportlist = [
+  final List datamgnregasupportlist = [
   {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
   {'text': 'ആട്ടിൻ കൂട്', 'value': 'Sheep Shed'},
   {'text': 'കോഴിക്കൂട്', 'value': 'Kozhikood'},
