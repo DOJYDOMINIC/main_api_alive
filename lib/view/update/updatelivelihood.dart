@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/updateproduct.dart';
+import 'package:main200623/view/update/updatepurchaseofrawmaterials.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
@@ -57,6 +58,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                     providerone.updateDatalivelihoodincomesource(value);
                   }),
               InputField(
+                keytype: TextInputType.number,
                   hint: 'എണ്ണം‌',
                   controller: dataLivelihoodNumbers,
                   onchanged: (value) {
@@ -72,6 +74,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
               InputField(
                   hint: 'പ്രീതിമാസം വരുമാനം ',
                   controller: dataLivelihoodRevenue,
+                  keytype: TextInputType.number,
                   onchanged: (value) {
                     int? valuee = int.tryParse(value);
                     providerone.updateDatalivelihoodrevenue(valuee);
@@ -84,7 +87,8 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              UpdateProduct(items: widget.items),
+                              UpdatePurchaseofrawmaterials(
+                                  items: widget.items),
                         ));
                   },
                   text: 'Next'),

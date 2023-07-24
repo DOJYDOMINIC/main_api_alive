@@ -105,7 +105,7 @@ class TextMain extends ChangeNotifier {
   String? _dataFamilydetailsSkill;
 
   //------------------product--------------
-  List? _dataProductsPrdct;
+  String? _dataProductsPrdct;
   int? _dataProductsQuantum;
   int? _dataProductsPrice2;
 
@@ -133,7 +133,6 @@ class TextMain extends ChangeNotifier {
   String? _datalivelihoodcapitalsource;
   int? _datalivelihoodrevenue;
   // --------------------------------------
-
   int? milkQnty;
   int? meatQnty;
   int? eggQnty;
@@ -148,9 +147,6 @@ class TextMain extends ChangeNotifier {
   int? calfQnty;
   int? beiferQnty;
   List? dataSalesSalesmethod;
-  List? dataProductsPrdct;
-  int? dataProductsQuantum;
-  int? dataProductsPrice2;
   String? dataLivelihoodIncomesource;
   int? dataLivelihoodNumbers;
   String? dataLivelihoodCapitalsource;
@@ -188,9 +184,6 @@ class TextMain extends ChangeNotifier {
   List? modePurchaseofrawmaterials;
   String? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
-
-
-
   int? _calvesGerseyQnty;
   int? _calvesHfQnty;
   int? _co4Qnty;
@@ -348,6 +341,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataMetaInstanceId => _dataMetaInstanceId;
 
+
   // String? get key => _key;
 
   //-----------------------family----------------------//
@@ -369,11 +363,11 @@ class TextMain extends ChangeNotifier {
 
   //-----------------product-----------------
 
-  // List? get dataProductsPrdct => _dataProductsPrdct;
-  //
-  // int? get dataProductsQuantum => _dataProductsQuantum;
-  //
-  // int? get dataProductsPrice2 => _dataProductsPrice2;
+  String? get dataProductsPrdct => _dataProductsPrdct;
+
+  int? get dataProductsQuantum => _dataProductsQuantum;
+
+  int? get dataProductsPrice2 => _dataProductsPrice2;
 
 
   //----------------purchaseofrawmaterials-------------
@@ -437,9 +431,6 @@ class TextMain extends ChangeNotifier {
   int? get getCalfQnty => calfQnty;
   int? get getBeiferQnty => beiferQnty;
   List? get getDataSalesSalesmethod => dataSalesSalesmethod;
-  List? get getDataProductsPrdct => dataProductsPrdct;
-  int? get getDataProductsQuantum => dataProductsQuantum;
-  int? get getDataProductsPrice2 => dataProductsPrice2;
   String? get getDataLivelihoodIncomesource => dataLivelihoodIncomesource;
   int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
   String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
@@ -535,7 +526,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataProductsPrdct(List? value) {
+  void updateDataProductsPrdct(String? value) {
     _dataProductsPrdct = value;
     notifyListeners();
   }
@@ -995,16 +986,16 @@ class TextMain extends ChangeNotifier {
     dataSalesSalesmethod = value;
   }
 
-  void updateDataDataProductsPrdct(List? value) {
-    dataProductsPrdct = value;
+  void updateDataDataProductsPrdct(String? value) {
+    _dataProductsPrdct = value;
   }
 
   void updateDataDataProductsQuantum(int? value) {
-    dataProductsQuantum = value;
+    _dataProductsQuantum = value;
   }
 
   void updateDataDataProductsPrice2(int? value) {
-    dataProductsPrice2 = value;
+    _dataProductsPrice2 = value;
   }
 
   void updateDataDataLivelihoodIncomesource(String? value) {
@@ -1359,9 +1350,9 @@ class TextMain extends ChangeNotifier {
     calfQnty = null;
     beiferQnty = null;
     dataSalesSalesmethod = null;
-    dataProductsPrdct = null;
-    dataProductsQuantum = null;
-    dataProductsPrice2 = null;
+    // dataProductsPrdct = null;
+    // dataProductsQuantum = null;
+    // dataProductsPrice2 = null;
     dataLivelihoodIncomesource = null;
     dataLivelihoodNumbers = null;
     dataLivelihoodCapitalsource = null;

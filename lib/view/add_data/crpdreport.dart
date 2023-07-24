@@ -12,6 +12,15 @@ import '../login.dart';
 import '../home_page.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
+import 'package:connectivity/connectivity.dart';
+
+
+
+Future<bool> checkInternetConnectivity() async {
+  var connectivityResult = await Connectivity().checkConnectivity();
+  return connectivityResult == ConnectivityResult.mobile ||
+      connectivityResult == ConnectivityResult.wifi;
+}
 
 
 class CrpDetail extends StatefulWidget {
@@ -26,6 +35,32 @@ class _SalesState extends State<CrpDetail> {
   TextEditingController datacomments = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
+
+
+  Future<void> postData(AddData addData) async {
+    const apiUrl = '${api}user/insert'; // Replace with your API endpoint
+
+    final headers = {
+      'Content-Type': 'application/json',
+
+      // Add any additional headers if required
+    };
+
+    final jsonBody = json.encode(addData.toJson());
+
+    final response = await http.post(Uri.parse(apiUrl), headers: headers, body: jsonBody);
+
+    if (response.statusCode == 201) {
+      print(response);
+      // Post request was successful
+      print('Data posted successfully');
+      // var providerone = Provider.of<TextMain>(context, listen: false);
+      // providerone.
+    } else {
+      // Error occurred during the post request
+      print('Error: ${response.statusCode}');
+    }
+  }
 
   void submitForm() async {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -84,7 +119,7 @@ class _SalesState extends State<CrpDetail> {
       dataNameofNGmember: providerone.dataNameofNGmember,
       dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) => item.toString()).toList(),
       dataProductsQuantum: providerone.dataProductsQuantum,
-      dataProductsPrdct: providerone.dataProductsPrdct?.map((dynamic item) => item.toString()).toList(),
+      dataProductsPrdct: providerone.dataProductsPrdct,
       dataLanddetails1Qtyofleasedland: providerone.dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,
       dataLanddetails2Qtyofownland: providerone.dataLanddetails2Qtyofownland,
@@ -177,8 +212,10 @@ class _SalesState extends State<CrpDetail> {
       //     dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
       //   )
       // ],
-
     );
+
+
+
     const url = '$api/user/insert'; // Replace with your API endpoint URL
     final headers = {
       'Content-Type': 'application/json',
@@ -205,7 +242,9 @@ class _SalesState extends State<CrpDetail> {
     } catch (error) {
       print('Error occurred while submitting data: $error');
     }
+
   }
+
   @override
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context,listen: false);
@@ -235,8 +274,6 @@ class _SalesState extends State<CrpDetail> {
                     setState(() {
                       providerone.updateDataComments(value);
                     });
-
-
                   }),
               InputField(
                   hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
@@ -259,7 +296,6 @@ class _SalesState extends State<CrpDetail> {
                             child: Text('OK'),
                             onPressed: () {
                               submitForm();
-
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
                             },
                           ),

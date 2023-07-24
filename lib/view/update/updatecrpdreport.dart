@@ -101,8 +101,7 @@ class _SalesState extends State<UpdateCrpDetail> {
       dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) =>
           item.toString()).toList(),
       dataProductsQuantum: providerone.dataProductsQuantum,
-      dataProductsPrdct: providerone.dataProductsPrdct?.map((dynamic item) =>
-          item.toString()).toList(),
+      dataProductsPrdct: providerone.dataProductsPrdct,
       dataLanddetails1Qtyofleasedland: providerone
           .dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,
@@ -251,7 +250,6 @@ class _SalesState extends State<UpdateCrpDetail> {
                   onchanged: (value) {
                     providerone.updateDataNameofcrp(value);
                   }),
-
               InputField(
                   hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
                   controller: dataComments,

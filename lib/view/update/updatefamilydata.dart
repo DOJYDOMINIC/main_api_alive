@@ -202,12 +202,12 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                   },
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _addMember();
-                },
-                child: Text('Add Member'),
-              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     _addMember();
+              //   },
+              //   child: Text('Add Member'),
+              // ),
               ElevateClick(
                 ontap: () {
                   Navigator.push(

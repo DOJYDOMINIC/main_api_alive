@@ -79,7 +79,7 @@ class AddData {
   int? calfQnty;
   int? beiferQnty;
   List<String>? dataSalesSalesmethod;
-  List<String>? dataProductsPrdct;
+  String? dataProductsPrdct;
   int? dataProductsQuantum;
   int? dataProductsPrice2;
   String? dataLivelihoodIncomesource;
@@ -336,7 +336,7 @@ class AddData {
     calfQnty: json["calf_qnty"],
     beiferQnty: json["beifer_qnty"],
     dataSalesSalesmethod: List<String>.from(json["data_Sales_salesmethod"].map((x) => x)),
-    dataProductsPrdct: List<String>.from(json["data_products_prdct"].map((x) => x)),
+    dataProductsPrdct: json["data_products_prdct"],
     dataProductsQuantum: json["data_products_quantum"],
     dataProductsPrice2: json["data_products_price2"],
     dataLivelihoodIncomesource: json["data_livelihood_incomesource"],
@@ -465,7 +465,7 @@ class AddData {
     "calf_qnty": calfQnty,
     "beifer_qnty": beiferQnty,
     "data_Sales_salesmethod": dataSalesSalesmethod != null ? List<dynamic>.from(dataSalesSalesmethod!.map((x) => x)) : [],
-    "data_products_prdct": dataProductsPrdct != null ?  List<dynamic>.from(dataProductsPrdct!.map((x) => x)) : [],
+    "data_products_prdct": dataProductsPrdct,
     "data_products_quantum": dataProductsQuantum,
     "data_products_price2": dataProductsPrice2,
     "data_livelihood_incomesource": dataLivelihoodIncomesource,

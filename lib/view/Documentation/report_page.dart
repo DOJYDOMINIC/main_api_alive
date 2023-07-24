@@ -4,6 +4,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
+import 'package:main200623/view/home_page.dart';
 import 'package:main200623/view/login.dart';
 import 'package:http/http.dart' as http;
 import 'package:multiselect_formfield/multiselect_formfield.dart';
@@ -124,7 +125,7 @@ List<String> saleslist = [];
       }
     }
 
-    Navigator.pop(context);
+   // Navigator.push(context, MaterialPageRoute(builder: (context) => Screenone(),));
   }
 
   Future<void> dataclasstwo(
@@ -205,7 +206,7 @@ List<String> saleslist = [];
       }
     }
 
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> Businesstype(
@@ -286,7 +287,7 @@ List<String> saleslist = [];
       }
     }
 
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> TraningRequaredd(
@@ -367,7 +368,7 @@ List<String> saleslist = [];
       }
     }
 
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> dtaclassThree(
@@ -447,7 +448,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> productName(
@@ -526,7 +527,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> Sales(String panchayth, String sales, String token) async {
@@ -604,7 +605,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> landdetails(String panchayth, String token) async {
@@ -680,7 +681,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> Mgnreg(
@@ -762,7 +763,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Future<void> Purchasedata(
@@ -846,7 +847,7 @@ List<String> saleslist = [];
             context); // Close the dialog if the download cannot be started
       }
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   //==================================

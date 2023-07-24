@@ -33,7 +33,7 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                 print(data['_id']);
               },
               child: Container(
-                width: 250,
+                width: 300,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(10)),

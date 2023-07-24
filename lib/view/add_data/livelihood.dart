@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/add_data/product.dart';
+import 'package:main200623/view/add_data/purchaseofrawmaterials.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
 import '../widgets/elevate_click_button.dart';
@@ -58,7 +59,7 @@ class _SalesState extends State<LivelihoodValue> {
               }),
               ElevateClick(
                   ontap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Product(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Purchaseofrawmaterials(),));
                   }, text:'Next'),
             ],
           ),

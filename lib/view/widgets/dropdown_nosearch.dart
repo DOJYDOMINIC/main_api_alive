@@ -24,6 +24,12 @@ class NoSearchDropdown extends StatelessWidget {
             showSelectedItems: true,
             // disabledItemFn: (String s) => s.startsWith('I'),
           ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'This field is required.';
+            }
+            return null;
+          },
           items: items,
           onChanged: onChanged,
           selectedItem: selecteditem,
