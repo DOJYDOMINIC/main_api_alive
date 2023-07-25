@@ -232,69 +232,76 @@ class _SalesState extends State<UpdateCrpDetail> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
-        backgroundColor: app_theam,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Text(DocumentId),
-              InputField(
-                  hint: 'CRP യുടെ പേര് ',
-                  controller: dataNameofcrp,
-                  onchanged: (value) {
-                    providerone.updateDataNameofcrp(value);
-                  }),
-              InputField(
-                  hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
-                  controller: dataComments,
-                  onchanged: (value) {
-                    providerone.updateDataComments(value);
-                  }),
-              InputField(
-                  hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
-                  controller: dataNameofrespondent,
-                  onchanged: (value) {
-                    providerone.updateDataNameofrespondent(value);
-                  }),
-              ElevateClick(
-                ontap: () {
-                  var id = widget.items['data'][0]['_id'];
-                  print(id);
-                  changeData();
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      // print(data);
-                      return AlertDialog(
-                        title: Text('Submit Data'),
-                        content: Text('Are you sure you want to submit?'),
-                        actions: [
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              updateForm(id);
-                            },
-                          ),
-                          TextButton(
-                            child: Text('Back'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                text: 'Submit',
-              )
-            ],
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
+          backgroundColor: app_theam,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Text(DocumentId),
+                InputField(
+                    hint: 'CRP യുടെ പേര് ',
+                    controller: dataNameofcrp,
+                    onchanged: (value) {
+                      providerone.updateDataNameofcrp(value);
+                    }),
+                InputField(
+                    hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
+                    controller: dataComments,
+                    onchanged: (value) {
+                      providerone.updateDataComments(value);
+                    }),
+                InputField(
+                    hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
+                    controller: dataNameofrespondent,
+                    onchanged: (value) {
+                      providerone.updateDataNameofrespondent(value);
+                    }),
+                ElevateClick(
+                  ontap: () {
+                    var id = widget.items['data'][0]['_id'];
+                    print(id);
+                    changeData();
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        // print(data);
+                        return AlertDialog(
+                          title: Text('Submit Data'),
+                          content: Text('Are you sure you want to submit?'),
+                          actions: [
+                            TextButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                updateForm(id);
+                              },
+                            ),
+                            TextButton(
+                              child: Text('Back'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  text: 'Submit',
+                )
+              ],
+            ),
           ),
         ),
       ),

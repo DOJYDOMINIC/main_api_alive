@@ -59,111 +59,118 @@ class _FamilyDataState extends State<FamilyData> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('കുടുംബവിവരം'),
-        centerTitle: true,
-        backgroundColor: app_theam,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InputField(
-                hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
-                controller: dataFamilydetailsNameoffailyfmember,
-                onchanged: (value) {
-                  // setState(() {
-                  //   dataFamilydetailsNameoffailyfmember = value;
-                  // });
-                  providerone.updateDataFamilydetailsNameoffailyfmember(value);
-                },
-              ),
-              InputField(
-                hint: 'ബന്ധം',
-                controller: datafamilydetailsrelation,
-                onchanged: (value) {
-                  providerone.updateDataFamilydetailsRelation(value);
-                },
-              ),
-              InputField(
-                hint: 'വയസ്സ്‌',
-                controller: datafamilydetailsageoffamilymember,
-                onchanged: (value) {
-                  // setState(() {
-                  //   datafamilydetailsageoffamilymember  = value;
-                  // });
-                  int? parsedValue = int.tryParse(value);
-                  if (parsedValue != null) {
-                    providerone.updateDatadataFamilydetailsAgeoffamilymember(parsedValue);
-                  }
-                },
-                keytype: TextInputType.number,
-              ),
-              InputField(
-                hint: 'വിദ്യാഭ്യാസം',
-                controller: dataFamilydetailsEducation,
-                onchanged: (value) {
-                  // setState(() {
-                  //   dataFamilydetailsEducation = value;
-                  // });
-                  providerone.updateDataFamilydetailsEducation(value);
-                },
-              ),
-              InputField(
-                hint: 'തൊഴില്‍',
-                controller: dataFamilydetailsJob,
-                onchanged: (value) {
-                  // setState(() {
-                  //   dataFamilydetailsJob = value;
-                  // });
-                  providerone.updateDataFamilydetailsJob(value);
-                },
-              ),
-              InputField(
-                hint: 'പ്രത്യേക കഴിവ്',
-                controller: dataFamilydetailsSkill,
-                onchanged: (value) {
-                  // setState(() {
-                  //   dataFamilydetailsSkill = value;
-                  // });
-                  providerone.updateDataFamilydetailsSkill(value);
-                },
-              ),
-
-              // Display the list of family members
-              // ListView.builder(
-              //   shrinkWrap: true,
-              //   itemCount: familyMembers.length,
-              //   itemBuilder: (context, index) {
-              //     var member = familyMembers[index];
-              //     return ListTile(
-              //       title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
-              //       subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
-              //       trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
-              //     );
-              //   },
-              // ),
-
-              GestureDetector(
-                onTap: (){
-                  print(familyMembers);
-                },
-                child: ElevatedButton(
-                    style: buttonstyle_main,
-                  onPressed: _addMember,
-                  child: Text('Add Member'),
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('കുടുംബവിവരം'),
+          centerTitle: true,
+          backgroundColor: app_theam,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InputField(
+                  hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
+                  controller: dataFamilydetailsNameoffailyfmember,
+                  onchanged: (value) {
+                    // setState(() {
+                    //   dataFamilydetailsNameoffailyfmember = value;
+                    // });
+                    providerone.updateDataFamilydetailsNameoffailyfmember(value);
+                  },
                 ),
-              ),
-              ElevateClick(
-                ontap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
-                },
-                text:'Next',
-              ),
-            ],
+                InputField(
+                  hint: 'ബന്ധം',
+                  controller: datafamilydetailsrelation,
+                  onchanged: (value) {
+                    providerone.updateDataFamilydetailsRelation(value);
+                  },
+                ),
+                InputField(
+                  hint: 'വയസ്സ്‌',
+                  controller: datafamilydetailsageoffamilymember,
+                  onchanged: (value) {
+                    // setState(() {
+                    //   datafamilydetailsageoffamilymember  = value;
+                    // });
+                    int? parsedValue = int.tryParse(value);
+                    if (parsedValue != null) {
+                      providerone.updateDatadataFamilydetailsAgeoffamilymember(parsedValue);
+                    }
+                  },
+                  keytype: TextInputType.number,
+                ),
+                InputField(
+                  hint: 'വിദ്യാഭ്യാസം',
+                  controller: dataFamilydetailsEducation,
+                  onchanged: (value) {
+                    // setState(() {
+                    //   dataFamilydetailsEducation = value;
+                    // });
+                    providerone.updateDataFamilydetailsEducation(value);
+                  },
+                ),
+                InputField(
+                  hint: 'തൊഴില്‍',
+                  controller: dataFamilydetailsJob,
+                  onchanged: (value) {
+                    // setState(() {
+                    //   dataFamilydetailsJob = value;
+                    // });
+                    providerone.updateDataFamilydetailsJob(value);
+                  },
+                ),
+                InputField(
+                  hint: 'പ്രത്യേക കഴിവ്',
+                  controller: dataFamilydetailsSkill,
+                  onchanged: (value) {
+                    // setState(() {
+                    //   dataFamilydetailsSkill = value;
+                    // });
+                    providerone.updateDataFamilydetailsSkill(value);
+                  },
+                ),
+
+                // Display the list of family members
+                // ListView.builder(
+                //   shrinkWrap: true,
+                //   itemCount: familyMembers.length,
+                //   itemBuilder: (context, index) {
+                //     var member = familyMembers[index];
+                //     return ListTile(
+                //       title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
+                //       subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
+                //       trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
+                //     );
+                //   },
+                // ),
+
+                GestureDetector(
+                  onTap: (){
+                    print(familyMembers);
+                  },
+                  child: ElevatedButton(
+                      style: buttonstyle_main,
+                    onPressed: _addMember,
+                    child: Text('Add Member'),
+                  ),
+                ),
+                ElevateClick(
+                  ontap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
+                  },
+                  text:'Next',
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -656,11 +656,11 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateSelectedOptions(CheckboxOption option, List<String> newDataClass3) {
-    _selectedOption = option;
-    _dataClass3 = newDataClass3;
-    notifyListeners();
-  }
+  // void updateSelectedOptions(CheckboxOption option, List<String> newDataClass3) {
+  //   _selectedOption = option;
+  //   _dataClass3 = newDataClass3;
+  //   notifyListeners();
+  // }
 
 
   void updateDataAnimalhusbendaryOthers0(String? value) {

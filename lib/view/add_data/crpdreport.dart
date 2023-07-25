@@ -249,70 +249,77 @@ class _SalesState extends State<CrpDetail> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context,listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
-        backgroundColor: app_theam,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Text(DocumentId),
-              InputField(
-                  hint: 'CRP യുടെ പേര് ',
-                  controller: datanameofcrp,
-                  onchanged: (value) {
-                    providerone.updateDataNameofcrp(value);
-                  }),
-              InputField(
-                  hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
-                  controller: datacomments,
-                  onchanged: (value) {
-                    setState(() {
-                      providerone.updateDataComments(value);
-                    });
-                  }),
-              InputField(
-                  hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
-                  controller: dataNameofrespondent,
-                  onchanged: (value) {
-                    providerone.updateDataNameofrespondent(value);
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
+          backgroundColor: app_theam,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Text(DocumentId),
+                InputField(
+                    hint: 'CRP യുടെ പേര് ',
+                    controller: datanameofcrp,
+                    onchanged: (value) {
+                      providerone.updateDataNameofcrp(value);
+                    }),
+                InputField(
+                    hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
+                    controller: datacomments,
+                    onchanged: (value) {
+                      setState(() {
+                        providerone.updateDataComments(value);
+                      });
+                    }),
+                InputField(
+                    hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
+                    controller: dataNameofrespondent,
+                    onchanged: (value) {
+                      providerone.updateDataNameofrespondent(value);
 
-                  }),
-              ElevateClick(
-                ontap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      // print(data);
-                      return AlertDialog(
-                        title: Text('Submit Data'),
-                        content: Text('Are you sure you want to submit?'),
-                        actions: [
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              submitForm();
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
-                            },
-                          ),
-                          TextButton(
-                            child: Text('Back'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                text: 'Submit',
-              )
-            ],
+                    }),
+                ElevateClick(
+                  ontap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        // print(data);
+                        return AlertDialog(
+                          title: Text('Submit Data'),
+                          content: Text('Are you sure you want to submit?'),
+                          actions: [
+                            TextButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                submitForm();
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
+                              },
+                            ),
+                            TextButton(
+                              child: Text('Back'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  text: 'Submit',
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -82,144 +82,151 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('കുടുംബവിവരം'),
-        centerTitle: true,
-        backgroundColor: app_theam,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Display the list of family members
-              Container(
-                height: 600,
-                child: ListView.builder(
-                  // shrinkWrap: true,
-                  itemCount: widget.items['familyDetails'].length,
-                  itemBuilder: (context, index) {
-                    var data = widget.items['familyDetails'][index];
-                    TextEditingController dataFamilydetailsNameoffailyfmember =
-                        TextEditingController(
-                            text:
-                                data["data_familydetails_nameoffailyfmember"]);
-                    TextEditingController dataFamilydetailsAgeoffamilymember =
-                        TextEditingController(
-                            text: data["data_familydetails_ageoffamilymember"]
-                                .toString());
-                    TextEditingController datafamilydetailsrelation =
-                        TextEditingController(
-                            text: data["data_familydetails_relation"]);
-                    TextEditingController dataFamilydetailsEducation =
-                        TextEditingController(
-                            text: data["data_familydetails_education"]);
-                    // TextEditingController dataFamilydetailsRelation = TextEditingController(text: widget.items['familyDetails'][index]["data_familydetails_relation"]);
-                    TextEditingController dataFamilydetailsSkill =
-                        TextEditingController(
-                            text: data["data_familydetails_skill"]);
-                    TextEditingController dataFamilydetailsJob =
-                        TextEditingController(
-                            text: data["data_familydetails_job"]);
-                    // TextEditingController new_id = TextEditingController(text: data["_id"]);
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('കുടുംബവിവരം'),
+          centerTitle: true,
+          backgroundColor: app_theam,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Display the list of family members
+                Container(
+                  height: 600,
+                  child: ListView.builder(
+                    // shrinkWrap: true,
+                    itemCount: widget.items['familyDetails'].length,
+                    itemBuilder: (context, index) {
+                      var data = widget.items['familyDetails'][index];
+                      TextEditingController dataFamilydetailsNameoffailyfmember =
+                          TextEditingController(
+                              text:
+                                  data["data_familydetails_nameoffailyfmember"]);
+                      TextEditingController dataFamilydetailsAgeoffamilymember =
+                          TextEditingController(
+                              text: data["data_familydetails_ageoffamilymember"]
+                                  .toString());
+                      TextEditingController datafamilydetailsrelation =
+                          TextEditingController(
+                              text: data["data_familydetails_relation"]);
+                      TextEditingController dataFamilydetailsEducation =
+                          TextEditingController(
+                              text: data["data_familydetails_education"]);
+                      // TextEditingController dataFamilydetailsRelation = TextEditingController(text: widget.items['familyDetails'][index]["data_familydetails_relation"]);
+                      TextEditingController dataFamilydetailsSkill =
+                          TextEditingController(
+                              text: data["data_familydetails_skill"]);
+                      TextEditingController dataFamilydetailsJob =
+                          TextEditingController(
+                              text: data["data_familydetails_job"]);
+                      // TextEditingController new_id = TextEditingController(text: data["_id"]);
 
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            // Text(new_id.text,style: TextStyle(color: Colors.white),),
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Text(new_id.text,style: TextStyle(color: Colors.white),),
 
-                            InputField(
-                              hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
-                              controller: dataFamilydetailsNameoffailyfmember,
-                              onchanged: (value) {
-                                providerone
-                                    .updateDataFamilydetailsNameoffailyfmember(
-                                        value);
-                              },
-                            ),
-                            InputField(
-                              hint: 'ബന്ധം',
-                              controller: datafamilydetailsrelation,
-                              onchanged: (value) {
-                                providerone
-                                    .updateDataFamilydetailsRelation(value);
-                              },
-                            ),
-                            InputField(
-                              hint: 'വയസ്സ്‌',
-                              controller: dataFamilydetailsAgeoffamilymember,
-                              onchanged: (value) {
-                                int? parsedValue = int.tryParse(value);
-                                providerone
-                                    .updateDatadataFamilydetailsAgeoffamilymember(
-                                        parsedValue);
-                              },
-                              keytype: TextInputType.number,
-                            ),
+                              InputField(
+                                hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
+                                controller: dataFamilydetailsNameoffailyfmember,
+                                onchanged: (value) {
+                                  providerone
+                                      .updateDataFamilydetailsNameoffailyfmember(
+                                          value);
+                                },
+                              ),
+                              InputField(
+                                hint: 'ബന്ധം',
+                                controller: datafamilydetailsrelation,
+                                onchanged: (value) {
+                                  providerone
+                                      .updateDataFamilydetailsRelation(value);
+                                },
+                              ),
+                              InputField(
+                                hint: 'വയസ്സ്‌',
+                                controller: dataFamilydetailsAgeoffamilymember,
+                                onchanged: (value) {
+                                  int? parsedValue = int.tryParse(value);
+                                  providerone
+                                      .updateDatadataFamilydetailsAgeoffamilymember(
+                                          parsedValue);
+                                },
+                                keytype: TextInputType.number,
+                              ),
 
-                            InputField(
-                              hint: 'വിദ്യാഭ്യാസം',
-                              controller: dataFamilydetailsEducation,
-                              onchanged: (value) {
-                                providerone
-                                    .updateDataFamilydetailsEducation(value);
-                              },
-                            ),
-                            InputField(
-                              hint: 'തൊഴില്‍',
-                              controller: dataFamilydetailsJob,
-                              onchanged: (value) {
-                                providerone.updateDataFamilydetailsJob(value);
-                              },
-                            ),
-                            InputField(
-                              hint: 'പ്രത്യേക കഴിവ്',
-                              controller: dataFamilydetailsSkill,
-                              onchanged: (value) {
-                                providerone.updateDataFamilydetailsSkill(value);
-                              },
-                            ),
-                            // ElevatedButton(
-                            //   onPressed:(){
-                            //     // print(widget.items['familyDetails'][5]);
-                            //     _addMember();
-                            //   },
-                            //   child: Text('Add Member'),
-                            // ),
-                          ]),
-                    );
+                              InputField(
+                                hint: 'വിദ്യാഭ്യാസം',
+                                controller: dataFamilydetailsEducation,
+                                onchanged: (value) {
+                                  providerone
+                                      .updateDataFamilydetailsEducation(value);
+                                },
+                              ),
+                              InputField(
+                                hint: 'തൊഴില്‍',
+                                controller: dataFamilydetailsJob,
+                                onchanged: (value) {
+                                  providerone.updateDataFamilydetailsJob(value);
+                                },
+                              ),
+                              InputField(
+                                hint: 'പ്രത്യേക കഴിവ്',
+                                controller: dataFamilydetailsSkill,
+                                onchanged: (value) {
+                                  providerone.updateDataFamilydetailsSkill(value);
+                                },
+                              ),
+                              // ElevatedButton(
+                              //   onPressed:(){
+                              //     // print(widget.items['familyDetails'][5]);
+                              //     _addMember();
+                              //   },
+                              //   child: Text('Add Member'),
+                              // ),
+                            ]),
+                      );
 
-                    ListTile(
-                      title: Text(widget.items['familyDetails'][index]
-                          ["data_familydetails_nameoffailyfmember"]),
-                      // subtitle: Text(member.dataFamilydetailsRelation),
-                      // trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
-                    );
-                  },
+                      ListTile(
+                        title: Text(widget.items['familyDetails'][index]
+                            ["data_familydetails_nameoffailyfmember"]),
+                        // subtitle: Text(member.dataFamilydetailsRelation),
+                        // trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
+                      );
+                    },
+                  ),
                 ),
-              ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     _addMember();
-              //   },
-              //   child: Text('Add Member'),
-              // ),
-              ElevateClick(
-                ontap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            UpdateLivelihoodValue(items: widget.items),
-                      ));
-                },
-                text: 'Next',
-              ),
-            ],
+                // ElevatedButton(
+                //   onPressed: () {
+                //     _addMember();
+                //   },
+                //   child: Text('Add Member'),
+                // ),
+                ElevateClick(
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UpdateLivelihoodValue(items: widget.items),
+                        ));
+                  },
+                  text: 'Next',
+                ),
+              ],
+            ),
           ),
         ),
       ),

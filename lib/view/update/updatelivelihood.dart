@@ -40,59 +40,66 @@ class _SalesState extends State<UpdateLivelihoodValue> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('ഉപജീവന വിവരം '),
-          centerTitle: true,
-          backgroundColor: app_theam),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              // Text(DocumentId),
-              InputField(
-                  hint: 'ഉപജീവന തൊഴിൽ',
-                  controller: dataLivelihoodIncomesource,
-                  onchanged: (value) {
-                    providerone.updateDatalivelihoodincomesource(value);
-                  }),
-              InputField(
-                keytype: TextInputType.number,
-                  hint: 'എണ്ണം‌',
-                  controller: dataLivelihoodNumbers,
-                  onchanged: (value) {
-                    int? valuee = int.tryParse(value);
-                    providerone.updateDatalivelihoodnumbers(valuee);
-                  }),
-              InputField(
-                  hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക',
-                  controller: dataLivelihoodCapitalsource,
-                  onchanged: (value) {
-                    providerone.updateDatalivelihoodcapitalsource(value);
-                  }),
-              InputField(
-                  hint: 'പ്രീതിമാസം വരുമാനം ',
-                  controller: dataLivelihoodRevenue,
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            title: Text('ഉപജീവന വിവരം '),
+            centerTitle: true,
+            backgroundColor: app_theam),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                // Text(DocumentId),
+                InputField(
+                    hint: 'ഉപജീവന തൊഴിൽ',
+                    controller: dataLivelihoodIncomesource,
+                    onchanged: (value) {
+                      providerone.updateDatalivelihoodincomesource(value);
+                    }),
+                InputField(
                   keytype: TextInputType.number,
-                  onchanged: (value) {
-                    int? valuee = int.tryParse(value);
-                    providerone.updateDatalivelihoodrevenue(valuee);
-                  }),
+                    hint: 'എണ്ണം‌',
+                    controller: dataLivelihoodNumbers,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone.updateDatalivelihoodnumbers(valuee);
+                    }),
+                InputField(
+                    hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക',
+                    controller: dataLivelihoodCapitalsource,
+                    onchanged: (value) {
+                      providerone.updateDatalivelihoodcapitalsource(value);
+                    }),
+                InputField(
+                    hint: 'പ്രീതിമാസം വരുമാനം ',
+                    controller: dataLivelihoodRevenue,
+                    keytype: TextInputType.number,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone.updateDatalivelihoodrevenue(valuee);
+                    }),
 
-              ElevateClick(
-                  ontap: () {
-                    changeData();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              UpdatePurchaseofrawmaterials(
-                                  items: widget.items),
-                        ));
-                  },
-                  text: 'Next'),
-            ],
+                ElevateClick(
+                    ontap: () {
+                      changeData();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                UpdatePurchaseofrawmaterials(
+                                    items: widget.items),
+                          ));
+                    },
+                    text: 'Next'),
+              ],
+            ),
           ),
         ),
       ),

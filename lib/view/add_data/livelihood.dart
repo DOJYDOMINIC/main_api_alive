@@ -32,36 +32,43 @@ class _SalesState extends State<LivelihoodValue> {
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context,listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('ഉപജീവന വിവരം '),
-          centerTitle: true,
-          backgroundColor: app_theam),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              // Text(DocumentId),
-              InputField(hint: 'ഉപജീവന തൊഴിൽ', controller:datalivelihoodincomesource, onchanged: (value){
-                providerone.updateDatalivelihoodincomesource(value);
-              }),
-              InputField(hint: 'എണ്ണം‌', controller: datalivelihoodnumbers,keytype: TextInputType.number, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDatalivelihoodnumbers(valuee);
-              }),
-              InputField(hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക', controller: datalivelihoodcapitalsource, onchanged: (value){
-                providerone.updateDatalivelihoodcapitalsource(value);
-              }),
-              InputField(hint: 'പ്രീതിമാസം വരുമാനം ', controller: datalivelihoodrevenue,keytype: TextInputType.number, onchanged: (value){
-                int? valuee = int.tryParse(value);
-                providerone.updateDatalivelihoodrevenue(valuee);
-              }),
-              ElevateClick(
-                  ontap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Purchaseofrawmaterials(),));
-                  }, text:'Next'),
-            ],
+    return GestureDetector(
+      onTap: () {
+        if (!FocusScope.of(context).hasPrimaryFocus) {
+          FocusScope.of(context).unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            title: Text('ഉപജീവന വിവരം '),
+            centerTitle: true,
+            backgroundColor: app_theam),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                // Text(DocumentId),
+                InputField(hint: 'ഉപജീവന തൊഴിൽ', controller:datalivelihoodincomesource, onchanged: (value){
+                  providerone.updateDatalivelihoodincomesource(value);
+                }),
+                InputField(hint: 'എണ്ണം‌', controller: datalivelihoodnumbers,keytype: TextInputType.number, onchanged: (value){
+                  int? valuee = int.tryParse(value);
+                  providerone.updateDatalivelihoodnumbers(valuee);
+                }),
+                InputField(hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക', controller: datalivelihoodcapitalsource, onchanged: (value){
+                  providerone.updateDatalivelihoodcapitalsource(value);
+                }),
+                InputField(hint: 'പ്രീതിമാസം വരുമാനം ', controller: datalivelihoodrevenue,keytype: TextInputType.number, onchanged: (value){
+                  int? valuee = int.tryParse(value);
+                  providerone.updateDatalivelihoodrevenue(valuee);
+                }),
+                ElevateClick(
+                    ontap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Purchaseofrawmaterials(),));
+                    }, text:'Next'),
+              ],
+            ),
           ),
         ),
       ),
