@@ -928,7 +928,6 @@ class TextMain extends ChangeNotifier {
 
   // newval
 
-
   void updateDataMilkQnty(int? value) {
     milkQnty = value;
     notifyListeners();

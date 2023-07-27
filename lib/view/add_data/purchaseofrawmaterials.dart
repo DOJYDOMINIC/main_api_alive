@@ -149,7 +149,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MALABARI GOATS'))
                     InputField(
-                        hint: 'MALABARI GOATS',
+                        hint: 'MALABARI GOATS QTY',
                         keytype: TextInputType.number,
                         controller: malabarigoats,
                         onchanged: (value) {

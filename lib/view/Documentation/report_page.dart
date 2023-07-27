@@ -321,8 +321,7 @@ class _ReportPageState extends State<ReportPage> {
                   child: const Text('Cancel'),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.of(context)
-                        .pop(); // Close the dialog and the downloading dialog
+                    // Navigator.of(context).pop(); // Close the dialog and the downloading dialog
                   },
                 ),
               ],
@@ -335,9 +334,7 @@ class _ReportPageState extends State<ReportPage> {
         Navigator.pop(
             context); // Close the dialog if the download cannot be started
       }
-    }
-
-    // Navigator.pop(context);
+    } // Navigator.pop(context);
   }
 
   Future<void> TraningRequaredd(
@@ -360,7 +357,7 @@ class _ReportPageState extends State<ReportPage> {
           path,
           options: Options(
             headers: {
-              'Authorization': 'Bearer $authToken'
+              'Authorization': 'Bearer $authToken',
             }, // Pass the token in the request headers
           ),
           onReceiveProgress: (receivedBytes, totalBytes) {
@@ -1211,7 +1208,6 @@ class _ReportPageState extends State<ReportPage> {
                   },
                   item: 'ജില്ല',
                 ),
-
                 NoSearchDropdown(
                   onChanged: (value) {
                     setState(() {
@@ -1222,7 +1218,6 @@ class _ReportPageState extends State<ReportPage> {
                   item: 'ബ്ലോക്ക്',
                   items: blocklist,
                 ),
-
                 NoSearchDropdown(
                     onChanged: (value) {
                       setState(() {
@@ -1235,7 +1230,6 @@ class _ReportPageState extends State<ReportPage> {
                 SizedBox(
                   height: 10,
                 ),
-                // ======================
                 if (panchayth != null)
                   Column(
                     children: [
@@ -1272,8 +1266,16 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  startDownloading(
-                                      panchayth!, dataone!, authToken!);
+                                  try{
+                                    startDownloading(panchayth!, dataone!, authToken!);
+                                  }catch(e){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text('Please provide data!'),
+                                      ),
+                                    );
+                                  }
                                 },
                                 icon: Icon(Icons.download))
                           ],
@@ -1316,8 +1318,17 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
+                                  try{
+                                    dataclasstwo(panchayth!, datatwo!, authToken!);
+                                  }catch(e){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text('Please provide data!'),
+                                      ),
+                                    );
+                                  }
                                   print(datatwo);
-                                  dataclasstwo(panchayth!, datatwo!, authToken!);
                                 },
                                 icon: Icon(Icons.download))
                           ],
@@ -1360,10 +1371,16 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    dtaclassThree(
-                                        panchayth!, datathree!, authToken!);
-                                  });
+                                  try{
+                                    dtaclassThree(panchayth!, datathree!, authToken!);
+                                  }catch(e){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text('Please provide data!'),
+                                      ),
+                                    );
+                                  }
                                 },
                                 icon: Icon(Icons.download))
                           ],
@@ -1379,7 +1396,8 @@ class _ReportPageState extends State<ReportPage> {
                             child: MultiSelectFormField(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(color: Colors.black)),
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
                                 title: Text(
                                   'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -1400,12 +1418,16 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                setState(() {
-                                  Businesstype(
-                                      panchayth!, businessString!, authToken!);
-                                  print(businessString);
-                                  // print(businessString);
-                                });
+                                try{
+                                  Businesstype(panchayth!, businessString!, authToken!);
+                                }catch(e){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
                               },
                               icon: Icon(Icons.download))
                         ],
@@ -1420,7 +1442,8 @@ class _ReportPageState extends State<ReportPage> {
                             child: MultiSelectFormField(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(color: Colors.black)),
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
                                 title: Text(
                                   'പരിശീലനം വേണ്ട മേഘല ',
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -1441,12 +1464,17 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                setState(() {
+                                try{
                                   TraningRequaredd(
                                       panchayth!, traning!, authToken!);
-                                  print('value :$traninglist');
-                                  // print(businessString);
-                                });
+                                }catch(e){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
                               },
                               icon: Icon(Icons.download))
                         ],
@@ -1458,7 +1486,8 @@ class _ReportPageState extends State<ReportPage> {
                             child: MultiSelectFormField(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(color: Colors.black)),
+                                    borderSide:
+                                        BorderSide(color: Colors.black)),
                                 title: Text(
                                   'MGNREG ',
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -1479,14 +1508,19 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                setState(() {
+                                try{
                                   Mgnreg(
                                     panchayth!,
                                     mgnregstr!,
                                   );
-                                  // print('value :$traninglist');
-                                  // print(businessString);
-                                });
+                                }catch(e){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
                               },
                               icon: Icon(Icons.download))
                         ],
@@ -1510,9 +1544,16 @@ class _ReportPageState extends State<ReportPage> {
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  setState(() {
+                                  try{
                                     landdetails(panchayth!, authToken!);
-                                  });
+                                  }catch(e){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text('Please provide data!'),
+                                      ),
+                                    );
+                                  }
                                 },
                                 icon: Icon(Icons.download))
                           ],
@@ -1555,10 +1596,16 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    productName(
-                                        panchayth!, productname!, authToken!);
-                                  });
+                                  try{
+                                    productName(panchayth!, productname!, authToken!);
+                                  }catch(e){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Text('Please provide data!'),
+                                      ),
+                                    );
+                                  }
                                 },
                                 icon: Icon(Icons.download))
                           ],
@@ -1591,15 +1638,22 @@ class _ReportPageState extends State<ReportPage> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide.none),
                                       border: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.white)))),
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
                             ),
                           ),
                           IconButton(
                               onPressed: () {
-                                setState(() {
+                                try{
                                   Sales(panchayth!, salesvalue!, authToken!);
-                                });
+                                }catch(e){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
                               },
                               icon: Icon(Icons.download))
                         ],
@@ -1618,8 +1672,9 @@ class _ReportPageState extends State<ReportPage> {
                                   height: 60,
                                   width: MediaQuery.of(context).size.width * .8,
                                   decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Colors.black))
-                                  ),
+                                      border: Border(
+                                          bottom:
+                                              BorderSide(color: Colors.black))),
                                   child: DropdownSearch<String>(
                                     popupProps: PopupProps<String>.menu(
                                       showSelectedItems: true,
@@ -1641,12 +1696,13 @@ class _ReportPageState extends State<ReportPage> {
                                                 InputDecoration(
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                            borderSide: BorderSide
-                                                                .none),
+                                                            borderSide:
+                                                                BorderSide
+                                                                    .none),
                                                     border: OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                            color:
-                                                                Colors.white)))),
+                                                            color: Colors
+                                                                .white)))),
                                   ),
                                 ),
                                 Container(
@@ -1659,24 +1715,24 @@ class _ReportPageState extends State<ReportPage> {
                                     ),
                                     items: sublistlist,
                                     onChanged: (value) {
-                                      setState(() {
-                                        sublist = value;
-                                        print(sublist);
-                                      });
+                                      setState(
+                                        () {
+                                          sublist = value;
+                                        },
+                                      );
                                     },
                                     selectedItem: 'purchase Sublist',
                                     dropdownDecoratorProps:
                                         DropDownDecoratorProps(
-                                            dropdownSearchDecoration:
-                                                InputDecoration(
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                            borderSide: BorderSide
-                                                                .none),
-                                                    border: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.white)))),
+                                      dropdownSearchDecoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none),
+                                        border: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -1684,9 +1740,16 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                setState(() {
+                                try{
                                   Purchasedata(panchayth!, purchase!, sublist);
-                                });
+                                }catch(e){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
                               },
                               icon: Icon(Icons.download))
                         ],

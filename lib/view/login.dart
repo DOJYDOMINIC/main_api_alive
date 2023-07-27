@@ -51,7 +51,6 @@ class _LoginState extends State<Login> {
         // Successful login
         var data = json.decode(response.body);
         authToken = data['token'];
-
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('authToken', authToken!);
         prefs.setString('email', _emailController.text);

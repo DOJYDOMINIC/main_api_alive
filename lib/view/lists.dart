@@ -22,6 +22,7 @@ List traingrequared = [
   },
 ];
 List<String> dataclass = ['APL', 'BPL', 'APL,BPL'];
+List<String> dataclassadd = ['APL', 'BPL'];
 List<String> dataclass2 = [
   "General",
   "OBC",
@@ -121,12 +122,12 @@ final List businesstype = [
 ];
 
 final List sourceofinvestment = [
-  {'source': 'bankloan', 'value': 'bankloan'},
-  {'source': 'Ng', 'value': 'Ng'},
-  {'source': 'family', 'value': 'family'},
-  {'source': 'friends', 'value': 'Asraya'},
-  {'source': ' private finance', 'value': 'private finance'},
-  {'source': 'other', 'value': 'other'},
+  {'source': 'ബാങ്ക്ല ോൺ', 'value': 'bankloan'},
+  {'source': 'അയൽക്കൂട്ടം', 'value': 'Ng'},
+  {'source': 'കുടുംബത്തിൽ നിന്ന്', 'value': 'family'},
+  {'source': 'കൂട്ടുകാരിൽ നിന്ന്', 'value': 'Asraya'},
+  {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'private finance'},
+  {'source': 'മറ്റുള്ളവ', 'value': 'other'},
 ];
 
 final List datasupprtlist = [

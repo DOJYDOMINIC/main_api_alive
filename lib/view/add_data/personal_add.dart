@@ -307,7 +307,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         onChanged: (value) {
                           providerone.updateDataClass(value);
                         },
-                        items: dataclass,
+                        items: dataclassadd,
                         item: 'കുടുംബ അവസ്ഥ'),
                     NoSearchDropdown(
                         onChanged: (value) {
@@ -462,8 +462,7 @@ class _PersonalPageState extends State<PersonalPage> {
                                   isYesSelected = !value!;
                                 });
                                 providerone
-                                    .updateDataAnimalhusbendaryCdsregistration(
-                                        'No');
+                                    .updateDataAnimalhusbendaryCdsregistration('No');
                               },
                             ),
                             if (isYesSelected) ...[
@@ -557,7 +556,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             readOnly: true,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              labelText: 'കാർഷിക ഉപജീവനം ആരംഭിച്ച വർഷം',
+                              labelText: 'ബിസിനസ് ആരംഭിച്ച വർഷം',
                             ),
                             onTap: () {
                               onTapFunction(context: context);
@@ -771,10 +770,7 @@ class _PersonalPageState extends State<PersonalPage> {
                           return null;
                         },
                         onSaved: (value) {
-                          // setState(() {
                             dataSupport = value;
-                          // });
-                          // if (value == null) return;
                           providerone.updateDataSupport(value);
                         },
                       ),

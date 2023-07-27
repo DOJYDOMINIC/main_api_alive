@@ -24,7 +24,6 @@ class _SearchEditState extends State<SearchEdit> {
   String? selectedpanchayth;
   String? selectedcrp;
 
-
   @override
   void initState() {
     super.initState();
@@ -59,7 +58,6 @@ class _SearchEditState extends State<SearchEdit> {
   List<String> blocks = [];
 
   Future<void> fetchBlocks(String selectedDistrict) async {
-
     try {
       final response = await http.get(
           Uri.parse('${api}search/listBlocks?data_district=$selectedDistrict'));
@@ -124,7 +122,7 @@ class _SearchEditState extends State<SearchEdit> {
 
   List? peopleData = [];
 
-  Future<void> fetchData(String selectedCrp,String token) async {
+  Future<void> fetchData(String selectedCrp, String token) async {
     try {
       final response = await http.get(
         Uri.parse('${api}search/searchByCpr?data_nameofcrp=$selectedCrp'),
@@ -150,7 +148,6 @@ class _SearchEditState extends State<SearchEdit> {
       print('Error fetching data: $e');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +185,11 @@ class _SearchEditState extends State<SearchEdit> {
               onChanged: (value) {
                 setState(() {
                   selectedDistrict = value;
+                  try{
                   fetchBlocks(selectedDistrict!);
+                  } catch (e) {
+                    print('Error : $e');
+                  }
                 });
                 // providerone.updateDataDistrict(value);
               },
@@ -198,7 +199,11 @@ class _SearchEditState extends State<SearchEdit> {
               onChanged: (value) {
                 setState(() {
                   selectedBlocks = value;
-                  fetchPanchayth(selectedBlocks!);
+                  try {
+                    fetchPanchayth(selectedBlocks!);
+                  } catch (e) {
+                    print('Error : $e');
+                  }
                 });
                 // providerone.updateDataBlock(value);
               },
@@ -209,7 +214,11 @@ class _SearchEditState extends State<SearchEdit> {
                 onChanged: (value) {
                   setState(() {
                     selectedpanchayth = value;
-                    FetchCrp(selectedpanchayth!);
+                    try {
+                      FetchCrp(selectedpanchayth!);
+                    } catch (e) {
+                      print('Error : $e');
+                    }
                   });
                 },
                 items: panchaths,
@@ -218,14 +227,22 @@ class _SearchEditState extends State<SearchEdit> {
                 onChanged: (value) {
                   setState(() {
                     selectedcrp = value;
-                    FetchCrp(selectedcrp!);
+                    try {
+                      FetchCrp(selectedcrp!);
+                    } catch (e) {
+                      print('Error : $e');
+                    }
                   });
                 },
                 items: crplist,
                 item: 'CRP'),
             ElevateClick(
                 ontap: () {
-                  fetchData(selectedcrp!,authToken!);
+                  try {
+                    fetchData(selectedcrp!, authToken!);
+                  } catch (e) {
+                    print('Error : $e');
+                  }
                 },
                 text: 'Search'),
           ],

@@ -37,9 +37,14 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     super.initState();
     getData();
     fetchDistricts();
+    Register();
+  }
 
-    // fetchBlocks(dataDistrict!);
-    // fetchPanchayth(dataBlock!);
+
+  Register(){
+    if(dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty){
+      isYesSelected = true;
+    }
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -53,8 +58,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
         setState(() {
           districts =
               List<String>.from(data); // Assign fetched data to the global list
-          // selectedDistrict;
-          // print(selectedDistrict);
         });
       } else {
         throw Exception('Failed to fetch districts');
@@ -75,7 +78,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
         final data = json.decode(response.body);
         setState(() {
           blocks = List<String>.from(data);
-          print(blocks);
+          // print(blocks);
         });
       } else {
         throw Exception('Failed to fetch blocks');
@@ -97,7 +100,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
         final data = json.decode(response.body);
         setState(() {
           panchaths = List<String>.from(data);
-          print(panchaths);
+          // print(panchaths);
         });
       } else {
         throw Exception('Failed to fetch blocks');
@@ -108,27 +111,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     }
   }
 
-  Future<void> deleteDataonId(String dataId, String token) async {
-    final apiUrl = '${api}auth/deleteUsers/$dataId';
-    print(dataId);
 
-    try {
-      final response = await http.delete(
-        Uri.parse(apiUrl),
-        headers: {
-          'Authorization': 'Bearer $token'
-        }, // Pass the token in the request headers
-      );
-
-      if (response.statusCode == 200) {
-        print('Data deletion successful');
-      } else {
-        print('Failed to delete data. Status code: ${response.statusCode}');
-      }
-    } catch (error) {
-      print('Error occurred during data deletion: $error');
-    }
-  }
 
   List dataSupport = [];
   List dataMgnregasupport = [];
@@ -139,6 +122,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   bool isYesSelected = false;
   String? group;
 
+
+
+  String? id;
   String? dataDistrict;
   String? dataBlock;
   String? dataPanchayath;
@@ -153,6 +139,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? dataInfraWastage;
   String? dataInfraBiogas;
   String? dataInfraEquipments;
+
+  String? dataAnimalhusbendarycdsregistration;
+
   TextEditingController dataWard = TextEditingController();
   TextEditingController dataName = TextEditingController();
   TextEditingController dataAddress = TextEditingController();
@@ -173,7 +162,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       TextEditingController();
   TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname =
       TextEditingController();
-TextEditingController dataAnimalhusbendarycdsregistration = TextEditingController();
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
   String dateOfLoanApplication = '';
@@ -182,6 +170,7 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
   // TextEditingController datePickerController = TextEditingController();
   // TextEditingController selectedDateController = TextEditingController();
   //  ----------------------------------------------------
+
 
   onTapFunction({required BuildContext context}) async {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -199,7 +188,6 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
       dataYearofstartingbussiness.text = value;
     });
     providerone.updateDataYearofstartingbussiness(value);
-    // print(yearagriculture);
   }
 
   onTapFunction2({required BuildContext context}) async {
@@ -218,7 +206,6 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
       dataYearofstartingagriculture.text = value;
     });
     providerone.updateDataYearofstartingagriculture(value);
-    // print(yearagriculture);
   }
 
   // String? dateofLoanApplication;
@@ -263,38 +250,7 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
           centerTitle: true,
           backgroundColor: app_theam,
           actions: [
-            IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Delete Confirmation'),
-                      content: Text('Do you want to delete?'),
-                      actions: <Widget>[
-                        TextButton(
-                          child: Text('Cancel'),
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                        ),
-                        TextButton(
-                          child: Text('OK'),
-                          onPressed: () {
-                            var id = widget.items['data'][0]['_id'];
-                            deleteDataonId(id, authToken!);
-                            // Perform delete operation
-                            // Add your delete logic here
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              icon: Icon(Icons.delete),
-            )
+
           ],
         ),
         body: Consumer(
@@ -312,6 +268,7 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                         setState(() {
                           if (districts.contains(dataDistrict))
                             dataDistrict = value;
+                          // print(id);
                           fetchBlocks(dataDistrict!);
                         });
                         providerone.updateDataDistrict(value);
@@ -381,7 +338,7 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                         onChanged: (value) {
                           providerone.updateDataClass(value);
                         },
-                        items: dataclass,
+                        items: dataclassadd,
                         item: 'കുടുംബ അവസ്ഥ'),
                     NoSearchDropdown(
                         selecteditem: dataClass2,
@@ -416,7 +373,6 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                         onSaved: (value) {
                           if (value == null) return;
                           providerone.updateDataClass3(value);
-                          print(value);
                         },
                       ),
                     ),
@@ -521,11 +477,12 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                               value: isYesSelected,
                               onChanged: (value) {
                                 setState(() {
-                                  if( dataAnimalhusbendarycdsregistration == 'Yes'){
-                                    isYesSelected = value!;
+                                  isYesSelected = value!;
+                                  if (!value) {
+                                    dataAnimalhusbendaryRegdetailsRegnumber.clear();
                                   }
+                                  providerone.updateDataAnimalhusbendaryCdsregistration(value ? 'Yes' : 'No');
                                 });
-                                providerone.updateDataAnimalhusbendaryCdsregistration('Yes');
                               },
                             ),
                             CheckboxListTile(
@@ -534,27 +491,34 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                               onChanged: (value) {
                                 setState(() {
                                   isYesSelected = !value!;
-                                  providerone.updateDataAnimalhusbendaryCdsregistration('No');
+                                  providerone.updateDataAnimalhusbendaryCdsregistration(value ? 'No' : 'Yes');
                                 });
                               },
                             ),
-                            if (isYesSelected) ...[
+                            if (isYesSelected || dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty) ...[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
-                                  controller:
-                                      dataAnimalhusbendaryRegdetailsRegnumber,
+                                  controller: dataAnimalhusbendaryRegdetailsRegnumber,
                                   onChanged: (value) {
-                                    providerone
-                                        .updateDataAnimalhusbendaryRegdetailsRegnumber(
-                                            value);
+                                    if (int.tryParse(value) != null) {
+                                      setState(() {
+                                        isYesSelected = true;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        isYesSelected = false;
+                                      });
+                                    }
+                                    providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(value);
                                   },
                                   decoration: InputDecoration(
-                                    labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത നമ്പർ ',
+                                    labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത നമ്പർ',
                                   ),
                                 ),
                               ),
-                              Padding(
+
+                            Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
                                   controller:
@@ -875,8 +839,15 @@ TextEditingController dataAnimalhusbendarycdsregistration = TextEditingControlle
                         },
                         initialValue: dataSupport,
                         onSaved: (value) {
+                          try {
                             dataSupport = value;
-                          providerone.updateDataSupport(value);
+                            providerone.updateDataSupport(value);
+                          } catch (e) {
+                            dataSupport.clear();
+                            // Handle any exceptions that might occur during the onSaved process
+                            print("Error during onSaved: $e");
+                            // You can show an error message to the user here if needed
+                          }
                         },
                       ),
                     ),
