@@ -19,6 +19,7 @@ class TextMain extends ChangeNotifier {
   }
 
   CheckboxOption _selectedOption = CheckboxOption.notApplied;
+
   CheckboxOption get selectedOption => _selectedOption;
 
   void updateSelectedOption(CheckboxOption option) {
@@ -75,7 +76,7 @@ class TextMain extends ChangeNotifier {
   String? _dataInfraBiogas;
   String? _dataInfraEquipments;
   String? _dataInfraOthers;
-  List ? _dataSupport;
+  List? _dataSupport;
   String? _dataOthers2;
   List? _dataMgnregAsupport;
   String? _dataLanddetails1Landforgrass;
@@ -93,6 +94,7 @@ class TextMain extends ChangeNotifier {
   int? _dataStarttime;
   String? _dataMetaInstanceId;
   int? _dataLoandetailsTotalinvestment;
+
   // String? _key;
 
   //-----------------fsmily--------------
@@ -105,7 +107,7 @@ class TextMain extends ChangeNotifier {
   String? _dataFamilydetailsSkill;
 
   //------------------product--------------
-  String? _dataProductsPrdct;
+  List? _dataProductsPrdct;
   int? _dataProductsQuantum;
   int? _dataProductsPrice2;
 
@@ -123,15 +125,18 @@ class TextMain extends ChangeNotifier {
   int? _dataPurchaseofrawmaterialsP4;
   int? _dataPurchaseofrawmaterialsSubsidy;
   int? _dataPurchaseofrawmaterialsP5;
+
   // -----------------sales----------
   List? _dataSalesprdct2;
   int? _dataSalesquntum2;
+
   // String? _dataSalessalesmethod;
   //------------livelyhood------------
-  String? _datalivelihoodincomesource;
+  List<String>? _datalivelihoodincomesource;
   int? _datalivelihoodnumbers;
   String? _datalivelihoodcapitalsource;
   int? _datalivelihoodrevenue;
+
   // --------------------------------------
   int? milkQnty;
   int? meatQnty;
@@ -204,24 +209,146 @@ class TextMain extends ChangeNotifier {
   int? _superNapierQnty;
   int? _vermyCompostQnty;
 
+  List<String>? _livelihoodCowsList;
+  int? _livelihoodCowsHfQnty;
+  int? _livelihoodCowsJerseyQnty;
+  int? _livelihoodCowsIndigenousQnty;
+  List<String>? _livelihoodCalfList;
+  int? _livelihoodCalfFemaleQnty;
+  int? _livelihoodCalfMaleQnty;
+  List<String>? _livelihoodGoatList;
+  int? _livelihoodGoatMalabariQnty;
+  int? _livelihoodGoatMalabariKidQnty;
+  int? _livelihoodGoatAttapadiBlackQnty;
+  int? _livelihoodGoatAttapadiBlackKidQnty;
+  int? _livelihoodGoatOthersQnty;
+  List<String>? _livelihoodPoultryList;
+  int? _livelihoodPoultryEggProductionQnty;
+  int? _livelihoodPoultryMarketingQnty;
+  List<String>? _livelihoodManureList;
+  int? _livelihoodManureDryQnty;
+  int? _livelihoodManureFreshQnty;
+  List<String>? _livelihoodFodderList;
+  int? _livelihoodFodderOwnUseQnty;
+  int? _livelihoodFodderForSaleQnty;
+  int? _livelihoodBuffaloQnty;
+  int? _livelihoodPoultryManureQnty;
+  int? _livelihoodduckqty;
+  String? _livelihoodgoatothers;
+
+// List<String>? _dataPurchaseofrawmaterialsItemtype;
+// List<String>? _pulletsList;
+  int? _bv380Qnty;
+  int? _gramalakshmiQnty;
+  int? _gramapriyaQnty;
+  int? _layerQnty;
+  String? _other;
+  int? _otherQnty;
+
+// Getter property for livelihoodCowsList
+  List<String>? get livelihoodCowsList => _livelihoodCowsList;
+
+  // Getter properties for other properties...
+  int? get livelihoodCowsHfQnty => _livelihoodCowsHfQnty;
+
+  int? get layerQnty => _layerQnty;
+
+  int? get livelihoodCowsJerseyQnty => _livelihoodCowsJerseyQnty;
+
+  int? get livelihoodCowsIndigenousQnty => _livelihoodCowsIndigenousQnty;
+
+  List<String>? get livelihoodCalfList => _livelihoodCalfList;
+
+  int? get livelihoodCalfFemaleQnty => _livelihoodCalfFemaleQnty;
+
+  int? get livelihoodCalfMaleQnty => _livelihoodCalfMaleQnty;
+
+  List<String>? get livelihoodGoatList => _livelihoodGoatList;
+
+  int? get livelihoodGoatMalabariQnty => _livelihoodGoatMalabariQnty;
+
+  int? get livelihoodGoatMalabariKidQnty => _livelihoodGoatMalabariKidQnty;
+
+  int? get livelihoodGoatAttapadiBlackQnty => _livelihoodGoatAttapadiBlackQnty;
+
+  int? get livelihoodGoatAttapadiBlackKidQnty =>
+      _livelihoodGoatAttapadiBlackKidQnty;
+
+  int? get livelihoodGoatOthersQnty => _livelihoodGoatOthersQnty;
+
+  List<String>? get livelihoodPoultryList => _livelihoodPoultryList;
+
+  int? get livelihoodPoultryEggProductionQnty =>
+      _livelihoodPoultryEggProductionQnty;
+
+  int? get livelihoodPoultryMarketingQnty => _livelihoodPoultryMarketingQnty;
+
+  List<String>? get livelihoodManureList => _livelihoodManureList;
+
+  int? get livelihoodManureDryQnty => _livelihoodManureDryQnty;
+
+  int? get livelihoodManureFreshQnty => _livelihoodManureFreshQnty;
+
+  List<String>? get livelihoodFodderList => _livelihoodFodderList;
+
+  int? get livelihoodFodderOwnUseQnty => _livelihoodFodderOwnUseQnty;
+
+  int? get livelihoodFodderForSaleQnty => _livelihoodFodderForSaleQnty;
+
+  int? get livelihoodBuffaloQnty => _livelihoodBuffaloQnty;
+
+  int? get livelihoodPoultryManureQnty => _livelihoodPoultryManureQnty;
+
+  int? get  livelihoodduckqty => _livelihoodduckqty;
+
+  String? get livelihoodgoatothers => _livelihoodgoatothers;
+
+  int? get bv380Qnty => _bv380Qnty;
+
+  int? get gramalakshmiQnty => _gramalakshmiQnty;
+
+  int? get gramapriyaQnty => _gramapriyaQnty;
+
+  String? get other => _other;
+
+  int? get otherQnty => _otherQnty;
+
   int? get calvesGerseyQnty => _calvesGerseyQnty;
+
   int? get calvesHfQnty => _calvesHfQnty;
+
   int? get co4Qnty => _co4Qnty;
+
   int? get co5Qnty => _co5Qnty;
+
   int? get congoSignalQnty => _congoSignalQnty;
+
   int? get cowDungQnty => _cowDungQnty;
+
   int? get cowsGerseyQnty => _cowsGerseyQnty;
+
   int? get cowsHfQnty => _cowsHfQnty;
+
   int? get goatManureQnty => _goatManureQnty;
+
   int? get guineaGrassQnty => _guineaGrassQnty;
+
   int? get heipersGerseyQnty => _heipersGerseyQnty;
+
   int? get heipersHfQnty => _heipersHfQnty;
+
   int? get milkReplacerQnty => _milkReplacerQnty;
+
   int? get napierQnty => _napierQnty;
+
   int? get paraGrassQnty => _paraGrassQnty;
+
   int? get poultryManureQnty => _poultryManureQnty;
+
   int? get redNapierQnty => _redNapierQnty;
+
   int? get superNapierQnty => _superNapierQnty;
+
   int? get vermyCompostQnty => _vermyCompostQnty;
 
   String? get dataDistrict => _dataDistrict;
@@ -260,15 +387,19 @@ class TextMain extends ChangeNotifier {
 
   int? get dataLanddetailsAgricultureland => _dataLanddetailsAgricultureland;
 
-  List? get dataAnimalhusbendaryBusinesstype => _dataAnimalhusbendaryBusinesstype;
+  List? get dataAnimalhusbendaryBusinesstype =>
+      _dataAnimalhusbendaryBusinesstype;
 
   String? get dataAnimalhusbendaryOthers0 => _dataAnimalhusbendaryOthers0;
 
-  String? get dataAnimalhusbendaryCdsregistration => _dataAnimalhusbendaryCdsregistration;
+  String? get dataAnimalhusbendaryCdsregistration =>
+      _dataAnimalhusbendaryCdsregistration;
 
-  String? get dataAnimalhusbendaryRegdetailsRegnumber => _dataAnimalhusbendaryRegdetailsRegnumber;
+  String? get dataAnimalhusbendaryRegdetailsRegnumber =>
+      _dataAnimalhusbendaryRegdetailsRegnumber;
 
-  String? get dataAnimalhusbendaryRegdetailsCdsunitname => _dataAnimalhusbendaryRegdetailsCdsunitname;
+  String? get dataAnimalhusbendaryRegdetailsCdsunitname =>
+      _dataAnimalhusbendaryRegdetailsCdsunitname;
 
   String? get dataEnterpisetype => _dataEnterpisetype;
 
@@ -279,7 +410,6 @@ class TextMain extends ChangeNotifier {
   String? get dataYearofstartingbussiness => _dataYearofstartingbussiness;
 
   int? get dataAmountinvested => _dataAmountinvested;
-
 
   List? get dataSourceofinvestment => _dataSourceofinvestment;
 
@@ -315,8 +445,7 @@ class TextMain extends ChangeNotifier {
 
   int? get dataLanddetails1Qtyofownland => _dataLanddetails1Qtyofownland;
 
-  int? get dataLanddetails1Qtyofleasedland =>
-      _dataLanddetails1Qtyofleasedland;
+  int? get dataLanddetails1Qtyofleasedland => _dataLanddetails1Qtyofleasedland;
 
   String? get dataLanddetails2Siteforworkshed =>
       _dataLanddetails2Siteforworkshed;
@@ -341,7 +470,6 @@ class TextMain extends ChangeNotifier {
 
   String? get dataMetaInstanceId => _dataMetaInstanceId;
 
-
   // String? get key => _key;
 
   //-----------------------family----------------------//
@@ -360,128 +488,174 @@ class TextMain extends ChangeNotifier {
 
   String? get dataFamilydetailsSkill => _dataFamilydetailsSkill;
 
-
   //-----------------product-----------------
 
-  String? get dataProductsPrdct => _dataProductsPrdct;
+  List? get dataProductsPrdct => _dataProductsPrdct;
 
   int? get dataProductsQuantum => _dataProductsQuantum;
 
   int? get dataProductsPrice2 => _dataProductsPrice2;
 
-
   //----------------purchaseofrawmaterials-------------
 
   // String? get dataPurchaseofrawmaterialsItemtype => _dataPurchaseofrawmaterialsItemtype;
-  int?
- get dataPurchaseofrawmaterialsQuantity => _dataPurchaseofrawmaterialsQuantity;
-  int?
- get dataPurchaseofrawmaterialsPrice => _dataPurchaseofrawmaterialsPrice;
-  // List? get dataPurchaseofrawmaterialsBrand => _dataPurchaseofrawmaterialsBrand;
-  String?
- get dataPurchaseofrawmaterialsOwn => _dataPurchaseofrawmaterialsOwn;
-  int?
- get dataPurchaseofrawmaterialsRetail => _dataPurchaseofrawmaterialsRetail;
-  int?
- get dataPurchaseofrawmaterialsP2 => _dataPurchaseofrawmaterialsP2;
-  int?
- get dataPurchaseofrawmaterialsWholesale => _dataPurchaseofrawmaterialsWholesale;
-  int?
- get dataPurchaseofrawmaterialsP3 => _dataPurchaseofrawmaterialsP3;
-  int?
- get dataPurchaseofrawmaterialsGroup => _dataPurchaseofrawmaterialsGroup;
-  int?
- get dataPurchaseofrawmaterialsP4 => _dataPurchaseofrawmaterialsP4;
-  int?
- get dataPurchaseofrawmaterialsSubsidy => _dataPurchaseofrawmaterialsSubsidy;
-  int?
- get dataPurchaseofrawmaterialsP5 => _dataPurchaseofrawmaterialsP5;
+  int? get dataPurchaseofrawmaterialsQuantity =>
+      _dataPurchaseofrawmaterialsQuantity;
 
+  int? get dataPurchaseofrawmaterialsPrice => _dataPurchaseofrawmaterialsPrice;
+
+  // List? get dataPurchaseofrawmaterialsBrand => _dataPurchaseofrawmaterialsBrand;
+  String? get dataPurchaseofrawmaterialsOwn => _dataPurchaseofrawmaterialsOwn;
+
+  int? get dataPurchaseofrawmaterialsRetail =>
+      _dataPurchaseofrawmaterialsRetail;
+
+  int? get dataPurchaseofrawmaterialsP2 => _dataPurchaseofrawmaterialsP2;
+
+  int? get dataPurchaseofrawmaterialsWholesale =>
+      _dataPurchaseofrawmaterialsWholesale;
+
+  int? get dataPurchaseofrawmaterialsP3 => _dataPurchaseofrawmaterialsP3;
+
+  int? get dataPurchaseofrawmaterialsGroup => _dataPurchaseofrawmaterialsGroup;
+
+  int? get dataPurchaseofrawmaterialsP4 => _dataPurchaseofrawmaterialsP4;
+
+  int? get dataPurchaseofrawmaterialsSubsidy =>
+      _dataPurchaseofrawmaterialsSubsidy;
+
+  int? get dataPurchaseofrawmaterialsP5 => _dataPurchaseofrawmaterialsP5;
 
   //--------------sales----------------------------//
 
   List? get dataSalesprdct2 => _dataSalesprdct2;
+
   int? get dataSalesquntum2 => _dataSalesquntum2;
+
   // String? get dataSalessalesmethod => _dataSalessalesmethod;
 
+  //-------------------livelihood------------------------
+  List<String>? get datalivelihoodincomesource => _datalivelihoodincomesource;
 
- //-------------------livelihood------------------------
-  String? get datalivelihoodincomesource => _datalivelihoodincomesource;
-
-  int? get datalivelihoodnumbers => _datalivelihoodnumbers;
-
-  String? get datalivelihoodcapitalsource => _datalivelihoodcapitalsource;
-
-  int? get datalivelihoodrevenue => _datalivelihoodrevenue;
-
+  // int? get datalivelihoodnumbers => _datalivelihoodnumbers;
+  //
+  // String? get datalivelihoodcapitalsource => _datalivelihoodcapitalsource;
+  //
+  // int? get datalivelihoodrevenue => _datalivelihoodrevenue;
 
   // new
 
   int? get getMilkQnty => milkQnty;
+
   int? get getMeatQnty => meatQnty;
+
   int? get getEggQnty => eggQnty;
+
   int? get getSalesManureQnty => salesManureQnty;
+
   int? get getFeedQnty => feedQnty;
+
   int? get getMaleBuffaloCalfQnty => maleBuffaloCalfQnty;
+
   int? get getGrasFooderQnty => grasFooderQnty;
+
   int? get getTreeFooderQnty => treeFooderQnty;
+
   int? get getKidQnty => kidQnty;
+
   int? get getDayOldChickQnty => dayOldChickQnty;
+
   int? get getPulletsQnty => pulletsQnty;
+
   int? get getCalfQnty => calfQnty;
+
   int? get getBeiferQnty => beiferQnty;
+
   List? get getDataSalesSalesmethod => dataSalesSalesmethod;
+
   String? get getDataLivelihoodIncomesource => dataLivelihoodIncomesource;
-  int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
-  String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
-  int? get getDataLivelihoodRevenue => dataLivelihoodRevenue;
-  List? get DataPurchaseofrawmaterialsItemtype => dataPurchaseofrawmaterialsItemtype;
+
+  // int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
+  // String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
+  // int? get getDataLivelihoodRevenue => dataLivelihoodRevenue;
+  List? get DataPurchaseofrawmaterialsItemtype =>
+      dataPurchaseofrawmaterialsItemtype;
+
   List? get getPulletsList => pulletsList;
+
   List? get getManureList => manureList;
+
   int? get getManureQnty => manureQnty;
+
   List? get getFodderSlipsList => fodderSlipsList;
+
   int? get getFodderSlipsQnty => fodderSlipsQnty;
+
   int? get getMaleBuffaloCalvesQnty => maleBuffaloCalvesQnty;
+
   List? get getCalvesList => calvesList;
+
   int? get getCalvesQnty => calvesQnty;
+
   List? get getHeipersList => heipersList;
+
   int? get getHeipersQnty => heipersQnty;
+
   List? get getCowsList => cowsList;
+
   int? get getMalabariGoatsQnty => malabariGoatsQnty;
+
   int? get getMaterialForPoultryQnty => materialForPoultryQnty;
+
   int? get getEggTraysQnty => eggTraysQnty;
+
   int? get getPoultryFeedQnty => poultryFeedQnty;
+
   String? get getLayerList => layerList;
+
   String? get getCattleFeedList => cattleFeedList;
+
   int? get getCattleFeedQnty => cattleFeedQnty;
+
   String? get getMilkReplacerList => milkReplacerList;
+
   String? get getEnergyRichFeedList => energyRichFeedList;
+
   int? get getEnergyRichFeedQnty => energyRichFeedQnty;
+
   int? get getByPassProteinQnty => byPassProteinQnty;
+
   int? get getByPassFatQnty => byPassFatQnty;
+
   int? get getTmrQnty => tmrQnty;
+
   int? get getSilageQnty => silageQnty;
+
   int? get getHayQnty => hayQnty;
+
   int? get getUreaTreatedStrawQnty => ureaTreatedStrawQnty;
+
   int? get getGoatFeeDqnty => goatFeeDqnty;
+
   int? get getKidStarterQnty => kidStarterQnty;
+
   List? get getModePurchaseofrawmaterials => modePurchaseofrawmaterials;
-  String? get getDataPurchaseofrawmaterialsBrand => dataPurchaseofrawmaterialsBrand;
+
+  String? get getDataPurchaseofrawmaterialsBrand =>
+      dataPurchaseofrawmaterialsBrand;
+
   int? get getBrandQnty => brandQnty;
 
-
-
   //----------------livelihood-----------------
-  void updateDatalivelihoodincomesource(String? value) {
+  void updateDatalivelihoodincomesource(List<String>? value) {
     _datalivelihoodincomesource = value;
     notifyListeners();
   }
 
-  void UpdateDtaLoandetailsTotalinvestment(int?value){
+  void UpdateDtaLoandetailsTotalinvestment(int? value) {
     _dataLoandetailsTotalinvestment = value;
     notifyListeners();
   }
-
 
   void updateDatalivelihoodnumbers(int? value) {
     _datalivelihoodnumbers = value;
@@ -514,6 +688,7 @@ class TextMain extends ChangeNotifier {
     _dataSalesprdct2 = value;
     notifyListeners();
   }
+
 // ---------------Products-----------------------//
 
   void updateDataProductsPrice2(int? value) {
@@ -526,7 +701,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataProductsPrdct(String? value) {
+  void updateDataProductsPrdct(List? value) {
     _dataProductsPrdct = value;
     notifyListeners();
   }
@@ -566,6 +741,7 @@ class TextMain extends ChangeNotifier {
     _dataFamilydetailsRelation = value;
     notifyListeners();
   }
+
   //-----------------Data------------------------
   void updateDataDistrict(String? value) {
     _dataDistrict = value;
@@ -647,21 +823,14 @@ class TextMain extends ChangeNotifier {
   }
 
   void updateDataLanddetailsAgricultureland(int? value) {
-    _dataLanddetailsAgricultureland = value ;
+    _dataLanddetailsAgricultureland = value;
     notifyListeners();
   }
 
-  void updateDataAnimalhusbendaryBusinesstype(List? value) {
+  void updateDataAnimalhusbendaryBusinesstype(List<String> value) {
     _dataAnimalhusbendaryBusinesstype = value;
     notifyListeners();
   }
-
-  // void updateSelectedOptions(CheckboxOption option, List<String> newDataClass3) {
-  //   _selectedOption = option;
-  //   _dataClass3 = newDataClass3;
-  //   notifyListeners();
-  // }
-
 
   void updateDataAnimalhusbendaryOthers0(String? value) {
     _dataAnimalhusbendaryOthers0 = value;
@@ -935,6 +1104,7 @@ class TextMain extends ChangeNotifier {
 
   void updateDataMeatQnty(int? value) {
     meatQnty = value;
+    notifyListeners();
   }
 
   void updateDataEggQnty(int? value) {
@@ -985,7 +1155,7 @@ class TextMain extends ChangeNotifier {
     dataSalesSalesmethod = value;
   }
 
-  void updateDataDataProductsPrdct(String? value) {
+  void updateDataDataProductsPrdct(List? value) {
     _dataProductsPrdct = value;
   }
 
@@ -1244,6 +1414,160 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateDataLivelihoodCowsList(List<String>? value) {
+    _livelihoodCowsList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCowsHF(int? value) {
+    _livelihoodCowsHfQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCowsJerseyQnty(int? value) {
+    _livelihoodCowsJerseyQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodDuckqnty(int? value) {
+    _livelihoodduckqty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCowsIndigenousQnty(int? value) {
+    _livelihoodCowsIndigenousQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCalfList(List<String>? value) {
+    _livelihoodCalfList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCalfFemaleQnty(int? value) {
+    _livelihoodCalfFemaleQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodCalfMaleQnty(int? value) {
+    _livelihoodCalfMaleQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatList(List<String>? value) {
+    _livelihoodGoatList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatMalabariQnty(int? value) {
+    _livelihoodGoatMalabariQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatMalabariKidQnty(int? value) {
+    _livelihoodGoatMalabariKidQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatAttapadiBlackQnty(int? value) {
+    _livelihoodGoatAttapadiBlackQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatAttapadiBlackKidQnty(int? value) {
+    _livelihoodGoatAttapadiBlackKidQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatOthers(String? value) {
+    _livelihoodgoatothers = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodGoatOthersQnty(int? value) {
+    _livelihoodGoatOthersQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodPoultryList(List<String>? value) {
+    _livelihoodPoultryList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodPoultryEggProductionQnty(int? value) {
+    _livelihoodPoultryEggProductionQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodPoultryMarketingQnty(int? value) {
+    _livelihoodPoultryMarketingQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodManureList(List<String>? value) {
+    _livelihoodManureList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodManureDryQnty(int? value) {
+    _livelihoodManureDryQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodManureFreshQnty(int? value) {
+    _livelihoodManureFreshQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodFodderList(List<String>? value) {
+    _livelihoodFodderList = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodFodderOwnUseQnty(int? value) {
+    _livelihoodFodderOwnUseQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodFodderForSaleQnty(int? value) {
+    _livelihoodFodderForSaleQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodBuffaloQnty(int? value) {
+    _livelihoodBuffaloQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataLivelihoodPoultryManureQnty(int? value) {
+    _livelihoodPoultryManureQnty = value;
+    notifyListeners();
+  }
+
+  void updateDatabv380Qnty(int? value) {
+    _bv380Qnty = value;
+    notifyListeners();
+  }
+
+  void updateDatagramalakshmiQnty(int? value) {
+    _gramalakshmiQnty = value;
+    notifyListeners();
+  }
+
+  void updateDatagramapriyaQnty(int? value) {
+    _gramapriyaQnty = value;
+    notifyListeners();
+  }
+
+  void updateDataothers(String? value) {
+    _other = value;
+    notifyListeners();
+  }
+
+  void updateDataotherQnty(int? value) {
+    _otherQnty = value;
+    notifyListeners();
+  }
 
   void clearData() {
     _dataDistrict = null;

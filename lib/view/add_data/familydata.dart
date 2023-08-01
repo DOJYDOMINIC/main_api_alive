@@ -37,7 +37,7 @@ class _FamilyDataState extends State<FamilyData> {
   // List<Member> familyMembers = [];
   void _addMember() {
     var providerone = Provider.of<TextMain>(context, listen: false);
-    familyMembers.add(Member(
+    familyMembers.add(FamilyDetail(
         dataFamilydetailsNameoffailyfmember: providerone.dataFamilydetailsNameoffailyfmember,
         dataFamilydetailsRelation: providerone.dataFamilydetailsRelation,
         dataFamilydetailsAgeoffamilymember: providerone.dataFamilydetailsAgeoffamilymember,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/view/update/updateproduct.dart';
 import 'package:main200623/view/update/updatepurchaseofrawmaterials.dart';
 import 'package:provider/provider.dart';
 import '../../control/text_controller.dart';
@@ -63,28 +62,6 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                     onchanged: (value) {
                       providerone.updateDatalivelihoodincomesource(value);
                     }),
-                InputField(
-                  keytype: TextInputType.number,
-                    hint: 'എണ്ണം‌',
-                    controller: dataLivelihoodNumbers,
-                    onchanged: (value) {
-                      int? valuee = int.tryParse(value);
-                      providerone.updateDatalivelihoodnumbers(valuee);
-                    }),
-                InputField(
-                    hint: 'മൂലധന സ്രോതസ് (സ്വന്തം/പദ്ധതി) എഴുതുക',
-                    controller: dataLivelihoodCapitalsource,
-                    onchanged: (value) {
-                      providerone.updateDatalivelihoodcapitalsource(value);
-                    }),
-                InputField(
-                    hint: 'പ്രീതിമാസം വരുമാനം ',
-                    controller: dataLivelihoodRevenue,
-                    keytype: TextInputType.number,
-                    onchanged: (value) {
-                      int? valuee = int.tryParse(value);
-                      providerone.updateDatalivelihoodrevenue(valuee);
-                    }),
 
                 ElevateClick(
                     ontap: () {
@@ -110,28 +87,27 @@ class _SalesState extends State<UpdateLivelihoodValue> {
     var dataup = widget.items['livelihoods'][0];
     print(dataup);
     setState(() {
-      dataLivelihoodIncomesource.text = dataup["data_livelihood_incomesource"].toString();
-      dataLivelihoodNumbers.text = dataup["data_livelihood_numbers"].toString();
-      dataLivelihoodCapitalsource.text = dataup["data_livelihood_capitalsource"].toString();
-      dataLivelihoodRevenue.text = dataup["data_livelihood_revenue"].toString();
+      // dataLivelihoodIncomesource = dataup["data_livelihood_incomesource"];
+      // dataLivelihoodNumbers.text = dataup["data_livelihood_numbers"].toString();
+      // dataLivelihoodCapitalsource.text = dataup["data_livelihood_capitalsource"].toString();
+      // dataLivelihoodRevenue.text = dataup["data_livelihood_revenue"].toString();
     });
   }
 
   changeData() {
     var providerone = context.read<TextMain>();
 
-    providerone.updateDatalivelihoodincomesource(dataLivelihoodIncomesource.text);
+    // providerone.updateDatalivelihoodincomesource(dataLivelihoodIncomesource as List<String>?);
 
-    String livelihoodnumbers = dataLivelihoodNumbers.text;
-    int dataLivelihoodNumber = int.parse(livelihoodnumbers);
-    providerone.updateDatalivelihoodnumbers(dataLivelihoodNumber);
-
-    providerone.updateDatalivelihoodcapitalsource(dataLivelihoodNumbers.text);
-
-    String revenue = dataLivelihoodRevenue.text;
-    int livelihoodrevenue = int.parse(revenue);
-    providerone.updateDatalivelihoodrevenue(livelihoodrevenue);
-
+    // String livelihoodnumbers = dataLivelihoodNumbers.text;
+    // int dataLivelihoodNumber = int.parse(livelihoodnumbers);
+    // providerone.updateDatalivelihoodnumbers(dataLivelihoodNumber);
+    //
+    // providerone.updateDatalivelihoodcapitalsource(dataLivelihoodNumbers.text);
+    //
+    // String revenue = dataLivelihoodRevenue.text;
+    // int livelihoodrevenue = int.parse(revenue);
+    // providerone.updateDatalivelihoodrevenue(livelihoodrevenue);
 
   }
 }

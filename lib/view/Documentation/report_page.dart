@@ -1230,7 +1230,7 @@ class _ReportPageState extends State<ReportPage> {
                 SizedBox(
                   height: 10,
                 ),
-                if (panchayth != null)
+                // if (panchayth != null)
                   Column(
                     children: [
                       Container(
@@ -1266,9 +1266,10 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  try{
-                                    startDownloading(panchayth!, dataone!, authToken!);
-                                  }catch(e){
+                                  try {
+                                    startDownloading(
+                                        panchayth!, dataone!, authToken!);
+                                  } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
@@ -1318,9 +1319,10 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  try{
-                                    dataclasstwo(panchayth!, datatwo!, authToken!);
-                                  }catch(e){
+                                  try {
+                                    dataclasstwo(
+                                        panchayth!, datatwo!, authToken!);
+                                  } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
@@ -1371,9 +1373,10 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  try{
-                                    dtaclassThree(panchayth!, datathree!, authToken!);
-                                  }catch(e){
+                                  try {
+                                    dtaclassThree(
+                                        panchayth!, datathree!, authToken!);
+                                  } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
@@ -1418,9 +1421,10 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                try{
-                                  Businesstype(panchayth!, businessString!, authToken!);
-                                }catch(e){
+                                try {
+                                  Businesstype(
+                                      panchayth!, businessString!, authToken!);
+                                } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       backgroundColor: Colors.red,
@@ -1464,10 +1468,10 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                try{
+                                try {
                                   TraningRequaredd(
                                       panchayth!, traning!, authToken!);
-                                }catch(e){
+                                } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       backgroundColor: Colors.red,
@@ -1508,12 +1512,12 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                try{
+                                try {
                                   Mgnreg(
                                     panchayth!,
                                     mgnregstr!,
                                   );
-                                }catch(e){
+                                } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       backgroundColor: Colors.red,
@@ -1544,9 +1548,9 @@ class _ReportPageState extends State<ReportPage> {
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  try{
+                                  try {
                                     landdetails(panchayth!, authToken!);
-                                  }catch(e){
+                                  } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
@@ -1596,9 +1600,10 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  try{
-                                    productName(panchayth!, productname!, authToken!);
-                                  }catch(e){
+                                  try {
+                                    productName(
+                                        panchayth!, productname!, authToken!);
+                                  } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
@@ -1644,9 +1649,9 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                try{
+                                try {
                                   Sales(panchayth!, salesvalue!, authToken!);
-                                }catch(e){
+                                } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       backgroundColor: Colors.red,
@@ -1692,17 +1697,15 @@ class _ReportPageState extends State<ReportPage> {
                                     selectedItem: 'purcaahse',
                                     dropdownDecoratorProps:
                                         DropDownDecoratorProps(
-                                            dropdownSearchDecoration:
-                                                InputDecoration(
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide
-                                                                    .none),
-                                                    border: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: Colors
-                                                                .white)))),
+                                      dropdownSearchDecoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none),
+                                        border: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -1740,9 +1743,9 @@ class _ReportPageState extends State<ReportPage> {
                           ),
                           IconButton(
                               onPressed: () {
-                                try{
+                                try {
                                   Purchasedata(panchayth!, purchase!, sublist);
-                                }catch(e){
+                                } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       backgroundColor: Colors.red,
@@ -1754,16 +1757,6 @@ class _ReportPageState extends State<ReportPage> {
                               icon: Icon(Icons.download))
                         ],
                       )
-                      // NoSearchDropdown(
-                      //   items: sublistlist,
-                      //   onChanged: (value) {
-                      //     setState(() {
-                      //       sublist = value;
-                      //       print(sublistlist);
-                      //     });
-                      //   },
-                      //   item: 'purchase Sublist',
-                      // ),
                     ],
                   ),
               ],

@@ -6,9 +6,11 @@ import '../../services/add_api.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;
 
+
 class SerachresultUpsate extends StatefulWidget {
   const SerachresultUpsate({Key? key, this.item,}) : super(key: key);
 final List<dynamic>? item;
+
   @override
   State<SerachresultUpsate> createState() => _SerachresultUpsateState();
 }
@@ -35,7 +37,6 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
             content: Text('Data deletion successful!'),
           ),
         );
-
       } else {
         print('Failed to delete data. Status code: ${response.statusCode}');
       }
@@ -43,7 +44,6 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
       print('Error occurred during data deletion: $error');
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

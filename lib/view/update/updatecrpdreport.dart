@@ -54,9 +54,7 @@ class _SalesState extends State<UpdateCrpDetail> {
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
       dataHouseOwnership: providerone.dataHouseownership,
-      dataAnimalhusbendaryBusinesstype: providerone
-          .dataAnimalhusbendaryBusinesstype?.map((dynamic item) =>
-          item.toString()).toList(),
+      dataAnimalhusbendaryBusinesstype: providerone.dataAnimalhusbendaryBusinesstype?.map((dynamic item) => item.toString()).toList(),
       dataAnimalhusbendaryCdsregistration: providerone
           .dataAnimalhusbendaryCdsregistration,
       dataAnimalhusbendaryRegdetailsRegnumber: providerone
@@ -93,23 +91,23 @@ class _SalesState extends State<UpdateCrpDetail> {
           .dataLanddetailsAgricultureland,
       dataSalesPrdct2: providerone.dataSalesprdct2?.map((dynamic item) =>
           item.toString()).toList(),
-      dataLivelihoodNumbers: providerone.datalivelihoodnumbers,
+      // dataLivelihoodNumbers : providerone.datalivelihoodnumbers,
       dataNameofcrp: providerone.dataNameofcrp,
       dataNameofNg: providerone.dataNameofNg,
-      dataLivelihoodRevenue: providerone.datalivelihoodrevenue,
+      // dataLivelihoodRevenue : providerone.datalivelihoodrevenue,
       dataNameofNGmember: providerone.dataNameofNGmember,
       dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) =>
           item.toString()).toList(),
-      dataProductsQuantum: providerone.dataProductsQuantum,
-      dataProductsPrdct: providerone.dataProductsPrdct,
+      // dataProductsQuantum : providerone.dataProductsQuantum,
+      // dataProductsPrdct: providerone.dataProductsPrdct,
       dataLanddetails1Qtyofleasedland: providerone
           .dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,
       dataLanddetails2Qtyofownland: providerone.dataLanddetails2Qtyofownland,
       dataLanddetails2Siteforworkshed: providerone
           .dataLanddetails2Siteforworkshed,
-      dataLivelihoodCapitalsource: providerone.datalivelihoodcapitalsource,
-      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource,
+      // dataLivelihoodCapitalsource: providerone.datalivelihoodcapitalsource,
+      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource?.map((dynamic item) => item.toString()).toList(),
       dataLoandetailsDateofLoanApplication: providerone
           .dataDateofLoanApplication,
       dataLoandetailsTotalinvestment: providerone
@@ -119,7 +117,7 @@ class _SalesState extends State<UpdateCrpDetail> {
       dataOthers2: providerone.dataOthers2,
       dataOthers3: providerone.dataOthers3,
       dataOthers4: providerone.dataOthers4,
-      dataProductsPrice2: providerone.dataProductsPrice2,
+      // dataProductsPrice2: providerone.dataProductsPrice2,
       dataPurchaseofrawmaterialsBrand: providerone
           .dataPurchaseofrawmaterialsBrand,
       dataSalesSalesmethod: providerone.dataSalesSalesmethod?.map((
@@ -193,7 +191,39 @@ class _SalesState extends State<UpdateCrpDetail> {
       congoSignalQnty: providerone.congoSignalQnty,
       co5Qnty: providerone.co5Qnty,
       co4Qnty: providerone.co5Qnty,
-      members: familyMembers,
+
+      livelihoodBuffaloQnty: providerone.livelihoodBuffaloQnty,
+      livelihoodCalfFemaleQnty: providerone.livelihoodCalfFemaleQnty,
+      livelihoodCalfList: providerone.livelihoodCalfList ,
+      livelihoodCalfMaleQnty: providerone.livelihoodCalfMaleQnty ,
+      livelihoodCowsHfQnty: providerone.livelihoodCowsHfQnty,
+      livelihoodCowsIndigenousQnty: providerone.livelihoodCowsIndigenousQnty ,
+      livelihoodCowsJerseyQnty: providerone.livelihoodCowsJerseyQnty ,
+      livelihoodCowsList: providerone.livelihoodCowsList,
+      livelihoodFodderForSaleQnty:providerone.livelihoodFodderForSaleQnty,
+      livelihoodFodderList: providerone.livelihoodFodderList,
+      livelihoodFodderOwnUseQnty: providerone.livelihoodFodderOwnUseQnty ,
+      livelihoodGoatAttapadiBlackKidQnty: providerone.livelihoodGoatAttapadiBlackKidQnty ,
+      livelihoodGoatAttapadiBlackQnty: providerone.livelihoodGoatAttapadiBlackQnty,
+      livelihoodGoatList: providerone.livelihoodGoatList,
+      livelihoodGoatMalabariKidQnty: providerone.livelihoodGoatMalabariKidQnty,
+      livelihoodGoatMalabariQnty: providerone.livelihoodGoatMalabariQnty,
+      livelihoodGoatOthersQnty: providerone.livelihoodGoatOthersQnty,
+      livelihoodManureDryQnty: providerone.livelihoodManureDryQnty,
+      livelihoodManureFreshQnty:providerone.livelihoodManureFreshQnty,
+      livelihoodManureList: providerone.livelihoodManureList,
+      livelihoodPoultryEggProductionQnty: providerone.livelihoodPoultryEggProductionQnty,
+      livelihoodPoultryList: providerone.livelihoodPoultryList,
+      livelihoodPoultryManureQnty: providerone.livelihoodPoultryManureQnty,
+      livelihoodPoultryMarketingQnty: providerone.livelihoodPoultryMarketingQnty,
+      bv380Qnty: providerone.bv380Qnty,
+      gramalakshmiQnty: providerone.gramalakshmiQnty,
+      gramapriyaQnty: providerone.gramapriyaQnty,
+      layerQnty: providerone.layerQnty,
+      other: providerone.other,
+      otherQnty: providerone.otherQnty,
+
+      familyDetails: familyMembers,
     );
 
     log(updateData.toJson().toString());
@@ -216,14 +246,33 @@ class _SalesState extends State<UpdateCrpDetail> {
         // Data submitted successfully
         print('Data submitted successfully.');
         var providerone = Provider.of<TextMain>(context, listen: false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text('Update completed!'),
+          ),
+        );
         providerone.clearData();
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Screenone()));
       } else {
         print(id);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text('Update failed!'),
+          ),
+        );
+
         print('Failed to submit data. Status code: ${response.statusCode}');
       }
     } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text('Update failed!'),
+        ),
+      );
       print('Error occurred while submitting data: $error');
     }
   }

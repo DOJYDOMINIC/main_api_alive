@@ -629,6 +629,7 @@ class _PersonalPageState extends State<PersonalPage> {
                                 });
                                 providerone.updateDataLoan('Applied');
                                 // updateDataLoan('applied');
+                                // updateDataLoan('applied');
                               }
                             },
                           ),
@@ -856,13 +857,13 @@ class _PersonalPageState extends State<PersonalPage> {
                     ),
                     ElevateClick(
                         ontap: () {
-                          if (_formKey.currentState!.validate()) {
+                          // if (_formKey.currentState!.validate()) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FamilyData(),
                                 ));
-                          }
+                          // }
                         },
                         text: 'Next'),
                   ]),

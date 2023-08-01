@@ -26,6 +26,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   List? calveslist;
   List? heipers;
   List? cowslist;
+
   String? brandselected;
   String? layerselected;
   String? cattlefeedlist;
@@ -131,7 +132,8 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         });
                         if (value == null) return;
                         providerone
-                            .updateDataDataPurchaseofrawmaterialsItemtype(value);
+                            .updateDataDataPurchaseofrawmaterialsItemtype(
+                                value);
                       },
                     ),
                   ),
@@ -321,13 +323,14 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (cowslist != null && cowslist!.contains('H F'))
                     InputField(
-                        hint: 'H F QTY',
-                        keytype: TextInputType.number,
-                        controller: cw_hf,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataCowsHfQnty(valuee);
-                        }),
+                      hint: 'H F QTY',
+                      keytype: TextInputType.number,
+                      controller: cw_hf,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDataCowsHfQnty(valuee);
+                      },
+                    ),
                   if (cowslist != null && cowslist!.contains('GERSEY'))
                     InputField(
                         hint: 'GERSEY QTY',
@@ -673,7 +676,8 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataByPassProteinQnty(valuee);
                         }),
-                  if (rawmaterial != null && rawmaterial!.contains('BY PASS FAT'))
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('BY PASS FAT'))
                     InputField(
                         hint: 'BY PASS FAT QTY',
                         keytype: TextInputType.number,
@@ -729,7 +733,8 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataGoatFeeDqnty(valuee);
                         }),
-                  if (rawmaterial != null && rawmaterial!.contains('KID STARTER'))
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('KID STARTER'))
                     InputField(
                         hint: 'KID STARTER QTY',
                         keytype: TextInputType.number,

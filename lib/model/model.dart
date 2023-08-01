@@ -18,7 +18,7 @@ class AddData {
   int? dataPhonenumber;
   String? dataClass;
   String? dataClass2;
-  List<String>? dataClass3;
+  List? dataClass3;
   String? dataFamilyincome;
   String? dataNameofNg;
   String? dataNameofNGmember;
@@ -79,15 +79,40 @@ class AddData {
   int? calfQnty;
   int? beiferQnty;
   List<String>? dataSalesSalesmethod;
-  String? dataProductsPrdct;
-  int? dataProductsQuantum;
-  int? dataProductsPrice2;
-  String? dataLivelihoodIncomesource;
-  int? dataLivelihoodNumbers;
-  String? dataLivelihoodCapitalsource;
-  int? dataLivelihoodRevenue;
+  List<String>? dataLivelihoodIncomesource;
+  List<String>? livelihoodCowsList;
+  int? livelihoodCowsHfQnty;
+  int? livelihoodCowsJerseyQnty;
+  int? livelihoodCowsIndigenousQnty;
+  List<String>? livelihoodCalfList;
+  int? livelihoodCalfFemaleQnty;
+  int? livelihoodCalfMaleQnty;
+  List<String>? livelihoodGoatList;
+  int? livelihoodGoatMalabariQnty;
+  int? livelihoodGoatMalabariKidQnty;
+  int? livelihoodGoatAttapadiBlackQnty;
+  int? livelihoodGoatAttapadiBlackKidQnty;
+  int? livelihoodGoatOthersQnty;
+  List<String>? livelihoodPoultryList;
+  int? livelihoodPoultryEggProductionQnty;
+  int? livelihoodPoultryMarketingQnty;
+  List<String>? livelihoodManureList;
+  int? livelihoodManureDryQnty;
+  int? livelihoodManureFreshQnty;
+  List<String>? livelihoodFodderList;
+  int? livelihoodFodderOwnUseQnty;
+  int? livelihoodFodderForSaleQnty;
+  int? livelihoodBuffaloQnty;
+  int? livelihoodPoultryManureQnty;
+  int? lilivelihoodDuckqnty;
+  int? livelihoodgoatothers;
   List<String>? dataPurchaseofrawmaterialsItemtype;
   List<String>? pulletsList;
+  int? bv380Qnty;
+  int? gramalakshmiQnty;
+  int? gramapriyaQnty;
+  String? other;
+  int? otherQnty;
   List<String>? manureList;
   int? cowDungQnty;
   int? goatManureQnty;
@@ -117,6 +142,7 @@ class AddData {
   int? eggTraysQnty;
   int? poultryFeedQnty;
   String? layerList;
+  int? layerQnty;
   String? cattleFeedList;
   int? cattleFeedQnty;
   String? milkReplacerList;
@@ -134,7 +160,8 @@ class AddData {
   List<String>? modePurchaseofrawmaterials;
   String? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
-  List<Member>? members;
+  List<FamilyDetail>? familyDetails;
+
 
   AddData({
      this.dataDistrict,
@@ -146,7 +173,7 @@ class AddData {
      this.dataPhonenumber,
      this.dataClass,
      this.dataClass2,
-     this.dataClass3,
+    this.dataClass3,
      this.dataFamilyincome,
      this.dataNameofNg,
      this.dataNameofNGmember,
@@ -207,15 +234,40 @@ class AddData {
      this.calfQnty,
      this.beiferQnty,
      this.dataSalesSalesmethod,
-     this.dataProductsPrdct,
-     this.dataProductsQuantum,
-     this.dataProductsPrice2,
      this.dataLivelihoodIncomesource,
-     this.dataLivelihoodNumbers,
-     this.dataLivelihoodCapitalsource,
-     this.dataLivelihoodRevenue,
+     this.livelihoodCowsList,
+     this.livelihoodCowsHfQnty,
+     this.livelihoodCowsJerseyQnty,
+     this.livelihoodCowsIndigenousQnty,
+     this.livelihoodCalfList,
+     this.livelihoodCalfFemaleQnty,
+     this.livelihoodCalfMaleQnty,
+     this.livelihoodGoatList,
+     this.livelihoodGoatMalabariQnty,
+     this.livelihoodGoatMalabariKidQnty,
+     this.livelihoodGoatAttapadiBlackQnty,
+     this.livelihoodGoatAttapadiBlackKidQnty,
+     this.livelihoodGoatOthersQnty,
+     this.livelihoodPoultryList,
+     this.livelihoodPoultryEggProductionQnty,
+     this.livelihoodPoultryMarketingQnty,
+     this.livelihoodManureList,
+     this.livelihoodManureDryQnty,
+     this.livelihoodManureFreshQnty,
+     this.livelihoodFodderList,
+     this.livelihoodFodderOwnUseQnty,
+     this.livelihoodFodderForSaleQnty,
+     this.livelihoodBuffaloQnty,
+     this.livelihoodPoultryManureQnty,
+    this.lilivelihoodDuckqnty,
+    this.livelihoodgoatothers,
      this.dataPurchaseofrawmaterialsItemtype,
      this.pulletsList,
+     this.bv380Qnty,
+     this.gramalakshmiQnty,
+     this.gramapriyaQnty,
+     this.other,
+     this.otherQnty,
      this.manureList,
      this.cowDungQnty,
      this.goatManureQnty,
@@ -245,6 +297,7 @@ class AddData {
      this.eggTraysQnty,
      this.poultryFeedQnty,
      this.layerList,
+     this.layerQnty,
      this.cattleFeedList,
      this.cattleFeedQnty,
      this.milkReplacerList,
@@ -262,7 +315,7 @@ class AddData {
      this.modePurchaseofrawmaterials,
      this.dataPurchaseofrawmaterialsBrand,
      this.brandQnty,
-     this.members,
+     this.familyDetails,
   });
 
   factory AddData.fromJson(Map<String, dynamic> json) => AddData(
@@ -275,7 +328,7 @@ class AddData {
     dataPhonenumber: json["data_Phonenumber"],
     dataClass: json["data_Class"],
     dataClass2: json["data_Class2"],
-    dataClass3: List<String>.from(json["data_Class3"].map((x) => x)),
+    dataClass3: json['data_Class3'],
     dataFamilyincome: json["data_familyincome"],
     dataNameofNg: json["data_NameofNG"],
     dataNameofNGmember: json["data_NameofNGmember"],
@@ -283,7 +336,7 @@ class AddData {
     dataHouseOwnership: json["data_houseOwnership"],
     dataLanddetailsLandarea: json["data_landdetails_landarea"],
     dataLanddetailsAgricultureland: json["data_landdetails_agricultureland"],
-    dataAnimalhusbendaryBusinesstype: json["data_Animalhusbendary_businesstype"],
+    dataAnimalhusbendaryBusinesstype: List<String>.from(json["data_Animalhusbendary_businesstype"].map((x) => x)),
     dataAnimalhusbendaryOthers0: json["data_Animalhusbendary_others0"],
     dataAnimalhusbendaryCdsregistration: json["data_Animalhusbendary_cdsregistration"],
     dataAnimalhusbendaryRegdetailsRegnumber: json["data_Animalhusbendary_regdetails_regnumber"],
@@ -336,15 +389,40 @@ class AddData {
     calfQnty: json["calf_qnty"],
     beiferQnty: json["beifer_qnty"],
     dataSalesSalesmethod: List<String>.from(json["data_Sales_salesmethod"].map((x) => x)),
-    dataProductsPrdct: json["data_products_prdct"],
-    dataProductsQuantum: json["data_products_quantum"],
-    dataProductsPrice2: json["data_products_price2"],
-    dataLivelihoodIncomesource: json["data_livelihood_incomesource"],
-    dataLivelihoodNumbers: json["data_livelihood_numbers"],
-    dataLivelihoodCapitalsource: json["data_livelihood_capitalsource"],
-    dataLivelihoodRevenue: json["data_livelihood_revenue"],
+    dataLivelihoodIncomesource: List<String>.from(json["data_livelihood_incomesource"].map((x) => x)),
+    livelihoodCowsList: List<String>.from(json["livelihood_cows_list"].map((x) => x)),
+    livelihoodCowsHfQnty: json["livelihood_cows_HF_qnty"],
+    livelihoodCowsJerseyQnty: json["livelihood_cows_JERSEY_qnty"],
+    livelihoodCowsIndigenousQnty: json["livelihood_cows_INDIGENOUS_qnty"],
+    livelihoodCalfList: List<String>.from(json["livelihood_calf_list"].map((x) => x)),
+    livelihoodCalfFemaleQnty: json["livelihood_calf_FEMALE_qnty"],
+    livelihoodCalfMaleQnty: json["livelihood_calf_MALE_qnty"],
+    livelihoodGoatList: List<String>.from(json["livelihood_goat_list"].map((x) => x)),
+    livelihoodGoatMalabariQnty: json["livelihood_goat_MALABARI_qnty"],
+    livelihoodGoatMalabariKidQnty: json["livelihood_goat_MALABARI_KID_qnty"],
+    livelihoodGoatAttapadiBlackQnty: json["livelihood_goat_ATTAPADI_BLACK_qnty"],
+    livelihoodGoatAttapadiBlackKidQnty: json["livelihood_goat_ATTAPADI_BLACK_KID_qnty"],
+    livelihoodGoatOthersQnty: json["livelihood_goat_OTHERS_qnty"],
+    livelihoodPoultryList: List<String>.from(json["livelihood_poultry_list"].map((x) => x)),
+    livelihoodPoultryEggProductionQnty: json["livelihood_poultry_EGG_PRODUCTION_qnty"],
+    livelihoodPoultryMarketingQnty: json["livelihood_poultry_MARKETING_qnty"],
+    livelihoodManureList: List<String>.from(json["livelihood_manure_list"].map((x) => x)),
+    livelihoodManureDryQnty: json["livelihood_manure_DRY_qnty"],
+    livelihoodManureFreshQnty: json["livelihood_manure_FRESH_qnty"],
+    livelihoodFodderList: List<String>.from(json["livelihood_fodder_list"].map((x) => x)),
+    livelihoodFodderOwnUseQnty: json["livelihood_fodder_OWN_USE_qnty"],
+    livelihoodFodderForSaleQnty: json["livelihood_fodder_FOR_SALE_qnty"],
+    livelihoodBuffaloQnty: json["livelihood_BUFFALO_qnty"],
+    livelihoodPoultryManureQnty: json["livelihood_POULTRY_MANURE_qnty"],
+    lilivelihoodDuckqnty: json['livelihood_DUCK_qnty'],
+    livelihoodgoatothers: json['livelihood_goat_OTHERS'],
     dataPurchaseofrawmaterialsItemtype: List<String>.from(json["data_purchaseofrawmaterials_itemtype"].map((x) => x)),
     pulletsList: List<String>.from(json["PULLETS_List"].map((x) => x)),
+    bv380Qnty: json["BV380_qnty"],
+    gramalakshmiQnty: json["GRAMALAKSHMI_qnty"],
+    gramapriyaQnty: json["GRAMAPRIYA_qnty"],
+    other: json["OTHER"],
+    otherQnty: json["OTHER_qnty"],
     manureList: List<String>.from(json["MANURE_List"].map((x) => x)),
     cowDungQnty: json["COW_DUNG_qnty"],
     goatManureQnty: json["GOAT_MANURE_qnty"],
@@ -374,6 +452,7 @@ class AddData {
     eggTraysQnty: json["EGG_TRAYS_qnty"],
     poultryFeedQnty: json["POULTRY_FEED_qnty"],
     layerList: json["LAYER_List"],
+    layerQnty: json["LAYER_qnty"],
     cattleFeedList: json["CATTLE_FEED_List"],
     cattleFeedQnty: json["CATTLE_FEED_qnty"],
     milkReplacerList: json["MILK_REPLACER_List"],
@@ -391,7 +470,7 @@ class AddData {
     modePurchaseofrawmaterials: List<String>.from(json["Mode_purchaseofrawmaterials"].map((x) => x)),
     dataPurchaseofrawmaterialsBrand: json["data_purchaseofrawmaterials_brand"],
     brandQnty: json["BRAND_qnty"],
-    members: List<Member>.from(json["familyDetails"].map((x) => Member.fromJson(x))),
+    familyDetails: List<FamilyDetail>.from(json["familyDetails"].map((x) => FamilyDetail.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -404,7 +483,7 @@ class AddData {
     "data_Phonenumber": dataPhonenumber,
     "data_Class": dataClass,
     "data_Class2": dataClass2,
-    "data_Class3": dataClass3 != null ? List<dynamic>.from(dataClass3!.map((x) => x)) : [],
+    "data_Class3": dataClass3,
     "data_familyincome": dataFamilyincome,
     "data_NameofNG": dataNameofNg,
     "data_NameofNGmember": dataNameofNGmember,
@@ -412,7 +491,7 @@ class AddData {
     "data_houseOwnership": dataHouseOwnership,
     "data_landdetails_landarea": dataLanddetailsLandarea,
     "data_landdetails_agricultureland": dataLanddetailsAgricultureland,
-    "data_Animalhusbendary_businesstype": dataAnimalhusbendaryBusinesstype,
+    "data_Animalhusbendary_businesstype": List<dynamic>.from(dataAnimalhusbendaryBusinesstype!.map((x) => x)),
     "data_Animalhusbendary_others0": dataAnimalhusbendaryOthers0,
     "data_Animalhusbendary_cdsregistration": dataAnimalhusbendaryCdsregistration,
     "data_Animalhusbendary_regdetails_regnumber": dataAnimalhusbendaryRegdetailsRegnumber,
@@ -422,7 +501,7 @@ class AddData {
     "data_Yearofstartingagriculture": dataYearofstartingagriculture,
     "data_yearofstartingbussiness": dataYearofstartingbussiness,
     "data_amountinvested": dataAmountinvested,
-    "data_Sourceofinvestment": dataSourceofinvestment != null ? List<dynamic>.from(dataSourceofinvestment!.map((x) => x)) : [],
+    "data_Sourceofinvestment": List<dynamic>.from(dataSourceofinvestment!.map((x) => x)),
     "data_supportrecived": dataSupportrecived,
     "data_loan": dataLoan,
     "data_loandetails_totalinvestment": dataLoandetailsTotalinvestment,
@@ -434,23 +513,23 @@ class AddData {
     "data_Infra_biogas": dataInfraBiogas,
     "data_Infra_equipments": dataInfraEquipments,
     "data_Infra_others": dataInfraOthers,
-    "data_support": dataSupport != null? List<dynamic>.from(dataSupport!.map((x) => x)) : [],
+    "data_support": List<dynamic>.from(dataSupport!.map((x) => x)),
     "data_others2": dataOthers2,
-    "data_MGNREGAsupport": dataMgnregAsupport !=null ? List<dynamic>.from(dataMgnregAsupport!.map((x) => x)) : [],
+    "data_MGNREGAsupport": List<dynamic>.from(dataMgnregAsupport!.map((x) => x)),
     "data_landdetails1_landforgrass": dataLanddetails1Landforgrass,
     "data_landdetails1_qtyofownland": dataLanddetails1Qtyofownland,
     "data_landdetails1_qtyofleasedland": dataLanddetails1Qtyofleasedland,
     "data_landdetails2_siteforworkshed": dataLanddetails2Siteforworkshed,
     "data_landdetails2_qtyofownland": dataLanddetails2Qtyofownland,
     "data_others4": dataOthers4,
-    "data_Trainingsrequired":  dataTrainingsrequired != null ? List<dynamic>.from(dataTrainingsrequired!.map((x) => x)) : [],
+    "data_Trainingsrequired": List<dynamic>.from(dataTrainingsrequired!.map((x) => x)),
     "data_others3": dataOthers3,
     "data_comments": dataComments,
     "data_nameofcrp": dataNameofcrp,
     "data_Nameofrespondent": dataNameofrespondent,
     "data_dateofsurvey": dataDateofsurvey,
     " data_Starttime": dataStarttime,
-    "data_Sales_prdct2": dataSalesPrdct2 != null ? List<dynamic>.from(dataSalesPrdct2!.map((x) => x)) : [],
+    "data_Sales_prdct2": List<dynamic>.from(dataSalesPrdct2!.map((x) => x)),
     "MILK_qnty": milkQnty,
     "MEAT_qnty": meatQnty,
     "EGG_qnty": eggQnty,
@@ -464,22 +543,47 @@ class AddData {
     "pullets_qnty": pulletsQnty,
     "calf_qnty": calfQnty,
     "beifer_qnty": beiferQnty,
-    "data_Sales_salesmethod": dataSalesSalesmethod != null ? List<dynamic>.from(dataSalesSalesmethod!.map((x) => x)) : [],
-    "data_products_prdct": dataProductsPrdct,
-    "data_products_quantum": dataProductsQuantum,
-    "data_products_price2": dataProductsPrice2,
-    "data_livelihood_incomesource": dataLivelihoodIncomesource,
-    "data_livelihood_numbers": dataLivelihoodNumbers,
-    "data_livelihood_capitalsource": dataLivelihoodCapitalsource,
-    "data_livelihood_revenue": dataLivelihoodRevenue,
-    "data_purchaseofrawmaterials_itemtype": dataPurchaseofrawmaterialsItemtype!= null ?  List<dynamic>.from(dataPurchaseofrawmaterialsItemtype!.map((x) => x)) : [],
-    "PULLETS_List": pulletsList!= null ? List<dynamic>.from(pulletsList!.map((x) => x)) :[],
-    "MANURE_List": manureList!= null ? List<dynamic>.from(manureList!.map((x) => x)) : [],
+    "data_Sales_salesmethod": List<dynamic>.from(dataSalesSalesmethod!.map((x) => x)),
+    "data_livelihood_incomesource": List<dynamic>.from(dataLivelihoodIncomesource!.map((x) => x)),
+    "livelihood_cows_list": List<dynamic>.from(livelihoodCowsList!.map((x) => x)),
+    "livelihood_cows_HF_qnty": livelihoodCowsHfQnty,
+    "livelihood_cows_JERSEY_qnty": livelihoodCowsJerseyQnty,
+    "livelihood_cows_INDIGENOUS_qnty": livelihoodCowsIndigenousQnty,
+    "livelihood_calf_list": List<dynamic>.from(livelihoodCalfList!.map((x) => x)),
+    "livelihood_calf_FEMALE_qnty": livelihoodCalfFemaleQnty,
+    "livelihood_calf_MALE_qnty": livelihoodCalfMaleQnty,
+    "livelihood_goat_list": List<dynamic>.from(livelihoodGoatList!.map((x) => x)),
+    "livelihood_goat_MALABARI_qnty": livelihoodGoatMalabariQnty,
+    "livelihood_goat_MALABARI_KID_qnty": livelihoodGoatMalabariKidQnty,
+    "livelihood_goat_ATTAPADI_BLACK_qnty": livelihoodGoatAttapadiBlackQnty,
+    "livelihood_goat_ATTAPADI_BLACK_KID_qnty": livelihoodGoatAttapadiBlackKidQnty,
+    "livelihood_goat_OTHERS_qnty": livelihoodGoatOthersQnty,
+    "livelihood_poultry_list": List<dynamic>.from(livelihoodPoultryList!.map((x) => x)),
+    "livelihood_poultry_EGG_PRODUCTION_qnty": livelihoodPoultryEggProductionQnty,
+    "livelihood_poultry_MARKETING_qnty": livelihoodPoultryMarketingQnty,
+    "livelihood_manure_list": List<dynamic>.from(livelihoodManureList!.map((x) => x)),
+    "livelihood_manure_DRY_qnty": livelihoodManureDryQnty,
+    "livelihood_manure_FRESH_qnty": livelihoodManureFreshQnty,
+    "livelihood_fodder_list": List<dynamic>.from(livelihoodFodderList!.map((x) => x)),
+    "livelihood_fodder_OWN_USE_qnty": livelihoodFodderOwnUseQnty,
+    "livelihood_fodder_FOR_SALE_qnty": livelihoodFodderForSaleQnty,
+    "livelihood_BUFFALO_qnty": livelihoodBuffaloQnty,
+    "livelihood_POULTRY_MANURE_qnty": livelihoodPoultryManureQnty,
+    'livelihood_DUCK_qnty' : lilivelihoodDuckqnty,
+    'livelihood_goat_OTHERS' : livelihoodgoatothers,
+    "data_purchaseofrawmaterials_itemtype": List<dynamic>.from(dataPurchaseofrawmaterialsItemtype!.map((x) => x)),
+    "PULLETS_List": List<dynamic>.from(pulletsList!.map((x) => x)),
+    "BV380_qnty": bv380Qnty,
+    "GRAMALAKSHMI_qnty": gramalakshmiQnty,
+    "GRAMAPRIYA_qnty": gramapriyaQnty,
+    "OTHER": other,
+    "OTHER_qnty": otherQnty,
+    "MANURE_List": List<dynamic>.from(manureList!.map((x) => x)),
     "COW_DUNG_qnty": cowDungQnty,
     "GOAT_MANURE_qnty": goatManureQnty,
     "POULTRY_MANURE_qnty": poultryManureQnty,
     "VERMY_COMPOST_qnty": vermyCompostQnty,
-    "FODDER_SLIPS_List": fodderSlipsList != null ? List<dynamic>.from(fodderSlipsList!.map((x) => x)) : [],
+    "FODDER_SLIPS_List": List<dynamic>.from(fodderSlipsList!.map((x) => x)),
     "NAPIER_qnty": napierQnty,
     "CO4_qnty": co4Qnty,
     "CO5_qnty": co5Qnty,
@@ -489,13 +593,13 @@ class AddData {
     "PARA_GRASS_qnty": paraGrassQnty,
     "CONGO_SIGNAL_qnty": congoSignalQnty,
     "MALE_BUFFALO_CALVES_qnty": maleBuffaloCalvesQnty,
-    "CALVES_List": calvesList != null ? List<dynamic>.from(calvesList!.map((x) => x)) : [],
+    "CALVES_List": List<dynamic>.from(calvesList!.map((x) => x)),
     "CALVES_HF_qnty": calvesHfQnty,
     "CALVES_GERSEY_qnty": calvesGerseyQnty,
-    "HEIPERS_List": heipersList != null ? List<dynamic>.from(heipersList!.map((x) => x)) : [],
+    "HEIPERS_List": List<dynamic>.from(heipersList!.map((x) => x)),
     "HEIPERS_HF_qnty": heipersHfQnty,
     "HEIPERS_GERSEY_qnty": heipersGerseyQnty,
-    "COWS_List": cowsList != null ? List<dynamic>.from(cowsList!.map((x) => x)) : [],
+    "COWS_List": List<dynamic>.from(cowsList!.map((x) => x)),
     "COWS_HF_qnty": cowsHfQnty,
     "COWS_GERSEY_qnty": cowsGerseyQnty,
     "MALABARI_GOATS_qnty": malabariGoatsQnty,
@@ -503,6 +607,7 @@ class AddData {
     "EGG_TRAYS_qnty": eggTraysQnty,
     "POULTRY_FEED_qnty": poultryFeedQnty,
     "LAYER_List": layerList,
+    "LAYER_qnty": layerQnty,
     "CATTLE_FEED_List": cattleFeedList,
     "CATTLE_FEED_qnty": cattleFeedQnty,
     "MILK_REPLACER_List": milkReplacerList,
@@ -517,14 +622,14 @@ class AddData {
     "UREA_TREATED_STRAW_qnty": ureaTreatedStrawQnty,
     "GOAT_FEEDqnty": goatFeeDqnty,
     "KID_STARTER_qnty": kidStarterQnty,
-    "Mode_purchaseofrawmaterials": modePurchaseofrawmaterials != null ?  List<dynamic>.from(modePurchaseofrawmaterials!.map((x) => x)) : [],
+    "Mode_purchaseofrawmaterials": List<dynamic>.from(modePurchaseofrawmaterials!.map((x) => x)),
     "data_purchaseofrawmaterials_brand": dataPurchaseofrawmaterialsBrand,
     "BRAND_qnty": brandQnty,
-    "familyDetails": List<dynamic>.from(members!.map((x) => x.toJson())),
+    "familyDetails": List<dynamic>.from(familyDetails!.map((x) => x.toJson())),
   };
 }
 
-class Member {
+class FamilyDetail {
   String? dataFamilydetailsNameoffailyfmember;
   String? dataFamilydetailsRelation;
   int? dataFamilydetailsAgeoffamilymember;
@@ -532,7 +637,7 @@ class Member {
   String? dataFamilydetailsJob;
   String? dataFamilydetailsSkill;
 
-  Member({
+  FamilyDetail({
     required this.dataFamilydetailsNameoffailyfmember,
     required this.dataFamilydetailsRelation,
     required this.dataFamilydetailsAgeoffamilymember,
@@ -541,7 +646,7 @@ class Member {
     required this.dataFamilydetailsSkill,
   });
 
-  factory Member.fromJson(Map<String, dynamic> json) => Member(
+  factory FamilyDetail.fromJson(Map<String, dynamic> json) => FamilyDetail(
     dataFamilydetailsNameoffailyfmember: json["data_familydetails_nameoffailyfmember"],
     dataFamilydetailsRelation: json["data_familydetails_relation"],
     dataFamilydetailsAgeoffamilymember: json["data_familydetails_ageoffamilymember"],

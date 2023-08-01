@@ -40,7 +40,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     Register();
   }
 
-
   Register(){
     if(dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty){
       isYesSelected = true;
@@ -981,15 +980,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataNameofNGmember.text = dataup["data_NameofNGmember"];
       dataRoleinNg = dataup["data_roleinNG"];
       dataHouseOwnership = dataup["data_houseOwnership"].toString();
-      datalanddetailslandarea.text =
-          dataup["data_landdetails_landarea"].toString();
-      datalanddetailsagricultureland.text =
-          dataup['data_landdetails_agricultureland'].toString();
+      datalanddetailslandarea.text = dataup["data_landdetails_landarea"].toString();
+      datalanddetailsagricultureland.text = dataup['data_landdetails_agricultureland'].toString();
       dataEnterpisetype = dataup["data_enterpisetype"];
-      dataYearofstartingbussiness.text =
-          dataup["data_yearofstartingbussiness"].toString();
-      dataYearofstartingagriculture.text =
-          dataup["data_Yearofstartingagriculture"].toString();
+      dataYearofstartingbussiness.text = dataup["data_yearofstartingbussiness"].toString();
+      dataYearofstartingagriculture.text = dataup["data_Yearofstartingagriculture"].toString();
       dataAmountinvested.text = dataup["data_amountinvested"].toString();
       dataSupportrecived.text = dataup["data_supportrecived"].toString();
       dataInfraShed = dataup["data_Infra_Shed"];
@@ -997,10 +992,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataInfraBiogas = dataup["data_Infra_biogas"];
       dataInfraEquipments = dataup["data_Infra_equipments"];
       dataInfraOthers.text = dataup["data_Infra_others"].toString();
-      dataAnimalhusbendaryRegdetailsCdsunitname.text =
-          dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
-      dataAnimalhusbendaryRegdetailsRegnumber.text =
-          dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
+      dataAnimalhusbendaryRegdetailsCdsunitname.text = dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
+      dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
       dataAnimalhusbendarycdsregistration  = dataup['data_Animalhusbendary_cdsregistration'];
     });
   }

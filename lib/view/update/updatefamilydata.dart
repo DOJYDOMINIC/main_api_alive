@@ -237,12 +237,14 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
     var dataup = widget.items['familyDetails'];
     setState(() {
       widget.items['familyDetails'];
+
       // dataFamilydetailsNameoffailyfmember.text  = dataup["data_familydetails_nameoffailyfmember"].toString();
       // datafamilydetailsrelation.text = dataup["data_familydetails_relation"].toString();
       // dataFamilydetailsSkill.text = dataup["data_familydetails_skill"].toString();
       // dataFamilydetailsEducation.text = dataup["data_familydetails_education"].toString();
       // dataFamilydetailsJob.text  = dataup["data_familydetails_job"].toString();
       // dataFamilydetailsAgeoffamilymember.text = dataup["data_familydetails_ageoffamilymember"].toString();
+
     });
   }
 }
