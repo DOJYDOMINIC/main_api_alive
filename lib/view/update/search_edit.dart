@@ -34,9 +34,7 @@ class _SearchEditState extends State<SearchEdit> {
 
   Future<void> fetchDistricts() async {
     try {
-      final response = await http.get(
-        Uri.parse('${api}search/listDistricts'),
-      );
+      final response = await http.get(Uri.parse('${api}search/listDistricts'),);
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -132,7 +130,7 @@ class _SearchEditState extends State<SearchEdit> {
         final data = json.decode(response.body);
         setState(() {
           peopleData = List<Map<String, dynamic>>.from(data);
-          print(peopleData);
+          print(data);
         });
         Navigator.push(
           context,
@@ -188,7 +186,7 @@ class _SearchEditState extends State<SearchEdit> {
                   try{
                   fetchBlocks(selectedDistrict!);
                   } catch (e) {
-                    print('Error : $e');
+                    print('district : $e');
                   }
                 });
                 // providerone.updateDataDistrict(value);
@@ -202,7 +200,7 @@ class _SearchEditState extends State<SearchEdit> {
                   try {
                     fetchPanchayth(selectedBlocks!);
                   } catch (e) {
-                    print('Error : $e');
+                    print('block : $e');
                   }
                 });
                 // providerone.updateDataBlock(value);
@@ -217,7 +215,7 @@ class _SearchEditState extends State<SearchEdit> {
                     try {
                       FetchCrp(selectedpanchayth!);
                     } catch (e) {
-                      print('Error : $e');
+                      print('panchayth : $e');
                     }
                   });
                 },
@@ -229,8 +227,9 @@ class _SearchEditState extends State<SearchEdit> {
                     selectedcrp = value;
                     try {
                       FetchCrp(selectedcrp!);
+                      print(selectedcrp);
                     } catch (e) {
-                      print('Error : $e');
+                      print('crp : $e');
                     }
                   });
                 },
@@ -239,9 +238,10 @@ class _SearchEditState extends State<SearchEdit> {
             ElevateClick(
                 ontap: () {
                   try {
+                    print(authToken);
                     fetchData(selectedcrp!, authToken!);
                   } catch (e) {
-                    print('Error : $e');
+                    print('fetchdata : $e');
                   }
                 },
                 text: 'Search'),

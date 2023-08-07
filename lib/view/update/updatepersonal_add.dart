@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/view/login.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +35,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   void initState() {
     super.initState();
     getData();
+    // changeData();
     fetchDistricts();
     Register();
   }
@@ -116,10 +116,17 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
   List dataclass3 = [];
-  List dataSourceofinvestment = [];
+  // List sourceofinvestment = [];
+  // List dataSourceofinvestment = [];
   List traningrequaredlist = [];
   bool isYesSelected = false;
   String? group;
+ List? Class3;
+ List? animalhusbendaryBusinesstype;
+ List? _sourceofinvestment;
+ List? _support;
+ List? _traningrequared;
+ List? _mgnregasupport;
 
 
 
@@ -257,7 +264,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Form(
-                key: _formKey,
+                // key: _formKey,
                 child: Column(
                   children: [
                     NoSearchDropdown(
@@ -362,7 +369,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // hintText: 'Please select one or more options',
-                        initialValue: dataclass3,
+                        initialValue: dataClass3,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'This field is required';
@@ -371,6 +378,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         },
                         onSaved: (value) {
                           if (value == null) return;
+                          // setState(() {
+                          //   dataClass3 = value;
+                          // });
                           providerone.updateDataClass3(value);
                         },
                       ),
@@ -449,10 +459,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: dataAnimalhusbendaryBusinesstype,
+                          initialValue: animalhusbendaryBusinesstype,
                           onSaved: (value) {
-                            providerone
-                                .updateDataAnimalhusbendaryBusinesstype(value);
+                            providerone.updateDataAnimalhusbendaryBusinesstype(value);
                           }),
                     ),
                     SizedBox(
@@ -516,7 +525,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                                   ),
                                 ),
                               ),
-
                             Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
@@ -625,13 +633,16 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           cancelButtonLabel: 'CANCEL',
                           // hintText: 'Please select one or more options',
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
+                            if (value == null) {
                               return 'This field is required.';
                             }
                             return null;
                           },
-                          initialValue: dataSourceofinvestment,
+                          initialValue: _sourceofinvestment,
                           onSaved: (value) {
+                            setState(() {
+                              // sourceofinvestment = value;
+                            });
                             providerone.updateDataSourceofinvestment(value);
                           }),
                     ),
@@ -836,7 +847,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: dataSupport,
+                        initialValue: _support,
                         onSaved: (value) {
                           try {
                             dataSupport = value;
@@ -891,7 +902,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: traningrequaredlist,
+                          initialValue: _traningrequared,
                           onSaved: (value) {
                             providerone.updateDataTrainingsrequired(value);
                             // setState(() {
@@ -922,7 +933,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: dataMgnregasupport,
+                        initialValue: _mgnregasupport,
                         onSaved: (value) {
                           providerone.updateDataMgnregAsupport(value);
                         },
@@ -930,12 +941,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     ),
                     ElevateClick(
                         ontap: () {
-                          changeData();
+                          // changeData();
                           // print(widget.items['data'][0]['_id']);
                           // print(fetchBlocks(selectedDistrict!));
                           // print(blocks);
                           setState(() {
-                            if (_formKey.currentState!.validate()) {
+                            // if (_formKey.currentState!.validate()) {
 
                               Navigator.push(
                                 context,
@@ -943,8 +954,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                                   builder: (context) =>
                                       UpdateFamilyData(items: widget.items),
                                 ),
-                              );}
-                          });
+                              );
+                          }
+                          // }
+                          );
                         },
                         text: 'Next'),
                   ],
@@ -974,7 +987,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataPhonenumber.text = dataup["data_Phonenumber"].toString();
       dataClass = dataup["data_Class"];
       dataClass2 = dataup["data_Class2"];
-      dataClass3 = dataup["data_Class3"];
+      dataClass3 = dataup["data_Class3"] ?? [];
+      _sourceofinvestment = dataup["data_Sourceofinvestment"];
       dataFamilyincome = dataup["data_familyincome"];
       dataNameofNg.text = dataup["data_NameofNG"];
       dataNameofNGmember.text = dataup["data_NameofNGmember"];
@@ -992,6 +1006,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       dataInfraBiogas = dataup["data_Infra_biogas"];
       dataInfraEquipments = dataup["data_Infra_equipments"];
       dataInfraOthers.text = dataup["data_Infra_others"].toString();
+      animalhusbendaryBusinesstype = dataup["data_Animalhusbendary_businesstype"];
+      _support = dataup["data_support"];
+      _traningrequared = dataup["data_Trainingsrequired"];
+      _mgnregasupport = dataup["data_MGNREGAsupport"];
+
       dataAnimalhusbendaryRegdetailsCdsunitname.text = dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
       dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
       dataAnimalhusbendarycdsregistration  = dataup['data_Animalhusbendary_cdsregistration'];
@@ -999,7 +1018,15 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   }
 
   void changeData() {
-    var providerone = context.read<TextMain>();
+    var providerone = Provider.of<TextMain>(context);
+    // var providerone = context.read<TextMain>();
+    // providerone.updateDataAnimalhusbendaryBusinesstype(providerone.dataAnimalhusbendaryBusinesstype);
+    // providerone.updateDataClass3(dataClass3);
+    // providerone.updateDataSourceofinvestment(providerone.dataSourceofinvestment);
+    // providerone.updateDataMgnregAsupport(providerone.dataMgnregAsupport);
+    // providerone.updateDataSupport(providerone.dataSupport);
+    // providerone.updateDataTrainingsrequired(providerone.dataTrainingsrequired);
+
 
     providerone.updateDataDistrict(dataDistrict);
     providerone.updateDataBlock(dataBlock);
@@ -1017,6 +1044,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataClass3(dataClass3);
     providerone.updateDataFamilyincome(dataFamilyincome);
     providerone.updateDataNameofNg(dataNameofNg.text);
+    providerone.updateDataNameofNg(dataNameofNg.text);
     providerone.updateDataNameofNGmember(dataNameofNGmember.text);
     providerone.updateDataRoleinNg(dataRoleinNg);
     providerone.updateDataHouseownership(dataHouseOwnership);
@@ -1027,10 +1055,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     int detailsagricultureland = int.parse(agricultureland);
     providerone.updateDataLanddetailsAgricultureland(detailsagricultureland);
     providerone.updateDataEnterpisetype(dataEnterpisetype);
-    providerone
-        .updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
-    providerone.updateDataYearofstartingagriculture(
-        dataYearofstartingagriculture.text);
+    providerone.updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
+    providerone.updateDataYearofstartingagriculture(dataYearofstartingagriculture.text);
     String invested = dataAmountinvested.text;
     int amountinvested = int.parse(invested);
     providerone.updateDataAmountinvested(amountinvested);

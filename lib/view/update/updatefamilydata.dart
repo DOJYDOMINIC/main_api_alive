@@ -5,28 +5,29 @@ import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:provider/provider.dart';
 import '../../constant/color_text.dart';
 import '../../control/text_controller.dart';
+import '../../model/model.dart';
 import '../widgets/input_field.dart';
 import 'updatelivelihood.dart';
 
-class Member {
-  // final String new_id;
-  final String dataFamilydetailsNameoffailyfmember;
-  final String dataFamilydetailsRelation;
-  final int dataFamilydetailsAgeoffamilymember;
-  final String dataFamilydetailsEducation;
-  final String dataFamilydetailsJob;
-  final String dataFamilydetailsSkill;
-
-  Member({
-    // required this.new_id,
-    required this.dataFamilydetailsNameoffailyfmember,
-    required this.dataFamilydetailsRelation,
-    required this.dataFamilydetailsAgeoffamilymember,
-    required this.dataFamilydetailsEducation,
-    required this.dataFamilydetailsJob,
-    required this.dataFamilydetailsSkill,
-  });
-}
+// class Member {
+//   // final String new_id;
+//   final String? dataFamilydetailsNameoffailyfmember;
+//   final String? dataFamilydetailsRelation;
+//   final int? dataFamilydetailsAgeoffamilymember;
+//   final String? dataFamilydetailsEducation;
+//   final String? dataFamilydetailsJob;
+//   final String? dataFamilydetailsSkill;
+//
+//   Member({
+//     // required this.new_id,
+//      this.dataFamilydetailsNameoffailyfmember,
+//      this.dataFamilydetailsRelation,
+//      this.dataFamilydetailsAgeoffamilymember,
+//      this.dataFamilydetailsEducation,
+//      this.dataFamilydetailsJob,
+//      this.dataFamilydetailsSkill,
+//   });
+// }
 
 class UpdateFamilyData extends StatefulWidget {
   UpdateFamilyData({
@@ -47,8 +48,7 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
   }
 
   // TextEditingController new_id = TextEditingController();
-  TextEditingController dataFamilydetailsNameoffailyfmember =
-      TextEditingController();
+  TextEditingController dataFamilydetailsNameoffailyfmember = TextEditingController();
   TextEditingController dataFamilydetailsAgeoffamilymember =
       TextEditingController();
   TextEditingController datafamilydetailsrelation = TextEditingController();
@@ -58,29 +58,39 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
   TextEditingController dataFamilydetailsSkill = TextEditingController();
   TextEditingController dataFamilydetailsJob = TextEditingController();
 
-  List<Member> familyMembers = [];
+  List<FamilyDetail> familyMembers = [];
 
   void _addMember() {
     setState(() {
-      int ageOfFamilyMember =
-          int.tryParse(dataFamilydetailsAgeoffamilymember.text) ?? 0;
-
-      familyMembers.add(Member(
-        dataFamilydetailsNameoffailyfmember:
-            dataFamilydetailsNameoffailyfmember.text,
+      int ageOfFamilyMember = int.tryParse(dataFamilydetailsAgeoffamilymember.text) ?? 0;
+      familyMembers.add(FamilyDetail(
+        dataFamilydetailsNameoffailyfmember: dataFamilydetailsNameoffailyfmember.text,
         dataFamilydetailsRelation: datafamilydetailsrelation.text,
         dataFamilydetailsAgeoffamilymember: ageOfFamilyMember,
         dataFamilydetailsEducation: dataFamilydetailsEducation.text,
         dataFamilydetailsJob: dataFamilydetailsJob.text,
         dataFamilydetailsSkill: dataFamilydetailsSkill.text,
-        // new_id: new_id.text,
       ));
     });
   }
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
+
+    int count = widget.items['familyDetails'].length;
+
+    // Function to increment the count
+    void incrementFamilyDetails() {
+      setState(() {
+       count++;
+
+      });
+    }
 
     return GestureDetector(
       onTap: () {
@@ -105,30 +115,15 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                   height: 600,
                   child: ListView.builder(
                     // shrinkWrap: true,
-                    itemCount: widget.items['familyDetails'].length,
+                    itemCount: count,
                     itemBuilder: (context, index) {
                       var data = widget.items['familyDetails'][index];
-                      TextEditingController dataFamilydetailsNameoffailyfmember =
-                          TextEditingController(
-                              text:
-                                  data["data_familydetails_nameoffailyfmember"]);
-                      TextEditingController dataFamilydetailsAgeoffamilymember =
-                          TextEditingController(
-                              text: data["data_familydetails_ageoffamilymember"]
-                                  .toString());
-                      TextEditingController datafamilydetailsrelation =
-                          TextEditingController(
-                              text: data["data_familydetails_relation"]);
-                      TextEditingController dataFamilydetailsEducation =
-                          TextEditingController(
-                              text: data["data_familydetails_education"]);
-                      // TextEditingController dataFamilydetailsRelation = TextEditingController(text: widget.items['familyDetails'][index]["data_familydetails_relation"]);
-                      TextEditingController dataFamilydetailsSkill =
-                          TextEditingController(
-                              text: data["data_familydetails_skill"]);
-                      TextEditingController dataFamilydetailsJob =
-                          TextEditingController(
-                              text: data["data_familydetails_job"]);
+                      TextEditingController dataFamilydetailsNameoffailyfmember = TextEditingController(text: data["data_familydetails_nameoffailyfmember"]);
+                      TextEditingController dataFamilydetailsAgeoffamilymember = TextEditingController(text: data["data_familydetails_ageoffamilymember"].toString());
+                      TextEditingController datafamilydetailsrelation = TextEditingController(text: data["data_familydetails_relation"]);
+                      TextEditingController dataFamilydetailsEducation = TextEditingController(text: data["data_familydetails_education"]);
+                      TextEditingController dataFamilydetailsSkill = TextEditingController(text: data["data_familydetails_skill"]);
+                      TextEditingController dataFamilydetailsJob = TextEditingController(text: data["data_familydetails_job"]);
                       // TextEditingController new_id = TextEditingController(text: data["_id"]);
 
                       return Padding(
@@ -214,6 +209,11 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                 //   },
                 //   child: Text('Add Member'),
                 // ),
+                ElevatedButton(
+                  onPressed: _addMember,
+                  child: Text('Add Family Member'),
+                ),
+
                 ElevateClick(
                   ontap: () {
                     Navigator.push(
@@ -244,7 +244,6 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
       // dataFamilydetailsEducation.text = dataup["data_familydetails_education"].toString();
       // dataFamilydetailsJob.text  = dataup["data_familydetails_job"].toString();
       // dataFamilydetailsAgeoffamilymember.text = dataup["data_familydetails_ageoffamilymember"].toString();
-
     });
   }
 }

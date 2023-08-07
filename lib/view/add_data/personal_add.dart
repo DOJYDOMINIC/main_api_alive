@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
+import 'package:main200623/model/model.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
@@ -244,6 +245,7 @@ class _PersonalPageState extends State<PersonalPage> {
                       onChanged: (value) {
                         setState(() {
                           selectedDistrict = value;
+
                           fetchBlocks(selectedDistrict!);
                         });
                         providerone.updateDataDistrict(value);
@@ -413,13 +415,14 @@ class _PersonalPageState extends State<PersonalPage> {
                           initialValue: dataAnimalhusbendaryBusinesstype,
                           onSaved: (value) {
                             setState(() {
-                              animalBusiness = value;
+                              dataAnimalhusbendaryBusinesstype = value;
+                              print(value);
+                              print(dataAnimalhusbendaryBusinesstype);
                             });
-                            providerone
-                                .updateDataAnimalhusbendaryBusinesstype(value);
+                            providerone.updateDataAnimalhusbendaryBusinesstype(value);
                           }),
                     ),
-                    if (animalBusiness.contains('Others'))
+                    if (dataAnimalhusbendaryBusinesstype.contains('Others'))
                       InputField(
                           hint: 'മറ്റുള്ളവ',
                           controller: data_Animalhusbendary_others0,

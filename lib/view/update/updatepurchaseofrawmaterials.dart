@@ -24,7 +24,7 @@ class _UpdatePurchaseofrawmaterials extends State<UpdatePurchaseofrawmaterials> 
   @override
   void initState() {
     super.initState();
-    // getproductData();
+    getproductData();
     // changeData();
   }
 
@@ -195,7 +195,7 @@ TextEditingController OTHERqty =TextEditingController();
                         'CALVES',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      dataSource: hfg,
+                      dataSource: calves,
                       textField: 'text',
                       valueField: 'value',
                       okButtonLabel: 'OK',
@@ -241,7 +241,7 @@ TextEditingController OTHERqty =TextEditingController();
                         'HEIFERS',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      dataSource: hfg,
+                      dataSource: heifers,
                       textField: 'text',
                       valueField: 'value',
                       okButtonLabel: 'OK',
@@ -288,7 +288,7 @@ TextEditingController OTHERqty =TextEditingController();
                         'COWS',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      dataSource: hfg,
+                      dataSource: cows,
                       textField: 'text',
                       valueField: 'value',
                       okButtonLabel: 'OK',
@@ -775,46 +775,46 @@ TextEditingController OTHERqty =TextEditingController();
         cowsList= List<String>.from(dataup["COWS_List"].map((x) => x));
         // modePurchaseofrawmaterials .text = List<String>.from(dataup["Mode_purchaseofrawmaterials"].map((x) .text => x));
 
-        cowDungQnty.text = dataup["COW_DUNG_qnty"].toString();
-        goatManureQnty.text = dataup["GOAT_MANURE_qnty"].toString();
-        poultryManureQnty .text = dataup["POULTRY_MANURE_qnty"].toString();
-        vermyCompostQnty .text = dataup["VERMY_COMPOST_qnty"].toString();
-        napierQnty .text = dataup["NAPIER_qnty"].toString();
-        co4Qnty .text = dataup["CO4_qnty"].toString();
-        co5Qnty .text = dataup["CO5_qnty"].toString();
-        redNapierQnty .text = dataup["RED_NAPIER_qnty"].toString();
-        superNapierQnty .text = dataup["SUPER_NAPIER_qnty"].toString();
-        guineaGrassQnty .text = dataup["GUINEA_GRASS_qnty"].toString();
-        paraGrassQnty .text = dataup["PARA_GRASS_qnty"].toString();
-        congoSignalQnty.text = dataup["CONGO_SIGNAL_qnty"].toString();
-        maleBuffaloCalvesQnty.text = dataup["MALE_BUFFALO_CALVES_qnty"].toString();
-        calvesHfQnty.text = dataup["CALVES_HF_qnty"].toString();
-        calvesGerseyQnty.text = dataup["CALVES_GERSEY_qnty"].toString();
-        heipersHfQnty .text = dataup["HEIPERS_HF_qnty"].toString();
-        heipersGerseyQnty .text = dataup["HEIPERS_GERSEY_qnty"].toString();
-        cowsHfQnty .text = dataup["COWS_HF_qnty"].toString();
-        cowsGerseyQnty.text = dataup["COWS_GERSEY_qnty"].toString();
-        malabariGoatsQnty.text = dataup["MALABARI_GOATS_qnty"].toString();
-        materialForPoultryQnty.text = dataup["MATERIAL_FOR_POULTRY_qnty"].toString();
-        eggTraysQnty.text= dataup["EGG_TRAYS_qnty"].toString();
-        poultryFeedQnty.text = dataup["POULTRY_FEED_qnty"].toString();
-        layerList = dataup["LAYER_List"].toString();
-        cattleFeedList = dataup["CATTLE_FEED_List"].toString();
-        cattleFeedQnty.text = dataup["CATTLE_FEED_qnty"].toString();
-        milkReplacerList = dataup["MILK_REPLACER_List"].toString();
-        milkReplacerQnty .text = dataup["MILK_REPLACER_qnty"].toString();
-        energyRichFeedList = dataup["ENERGY_RICH_FEED_List"].toString();
-        energyRichFeedQnty .text = dataup["ENERGY_RICH_FEED_qnty"].toString();
-        byPassProteinQnty .text = dataup["BY_PASS_PROTEIN_qnty"].toString();
-        byPassFatQnty .text = dataup["BY_PASS_FAT_qnty"].toString();
-        tmrQnty .text = dataup["TMR_qnty"].toString();
-        silageQnty .text = dataup["SILAGE_qnty"].toString();
-        hayQnty .text = dataup["HAY_qnty"].toString();
-        ureaTreatedStrawQnty .text = dataup["UREA_TREATED_STRAW_qnty"].toString();
-        goatFeeDqnty .text = dataup["GOAT_FEEDqnty"].toString();
-        kidStarterQnty .text = dataup["KID_STARTER_qnty"].toString();
-        dataPurchaseofrawmaterialsBrand .text = dataup["data_purchaseofrawmaterials_brand"].toString();
-        brandQnty .text = dataup["BRAND_qnty"].toString();
+        cowDungQnty = dataup["COW_DUNG_qnty"];
+        goatManureQnty = dataup["GOAT_MANURE_qnty"];
+        poultryManureQnty  = dataup["POULTRY_MANURE_qnty"];
+        vermyCompostQnty  = dataup["VERMY_COMPOST_qnty"];
+        napierQnty  = dataup["NAPIER_qnty"];
+        co4Qnty  = dataup["CO4_qnty"];
+        co5Qnty  = dataup["CO5_qnty"];
+        redNapierQnty  = dataup["RED_NAPIER_qnty"];
+        superNapierQnty  = dataup["SUPER_NAPIER_qnty"];
+        guineaGrassQnty  = dataup["GUINEA_GRASS_qnty"];
+        paraGrassQnty  = dataup["PARA_GRASS_qnty"];
+        congoSignalQnty = dataup["CONGO_SIGNAL_qnty"];
+        maleBuffaloCalvesQnty = dataup["MALE_BUFFALO_CALVES_qnty"];
+        calvesHfQnty = dataup["CALVES_HF_qnty"];
+        calvesGerseyQnty = dataup["CALVES_GERSEY_qnty"];
+        heipersHfQnty  = dataup["HEIPERS_HF_qnty"];
+        heipersGerseyQnty  = dataup["HEIPERS_GERSEY_qnty"];
+        cowsHfQnty  = dataup["COWS_HF_qnty"];
+        cowsGerseyQnty = dataup["COWS_GERSEY_qnty"];
+        malabariGoatsQnty = dataup["MALABARI_GOATS_qnty"];
+        materialForPoultryQnty = dataup["MATERIAL_FOR_POULTRY_qnty"];
+        eggTraysQnty= dataup["EGG_TRAYS_qnty"];
+        poultryFeedQnty = dataup["POULTRY_FEED_qnty"];
+        layerList = dataup["LAYER_List"];
+        cattleFeedList = dataup["CATTLE_FEED_List"];
+        cattleFeedQnty = dataup["CATTLE_FEED_qnty"];
+        milkReplacerList = dataup["MILK_REPLACER_List"];
+        milkReplacerQnty  = dataup["MILK_REPLACER_qnty"];
+        energyRichFeedList = dataup["ENERGY_RICH_FEED_List"];
+        energyRichFeedQnty  = dataup["ENERGY_RICH_FEED_qnty"];
+        byPassProteinQnty  = dataup["BY_PASS_PROTEIN_qnty"];
+        byPassFatQnty  = dataup["BY_PASS_FAT_qnty"];
+        tmrQnty  = dataup["TMR_qnty"];
+        silageQnty  = dataup["SILAGE_qnty"];
+        hayQnty  = dataup["HAY_qnty"];
+        ureaTreatedStrawQnty  = dataup["UREA_TREATED_STRAW_qnty"];
+        goatFeeDqnty  = dataup["GOAT_FEEDqnty"];
+        kidStarterQnty  = dataup["KID_STARTER_qnty"];
+        dataPurchaseofrawmaterialsBrand  = dataup["data_purchaseofrawmaterials_brand"];
+        brandQnty  = dataup["BRAND_qnty"];
 
       });
     } catch (e) {

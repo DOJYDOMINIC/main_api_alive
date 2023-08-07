@@ -52,10 +52,11 @@ class _SalesState extends State<LivelihoodValue> {
   TextEditingController othersqty = TextEditingController();
   TextEditingController dryqty = TextEditingController();
   TextEditingController freshqty = TextEditingController();
-
-
-
-
+  TextEditingController eggproduction = TextEditingController();
+  TextEditingController marketing = TextEditingController();
+  TextEditingController poultrymanueritem = TextEditingController();
+  TextEditingController indigenousqty = TextEditingController();
+  TextEditingController jerseyqty = TextEditingController();
 
   List<String> livelihood = [];
 
@@ -71,6 +72,7 @@ class _SalesState extends State<LivelihoodValue> {
 
   List<String> manuerlistselcted = [];
 
+  List<String> poultrylistselcted = [];
 
   Future<void> fetchlivelihood() async {
     try {
@@ -87,11 +89,11 @@ class _SalesState extends State<LivelihoodValue> {
           // print(livelihood);
         });
       } else {
-        throw Exception('Failed to fetch districts');
+        throw Exception('Failed to fetch fetchlivelihood');
       }
     } catch (e) {
       // Handle error
-      print('Error fetching districts: $e');
+      print('Error fetching fetchlivelihood: $e');
     }
   }
 
@@ -154,38 +156,40 @@ class _SalesState extends State<LivelihoodValue> {
                     keytype: TextInputType.number,
                   ),
                 // SizedBox(height: 10),
-                if(selectedOptions.contains('COW'))
-                Padding(
-                  padding: const EdgeInsets.only(top:10,bottom: 10 ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.black,
-                        )),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: MultiSelectDialogField(
-                        items: cowlist
-                            .map((item) => MultiSelectItem<String>(item, item))
-                            .toList(),
-                        initialValue: selectcowlist,
-                        buttonText: Text('COW LIST'),
-                        title: Text(
-                          'Select Options',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                if (selectedOptions.contains('COW'))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.black,
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: MultiSelectDialogField(
+                          items: cowlist
+                              .map(
+                                  (item) => MultiSelectItem<String>(item, item))
+                              .toList(),
+                          initialValue: selectcowlist,
+                          buttonText: Text('COW LIST'),
+                          title: Text(
+                            'Select Options',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onConfirm: (List<String> values) {
+                            setState(() {
+                              selectcowlist = values;
+                            });
+                            print(selectcowlist);
+                            providerone.updateDataLivelihoodCowsList(
+                                values); // Trigger a rebuild to update the selected options
+                          },
                         ),
-                        onConfirm: (List<String> values) {
-                          setState(() {
-                            selectcowlist = values;
-                          });
-                          print(selectcowlist);
-                          providerone.updateDataLivelihoodCowsList(values); // Trigger a rebuild to update the selected options
-                        },
                       ),
                     ),
                   ),
-                ),
                 if (selectcowlist.contains('H F'))
                   InputField(
                     hint: 'H F Qty',
@@ -199,17 +203,18 @@ class _SalesState extends State<LivelihoodValue> {
                 if (selectcowlist.contains('INDIGENOUS'))
                   InputField(
                     hint: 'INDIGENOUS Qty',
-                    controller: LivelihoodBuffaloQnty,
+                    controller: indigenousqty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
-                      providerone.updateDataLivelihoodCowsIndigenousQnty(valuee);
+                      providerone
+                          .updateDataLivelihoodCowsIndigenousQnty(valuee);
                     },
                     keytype: TextInputType.number,
                   ),
                 if (selectcowlist.contains('JERSEY'))
                   InputField(
                     hint: 'JERSEY Qty',
-                    controller: LivelihoodBuffaloQnty,
+                    controller: jerseyqty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataLivelihoodCowsJerseyQnty(valuee);
@@ -218,34 +223,38 @@ class _SalesState extends State<LivelihoodValue> {
                   ),
                 // SizedBox(height: 10),
                 if (selectedOptions.contains('CALF'))
-                  Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.black,
-                      )),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: MultiSelectDialogField(
-                      items: calfgender
-                          .map((item) => MultiSelectItem<String>(item, item))
-                          .toList(),
-                      initialValue: calfgenderlist,
-                      buttonText: Text('CALF GENDER'),
-                      title: Text(
-                        'Select Options',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,bottom: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.black,
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: MultiSelectDialogField(
+                          items: calfgender
+                              .map((item) => MultiSelectItem<String>(item, item))
+                              .toList(),
+                          initialValue: calfgenderlist,
+                          buttonText: Text('CALF GENDER'),
+                          title: Text(
+                            'Select Options',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onConfirm: (List<String> values) {
+                            setState(() {
+                              calfgenderlist = values;
+                            });
+                            print(calfgenderlist);
+                            providerone.updateDataLivelihoodCalfList(
+                                values); // Trigger a rebuild to update the selected options
+                          },
+                        ),
                       ),
-                      onConfirm: (List<String> values) {
-                        setState(() {
-                          calfgenderlist = values;
-                        });
-                        print(calfgenderlist);
-                        providerone.updateDataLivelihoodCalfList(values); // Trigger a rebuild to update the selected options
-                      },
                     ),
                   ),
-                ),
                 if (calfgenderlist.contains('FEMALE'))
                   InputField(
                     hint: 'FEMALE Qty',
@@ -279,33 +288,34 @@ class _SalesState extends State<LivelihoodValue> {
                 SizedBox(height: 10),
                 if (selectedOptions.contains('FODDER'))
                   Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.black,
-                      )),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: MultiSelectDialogField(
-                      items: fooderitems
-                          .map((item) => MultiSelectItem<String>(item, item))
-                          .toList(),
-                      initialValue: fooderlist,
-                      buttonText: Text('FODDER LIST'),
-                      title: Text(
-                        'Select Options',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.black,
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: MultiSelectDialogField(
+                        items: fooderitems
+                            .map((item) => MultiSelectItem<String>(item, item))
+                            .toList(),
+                        initialValue: fooderlist,
+                        buttonText: Text('FODDER LIST'),
+                        title: Text(
+                          'Select Options',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onConfirm: (List<String> values) {
+                          setState(() {
+                            fooderlist = values;
+                          });
+                          print(fooderlist);
+                          providerone.updateDataLivelihoodFodderList(
+                              values); // Trigger a rebuild to update the selected options
+                        },
                       ),
-                      onConfirm: (List<String> values) {
-                        setState(() {
-                          fooderlist = values;
-                        });
-                        print(fooderlist);
-                        providerone.updateDataLivelihoodFodderList(values); // Trigger a rebuild to update the selected options
-                      },
                     ),
                   ),
-                ),
                 if (fooderlist.contains('FOR SALE'))
                   InputField(
                     hint: 'FOR SALE KG',
@@ -328,35 +338,37 @@ class _SalesState extends State<LivelihoodValue> {
                   ),
                 if (selectedOptions.contains('GOAT'))
                   Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 10),
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
                     child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.black,
-                        )),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: MultiSelectDialogField(
-                        items: goatlist
-                            .map((item) => MultiSelectItem<String>(item, item))
-                            .toList(),
-                        initialValue: goatlistitems,
-                        buttonText: Text('GOAT LIST'),
-                        title: Text(
-                          'Select Options',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.black,
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: MultiSelectDialogField(
+                          items: goatlist
+                              .map(
+                                  (item) => MultiSelectItem<String>(item, item))
+                              .toList(),
+                          initialValue: goatlistitems,
+                          buttonText: Text('GOAT LIST'),
+                          title: Text(
+                            'Select Options',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onConfirm: (List<String> values) {
+                            setState(() {
+                              goatlistitems = values;
+                            });
+                            print(goatlistitems);
+                            providerone.updateDataLivelihoodGoatList(
+                                values); // Trigger a rebuild to update the selected options
+                          },
                         ),
-                        onConfirm: (List<String> values) {
-                          setState(() {
-                            goatlistitems = values;
-                          });
-                          print(goatlistitems);
-                          providerone.updateDataLivelihoodGoatList(values); // Trigger a rebuild to update the selected options
-                        },
                       ),
                     ),
-                ),
                   ),
                 if (goatlistitems.contains('ATTAPADI BLACK'))
                   InputField(
@@ -364,7 +376,8 @@ class _SalesState extends State<LivelihoodValue> {
                     controller: attapadiblackqty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
-                      providerone.updateDataLivelihoodGoatAttapadiBlackQnty(valuee);
+                      providerone
+                          .updateDataLivelihoodGoatAttapadiBlackQnty(valuee);
                     },
                     keytype: TextInputType.number,
                   ),
@@ -374,7 +387,8 @@ class _SalesState extends State<LivelihoodValue> {
                     controller: attapdiblackkidqty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
-                      providerone.updateDataLivelihoodGoatAttapadiBlackKidQnty(valuee);
+                      providerone
+                          .updateDataLivelihoodGoatAttapadiBlackKidQnty(valuee);
                     },
                     keytype: TextInputType.number,
                   ),
@@ -394,7 +408,8 @@ class _SalesState extends State<LivelihoodValue> {
                     controller: malabarikidqty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
-                      providerone.updateDataLivelihoodGoatMalabariKidQnty(valuee);
+                      providerone
+                          .updateDataLivelihoodGoatMalabariKidQnty(valuee);
                     },
                     keytype: TextInputType.number,
                   ),
@@ -414,7 +429,8 @@ class _SalesState extends State<LivelihoodValue> {
                         controller: othersqty,
                         onchanged: (value) {
                           int? valuee = int.tryParse(value);
-                          providerone.updateDataLivelihoodGoatOthersQnty(valuee);
+                          providerone
+                              .updateDataLivelihoodGoatOthersQnty(valuee);
                         },
                         keytype: TextInputType.number,
                       ),
@@ -440,11 +456,14 @@ class _SalesState extends State<LivelihoodValue> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         onConfirm: (List<String> values) {
-                          setState(() {
-                            manuerlistselcted = values;
-                          });
+                          setState(
+                            () {
+                              manuerlistselcted = values;
+                            },
+                          );
                           print(manuerlistselcted);
-                          providerone.updateDataLivelihoodManureList(values); // Trigger a rebuild to update the selected options
+                          providerone.updateDataLivelihoodManureList(
+                              values); // Trigger a rebuild to update the selected options
                         },
                       ),
                     ),
@@ -469,10 +488,75 @@ class _SalesState extends State<LivelihoodValue> {
                     },
                     keytype: TextInputType.number,
                   ),
-
+                if (selectedOptions.contains('POULTRY'))
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.black,
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: MultiSelectDialogField(
+                        items: poultrylist
+                            .map((item) => MultiSelectItem<String>(item, item))
+                            .toList(),
+                        initialValue: poultrylistselcted,
+                        buttonText: Text('POULTRY LIST'),
+                        title: Text(
+                          'Select Options',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onConfirm: (List<String> values) {
+                          setState(
+                            () {
+                              poultrylistselcted = values;
+                            },
+                          );
+                          print(poultrylistselcted);
+                          providerone.updateDataLivelihoodPoultryList(
+                              values); // Trigger a rebuild to update the selected options
+                        },
+                      ),
+                    ),
+                  ),
+                if (poultrylistselcted.contains('EGG PRODUCTION'))
+                  InputField(
+                    hint: 'EGG PRODUCTION Qty',
+                    controller: eggproduction,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone
+                          .updateDataLivelihoodPoultryEggProductionQnty(valuee);
+                    },
+                    keytype: TextInputType.number,
+                  ),
+                if (poultrylistselcted.contains('MARKETING'))
+                  InputField(
+                    hint: 'MARKETING Qty',
+                    controller: marketing,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone
+                          .updateDataLivelihoodPoultryMarketingQnty(valuee);
+                    },
+                    keytype: TextInputType.number,
+                  ),
+                if (selectedOptions.contains('POULTRY MANURE'))
+                  InputField(
+                    hint: 'POULTRY MANURE Qty',
+                    controller: poultrymanueritem,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone.updateDataLivelihoodPoultryManureQnty(valuee);
+                    },
+                    keytype: TextInputType.number,
+                  ),
                 ElevateClick(
                     ontap: () {
-                      Navigator.push(context, MaterialPageRoute(
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
                             builder: (context) => Purchaseofrawmaterials(),
                           ));
                     },

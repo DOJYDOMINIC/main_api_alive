@@ -48,12 +48,14 @@ class _LoginState extends State<Login> {
       final response = await http.post(Uri.parse(url), body: body);
 
       if (response.statusCode == 200) {
+        saveAuthTokenToPreferences();
         // Successful login
         var data = json.decode(response.body);
         authToken = data['token'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('authToken', authToken!);
         prefs.setString('email', _emailController.text);
+
 
 
         // Process the data or navigate to the next screen
@@ -65,8 +67,7 @@ class _LoginState extends State<Login> {
         if(dropdownValue == 'Admin'){
           Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredPeopleList(token : authToken),));
         }else if (dropdownValue == 'User'){
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Screenone(),));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
         }
       } else {
         // Login failed

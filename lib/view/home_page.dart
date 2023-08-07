@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
+import 'package:main200623/control/text_controller.dart';
 import 'package:main200623/view/update/search_edit.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Documentation/report_page.dart';
 import 'add_data/personal_add.dart';
@@ -25,6 +27,7 @@ class _ScreenoneState extends State<Screenone> {
 
   @override
   Widget build(BuildContext context) {
+    var providerone = Provider.of<TextMain>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: app_theam,
@@ -56,6 +59,7 @@ class _ScreenoneState extends State<Screenone> {
             children: [
               GestureDetector(
                 onTap: (){
+                  providerone.clearData();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalPage(),));
                 },
                 child: SizedBox(
@@ -87,6 +91,7 @@ class _ScreenoneState extends State<Screenone> {
               SizedBox(height: 30,),
               GestureDetector(
                 onTap: (){
+                  // providerone.clearData();
                   Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
                 },
                 child: SizedBox(

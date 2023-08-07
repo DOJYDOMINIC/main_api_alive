@@ -246,10 +246,19 @@ final List? pullets = [
   {'text': 'OTHER', 'value': 'OTHER'},
 ];
 
-final List? hfg = [
-  {'text': 'H F', 'value': 'H F'},
-  {'text': 'GERSEY', 'value': 'GERSEY'},
+final List? calves = [
+  {'text': 'H F', 'value': 'CALVES-H F'},
+  {'text': 'GERSEY', 'value': 'CALVES-GERSEY'},
 ];
+final List?  heifers= [
+  {'text': 'H F', 'value': 'HEIFERS-H F'},
+  {'text': 'GERSEY', 'value': 'HEIFERS-GERSEY'},
+];
+final List? cows = [
+  {'text': 'H F', 'value': 'COWS-H F'},
+  {'text': 'GERSEY', 'value': 'COWS-GERSEY'},
+];
+
 
 final List? manure = [
   {'text': 'COW DUNG', 'value': 'COW DUNG'},
@@ -360,4 +369,4 @@ List<String> goatlist = [
 
 List<String> manuritems = ["DRY", "FRESH"];
 
-List<String> poultry = ["EGG PRODUCTION", "MARKETING"];
+List<String> poultrylist = ["EGG PRODUCTION", "MARKETING"];

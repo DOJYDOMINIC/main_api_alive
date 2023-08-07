@@ -23,12 +23,17 @@ class _SalesState extends State<UpdateSalesData> {
   @override
   void initState() {
     super.initState();
-    // getsaleData();
+    getsaleData();
+    changeData();
   }
+
+  // List? productavilable;
 
   String? selectedproduceproduct;
   List? productavilable;
   List? modeofmarkrting;
+  List? modeof_markrting;
+
 
   TextEditingController milkqty = TextEditingController();
   TextEditingController meatqty = TextEditingController();
@@ -43,9 +48,9 @@ class _SalesState extends State<UpdateSalesData> {
   TextEditingController pulletsqty = TextEditingController();
   TextEditingController calfqty = TextEditingController();
   TextEditingController beiferqty = TextEditingController();
-  TextEditingController dataSalesprdct2 = TextEditingController();
-  TextEditingController dataSalesquntum2 = TextEditingController();
-  TextEditingController dataSalessalesmethod = TextEditingController();
+  // TextEditingController dataSalesprdct2 = TextEditingController();
+  // TextEditingController dataSalesquntum2 = TextEditingController();
+  // TextEditingController dataSalessalesmethod = TextEditingController();
 
 
 
@@ -89,6 +94,7 @@ class _SalesState extends State<UpdateSalesData> {
                     initialValue: productavilable,
                     onSaved: (value) {
                       setState(() {
+                        getsaleData();
                         productavilable  = value;
                       });
                       if (value == null) return;
@@ -229,7 +235,7 @@ class _SalesState extends State<UpdateSalesData> {
                     okButtonLabel: 'OK',
                     cancelButtonLabel: 'CANCEL',
                     // hintText: 'Please select one or more options',
-                    initialValue: modeofmarkrting,
+                    initialValue: modeof_markrting,
                     onSaved: (value) {
                       setState(() {
                         modeofmarkrting  = value;
@@ -256,8 +262,23 @@ class _SalesState extends State<UpdateSalesData> {
       var dataup = widget.items['sales'][0];
 
       setState(() {
-        dataup;
-        // productavilable = dataup['data_Sales_prdct2'];
+        productavilable = dataup["data_Sales_prdct2"];
+        modeof_markrting = dataup ["data_Sales_salesmethod"];
+
+        milkqty.text= dataup["MILK_qnty"].toString();
+        meatqty.text= dataup["MEAT_qnty"].toString();
+        eggqty.text= dataup["EGG_qnty"].toString();
+        manuerqty.text= dataup["Sales_MANURE_qnty"].toString();
+        feedqty.text= dataup["FEED_qnty"].toString();
+        malebeffeloqty .text= dataup["male_buffalo_calf_qnty"].toString();
+        grassfooderqty .text= dataup["Gras_fooder_qnty"].toString();
+        treefooderqty .text= dataup["tree_fooder_qnty"].toString();
+        kidqty.text= dataup["kid_qnty"].toString();
+        daychickqty.text= dataup["day_old_chick_qnty"].toString();
+        pulletsqty.text= dataup["pullets_qnty"].toString();
+        calfqty.text= dataup["calf_qnty"].toString();
+        beiferqty.text= dataup["beifer_qnty"].toString();
+
       });
     } catch (e) {
       // Handle error
@@ -265,4 +286,11 @@ class _SalesState extends State<UpdateSalesData> {
       // Perform any necessary error handling or display a message to the user
     }
   }
+
+  void changeData() {
+   // var providerone = Provider.of<TextMain>(context);
+    var providerone = context.read<TextMain>();
+    // providerone.updateDataSalesprdct2(productavilable);
+  }
+
 }

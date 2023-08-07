@@ -200,7 +200,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           'CALVES',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        dataSource: hfg,
+                        dataSource: calves,
                         textField: 'text',
                         valueField: 'value',
                         okButtonLabel: 'OK',
@@ -252,7 +252,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           'HEIFERS',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        dataSource: hfg,
+                        dataSource: heifers,
                         textField: 'text',
                         valueField: 'value',
                         okButtonLabel: 'OK',
@@ -299,7 +299,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           'COWS',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        dataSource: hfg,
+                        dataSource: cows,
                         textField: 'text',
                         valueField: 'value',
                         okButtonLabel: 'OK',
@@ -569,27 +569,6 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           providerone.updateDataCongoSignalQnty(valuee);
                         }),
                   // if(rawmaterial != null && rawmaterial!.contains('BRAND'))
-                  NoSearchDropdown(
-                    onChanged: (value) {
-                      setState(() {
-                        brandselected = value;
-                      });
-                      providerone.updateDataPurchaseofrawmaterialsBrand(value);
-                    },
-                    items: branditem,
-                    item: 'BRAND',
-                  ),
-
-                  // if(brandselected != null && brandselected == 'VHC')
-                  InputField(
-                      hint: 'BRAND ITEM QTY/KG',
-                      keytype: TextInputType.number,
-                      controller: brandqty,
-                      onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataBrandQnty(valuee);
-                      }),
-
                   if (rawmaterial != null && rawmaterial!.contains('LAYER'))
                     NoSearchDropdown(
                       onChanged: (value) {
@@ -746,13 +725,13 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
 
                   ElevateClick(
                       ontap: () {
-                        if (_formKey.currentState!.validate()) {
+                        // if (_formKey.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SalesData(),
                               ));
-                        }
+                        // }
                       },
                       text: 'Next'),
                 ],

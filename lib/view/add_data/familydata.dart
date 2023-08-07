@@ -7,6 +7,7 @@ import '../../constant/color_text.dart';
 import '../../control/text_controller.dart';
 import '../../global.dart';
 import '../../model/model.dart';
+import '../update/updatefamilydata.dart';
 import '../widgets/input_field.dart';
 import 'livelihood.dart';
 
@@ -34,7 +35,7 @@ class _FamilyDataState extends State<FamilyData> {
   TextEditingController dataFamilydetailsJob = TextEditingController();
 
 
-  // List<Member> familyMembers = [];
+  List<FamilyDetail> familyMembers = [];
   void _addMember() {
     var providerone = Provider.of<TextMain>(context, listen: false);
     familyMembers.add(FamilyDetail(
@@ -47,6 +48,7 @@ class _FamilyDataState extends State<FamilyData> {
       ));
 
       // Clear text controllers
+
       dataFamilydetailsNameoffailyfmember.clear();
       datafamilydetailsrelation.clear();
       datafamilydetailsageoffamilymember.clear();
@@ -84,6 +86,7 @@ class _FamilyDataState extends State<FamilyData> {
                     // setState(() {
                     //   dataFamilydetailsNameoffailyfmember = value;
                     // });
+                    print(value);
                     providerone.updateDataFamilydetailsNameoffailyfmember(value);
                   },
                 ),
@@ -153,18 +156,14 @@ class _FamilyDataState extends State<FamilyData> {
                 //   },
                 // ),
 
-                GestureDetector(
-                  onTap: (){
-                    print(familyMembers);
-                  },
-                  child: ElevatedButton(
+                 ElevatedButton(
                       style: buttonstyle_main,
                     onPressed: _addMember,
                     child: Text('Add Member'),
                   ),
-                ),
                 ElevateClick(
                   ontap: () {
+                    print(familyMembers[0][dataFamilydetailsNameoffailyfmember.text].toString());
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
                   },
                   text:'Next',
