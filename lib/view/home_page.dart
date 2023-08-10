@@ -91,7 +91,7 @@ class _ScreenoneState extends State<Screenone> {
               SizedBox(height: 30,),
               GestureDetector(
                 onTap: (){
-                  // providerone.clearData();
+                  providerone.clearData();
                   Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
                 },
                 child: SizedBox(

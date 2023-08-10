@@ -39,36 +39,31 @@ class _SalesState extends State<CrpDetail> {
   TextEditingController dataNameofrespondent = TextEditingController();
 
 
-  Future<void> postData(AddData addData) async {
-    const apiUrl = '${api}user/insert'; // Replace with your API endpoint
-
-    final headers = {
-      'Content-Type': 'application/json',
-
-      // Add any additional headers if required
-    };
-
-    final jsonBody = json.encode(addData.toJson());
-
-    final response = await http.post(Uri.parse(apiUrl), headers: headers, body: jsonBody);
-
-    if (response.statusCode == 201) {
-      print(response);
-      // Post request was successful
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text('Data Created successful!'),
-        ),
-      );
-      print('Data posted successfully');
-      // var providerone = Provider.of<TextMain>(context, listen: false);
-      // providerone.
-    } else {
-      // Error occurred during the post request
-      print('Error: ${response.statusCode}');
-    }
-  }
+  // Future<void> postData(AddData addData) async {
+  //   const apiUrl = '${api}user/insert'; // Replace with your API endpoint
+  //
+  //   final headers = {
+  //     'Content-Type': 'application/json',
+  //
+  //     // Add any additional headers if required
+  //   };
+  //
+  //   final jsonBody = json.encode(addData.toJson());
+  //
+  //   final response = await http.post(Uri.parse(apiUrl), headers: headers, body: jsonBody);
+  //
+  //   if (response.statusCode == 201) {
+  //     print(response);
+  //     // Post request was successful
+  //
+  //     print('Data posted successfully');
+  //     // var providerone = Provider.of<TextMain>(context, listen: false);
+  //     // providerone.
+  //   } else {
+  //     // Error occurred during the post request
+  //     print('Error: ${response.statusCode}');
+  //   }
+  // }
 
   void submitForm() async {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -83,7 +78,8 @@ class _SalesState extends State<CrpDetail> {
       dataWard: providerone.dataWard,
       dataClass: providerone.dataClass,
       dataClass2: providerone.dataClass2,
-      dataClass3 : providerone.dataClass3?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataClass3 : providerone.dataClass3,
+            // ?.map((dynamic item) => item.toString()).toList() ?? [],
       dataAmountinvested: providerone.dataAmountinvested,
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
@@ -229,17 +225,30 @@ class _SalesState extends State<CrpDetail> {
       livelihoodPoultryList: providerone.livelihoodPoultryList,
       livelihoodPoultryManureQnty: providerone.livelihoodPoultryManureQnty,
       livelihoodPoultryMarketingQnty: providerone.livelihoodPoultryMarketingQnty,
+      livelihoodDUCKqnty: providerone.livelihoodduckqty,
       bv380Qnty: providerone.bv380Qnty,
       gramalakshmiQnty: providerone.gramalakshmiQnty,
       gramapriyaQnty: providerone.gramapriyaQnty,
       layerQnty: providerone.layerQnty,
       other: providerone.other,
       otherQnty: providerone.otherQnty,
-      livelihoodgoatothers: providerone.livelihoodgoatothers,
-      lilivelihoodDuckqnty: providerone.livelihoodduckqty,
+
+
+      addDataTreeFooderQnty: providerone.addDataTreeFooderQnty,
+      addDataUreaTreatedStrawQnty: providerone.addDataUreaTreatedStrawQnty,
+      caffStarterQnty: providerone.caffStarterQnty,
+      chemicalFertilizersQnty: providerone.chemicalFertilizersQnty,
+      fodderSeedsQnty: providerone.fodderSeedsQnty,
+      grassFooderQnty: providerone.grassFooderQnty,
+      growerQnty: providerone.growerQnty,
+      ingredientsForCttleFeedQnty: providerone.ingredientsForCattleFeedQnty,
+      ingredientsForPoultryFeedQnty: providerone.ingredientsForPoultryFeedQnty,
+      livelihoodGoatOthers: providerone.livelihoodGoatOthers,
+      malabariGoatKidsQnty: providerone.malabariGoatKidsQnty,
+      materialForPoultryCageFabricationQnty: providerone.materialForPoultryCageFabricationQnty,
+      totalMixedRationQnty: providerone.totalMixedRationQnty,
       familyDetails : familyMembers,
     );
-
 
 
     const url = '$api/user/insert'; // Replace with your API endpoint URL
@@ -258,11 +267,16 @@ class _SalesState extends State<CrpDetail> {
       );
       if (response.statusCode == 201) {
         // Data submitted successfully
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text('Data Created successful!'),
+          ),
+        );
         log(jsonData);
         print('..........................');
         log(response.body);
         print('Data submitted successfully.');
-        providerone.clearData();
         Navigator.push(context, MaterialPageRoute(builder: (context) => Screenone(),));
 
       } else {

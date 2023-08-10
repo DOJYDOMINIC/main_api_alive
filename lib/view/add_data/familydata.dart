@@ -2,12 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:provider/provider.dart';
-
 import '../../constant/color_text.dart';
 import '../../control/text_controller.dart';
 import '../../global.dart';
 import '../../model/model.dart';
-import '../update/updatefamilydata.dart';
 import '../widgets/input_field.dart';
 import 'livelihood.dart';
 
@@ -22,12 +20,16 @@ final id;
 }
 
 class _FamilyDataState extends State<FamilyData> {
+  @override
+  void initState() {
+    super.initState();
+
+   familyMembers.isNotEmpty? familyMembers.clear() : null ;
+  }
 
 
-  TextEditingController dataFamilydetailsNameoffailyfmember =
-  TextEditingController();
-  TextEditingController datafamilydetailsageoffamilymember =
-  TextEditingController();
+  TextEditingController dataFamilydetailsNameoffailyfmember = TextEditingController();
+  TextEditingController datafamilydetailsageoffamilymember = TextEditingController();
   TextEditingController datafamilydetailsrelation = TextEditingController();
   TextEditingController dataFamilydetailsEducation = TextEditingController();
   TextEditingController dataFamilydetailsRelation = TextEditingController();
@@ -35,9 +37,10 @@ class _FamilyDataState extends State<FamilyData> {
   TextEditingController dataFamilydetailsJob = TextEditingController();
 
 
-  List<FamilyDetail> familyMembers = [];
+  // List<FamilyDetail> familyMembers = [];
   void _addMember() {
     var providerone = Provider.of<TextMain>(context, listen: false);
+
     familyMembers.add(FamilyDetail(
         dataFamilydetailsNameoffailyfmember: providerone.dataFamilydetailsNameoffailyfmember,
         dataFamilydetailsRelation: providerone.dataFamilydetailsRelation,
@@ -46,15 +49,17 @@ class _FamilyDataState extends State<FamilyData> {
         dataFamilydetailsJob: providerone.dataFamilydetailsJob,
         dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
       ));
-
+    setState(() {});
       // Clear text controllers
 
+    // providerone.clearfamilydata();
       dataFamilydetailsNameoffailyfmember.clear();
       datafamilydetailsrelation.clear();
       datafamilydetailsageoffamilymember.clear();
       dataFamilydetailsEducation.clear();
       dataFamilydetailsJob.clear();
       dataFamilydetailsSkill.clear();
+      setState(() {});
   }
 
   @override
@@ -155,7 +160,6 @@ class _FamilyDataState extends State<FamilyData> {
                 //     );
                 //   },
                 // ),
-
                  ElevatedButton(
                       style: buttonstyle_main,
                     onPressed: _addMember,
@@ -163,11 +167,57 @@ class _FamilyDataState extends State<FamilyData> {
                   ),
                 ElevateClick(
                   ontap: () {
-                    print(familyMembers[0][dataFamilydetailsNameoffailyfmember.text].toString());
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
                   },
                   text:'Next',
                 ),
+
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: familyMembers.length,
+                    itemBuilder: (context,index){
+                    var items = familyMembers[index];
+                  return ExpansionTile(
+                    title: Text("Member ${index+1}"),
+                    expandedCrossAxisAlignment:CrossAxisAlignment.start,
+                    children: [
+                      Text('കുടുംബാംഗത്തിൻ്റെ പേര്',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsNameoffailyfmember}',style: TextStyle(fontSize:18)),
+                      ),
+                      Text('ബന്ധം',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsRelation}',style: TextStyle(fontSize:18)),
+                      ),
+                      Text('വയസ്സ്‌',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsAgeoffamilymember}',style: TextStyle(fontSize:18)),
+                      ),
+                      Text('വിദ്യാഭ്യാസം',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsEducation}',style: TextStyle(fontSize:18)),
+                      ),
+                      Text('തൊഴില്‍',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsJob}',style: TextStyle(fontSize:18)),
+                      ),
+                      Text('പ്രത്യേക കഴിവ്',style: TextStyle(fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                        child: Text('${items.dataFamilydetailsSkill}',style: TextStyle(fontSize:18)),
+                      ),
+                    ],
+                  );
+                }
+                ),
+
+
               ],
             ),
           ),

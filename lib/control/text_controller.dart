@@ -8,6 +8,216 @@ enum CheckboxOption {
 }
 
 class TextMain extends ChangeNotifier {
+
+
+  void clearfamilydata (){
+    _dataFamilydetailsNameoffailyfmember = '';
+    _dataFamilydetailsRelation = '';
+    _dataFamilydetailsAgeoffamilymember = 0;
+    _dataFamilydetailsEducation = '';
+    _dataFamilydetailsJob = '';
+    _dataFamilydetailsSkill = '';
+  }
+  void clearData() {
+    _dataDistrict = "";
+    _dataBlock = "";
+    _dataPanchayath = "";
+    _dataWard = 0;
+    _dataName = "";
+    _dataAddress = "";
+    _dataPhonenumber = 0;
+    _dataClass = "";
+    _dataClass2 = "";
+    _dataClass3 = [];
+    _dataFamilyincome = "";
+    _dataNameofNg = "";
+    _dataNameofNGmember = "";
+    _dataRoleinNg = "";
+    _dataHouseownership = "";
+    _dataLanddetailsLandarea = 0;
+    _dataLanddetailsAgricultureland = 0;
+    _dataAnimalhusbendaryBusinesstype = [];
+    _dataAnimalhusbendaryOthers0 = "";
+    _dataAnimalhusbendaryCdsregistration = "";
+    _dataAnimalhusbendaryRegdetailsRegnumber = "";
+    _dataAnimalhusbendaryRegdetailsCdsunitname = "";
+    _dataEnterpisetype = "";
+    _dataNoofgroupmembers = 0;
+    _dataYearofstartingagriculture = "";
+    _dataYearofstartingbussiness = "";
+    _dataAmountinvested = 0;
+    _dataSourceofinvestment = [];
+    _dataSupportrecived = "";
+    _dataLoan = "";
+    _dataTotalinvestment = 0;
+    _dataDateofLoanApplication = "";
+    _dataBusinessidea = "";
+    _dataInfraInfrastructure = "";
+    _dataInfraShed = "";
+    _dataInfraWastage = "";
+    _dataInfraBiogas = "";
+    _dataInfraEquipments = "";
+    _dataInfraOthers = "";
+    _dataSupport = [];
+    _dataOthers2 = "";
+    _dataMgnregAsupport = [];
+    _dataLanddetails1Landforgrass = "";
+    _dataLanddetails1Qtyofownland = 0;
+    _dataLanddetails1Qtyofleasedland = 0;
+    _dataLanddetails2Siteforworkshed = "";
+    _dataLanddetails2Qtyofownland = 0;
+    _dataOthers4 = "";
+    _dataTrainingsrequired = [];
+    _dataOthers3 = "";
+    _dataComments = "";
+    _dataNameofcrp = "";
+    _dataNameofrespondent = "";
+    _dataDateofsurvey = "";
+    _dataStarttime = "";
+    _dataMetaInstanceId = "";
+    _dataLoandetailsTotalinvestment = 0;
+    _dataFamilydetailsNameoffailyfmember = "";
+    _dataFamilydetailsRelation = "";
+    _dataFamilydetailsAgeoffamilymember = 0;
+    _dataFamilydetailsEducation = "";
+    _dataFamilydetailsJob = "";
+    _dataFamilydetailsSkill = "";
+    _dataProductsPrdct = [];
+    _dataProductsQuantum = 0;
+    _dataProductsPrice2 = 0;
+    _dataPurchaseofrawmaterialsQuantity = 0;
+    _dataPurchaseofrawmaterialsPrice = 0;
+    _dataPurchaseofrawmaterialsBrand = "";
+    _dataPurchaseofrawmaterialsOwn = "";
+    _dataPurchaseofrawmaterialsRetail = 0;
+    _dataPurchaseofrawmaterialsP2 = 0;
+    _dataPurchaseofrawmaterialsWholesale = 0;
+    _dataPurchaseofrawmaterialsP3 = 0;
+    _dataPurchaseofrawmaterialsGroup = 0;
+    _dataPurchaseofrawmaterialsP4 = 0;
+    _dataPurchaseofrawmaterialsSubsidy = 0;
+    _dataPurchaseofrawmaterialsP5 = 0;
+    _dataSalesprdct2 = [];
+    _dataSalesquntum2 = 0;
+    _datalivelihoodincomesource = [];
+    milkQnty = 0;
+    meatQnty = 0;
+    eggQnty = 0;
+    salesManureQnty = 0;
+    feedQnty = 0;
+    maleBuffaloCalfQnty = 0;
+    grasFooderQnty = 0;
+    treeFooderQnty = 0;
+    kidQnty = 0;
+    dayOldChickQnty = 0;
+    pulletsQnty = 0;
+    calfQnty = 0;
+    beiferQnty = 0;
+    dataSalesSalesmethod = [];
+    // dataProductsPrdct = "";
+    // dataProductsQuantum = "";
+    // dataProductsPrice2 = "";
+    // dataLivelihoodIncomesource = [];
+    dataPurchaseofrawmaterialsItemtype = [];
+    pulletsList = [];
+    manureList = [];
+    manureQnty = 0;
+    fodderSlipsList = [];
+    fodderSlipsQnty = 0;
+    maleBuffaloCalvesQnty = 0;
+    calvesList = [];
+    calvesQnty = 0;
+    heipersList = [];
+    heipersQnty = 0;
+    cowsList = [];
+    malabariGoatsQnty = 0;
+    materialForPoultryQnty = 0;
+    eggTraysQnty = 0;
+    poultryFeedQnty = 0;
+    layerList = "";
+    cattleFeedList = "";
+    cattleFeedQnty = 0;
+    milkReplacerList = "";
+    energyRichFeedList = "";
+    energyRichFeedQnty = 0;
+    byPassProteinQnty = 0;
+    byPassFatQnty = 0;
+    tmrQnty = 0;
+    silageQnty = 0;
+    hayQnty = 0;
+    ureaTreatedStrawQnty = 0;
+    goatFeeDqnty = 0;
+    kidStarterQnty = 0;
+    modePurchaseofrawmaterials = [];
+    dataPurchaseofrawmaterialsBrand = "";
+    brandQnty = 0;
+    _calvesGerseyQnty = 0;
+    _calvesHfQnty = 0;
+    _co4Qnty = 0;
+    _co5Qnty = 0;
+    _congoSignalQnty = 0;
+    _cowDungQnty = 0;
+    _cowsGerseyQnty = 0;
+    _cowsHfQnty = 0;
+    _goatManureQnty = 0;
+    _guineaGrassQnty = 0;
+    _heipersGerseyQnty = 0;
+    _heipersHfQnty = 0;
+    _milkReplacerQnty = 0;
+    _napierQnty = 0;
+    _paraGrassQnty = 0;
+    _poultryManureQnty = 0;
+    _redNapierQnty = 0;
+    _superNapierQnty = 0;
+    _vermyCompostQnty = 0;
+    _livelihoodCowsList = [];
+    _livelihoodCowsHfQnty = 0;
+    _livelihoodCowsJerseyQnty = 0;
+    _livelihoodCowsIndigenousQnty = 0;
+    _livelihoodCalfList = [];
+    _livelihoodCalfFemaleQnty = 0;
+    _livelihoodCalfMaleQnty = 0;
+    _livelihoodGoatList = [];
+    _livelihoodGoatMalabariQnty = 0;
+    _livelihoodGoatMalabariKidQnty = 0;
+    _livelihoodGoatAttapadiBlackQnty = 0;
+    _livelihoodGoatAttapadiBlackKidQnty = 0;
+    _livelihoodGoatOthersQnty = 0;
+    _livelihoodPoultryList = [];
+    _livelihoodPoultryEggProductionQnty = 0;
+    _livelihoodPoultryMarketingQnty = 0;
+    _livelihoodManureList = [];
+    _livelihoodManureDryQnty = 0;
+    _livelihoodManureFreshQnty = 0;
+    _livelihoodFodderList = [];
+    _livelihoodFodderOwnUseQnty = 0;
+    _livelihoodFodderForSaleQnty = 0;
+    _livelihoodBuffaloQnty = 0;
+    _livelihoodPoultryManureQnty = 0;
+    _livelihoodduckqty = 0;
+    // _livelihoodgoatothers = "";
+    _bv380Qnty = 0;
+    _gramalakshmiQnty = 0;
+    _gramapriyaQnty = 0;
+    _layerQnty = 0;
+    _other = "";
+    _otherQnty = 0;
+    _addDataTreeFooderQnty = 0;
+    _addDataUreaTreatedStrawQnty = 0;
+    _caffStarterQnty = 0;
+    _chemicalFertilizersQnty = 0;
+    _fodderSeedsQnty = 0;
+    _grassFooderQnty = 0;
+    _growerQnty = 0;
+    _ingredientsForCattleFeedQnty = 0;
+    _ingredientsForPoultryFeedQnty = 0;
+    _livelihoodGoatOthers = '';
+    _malabarGoatKidsQnty = 0;
+    _materialForPoultryCageFabricationQnty = 0;
+    _totalMixedRationQnty = 0;
+    _ureaTreatedMolassBlock =0;
+    notifyListeners();
+  }
   //
   bool _isYesSelected = false;
 
@@ -91,7 +301,7 @@ class TextMain extends ChangeNotifier {
   String? _dataNameofcrp;
   String? _dataNameofrespondent;
   String? _dataDateofsurvey;
-  int? _dataStarttime;
+  String? _dataStarttime;
   String? _dataMetaInstanceId;
   int? _dataLoandetailsTotalinvestment;
 
@@ -132,10 +342,8 @@ class TextMain extends ChangeNotifier {
 
   // String? _dataSalessalesmethod;
   //------------livelyhood------------
-  List<String>? _datalivelihoodincomesource;
-  int? _datalivelihoodnumbers;
-  String? _datalivelihoodcapitalsource;
-  int? _datalivelihoodrevenue;
+  List? _datalivelihoodincomesource;
+
 
   // --------------------------------------
   int? milkQnty;
@@ -152,10 +360,7 @@ class TextMain extends ChangeNotifier {
   int? calfQnty;
   int? beiferQnty;
   List? dataSalesSalesmethod;
-  String? dataLivelihoodIncomesource;
-  int? dataLivelihoodNumbers;
-  String? dataLivelihoodCapitalsource;
-  int? dataLivelihoodRevenue;
+
   List? dataPurchaseofrawmaterialsItemtype;
   List? pulletsList;
   List? manureList;
@@ -209,35 +414,35 @@ class TextMain extends ChangeNotifier {
   int? _superNapierQnty;
   int? _vermyCompostQnty;
 
-  List<String>? _livelihoodCowsList;
+  List? _livelihoodCowsList;
   int? _livelihoodCowsHfQnty;
   int? _livelihoodCowsJerseyQnty;
   int? _livelihoodCowsIndigenousQnty;
-  List<String>? _livelihoodCalfList;
+  List? _livelihoodCalfList;
   int? _livelihoodCalfFemaleQnty;
   int? _livelihoodCalfMaleQnty;
-  List<String>? _livelihoodGoatList;
+  List? _livelihoodGoatList;
   int? _livelihoodGoatMalabariQnty;
   int? _livelihoodGoatMalabariKidQnty;
   int? _livelihoodGoatAttapadiBlackQnty;
   int? _livelihoodGoatAttapadiBlackKidQnty;
   int? _livelihoodGoatOthersQnty;
-  List<String>? _livelihoodPoultryList;
+  List? _livelihoodPoultryList;
   int? _livelihoodPoultryEggProductionQnty;
   int? _livelihoodPoultryMarketingQnty;
-  List<String>? _livelihoodManureList;
+  List? _livelihoodManureList;
   int? _livelihoodManureDryQnty;
   int? _livelihoodManureFreshQnty;
-  List<String>? _livelihoodFodderList;
+  List? _livelihoodFodderList;
   int? _livelihoodFodderOwnUseQnty;
   int? _livelihoodFodderForSaleQnty;
   int? _livelihoodBuffaloQnty;
   int? _livelihoodPoultryManureQnty;
   int? _livelihoodduckqty;
-  String? _livelihoodgoatothers;
+  // String? _livelihoodgoatothers;
 
-// List<String>? _dataPurchaseofrawmaterialsItemtype;
-// List<String>? _pulletsList;
+// List? _dataPurchaseofrawmaterialsItemtype;
+// List? _pulletsList;
   int? _bv380Qnty;
   int? _gramalakshmiQnty;
   int? _gramapriyaQnty;
@@ -245,8 +450,137 @@ class TextMain extends ChangeNotifier {
   String? _other;
   int? _otherQnty;
 
+  // int? addDataTreeFooderQnty;
+  // int? addDataUreaTreatedStrawQnty;
+  // int? caffStarterQnty;
+  // int? chemicalFertilizersQnty;
+  // int? fodderSeedsQnty;
+  // int? grassFooderQnty;
+  // int? growerQnty;
+  // int? ingredientsForCattleFeedQnty;
+  // int? ingredientsForPoultryFeedQnty;
+  // int? livelihoodGoatOthers;
+  // int? malabariGoatKidsQnty;
+  // int? materialForPoultryCageFabricationQnty;
+  // int? totalMixedRationQnty;
+  //
+  // int? get addDataTreeFooderQnty => _addDataTreeFooderQnty;
+  // // int? get addDataUreaTreatedStrawQnty => _addDataUreaTreatedStrawQnty;
+  // int? get caffStarterQnty => _caffStarterQnty;
+  // int? get chemicalFertilizersQnty => _chemicalFertilizersQnty;
+  // int? get fodderSeedsQnty => _fodderSeedsQnty;
+  // int? get grassFooderQnty => _grassFooderQnty;
+  // int? get growerQnty => _growerQnty;
+  // int? get ingredientsForCattleFeedQnty => _ingredientsForCattleFeedQnty;
+  // int? get ingredientsForPoultryFeedQnty => _ingredientsForPoultryFeedQnty;
+  // // int? get livelihoodGoatOthers => _livelihoodGoatOthers;
+  // // int? get malabariGoatKidsQnty => _malabariGoatKidsQnty;
+  // int? get materialForPoultryCageFabricationQnty => _materialForPoultryCageFabricationQnty;
+  // int? get totalMixedRationQnty => _totalMixedRationQnty;
+
+  int? _addDataTreeFooderQnty;
+  int? get addDataTreeFooderQnty => _addDataTreeFooderQnty;
+  void updateAddDataTreeFooderQnty(int? value) {
+    _addDataTreeFooderQnty = value;
+    notifyListeners();
+  }
+
+  int? _addDataUreaTreatedStrawQnty;
+  int? get addDataUreaTreatedStrawQnty => _addDataUreaTreatedStrawQnty;
+  void updateAddDataUreaTreatedStrawQnty(int? value) {
+    _addDataUreaTreatedStrawQnty = value;
+    notifyListeners();
+  }
+
+  int? _caffStarterQnty;
+  int? get caffStarterQnty => _caffStarterQnty;
+  void updateCaffStarterQnty(int? value) {
+    _caffStarterQnty = value;
+    notifyListeners();
+  }
+
+  int? _chemicalFertilizersQnty;
+  int? get chemicalFertilizersQnty => _chemicalFertilizersQnty;
+  void updateChemicalFertilizersQnty(int? value) {
+    _chemicalFertilizersQnty = value;
+    notifyListeners();
+  }
+
+  int? _fodderSeedsQnty;
+  int? get fodderSeedsQnty => _fodderSeedsQnty;
+  void updateFodderSeedsQnty(int? value) {
+    _fodderSeedsQnty = value;
+    notifyListeners();
+  }
+
+  int? _grassFooderQnty;
+  int? get grassFooderQnty => _grassFooderQnty;
+  void updateGrassFooderQnty(int? value) {
+    _grassFooderQnty = value;
+    notifyListeners();
+  }
+
+  int? _growerQnty;
+  int? get growerQnty => _growerQnty;
+  void updateGrowerQnty(int? value) {
+    _growerQnty = value;
+    notifyListeners();
+  }
+  int? _ureaTreatedMolassBlock;
+  int? get ureaTreatedMolassBlock => _ureaTreatedMolassBlock;
+  void updateureaTreatedMolassBlock(int? value) {
+    _ureaTreatedMolassBlock = value;
+    notifyListeners();
+  }
+
+
+  int? _ingredientsForCattleFeedQnty;
+  int? get ingredientsForCattleFeedQnty => _ingredientsForCattleFeedQnty;
+  void updateIngredientsForCattleFeedQnty(int? value) {
+    _ingredientsForCattleFeedQnty = value;
+    notifyListeners();
+  }
+
+  int? _ingredientsForPoultryFeedQnty;
+  int? get ingredientsForPoultryFeedQnty => _ingredientsForPoultryFeedQnty;
+  void updateIngredientsForPoultryFeedQnty(int? value) {
+    _ingredientsForPoultryFeedQnty = value;
+    notifyListeners();
+  }
+
+  String? _livelihoodGoatOthers;
+  String? get livelihoodGoatOthers => _livelihoodGoatOthers;
+  void updateLivelihoodGoatOthers(String? value) {
+    _livelihoodGoatOthers = value;
+    notifyListeners();
+  }
+
+  int? _malabarGoatKidsQnty;
+  int? get malabariGoatKidsQnty => _malabarGoatKidsQnty;
+  void updateMalabarGoatKidsQnty(int? value) {
+    _malabarGoatKidsQnty = value;
+    notifyListeners();
+  }
+
+  int? _materialForPoultryCageFabricationQnty;
+  int? get materialForPoultryCageFabricationQnty => _materialForPoultryCageFabricationQnty;
+  void updateMaterialForPoultryCageFabricationQnty(int? value) {
+    _materialForPoultryCageFabricationQnty = value;
+    notifyListeners();
+  }
+
+  int? _totalMixedRationQnty;
+  int? get totalMixedRationQnty => _totalMixedRationQnty;
+
+  void updateTotalMixedRationQnty(int? value) {
+    _totalMixedRationQnty = value;
+    notifyListeners();
+  }
+
+
+
 // Getter property for livelihoodCowsList
-  List<String>? get livelihoodCowsList => _livelihoodCowsList;
+  List? get livelihoodCowsList => _livelihoodCowsList;
 
   // Getter properties for other properties...
   int? get livelihoodCowsHfQnty => _livelihoodCowsHfQnty;
@@ -257,13 +591,13 @@ class TextMain extends ChangeNotifier {
 
   int? get livelihoodCowsIndigenousQnty => _livelihoodCowsIndigenousQnty;
 
-  List<String>? get livelihoodCalfList => _livelihoodCalfList;
+  List? get livelihoodCalfList => _livelihoodCalfList;
 
   int? get livelihoodCalfFemaleQnty => _livelihoodCalfFemaleQnty;
 
   int? get livelihoodCalfMaleQnty => _livelihoodCalfMaleQnty;
 
-  List<String>? get livelihoodGoatList => _livelihoodGoatList;
+  List? get livelihoodGoatList => _livelihoodGoatList;
 
   int? get livelihoodGoatMalabariQnty => _livelihoodGoatMalabariQnty;
 
@@ -276,20 +610,20 @@ class TextMain extends ChangeNotifier {
 
   int? get livelihoodGoatOthersQnty => _livelihoodGoatOthersQnty;
 
-  List<String>? get livelihoodPoultryList => _livelihoodPoultryList;
+  List? get livelihoodPoultryList => _livelihoodPoultryList;
 
   int? get livelihoodPoultryEggProductionQnty =>
       _livelihoodPoultryEggProductionQnty;
 
   int? get livelihoodPoultryMarketingQnty => _livelihoodPoultryMarketingQnty;
 
-  List<String>? get livelihoodManureList => _livelihoodManureList;
+  List? get livelihoodManureList => _livelihoodManureList;
 
   int? get livelihoodManureDryQnty => _livelihoodManureDryQnty;
 
   int? get livelihoodManureFreshQnty => _livelihoodManureFreshQnty;
 
-  List<String>? get livelihoodFodderList => _livelihoodFodderList;
+  List? get livelihoodFodderList => _livelihoodFodderList;
 
   int? get livelihoodFodderOwnUseQnty => _livelihoodFodderOwnUseQnty;
 
@@ -301,7 +635,7 @@ class TextMain extends ChangeNotifier {
 
   int? get livelihoodduckqty => _livelihoodduckqty;
 
-  String? get livelihoodgoatothers => _livelihoodgoatothers;
+  // String? get livelihoodgoatothers => _livelihoodgoatothers;
 
   int? get bv380Qnty => _bv380Qnty;
 
@@ -465,7 +799,7 @@ class TextMain extends ChangeNotifier {
 
   String? get dataDateofsurvey => _dataDateofsurvey;
 
-  int? get dataStarttime => _dataStarttime;
+  String? get dataStarttime => _dataStarttime;
 
   String? get dataMetaInstanceId => _dataMetaInstanceId;
 
@@ -531,16 +865,9 @@ class TextMain extends ChangeNotifier {
 
   int? get dataSalesquntum2 => _dataSalesquntum2;
 
-  // String? get dataSalessalesmethod => _dataSalessalesmethod;
 
   //-------------------livelihood------------------------
-  List<String>? get datalivelihoodincomesource => _datalivelihoodincomesource;
-
-  // int? get datalivelihoodnumbers => _datalivelihoodnumbers;
-  //
-  // String? get datalivelihoodcapitalsource => _datalivelihoodcapitalsource;
-  //
-  // int? get datalivelihoodrevenue => _datalivelihoodrevenue;
+  List? get datalivelihoodincomesource => _datalivelihoodincomesource;
 
   // new
 
@@ -572,11 +899,6 @@ class TextMain extends ChangeNotifier {
 
   List? get getDataSalesSalesmethod => dataSalesSalesmethod;
 
-  String? get getDataLivelihoodIncomesource => dataLivelihoodIncomesource;
-
-  // int? get getDataLivelihoodNumbers => dataLivelihoodNumbers;
-  // String? get getDataLivelihoodCapitalsource => dataLivelihoodCapitalsource;
-  // int? get getDataLivelihoodRevenue => dataLivelihoodRevenue;
   List? get DataPurchaseofrawmaterialsItemtype =>
       dataPurchaseofrawmaterialsItemtype;
 
@@ -646,28 +968,13 @@ class TextMain extends ChangeNotifier {
   int? get getBrandQnty => brandQnty;
 
   //----------------livelihood-----------------
-  void updateDatalivelihoodincomesource(List<String>? value) {
+  void updateDatalivelihoodincomesource(List? value) {
     _datalivelihoodincomesource = value;
     notifyListeners();
   }
 
   void UpdateDtaLoandetailsTotalinvestment(int? value) {
     _dataLoandetailsTotalinvestment = value;
-    notifyListeners();
-  }
-
-  void updateDatalivelihoodnumbers(int? value) {
-    _datalivelihoodnumbers = value;
-    notifyListeners();
-  }
-
-  void updateDatalivelihoodcapitalsource(String? value) {
-    _datalivelihoodcapitalsource = value;
-    notifyListeners();
-  }
-
-  void updateDatalivelihoodrevenue(int? value) {
-    _datalivelihoodrevenue = value;
     notifyListeners();
   }
 
@@ -1007,13 +1314,11 @@ class TextMain extends ChangeNotifier {
   }
 
   void updateDataDateofsurvey(String? value) {
-    DateTime now = DateTime.now();
-    String? formattedDate = DateFormat('yyyy-MM-dd').format(now);
-    formattedDate = value;
+   _dataDateofsurvey = value;
     notifyListeners();
   }
 
-  void updateDataStarttime(int? value) {
+  void updateDataStarttime(String? value) {
     _dataStarttime = value;
     notifyListeners();
   }
@@ -1181,25 +1486,10 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataDataLivelihoodIncomesource(String? value) {
-    dataLivelihoodIncomesource = value;
-    notifyListeners();
-  }
-
-  void updateDataDataLivelihoodNumbers(int? value) {
-    dataLivelihoodNumbers = value;
-    notifyListeners();
-  }
-
-  void updateDataDataLivelihoodCapitalsource(String? value) {
-    dataLivelihoodCapitalsource = value;
-    notifyListeners();
-  }
-
-  void updateDataDataLivelihoodRevenue(int? value) {
-    dataLivelihoodRevenue = value;
-    notifyListeners();
-  }
+  // void updateDataDataLivelihoodIncomesource(List? value) {
+  //   dataLivelihoodIncomesource = value;
+  //   notifyListeners();
+  // }
 
   void updateDataDataPurchaseofrawmaterialsItemtype(List? value) {
     dataPurchaseofrawmaterialsItemtype = value;
@@ -1460,7 +1750,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodCowsList(List<String>? value) {
+  void updateDataLivelihoodCowsList(List? value) {
     _livelihoodCowsList = value;
     notifyListeners();
   }
@@ -1485,7 +1775,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodCalfList(List<String>? value) {
+  void updateDataLivelihoodCalfList(List? value) {
     _livelihoodCalfList = value;
     notifyListeners();
   }
@@ -1500,7 +1790,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodGoatList(List<String>? value) {
+  void updateDataLivelihoodGoatList(List? value) {
     _livelihoodGoatList = value;
     notifyListeners();
   }
@@ -1525,17 +1815,17 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodGoatOthers(String? value) {
-    _livelihoodgoatothers = value;
-    notifyListeners();
-  }
+  // void updateDataLivelihoodGoatOthers(String? value) {
+  //   _livelihoodgoatothers = value;
+  //   notifyListeners();
+  // }
 
   void updateDataLivelihoodGoatOthersQnty(int? value) {
     _livelihoodGoatOthersQnty = value;
     notifyListeners();
   }
 
-  void updateDataLivelihoodPoultryList(List<String>? value) {
+  void updateDataLivelihoodPoultryList(List? value) {
     _livelihoodPoultryList = value;
     notifyListeners();
   }
@@ -1550,7 +1840,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodManureList(List<String>? value) {
+  void updateDataLivelihoodManureList(List? value) {
     _livelihoodManureList = value;
     notifyListeners();
   }
@@ -1565,7 +1855,7 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDataLivelihoodFodderList(List<String>? value) {
+  void updateDataLivelihoodFodderList(List? value) {
     _livelihoodFodderList = value;
     notifyListeners();
   }
@@ -1615,197 +1905,5 @@ class TextMain extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clearData() {
-    _dataDistrict = "";
-    _dataBlock = "";
-    _dataPanchayath = "";
-    _dataWard = 0;
-    _dataName = "";
-    _dataAddress = "";
-    _dataPhonenumber = 0;
-    _dataClass = "";
-    _dataClass2 = "";
-    _dataClass3 = [];
-    _dataFamilyincome = "";
-    _dataNameofNg = "";
-    _dataNameofNGmember = "";
-    _dataRoleinNg = "";
-    _dataHouseownership = "";
-    _dataLanddetailsLandarea = 0;
-    _dataLanddetailsAgricultureland = 0;
-    _dataAnimalhusbendaryBusinesstype = [];
-    _dataAnimalhusbendaryOthers0 = "";
-    _dataAnimalhusbendaryCdsregistration = "";
-    _dataAnimalhusbendaryRegdetailsRegnumber = "";
-    _dataAnimalhusbendaryRegdetailsCdsunitname = "";
-    _dataEnterpisetype = "";
-    _dataNoofgroupmembers = 0;
-    _dataYearofstartingagriculture = "";
-    _dataYearofstartingbussiness = "";
-    _dataAmountinvested = 0;
-    _dataSourceofinvestment = [];
-    _dataSupportrecived = "";
-    _dataLoan = "";
-    _dataTotalinvestment = 0;
-    _dataDateofLoanApplication = "";
-    _dataBusinessidea = "";
-    _dataInfraInfrastructure = "";
-    _dataInfraShed = "";
-    _dataInfraWastage = "";
-    _dataInfraBiogas = "";
-    _dataInfraEquipments = "";
-    _dataInfraOthers = "";
-    _dataSupport = [];
-    _dataOthers2 = "";
-    _dataMgnregAsupport = [];
-    _dataLanddetails1Landforgrass = "";
-    _dataLanddetails1Qtyofownland = 0;
-    _dataLanddetails1Qtyofleasedland = 0;
-    _dataLanddetails2Siteforworkshed = "";
-    _dataLanddetails2Qtyofownland = 0;
-    _dataOthers4 = "";
-    _dataTrainingsrequired = [];
-    _dataOthers3 = "";
-    _dataComments = "";
-    _dataNameofcrp = "";
-    _dataNameofrespondent = "";
-    _dataDateofsurvey = "";
-    _dataStarttime = 0;
-    _dataMetaInstanceId = "";
-    _dataLoandetailsTotalinvestment = 0;
-    _dataFamilydetailsNameoffailyfmember = "";
-    _dataFamilydetailsRelation = "";
-    _dataFamilydetailsAgeoffamilymember = 0;
-    _dataFamilydetailsEducation = "";
-    _dataFamilydetailsJob = "";
-    _dataFamilydetailsSkill = "";
-    _dataProductsPrdct = [];
-    _dataProductsQuantum = 0;
-    _dataProductsPrice2 = 0;
-    _dataPurchaseofrawmaterialsQuantity = 0;
-    _dataPurchaseofrawmaterialsPrice = 0;
-    _dataPurchaseofrawmaterialsBrand = "";
-    _dataPurchaseofrawmaterialsOwn = "";
-    _dataPurchaseofrawmaterialsRetail = 0;
-    _dataPurchaseofrawmaterialsP2 = 0;
-    _dataPurchaseofrawmaterialsWholesale = 0;
-    _dataPurchaseofrawmaterialsP3 = 0;
-    _dataPurchaseofrawmaterialsGroup = 0;
-    _dataPurchaseofrawmaterialsP4 = 0;
-    _dataPurchaseofrawmaterialsSubsidy = 0;
-    _dataPurchaseofrawmaterialsP5 = 0;
-    _dataSalesprdct2 = [];
-    _dataSalesquntum2 = 0;
-    _datalivelihoodincomesource = [];
-    _datalivelihoodnumbers = 0;
-    _datalivelihoodcapitalsource = "";
-    _datalivelihoodrevenue = 0;
-    milkQnty = 0;
-    meatQnty = 0;
-    eggQnty = 0;
-    salesManureQnty = 0;
-    feedQnty = 0;
-    maleBuffaloCalfQnty = 0;
-    grasFooderQnty = 0;
-    treeFooderQnty = 0;
-    kidQnty = 0;
-    dayOldChickQnty = 0;
-    pulletsQnty = 0;
-    calfQnty = 0;
-    beiferQnty = 0;
-    dataSalesSalesmethod = [];
-    // dataProductsPrdct = "";
-    // dataProductsQuantum = "";
-    // dataProductsPrice2 = "";
-    dataLivelihoodIncomesource = "";
-    dataLivelihoodNumbers = 0;
-    dataLivelihoodCapitalsource = "";
-    dataLivelihoodRevenue = 0;
-    dataPurchaseofrawmaterialsItemtype = [];
-    pulletsList = [];
-    manureList = [];
-    manureQnty = 0;
-    fodderSlipsList = [];
-    fodderSlipsQnty = 0;
-    maleBuffaloCalvesQnty = 0;
-    calvesList = [];
-    calvesQnty = 0;
-    heipersList = [];
-    heipersQnty = 0;
-    cowsList = [];
-    malabariGoatsQnty = 0;
-    materialForPoultryQnty = 0;
-    eggTraysQnty = 0;
-    poultryFeedQnty = 0;
-    layerList = "";
-    cattleFeedList = "";
-    cattleFeedQnty = 0;
-    milkReplacerList = "";
-    energyRichFeedList = "";
-    energyRichFeedQnty = 0;
-    byPassProteinQnty = 0;
-    byPassFatQnty = 0;
-    tmrQnty = 0;
-    silageQnty = 0;
-    hayQnty = 0;
-    ureaTreatedStrawQnty = 0;
-    goatFeeDqnty = 0;
-    kidStarterQnty = 0;
-    modePurchaseofrawmaterials = [];
-    dataPurchaseofrawmaterialsBrand = "";
-    brandQnty = 0;
-    _calvesGerseyQnty = 0;
-    _calvesHfQnty = 0;
-    _co4Qnty = 0;
-    _co5Qnty = 0;
-    _congoSignalQnty = 0;
-    _cowDungQnty = 0;
-    _cowsGerseyQnty = 0;
-    _cowsHfQnty = 0;
-    _goatManureQnty = 0;
-    _guineaGrassQnty = 0;
-    _heipersGerseyQnty = 0;
-    _heipersHfQnty = 0;
-    _milkReplacerQnty = 0;
-    _napierQnty = 0;
-    _paraGrassQnty = 0;
-    _poultryManureQnty = 0;
-    _redNapierQnty = 0;
-    _superNapierQnty = 0;
-    _vermyCompostQnty = 0;
-    _livelihoodCowsList = [];
-    _livelihoodCowsHfQnty = 0;
-    _livelihoodCowsJerseyQnty = 0;
-    _livelihoodCowsIndigenousQnty = 0;
-    _livelihoodCalfList = [];
-    _livelihoodCalfFemaleQnty = 0;
-    _livelihoodCalfMaleQnty = 0;
-    _livelihoodGoatList = [];
-    _livelihoodGoatMalabariQnty = 0;
-    _livelihoodGoatMalabariKidQnty = 0;
-    _livelihoodGoatAttapadiBlackQnty = 0;
-    _livelihoodGoatAttapadiBlackKidQnty = 0;
-    _livelihoodGoatOthersQnty = 0;
-    _livelihoodPoultryList = [];
-    _livelihoodPoultryEggProductionQnty = 0;
-    _livelihoodPoultryMarketingQnty = 0;
-    _livelihoodManureList = [];
-    _livelihoodManureDryQnty = 0;
-    _livelihoodManureFreshQnty = 0;
-    _livelihoodFodderList = [];
-    _livelihoodFodderOwnUseQnty = 0;
-    _livelihoodFodderForSaleQnty = 0;
-    _livelihoodBuffaloQnty = 0;
-    _livelihoodPoultryManureQnty = 0;
-    _livelihoodduckqty = 0;
-    _livelihoodgoatothers = "";
-    _bv380Qnty = 0;
-    _gramalakshmiQnty = 0;
-    _gramapriyaQnty = 0;
-    _layerQnty = 0;
-    _other = "";
-    _otherQnty = 0;
 
-    notifyListeners();
-  }
 }

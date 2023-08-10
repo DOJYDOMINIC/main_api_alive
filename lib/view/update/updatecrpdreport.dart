@@ -29,15 +29,22 @@ class _SalesState extends State<UpdateCrpDetail> {
   void initState() {
     super.initState();
     getproductData();
+    // TextMain();
   }
 
   TextEditingController dataComments = TextEditingController();
   TextEditingController dataNameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
-
+  bool isLoading = false;
   void updateForm(String id) async {
-    var providerone = Provider.of<TextMain>(context, listen: false);
+    if (isLoading) return; // Prevent multiple updates
 
+    setState(() {
+      isLoading = true;
+    });
+
+    var providerone = Provider.of<TextMain>(context, listen: false);
+try{
     final AddData updateData = AddData(
 
       dataName: providerone.dataName,
@@ -48,8 +55,7 @@ class _SalesState extends State<UpdateCrpDetail> {
       dataWard: providerone.dataWard,
       dataClass: providerone.dataClass,
       dataClass2: providerone.dataClass2,
-      dataClass3: providerone.dataClass3?.map((dynamic item) => item.toString())
-          .toList(),
+      dataClass3: providerone.dataClass3?.map((dynamic item) => item.toString()).toList(),
       dataAmountinvested: providerone.dataAmountinvested,
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
@@ -223,28 +229,27 @@ class _SalesState extends State<UpdateCrpDetail> {
       other: providerone.other,
       otherQnty: providerone.otherQnty,
 
-      familyDetails: familyMembers,
+      familyDetails: updatefamilyMembers,
     );
 
-    log(updateData.toJson().toString());
+    // log(updateData.toJson().toString());
 
     final url = '$api/user/update/$id'; // Replace with your API endpoint URL
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $authToken', // Include the token in the headers
     };
-    final jsonData = jsonEncode(updateData.toJson());
 
-    try {
+      final jsonData = jsonEncode(updateData.toJson());
       final response = await http.put(
         Uri.parse(url),
         headers: headers,
         body: jsonData,
       );
       if (response.statusCode == 200) {
-        print(jsonData);
-        // Data submitted successfully
+        log(updateData.toJson().toString());
         print('Data submitted successfully.');
+
         var providerone = Provider.of<TextMain>(context, listen: false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -252,7 +257,6 @@ class _SalesState extends State<UpdateCrpDetail> {
             content: Text('Update completed!'),
           ),
         );
-        providerone.clearData();
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Screenone()));
       } else {
@@ -274,7 +278,11 @@ class _SalesState extends State<UpdateCrpDetail> {
         ),
       );
       print('Error occurred while submitting data: $error');
-    }
+    }finally {
+  setState(() {
+    isLoading = false;
+  });
+}
   }
 
   @override
@@ -317,11 +325,15 @@ class _SalesState extends State<UpdateCrpDetail> {
                     onchanged: (value) {
                       providerone.updateDataNameofrespondent(value);
                     }),
-                ElevateClick(
+            Center(
+              child: isLoading
+                  ? CircularProgressIndicator()
+                  :
+              ElevateClick(
                   ontap: () {
+                    changeData();
                     var id = widget.items['data'][0]['_id'];
                     print(id);
-                    changeData();
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -349,6 +361,7 @@ class _SalesState extends State<UpdateCrpDetail> {
                   },
                   text: 'Submit',
                 )
+            ),
               ],
             ),
           ),
@@ -369,22 +382,19 @@ class _SalesState extends State<UpdateCrpDetail> {
     //   print(e);
     // }
 
-    setState(() {
+    // setState(() {
       // dataDistrict: dataDistrict.toString()
-      dataComments.text = dataup["data_comments"].toString();
-      dataNameofcrp.text = dataup["data_nameofcrp"].toString();
-      dataNameofrespondent.text = dataup["data_Nameofrespondent"].toString();
-    });
+      dataComments.text = dataup["data_comments"];
+      dataNameofcrp.text = dataup["data_nameofcrp"];
+      dataNameofrespondent.text = dataup["data_Nameofrespondent"];
+    // });
   }
 
   changeData() {
+    // var providerone = Provider.of<TextMain>(context);
     var providerone = context.read<TextMain>();
     providerone.updateDataNameofcrp(dataNameofcrp.text);
     providerone.updateDataComments(dataComments.text);
     providerone.updateDataNameofrespondent(dataNameofrespondent.text);
-  }
-
-  clradata() {
-    var providerone = Provider.of<TextMain>(context);
   }
 }

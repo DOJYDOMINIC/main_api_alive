@@ -34,6 +34,23 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   String? selectedmilckreplacer;
   String? energyrichfeed;
 
+
+  TextEditingController ingredientsForCattleFeedQntyn = TextEditingController();
+  TextEditingController addDataTreeFooderQnty = TextEditingController();
+  // TextEditingController addDataUreaTreatedStrawQnty = TextEditingController();
+  TextEditingController caffStarterQnty = TextEditingController();
+  TextEditingController chemicalFertilizersQnty = TextEditingController();
+  TextEditingController fodderSeedsQnty = TextEditingController();
+  TextEditingController grassFooderQnty = TextEditingController();
+  TextEditingController growerQnty = TextEditingController();
+  TextEditingController ingredientsForCattleFeedQnty = TextEditingController();
+  TextEditingController ingredientsForPoultryFeedQnty = TextEditingController();
+  TextEditingController livelihoodGoatOthers = TextEditingController();
+  TextEditingController malabariGoatKidsQnty = TextEditingController();
+  TextEditingController materialForPoultryCageFabricationQnty = TextEditingController();
+  TextEditingController totalMixedRationQnty = TextEditingController();
+  TextEditingController ureaTreatedMolassBlock = TextEditingController();
+
   TextEditingController dataPurchaseofrawmaterialsItemtype =
       TextEditingController();
   TextEditingController dataPurchaseofrawmaterialsBrand =
@@ -63,16 +80,16 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   TextEditingController malabarigoats = TextEditingController();
   TextEditingController materialforpoltry = TextEditingController();
   TextEditingController eggsqty = TextEditingController();
-  TextEditingController pol_feed = TextEditingController();
+  TextEditingController pol_feed_qty = TextEditingController();
   TextEditingController brandqty = TextEditingController();
   TextEditingController layerqty = TextEditingController();
   TextEditingController selectedmilkreplacer = TextEditingController();
   TextEditingController bypassprotine = TextEditingController();
-  TextEditingController bypassfat = TextEditingController();
+  TextEditingController byPassFatQnty = TextEditingController();
   TextEditingController tmr = TextEditingController();
   TextEditingController silage = TextEditingController();
   TextEditingController hay = TextEditingController();
-  TextEditingController ureatreated = TextEditingController();
+  TextEditingController ureaTreatedStrawQnty = TextEditingController();
   TextEditingController goatfeed = TextEditingController();
   TextEditingController kidstarter = TextEditingController();
 
@@ -137,7 +154,147 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       },
                     ),
                   ),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('INGREDIENTS FOR CTTLE FEED'))
+                    InputField(
+                        hint: 'INGREDIENTS FOR CTTLE FEED QTY',
+                        keytype: TextInputType.number,
+                        controller: ingredientsForCattleFeedQntyn,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateIngredientsForCattleFeedQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('INGREDIENTS FOR POULTRY FEED'))
+                    InputField(
+                        hint: 'INGREDIENTS FOR POULTRY FEED QTY',
+                        keytype: TextInputType.number,
+                        controller: ingredientsForPoultryFeedQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateIngredientsForCattleFeedQnty(valuee);
+                        }),
 
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('CHEMICAL FERTILIZERS'))
+                    InputField(
+                        hint: 'CHEMICAL FERTILIZERS QTY',
+                        keytype: TextInputType.number,
+                        controller: chemicalFertilizersQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateChemicalFertilizersQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('FODDER SEEDS'))
+                    InputField(
+                        hint: 'FODDER SEEDS QTY',
+                        keytype: TextInputType.number,
+                        controller:fodderSeedsQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateFodderSeedsQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('GRASS FOODER'))
+                    InputField(
+                        hint: 'GRASS FOODER QTY',
+                        keytype: TextInputType.number,
+                        controller:grassFooderQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateGrassFooderQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('TREE FOODER'))
+                    InputField(
+                        hint: 'TREE FOODER QTY',
+                        keytype: TextInputType.number,
+                        controller:addDataTreeFooderQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataTreeFooderQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('MALABARI GOAT-KIDS'))
+                    InputField(
+                        hint: 'MALABARI GOAT-KIDS QTY',
+                        keytype: TextInputType.number,
+                        controller:malabariGoatKidsQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateMalabarGoatKidsQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('GROWER'))
+                    InputField(
+                        hint: 'GROWER QTY',
+                        keytype: TextInputType.number,
+                        controller:growerQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateGrowerQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('CAFF STARTER'))
+                    InputField(
+                        hint: 'CAFF STARTER QTY',
+                        keytype: TextInputType.number,
+                        controller:caffStarterQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateCaffStarterQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('BYPASS PROTIN'))
+                    InputField(
+                        hint: 'BYPASS PROTIN QTY',
+                        keytype: TextInputType.number,
+                        controller:bypassprotine,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataByPassProteinQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('BYPASS FAT'))
+                    InputField(
+                        hint: 'BYPASS FAT QTY',
+                        keytype: TextInputType.number,
+                        controller:byPassFatQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataByPassFatQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('TOTAL MIXED RATION'))
+                    InputField(
+                        hint: 'TOTAL MIXED RATION QTY',
+                        keytype: TextInputType.number,
+                        controller:totalMixedRationQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateTotalMixedRationQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('UREA MOLASS BLOCK'))
+                    InputField(
+                        hint: 'UREA MOLASS BLOCK QTY',
+                        keytype: TextInputType.number,
+                        controller:ureaTreatedMolassBlock,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateTotalMixedRationQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('UREA TREATED STRAW'))
+                    InputField(
+                        hint: 'UREA TREATED STRAW QTY',
+                        keytype: TextInputType.number,
+                        controller: ureaTreatedStrawQnty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataUreaTreatedStrawQnty(valuee);
+                        }),
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MALE BUFFALO CALVES'))
                     InputField(
@@ -183,10 +340,49 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     InputField(
                         hint: 'POULTRY FEED QTY',
                         keytype: TextInputType.number,
-                        controller: malabarigoats,
+                        controller: pol_feed_qty,
                         onchanged: (value) {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataPoultryFeedQnty(valuee);
+                        }),
+                  if (rawmaterial != null && rawmaterial!.contains('SILAGE'))
+                    InputField(
+                        hint: 'SILAGE QTY',
+                        keytype: TextInputType.number,
+                        controller: silage,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataSilageQnty(valuee);
+                        }),
+
+                  if (rawmaterial != null && rawmaterial!.contains('HAY'))
+                    InputField(
+                        hint: 'HAY QTY',
+                        keytype: TextInputType.number,
+                        controller: hay,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataHayQnty(valuee);
+                        }),
+
+                  if (rawmaterial != null && rawmaterial!.contains('GOAT FEED'))
+                    InputField(
+                        hint: 'GOAT FEED QTY',
+                        keytype: TextInputType.number,
+                        controller: goatfeed,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataGoatFeeDqnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('KID STARTER'))
+                    InputField(
+                        hint: 'KID STARTER QTY',
+                        keytype: TextInputType.number,
+                        controller: kidstarter,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataKidStarterQnty(valuee);
                         }),
                   if (rawmaterial != null && rawmaterial!.contains('CALVES'))
                     Padding(
@@ -580,8 +776,9 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       items: layeritems,
                       item: 'LAYER',
                     ),
+
                   if (rawmaterial != null &&
-                      rawmaterial!.contains('CATTLE  FEED'))
+                      rawmaterial!.contains('CATTLE FEED'))
                     NoSearchDropdown(
                       onChanged: (value) {
                         setState(() {
@@ -590,10 +787,10 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         providerone.updateDataCattleFeedList(value);
                       },
                       items: cattlefeed,
-                      item: 'CATTLE  FEED',
+                      item: 'CATTLE FEED',
                     ),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('CATTLE  FEED'))
+                  if (cattlefeedlist != null &&
+                      cattlefeedlist!.isNotEmpty)
                     InputField(
                         hint: 'CATTLE  FEED QTY/KG',
                         keytype: TextInputType.number,
@@ -638,33 +835,24 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (energyrichfeed != null)
                     InputField(
-                        hint: 'QTY/KG',
+                        hint: 'ENERGY RICH FEED QTY/KG',
                         keytype: TextInputType.number,
                         controller: milmaqty,
                         onchanged: (value) {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataEnergyRichFeedQnty(valuee);
                         }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('BY PASS PROTEIN'))
-                    InputField(
-                        hint: 'BY PASS PROTEIN QTY',
-                        keytype: TextInputType.number,
-                        controller: bypassprotine,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataByPassProteinQnty(valuee);
-                        }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('BY PASS FAT'))
-                    InputField(
-                        hint: 'BY PASS FAT QTY',
-                        keytype: TextInputType.number,
-                        controller: bypassfat,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataByPassFatQnty(valuee);
-                        }),
+                  // if (rawmaterial != null &&
+                  //     rawmaterial!.contains('BY PASS PROTEIN'))
+                  //   InputField(
+                  //       hint: 'BY PASS PROTEIN QTY',
+                  //       keytype: TextInputType.number,
+                  //       controller: bypassprotine,
+                  //       onchanged: (value) {
+                  //         int? valuee = int.tryParse(value);
+                  //         providerone.updateDataByPassProteinQnty(valuee);
+                  //       }),
+                  //
                   if (rawmaterial != null && rawmaterial!.contains('TMR'))
                     InputField(
                         hint: 'TMR QTY',
@@ -674,54 +862,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataTmrQnty(valuee);
                         }),
-                  if (rawmaterial != null && rawmaterial!.contains('SILAGE'))
-                    InputField(
-                        hint: 'SILAGE QTY',
-                        keytype: TextInputType.number,
-                        controller: silage,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataSilageQnty(valuee);
-                        }),
 
-                  if (rawmaterial != null && rawmaterial!.contains('HAY'))
-                    InputField(
-                        hint: 'HAY QTY',
-                        keytype: TextInputType.number,
-                        controller: hay,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataHayQnty(valuee);
-                        }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('UREA TREATED STRAW'))
-                    InputField(
-                        hint: 'UREA TREATED STRAW QTY',
-                        keytype: TextInputType.number,
-                        controller: ureatreated,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataUreaTreatedStrawQnty(valuee);
-                        }),
-                  if (rawmaterial != null && rawmaterial!.contains('GOAT FEED'))
-                    InputField(
-                        hint: 'GOAT FEED QTY',
-                        keytype: TextInputType.number,
-                        controller: goatfeed,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataGoatFeeDqnty(valuee);
-                        }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('KID STARTER'))
-                    InputField(
-                        hint: 'KID STARTER QTY',
-                        keytype: TextInputType.number,
-                        controller: kidstarter,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataKidStarterQnty(valuee);
-                        }),
 
                   ElevateClick(
                       ontap: () {

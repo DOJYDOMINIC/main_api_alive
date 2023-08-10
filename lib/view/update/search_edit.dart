@@ -34,7 +34,9 @@ class _SearchEditState extends State<SearchEdit> {
 
   Future<void> fetchDistricts() async {
     try {
-      final response = await http.get(Uri.parse('${api}search/listDistricts'),);
+      final response = await http.get(
+        Uri.parse('${api}search/listDistricts'),
+      );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -118,9 +120,16 @@ class _SearchEditState extends State<SearchEdit> {
     }
   }
 
-  List? peopleData = [];
+  // List? peopleData = [];
+
+  List<Map<String, dynamic>> peopleData = [];
+  bool isLoading = false;
 
   Future<void> fetchData(String selectedCrp, String token) async {
+    setState(() {
+      isLoading = true;
+    });
+
     try {
       final response = await http.get(
         Uri.parse('${api}search/searchByCpr?data_nameofcrp=$selectedCrp'),
@@ -130,8 +139,11 @@ class _SearchEditState extends State<SearchEdit> {
         final data = json.decode(response.body);
         setState(() {
           peopleData = List<Map<String, dynamic>>.from(data);
-          print(data);
         });
+
+        // Delay the navigation by 1 second to show the circular progress bar for a short duration
+        await Future.delayed(Duration(seconds: 1));
+
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -144,6 +156,10 @@ class _SearchEditState extends State<SearchEdit> {
     } catch (e) {
       // Handle error
       print('Error fetching data: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -183,8 +199,8 @@ class _SearchEditState extends State<SearchEdit> {
               onChanged: (value) {
                 setState(() {
                   selectedDistrict = value;
-                  try{
-                  fetchBlocks(selectedDistrict!);
+                  try {
+                    fetchBlocks(selectedDistrict!);
                   } catch (e) {
                     print('district : $e');
                   }
@@ -235,16 +251,21 @@ class _SearchEditState extends State<SearchEdit> {
                 },
                 items: crplist,
                 item: 'CRP'),
-            ElevateClick(
-                ontap: () {
-                  try {
-                    print(authToken);
-                    fetchData(selectedcrp!, authToken!);
-                  } catch (e) {
-                    print('fetchdata : $e');
-                  }
-                },
-                text: 'Search'),
+            SizedBox(height: 10,),
+            Center(
+              child: isLoading
+                  ? CircularProgressIndicator()
+                  : ElevateClick(
+                      ontap: () {
+                        try {
+                          print(authToken);
+                          fetchData(selectedcrp!, authToken!);
+                        } catch (e) {
+                          print('fetchdata : $e');
+                        }
+                      },
+                      text: 'Search'),
+            ),
           ],
         ),
       ),

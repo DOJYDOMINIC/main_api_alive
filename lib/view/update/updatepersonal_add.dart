@@ -34,14 +34,13 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   @override
   void initState() {
     super.initState();
-    getData();
-    // changeData();
     fetchDistricts();
+    getData();
     Register();
   }
 
-  Register(){
-    if(dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty){
+  Register() {
+    if (dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty) {
       isYesSelected = true;
     }
   }
@@ -55,9 +54,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          districts =
-              List<String>.from(data); // Assign fetched data to the global list
+          districts = List<String>.from(data);// Assign fetched data to the global list
         });
+        changeData();
       } else {
         throw Exception('Failed to fetch districts');
       }
@@ -110,25 +109,26 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     }
   }
 
-
-
   List dataSupport = [];
-  List dataMgnregasupport = [];
+  List dataTrainingsrequired = [];
+  List dataMgnregAsupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
   List dataclass3 = [];
+
   // List sourceofinvestment = [];
-  // List dataSourceofinvestment = [];
+  List dataSourceofinvestment = [];
   List traningrequaredlist = [];
   bool isYesSelected = false;
   String? group;
- List? Class3;
- List? animalhusbendaryBusinesstype;
- List? _sourceofinvestment;
- List? _support;
- List? _traningrequared;
- List? _mgnregasupport;
 
+  // List? Class3;
+  List animalhusbendaryBusinesstype = [];
+  List? _sourceofinvestment;
+  List? _support;
+  List _dataTrainingsrequired = [];
 
+  // List? _mgnregasupport;
+  String? dataLanddetails1Landforgras;
 
   String? id;
   String? dataDistrict;
@@ -136,7 +136,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? dataPanchayath;
   String? dataClass;
   String? dataClass2;
-  List? dataClass3;
+  List dataClass3 = [];
   String? dataFamilyincome;
   String? dataRoleinNg;
   String? dataHouseOwnership;
@@ -155,6 +155,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   TextEditingController dataNameofNg = TextEditingController();
   TextEditingController dataNameofNGmember = TextEditingController();
   TextEditingController datalanddetailslandarea = TextEditingController();
+  TextEditingController dataAnimalhusbendaryothers0 = TextEditingController();
   TextEditingController datalanddetailsagricultureland =
       TextEditingController();
   TextEditingController datanumberofgroupmembers = TextEditingController();
@@ -168,15 +169,19 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       TextEditingController();
   TextEditingController dataAnimalhusbendaryRegdetailsCdsunitname =
       TextEditingController();
+  TextEditingController dataloandetailstotalinvestment =
+      TextEditingController();
+  TextEditingController dataLanddetails1Qtyofownland = TextEditingController();
+  TextEditingController dataLanddetails1Qtyofleasedland =
+      TextEditingController();
+  String? dataLanddetails1Landforgrass;
   CheckboxOption selectedOption = CheckboxOption.notApplied;
-  String totalInvestment = '';
   String dateOfLoanApplication = '';
 
   //  --------------------DateController---------------
   // TextEditingController datePickerController = TextEditingController();
   // TextEditingController selectedDateController = TextEditingController();
   //  ----------------------------------------------------
-
 
   onTapFunction({required BuildContext context}) async {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -239,7 +244,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -255,9 +259,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
           title: Text('വ്യക്തിവിവരം '),
           centerTitle: true,
           backgroundColor: app_theam,
-          actions: [
-
-          ],
         ),
         body: Consumer(
           builder: (context, value, child) => SingleChildScrollView(
@@ -271,12 +272,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       items: districts,
                       selecteditem: dataDistrict,
                       onChanged: (value) {
-                        setState(() {
-                          if (districts.contains(dataDistrict))
+                          setState(() {
                             dataDistrict = value;
-                          // print(id);
-                          fetchBlocks(dataDistrict!);
-                        });
+                            fetchBlocks(dataDistrict!);
+                          });
+                        // print(id);
+                        // });
                         providerone.updateDataDistrict(value);
                       },
                       item: 'ജില്ല',
@@ -288,6 +289,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           dataBlock = value;
                           fetchPanchayth(dataBlock!);
                         });
+
                         providerone.updateDataBlock(value);
                       },
                       item: 'ബ്ലോക്ക്',
@@ -317,9 +319,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                       hint: 'സംരംഭകയുടെ പേര്',
                       controller: dataName,
                       onchanged: (value) {
-                        setState(() {
-                          dataName;
-                        });
+                        // setState(() {
+                        //   dataName;
+                        // });
                         providerone.updateDataName(value);
                       },
                     ),
@@ -327,9 +329,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         hint: 'വിലാസം',
                         controller: dataAddress,
                         onchanged: (value) {
-                          setState(() {
-                            providerone.updateDataAddress(value);
-                          });
+                          // setState(() {
+                          providerone.updateDataAddress(value);
+                          // });
                         }),
                     InputField(
                         hint: 'ഫോൺ നമ്പർ',
@@ -349,6 +351,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     NoSearchDropdown(
                         selecteditem: dataClass2,
                         onChanged: (value) {
+                          print(dataClass3);
+                          print(dataSourceofinvestment);
+                          print(dataAnimalhusbendaryBusinesstype);
+                          print(dataMgnregAsupport);
+                          print(dataSupport);
+                          print(_dataTrainingsrequired);
                           providerone.updateDataClass2(value);
                         },
                         items: dataclass2,
@@ -369,7 +377,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // hintText: 'Please select one or more options',
-                        initialValue: dataClass3,
+                        initialValue: options.contains(dataClass3)
+                            ? dataClass3
+                            : [],
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'This field is required';
@@ -414,6 +424,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     NoSearchDropdown(
                         selecteditem: dataHouseOwnership,
                         onChanged: (value) {
+                          print(animalhusbendaryBusinesstype);
                           providerone.updateDataHouseownership(value);
                         },
                         items: house,
@@ -459,11 +470,57 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: animalhusbendaryBusinesstype,
+                          initialValue: animalhusbendaryBusinesstype
+                                      .isNotEmpty &&
+                              businesstype.contains(animalhusbendaryBusinesstype)
+                              ? animalhusbendaryBusinesstype
+                              : [],
                           onSaved: (value) {
-                            providerone.updateDataAnimalhusbendaryBusinesstype(value);
+                            providerone
+                                .updateDataAnimalhusbendaryBusinesstype(value);
                           }),
                     ),
+                    NoSearchDropdown(
+                        selecteditem: dataLanddetails1Landforgrass,
+                        onChanged: (value) {
+                          dataLanddetails1Landforgras = value;
+                          providerone.updateDataLanddetails1Landforgrass(value);
+                        },
+                        items: Landforgrass,
+                        item: 'കൃഷിസ്ഥലം'),
+                    if (dataLanddetails1Landforgras == 'OWN')
+                      InputField(
+                        hint: 'സ്വന്തം പുരയിടം ( സെന്റ്)',
+                        controller: dataLanddetails1Qtyofownland,
+                        onchanged: (value) {
+                          int? parsedValue = int.tryParse(value);
+                          providerone
+                              .updateDataLanddetailsLandarea(parsedValue);
+                        },
+                        keytype: TextInputType.number,
+                      ),
+                    if (dataLanddetails1Landforgras == 'LEASED')
+                      InputField(
+                        hint: 'പാട്ടത്തിന് പുരയിടം ( സെന്റ്)',
+                        controller: dataLanddetails1Qtyofleasedland,
+                        onchanged: (value) {
+                          int? parsedValue = int.tryParse(value);
+                          providerone
+                              .updateDataLanddetailsLandarea(parsedValue);
+                        },
+                        keytype: TextInputType.number,
+                      ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    if (dataAnimalhusbendaryBusinesstype.contains('Others'))
+                      InputField(
+                          hint: 'മറ്റുള്ളവ',
+                          controller: dataAnimalhusbendaryothers0,
+                          onchanged: (value) {
+                            providerone
+                                .updateDataAnimalhusbendaryOthers0(value);
+                          }),
                     SizedBox(
                       height: 10,
                     ),
@@ -487,9 +544,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                                 setState(() {
                                   isYesSelected = value!;
                                   if (!value) {
-                                    dataAnimalhusbendaryRegdetailsRegnumber.clear();
+                                    dataAnimalhusbendaryRegdetailsRegnumber
+                                        .clear();
                                   }
-                                  providerone.updateDataAnimalhusbendaryCdsregistration(value ? 'Yes' : 'No');
+                                  providerone
+                                      .updateDataAnimalhusbendaryCdsregistration(
+                                          value ? 'Yes' : 'No');
                                 });
                               },
                             ),
@@ -499,15 +559,20 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                               onChanged: (value) {
                                 setState(() {
                                   isYesSelected = !value!;
-                                  providerone.updateDataAnimalhusbendaryCdsregistration(value ? 'No' : 'Yes');
+                                  providerone
+                                      .updateDataAnimalhusbendaryCdsregistration(
+                                          value ? 'No' : 'Yes');
                                 });
                               },
                             ),
-                            if (isYesSelected || dataAnimalhusbendaryRegdetailsRegnumber.text.isNotEmpty) ...[
+                            if (isYesSelected ||
+                                dataAnimalhusbendaryRegdetailsRegnumber
+                                    .text.isNotEmpty) ...[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
-                                  controller: dataAnimalhusbendaryRegdetailsRegnumber,
+                                  controller:
+                                      dataAnimalhusbendaryRegdetailsRegnumber,
                                   onChanged: (value) {
                                     if (int.tryParse(value) != null) {
                                       setState(() {
@@ -518,14 +583,16 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                                         isYesSelected = false;
                                       });
                                     }
-                                    providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(value);
+                                    providerone
+                                        .updateDataAnimalhusbendaryRegdetailsRegnumber(
+                                            value);
                                   },
                                   decoration: InputDecoration(
                                     labelText: 'CDS രജിസ്റ്റർ ചെയ്‌ത നമ്പർ',
                                   ),
                                 ),
                               ),
-                            Padding(
+                              Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextField(
                                   controller:
@@ -638,10 +705,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: _sourceofinvestment,
+                          initialValue: dataSourceofinvestment.isNotEmpty &&
+                              sourceofinvestment.contains(dataSourceofinvestment)
+                              ? dataSourceofinvestment : [],
                           onSaved: (value) {
                             setState(() {
-                              // sourceofinvestment = value;
+                              // dataSourceofinvestment = value;
                             });
                             providerone.updateDataSourceofinvestment(value);
                           }),
@@ -712,9 +781,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                               child: Column(
                                 children: [
                                   TextField(
+                                    controller: dataloandetailstotalinvestment,
                                     onChanged: (value) {
                                       int? valuee = int.tryParse(value);
-                                      providerone.updateDataTotalinvestment(valuee);
+                                      providerone
+                                          .updateDataTotalinvestment(valuee);
                                     },
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -790,6 +861,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           DropNoBorder(
                               select: dataInfraEquipments,
                               onChanged: (value) {
+                                print(_dataTrainingsrequired);
                                 providerone.updateDataInfraEquipments(value);
                               },
                               items: condition,
@@ -804,27 +876,6 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 10),
-                    //   child: MultiSelectFormField(
-                    //       border: OutlineInputBorder(
-                    //           borderRadius: BorderRadius.circular(15),
-                    //           borderSide: BorderSide(color: Colors.black)),
-                    //       title: Text(
-                    //         'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                    //         style: TextStyle(fontWeight: FontWeight.bold),
-                    //       ),
-                    //       dataSource: businesstype,
-                    //       textField: 'disply',
-                    //       valueField: 'value',
-                    //       okButtonLabel: 'OK',
-                    //       cancelButtonLabel: 'CANCEL',
-                    //       // hintText: 'Please select one or more options',
-                    //       initialValue: dataAnimalhusbendaryBusinesstype,
-                    //       onSaved: (value) {
-                    //         providerone.updateDataAnimalhusbendaryBusinesstype(value);
-                    //       }),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: MultiSelectFormField(
@@ -847,15 +898,17 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: _support,
+                        initialValue: dataSupport.isNotEmpty && datasupprtlist.contains(dataSupport)
+                            ? dataSupport
+                            : [],
                         onSaved: (value) {
                           try {
-                            dataSupport = value;
+                            // dataSupport = value;
                             providerone.updateDataSupport(value);
                           } catch (e) {
-                            dataSupport.clear();
+                            // dataSupport.clear();
                             // Handle any exceptions that might occur during the onSaved process
-                            print("Error during onSaved: $e");
+                            print("Error datasupport: $e");
                             // You can show an error message to the user here if needed
                           }
                         },
@@ -902,9 +955,16 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: _traningrequared,
+                          initialValue: _dataTrainingsrequired.isNotEmpty && traingrequared.contains(_dataTrainingsrequired)?_dataTrainingsrequired : [] ,
                           onSaved: (value) {
-                            providerone.updateDataTrainingsrequired(value);
+                            try {
+                              providerone.updateDataTrainingsrequired(value);
+                            } catch (e) {
+                              // dataSupport.clear();
+                              // Handle any exceptions that might occur during the onSaved process
+                              print("Error dataTrainingsrequired: $e");
+                              // You can show an error message to the user here if needed
+                            }
                             // setState(() {
                             //   traninglist = value;
                             //   traning = traninglist!.join(',');
@@ -931,9 +991,9 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           if (value == null || value.isEmpty) {
                             return 'This field is required.';
                           }
-                          return null;
+                          return '';
                         },
-                        initialValue: _mgnregasupport,
+                        initialValue:dataMgnregAsupport.isNotEmpty && datamgnregasupportlist.contains(dataMgnregAsupport.toList())? dataMgnregAsupport : [],
                         onSaved: (value) {
                           providerone.updateDataMgnregAsupport(value);
                         },
@@ -942,22 +1002,20 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     ElevateClick(
                         ontap: () {
                           // changeData();
-                          // print(widget.items['data'][0]['_id']);
-                          // print(fetchBlocks(selectedDistrict!));
-                          // print(blocks);
                           setState(() {
                             // if (_formKey.currentState!.validate()) {
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      UpdateFamilyData(items: widget.items),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdateFamilyData(
+                                  items: widget.items,
                                 ),
-                              );
+                              ),
+                            );
                           }
-                          // }
-                          );
+                              // }
+                              );
                         },
                         text: 'Next'),
                   ],
@@ -977,98 +1035,197 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
 
     // providerone.updateDataBlock(dataup['data_Block'].toString());
 
-    setState(() {
-      dataDistrict = dataup['data_district'];
-      dataBlock = dataup['data_Block'];
-      dataPanchayath = dataup['data_Panchayath'].toString();
-      dataWard.text = dataup["data_Ward"].toString();
-      dataName.text = dataup["data_Name"].toString();
-      dataAddress.text = dataup["data_Address"].toString();
-      dataPhonenumber.text = dataup["data_Phonenumber"].toString();
-      dataClass = dataup["data_Class"];
-      dataClass2 = dataup["data_Class2"];
-      dataClass3 = dataup["data_Class3"] ?? [];
-      _sourceofinvestment = dataup["data_Sourceofinvestment"];
-      dataFamilyincome = dataup["data_familyincome"];
-      dataNameofNg.text = dataup["data_NameofNG"];
-      dataNameofNGmember.text = dataup["data_NameofNGmember"];
-      dataRoleinNg = dataup["data_roleinNG"];
-      dataHouseOwnership = dataup["data_houseOwnership"].toString();
-      datalanddetailslandarea.text = dataup["data_landdetails_landarea"].toString();
-      datalanddetailsagricultureland.text = dataup['data_landdetails_agricultureland'].toString();
-      dataEnterpisetype = dataup["data_enterpisetype"];
-      dataYearofstartingbussiness.text = dataup["data_yearofstartingbussiness"].toString();
-      dataYearofstartingagriculture.text = dataup["data_Yearofstartingagriculture"].toString();
-      dataAmountinvested.text = dataup["data_amountinvested"].toString();
-      dataSupportrecived.text = dataup["data_supportrecived"].toString();
-      dataInfraShed = dataup["data_Infra_Shed"];
-      dataInfraWastage = dataup["data_Infra_wastage"];
-      dataInfraBiogas = dataup["data_Infra_biogas"];
-      dataInfraEquipments = dataup["data_Infra_equipments"];
-      dataInfraOthers.text = dataup["data_Infra_others"].toString();
-      animalhusbendaryBusinesstype = dataup["data_Animalhusbendary_businesstype"];
-      _support = dataup["data_support"];
-      _traningrequared = dataup["data_Trainingsrequired"];
-      _mgnregasupport = dataup["data_MGNREGAsupport"];
+    dataClass3 = dataup["data_Class3"];
+    animalhusbendaryBusinesstype = dataup["data_Animalhusbendary_businesstype"];
 
-      dataAnimalhusbendaryRegdetailsCdsunitname.text = dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
-      dataAnimalhusbendaryRegdetailsRegnumber.text = dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
-      dataAnimalhusbendarycdsregistration  = dataup['data_Animalhusbendary_cdsregistration'];
-    });
+    dataSourceofinvestment = dataup["data_Sourceofinvestment"];
+    dataMgnregAsupport = dataup["data_MGNREGAsupport"];
+    dataSupport = dataup["data_support"];
+    _dataTrainingsrequired = dataup["data_Trainingsrequired"];
+
+    dataDistrict = dataup['data_district'];
+    dataBlock = dataup['data_Block'];
+    dataPanchayath = dataup['data_Panchayath'];
+    dataWard.text = dataup["data_Ward"].toString();
+    dataName.text = dataup["data_Name"].toString();
+    dataAddress.text = dataup["data_Address"].toString();
+    dataPhonenumber.text = dataup["data_Phonenumber"].toString();
+    dataClass = dataup["data_Class"];
+    dataClass2 = dataup["data_Class2"];
+    dataFamilyincome = dataup["data_familyincome"];
+    dataNameofNg.text = dataup["data_NameofNG"];
+    dataNameofNGmember.text = dataup["data_NameofNGmember"];
+    dataRoleinNg = dataup["data_roleinNG"];
+    dataHouseOwnership = dataup["data_houseOwnership"].toString();
+    datalanddetailslandarea.text =
+        dataup["data_landdetails_landarea"].toString();
+    datalanddetailsagricultureland.text =
+        dataup['data_landdetails_agricultureland'].toString();
+    dataEnterpisetype = dataup["data_enterpisetype"];
+    dataYearofstartingbussiness.text =
+        dataup["data_yearofstartingbussiness"].toString();
+    dataYearofstartingagriculture.text =
+        dataup["data_Yearofstartingagriculture"].toString();
+    dataAmountinvested.text = dataup["data_amountinvested"].toString();
+    dataSupportrecived.text = dataup["data_supportrecived"].toString();
+    dataInfraShed = dataup["data_Infra_Shed"];
+    dataInfraWastage = dataup["data_Infra_wastage"];
+    dataInfraBiogas = dataup["data_Infra_biogas"];
+    dataInfraEquipments = dataup["data_Infra_equipments"];
+    dataInfraOthers.text = dataup["data_Infra_others"].toString();
+    dataAnimalhusbendaryRegdetailsCdsunitname.text =
+        dataup["data_Animalhusbendary_regdetails_cdsunitname"].toString();
+    dataAnimalhusbendaryRegdetailsRegnumber.text =
+        dataup["data_Animalhusbendary_regdetails_regnumber"].toString();
+    dataAnimalhusbendarycdsregistration =
+        dataup['data_Animalhusbendary_cdsregistration'];
+
+    dataAnimalhusbendaryothers0.text =
+        dataup['data_Animalhusbendary_others0'].toString();
+    datanumberofgroupmembers.text = dataup['data_noofgroupmembers'].toString();
+    dataloandetailstotalinvestment.text =
+        dataup['data_loandetails_totalinvestment'].toString();
+    dateofLoanApplication.text =
+        dataup['data_loandetails_DateofLoanApplication'].toString();
+    dataothers2.text = dataup['data_others2'].toString();
+    dataLanddetails1Landforgrass = dataup['data_landdetails1_landforgrass'];
+    dataLanddetails1Qtyofownland.text =
+        dataup['data_landdetails1_qtyofownland'].toString();
+    dataLanddetails1Qtyofleasedland.text =
+        dataup['data_landdetails1_qtyofleasedland'].toString();
   }
 
   void changeData() {
-    var providerone = Provider.of<TextMain>(context);
-    // var providerone = context.read<TextMain>();
-    // providerone.updateDataAnimalhusbendaryBusinesstype(providerone.dataAnimalhusbendaryBusinesstype);
-    // providerone.updateDataClass3(dataClass3);
-    // providerone.updateDataSourceofinvestment(providerone.dataSourceofinvestment);
-    // providerone.updateDataMgnregAsupport(providerone.dataMgnregAsupport);
-    // providerone.updateDataSupport(providerone.dataSupport);
-    // providerone.updateDataTrainingsrequired(providerone.dataTrainingsrequired);
+    var providerone = context.read<TextMain>();
+    providerone
+        .updateDataAnimalhusbendaryBusinesstype(animalhusbendaryBusinesstype);
+    providerone.updateDataSourceofinvestment(dataSourceofinvestment);
+    providerone.updateDataMgnregAsupport(dataMgnregAsupport);
+    providerone.updateDataSupport(dataSupport);
 
+      providerone.updateDataTrainingsrequired(_dataTrainingsrequired);
+    providerone.updateDataClass3(dataClass3);
 
     providerone.updateDataDistrict(dataDistrict);
     providerone.updateDataBlock(dataBlock);
     providerone.updateDataPanchayath(dataPanchayath);
-    String dataWardText = dataWard.text;
-    int dataward = int.parse(dataWardText);
-    providerone.updateDataWard(dataward);
+
+    if (dataWard.text == null || dataWard.text == 'null') {
+      dataWard.text = "0";
+      providerone.updateDataTotalinvestment(int.parse(dataWard.text));
+    } else {
+      providerone.updateDataTotalinvestment(int.parse(dataWard.text));
+    }
+
     providerone.updateDataName(dataName.text);
     providerone.updateDataAddress(dataAddress.text);
-    String phonenumber = dataPhonenumber.text;
-    int phoneNumber = int.parse(phonenumber);
-    providerone.updateDataPhonenumber(phoneNumber);
+
+    if (dataPhonenumber.text == null || dataPhonenumber.text == 'null') {
+      dataPhonenumber.text = "0";
+      providerone.updateDataTotalinvestment(int.parse(dataPhonenumber.text));
+    } else {
+      providerone.updateDataTotalinvestment(int.parse(dataPhonenumber.text));
+    }
     providerone.updateDataClass(dataClass);
     providerone.updateDataClass2(dataClass2);
-    providerone.updateDataClass3(dataClass3);
     providerone.updateDataFamilyincome(dataFamilyincome);
     providerone.updateDataNameofNg(dataNameofNg.text);
     providerone.updateDataNameofNg(dataNameofNg.text);
     providerone.updateDataNameofNGmember(dataNameofNGmember.text);
     providerone.updateDataRoleinNg(dataRoleinNg);
     providerone.updateDataHouseownership(dataHouseOwnership);
-    String landarea = datalanddetailslandarea.text;
-    int detailslandarea = int.parse(landarea);
-    providerone.updateDataLanddetailsLandarea(detailslandarea);
-    String agricultureland = datalanddetailsagricultureland.text;
-    int detailsagricultureland = int.parse(agricultureland);
-    providerone.updateDataLanddetailsAgricultureland(detailsagricultureland);
+
+    if (datalanddetailslandarea.text == null ||
+        datalanddetailslandarea.text == 'null') {
+      datalanddetailslandarea.text = "0";
+      providerone
+          .updateDataTotalinvestment(int.parse(datalanddetailslandarea.text));
+    } else {
+      providerone
+          .updateDataTotalinvestment(int.parse(datalanddetailslandarea.text));
+    }
+
+    if (datalanddetailsagricultureland.text == null ||
+        datalanddetailsagricultureland.text == 'null') {
+      datalanddetailsagricultureland.text = "0";
+      providerone.updateDataTotalinvestment(
+          int.parse(datalanddetailsagricultureland.text));
+    } else {
+      providerone.updateDataTotalinvestment(
+          int.parse(datalanddetailsagricultureland.text));
+    }
+
     providerone.updateDataEnterpisetype(dataEnterpisetype);
-    providerone.updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
-    providerone.updateDataYearofstartingagriculture(dataYearofstartingagriculture.text);
-    String invested = dataAmountinvested.text;
-    int amountinvested = int.parse(invested);
-    providerone.updateDataAmountinvested(amountinvested);
+    providerone
+        .updateDataYearofstartingbussiness(dataYearofstartingbussiness.text);
+    providerone.updateDataYearofstartingagriculture(
+        dataYearofstartingagriculture.text);
+
+    if (dataAmountinvested.text == null || dataAmountinvested.text == 'null') {
+      dataAmountinvested.text = "0";
+      providerone.updateDataTotalinvestment(int.parse(dataAmountinvested.text));
+    } else {
+      providerone.updateDataTotalinvestment(int.parse(dataAmountinvested.text));
+    }
     providerone.updateDataSupportrecived(dataSupportrecived.text);
     providerone.updateDataInfraShed(dataInfraShed);
     providerone.updateDataInfraWastage(dataInfraWastage);
     providerone.updateDataInfraBiogas(dataInfraBiogas);
     providerone.updateDataInfraEquipments(dataInfraEquipments);
     providerone.updateDataInfraOthers(dataInfraOthers.text);
+
     providerone.updateDataAnimalhusbendaryRegdetailsCdsunitname(
         dataAnimalhusbendaryRegdetailsCdsunitname.text);
     providerone.updateDataAnimalhusbendaryRegdetailsRegnumber(
         dataAnimalhusbendaryRegdetailsRegnumber.text);
+    providerone
+        .updateDataAnimalhusbendaryOthers0(dataAnimalhusbendaryothers0.text);
+
+    if (datanumberofgroupmembers.text == null ||
+        datanumberofgroupmembers.text == 'null') {
+      datanumberofgroupmembers.text = "0";
+      providerone
+          .updateDataNoofgroupmembers(int.parse(datanumberofgroupmembers.text));
+    } else {
+      providerone
+          .updateDataNoofgroupmembers(int.parse(datanumberofgroupmembers.text));
+    }
+
+    if (dataloandetailstotalinvestment.text == null ||
+        dataloandetailstotalinvestment.text == 'null') {
+      dataloandetailstotalinvestment.text = "0";
+      providerone.updateDataTotalinvestment(
+          int.parse(dataloandetailstotalinvestment.text));
+    } else {
+      providerone.updateDataTotalinvestment(
+          int.parse(dataloandetailstotalinvestment.text));
+    }
+
+    if (dataLanddetails1Qtyofownland.text == null ||
+        dataLanddetails1Qtyofownland.text == 'null') {
+      dataLanddetails1Qtyofownland.text = "0";
+      providerone.updateDataNoofgroupmembers(
+          int.parse(dataLanddetails1Qtyofownland.text));
+    } else {
+      providerone.updateDataNoofgroupmembers(
+          int.parse(dataLanddetails1Qtyofownland.text));
+    }
+
+    if (dataLanddetails1Qtyofleasedland.text == null ||
+        dataLanddetails1Qtyofleasedland.text == 'null') {
+      dataLanddetails1Qtyofleasedland.text = "0";
+      providerone.updateDataNoofgroupmembers(
+          int.parse(dataLanddetails1Qtyofleasedland.text));
+    } else {
+      providerone.updateDataNoofgroupmembers(
+          int.parse(dataLanddetails1Qtyofleasedland.text));
+    }
+    DateTime currentDate = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(currentDate);
+    providerone.updateDataDateofsurvey(formattedDate);
+    DateTime currentTime = DateTime.now();
+    String formattedTime =
+        "${currentTime.hour}:${currentTime.minute}:${currentTime.second}";
+    providerone.updateDataStarttime(formattedTime);
   }
 }

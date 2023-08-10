@@ -12,14 +12,10 @@ List traingrequared = [
   {'text': 'BUFFALO MALE CALF REARING', 'value': 'BUFFALO MALE CALF REARING'},
   {'text': 'BUFFALO REARING', 'value': 'BUFFALO REARING'},
   {'text': 'QUAILREARING', 'value': 'QUAILREARING'},
-  {
-    'text': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT',
-    'value': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT'
-  },
-  {
-    'text': 'KEEPING AND MANAGEMENT OF PET BIRDS.',
-    'value': 'KEEPING AND MANAGEMENT OF PET BIRDS.'
-  },
+  {'text': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT', 'value': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT'},
+  {'text': 'KEEPING AND MANAGEMENT OF PET BIRDS.', 'value': 'KEEPING AND MANAGEMENT OF PET BIRDS.'},
+  {'text': 'Breedingoflayinghens2', 'value': 'Breedingoflayinghens2'},
+
 ];
 List<String> dataclass = ['APL', 'BPL', 'APL,BPL'];
 List<String> dataclassadd = ['APL', 'BPL'];
@@ -90,6 +86,7 @@ final List options = [
   {'text': '60 വയസിനു മുകളിലുള്ളവർ', 'value': 'Thoseabove60yearsofage'},
   {'text': 'വിധവ', 'value': 'widow'},
   {'text': 'സ്ത്രീകൾ മാത്രമുള്ള കുടുംബം', 'value': 'femaleleaded'},
+  {'text': 'NO Value', 'value': ' '}
 ];
 
 final List businesstype = [
@@ -119,6 +116,9 @@ final List businesstype = [
   {'disply': 'ഹാച്ചറി', 'value': 'Hatchery'},
   {'disply': 'സംയോജിത കൃഷി', 'value': 'Integratedfarming'},
   {'disply': 'മറ്റുള്ളവ ', 'value': 'Others'},
+  {'disply': 'NO Value', 'value': ' '},
+
+
 ];
 
 final List sourceofinvestment = [
@@ -127,7 +127,10 @@ final List sourceofinvestment = [
   {'source': 'കുടുംബത്തിൽ നിന്ന്', 'value': 'family'},
   {'source': 'കൂട്ടുകാരിൽ നിന്ന്', 'value': 'Asraya'},
   {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'private finance'},
+  {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'privatefinance'},
   {'source': 'മറ്റുള്ളവ', 'value': 'other'},
+  {'source': 'NO Value', 'value': ' '}
+
 ];
 
 final List datasupprtlist = [
@@ -142,7 +145,7 @@ final List datasupprtlist = [
   {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem- Registration'},
   {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
   {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
-  {'text': 'കെ.എസ്.ഇ.ബി', 'value': '	K S E B'},
+  {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
   {'text': 'വൈദഗ്ത്യ പരിശീലനം', 'value': 'Skill training'},
   {'text': 'മാർക്കറ്റിംഗ് സപ്പോർട്ട്', 'value': 'Marketing Support'},
   {'text': 'തൊഴുത്ത് നിർമ്മാണം', 'value': 'Stable Construction'},
@@ -179,6 +182,8 @@ final List datasupprtlist = [
   {'text': 'തൊഴിലുറപ്പ് സഹായം', 'value': 'Employment assistance'},
   {'text': 'ബിസിനസ്സ് എക്സ്പാൻഷൻ', 'value': 'Business Expansion'},
   {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List datamgnregasupportlist = [
@@ -194,7 +199,9 @@ final List datamgnregasupportlist = [
   {'text': 'കുളം വെട്ട്', 'value': 'Pond renovation'},
   {'text': 'കിണർ റീച്ചാർജ്', 'value': 'Well Recharging'},
   {'text': 'കിണർ നിർമ്മാണം', 'value': 'Construction of wells'},
-  // {'text': 'other','value': 'other'},
+  {'text': 'NO Value', 'value': ' '}
+
+  // {'text': 'other','value': 'source'},
 ];
 
 final List? rawmaterials = [
@@ -216,10 +223,7 @@ final List? rawmaterials = [
   {'text': 'COWS', 'value': 'COWS'},
   {'text': 'MALABARI GOATS', 'value': 'MALABARI GOATS'},
   {'text': 'MALABARI GOAT-KIDS', 'value': 'MALABARI GOAT-KIDS'},
-  {
-    'text': 'MATERIAL FOR POULTRY CAGE FABRICATION',
-    'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'
-  },
+  {'text': 'MATERIAL FOR POULTRY CAGE FABRICATION', 'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'},
   {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
   {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
   {'text': 'LAYER', 'value': 'LAYER'},
@@ -237,6 +241,8 @@ final List? rawmaterials = [
   {'text': 'GOAT FEED', 'value': 'GOAT FEED'},
   {'text': 'KID STARTER', 'value': 'KID STARTER'},
   {'text': 'MILK REPLACER', 'value': 'MILK REPLACER'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List? pullets = [
@@ -244,19 +250,27 @@ final List? pullets = [
   {'text': 'GRAMALAKSHMI', 'value': 'GRAMALAKSHMI'},
   {'text': 'GRAMAPRIYA', 'value': 'GRAMAPRIYA'},
   {'text': 'OTHER', 'value': 'OTHER'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List? calves = [
   {'text': 'H F', 'value': 'CALVES-H F'},
   {'text': 'GERSEY', 'value': 'CALVES-GERSEY'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 final List?  heifers= [
   {'text': 'H F', 'value': 'HEIFERS-H F'},
   {'text': 'GERSEY', 'value': 'HEIFERS-GERSEY'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 final List? cows = [
   {'text': 'H F', 'value': 'COWS-H F'},
   {'text': 'GERSEY', 'value': 'COWS-GERSEY'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 
@@ -265,6 +279,8 @@ final List? manure = [
   {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
   {'text': 'POULTRY MANURE', 'value': 'POULTRY MANURE'},
   {'text': 'VERMY COMPOST', 'value': 'VERMY COMPOST'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List? fodderslip = [
@@ -276,6 +292,8 @@ final List? fodderslip = [
   {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
   {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
   {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 List<String> branditem = [
@@ -294,8 +312,22 @@ List<String> layeritems = [
   'GODREJ',
 ];
 
+
+final List? livelihoods = [
+{'text': "BUFFALO", 'value':"BUFFALO",},
+{'text': "CALF", 'value':"CALF",},
+{'text': "COW", 'value': "COW",},
+{'text': "DUCK", 'value':"DUCK",},
+{'text': "FODDER", 'value': "FODDER",},
+{'text': "GOAT", 'value':"GOAT",},
+{'text': "MANURE", 'value':"MANURE",},
+{'text': "POULTRY",'value':"POULTRY",},
+{'text' :"POULTRY MANURE",'value':"POULTRY MANURE",},
+  {'text': 'NO Value', 'value': ' '}
+
+];
+
 List<String> cattlefeed = [
-  'BRAND',
   'KERALA FEEDS',
   'KS',
   'MILMA',
@@ -305,6 +337,7 @@ List<String> cattlefeed = [
 ];
 
 List<String> milkreplacer = ['AMUL', 'GEEVAN'];
+List<String> Landforgrass = ['OWN', 'LEASED'];
 
 List<String> enrgyrichfeed = [
   'MILMA',
@@ -324,6 +357,8 @@ final List? produceproduction = [
   {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
   {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
   {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List? produceproductavilable = [
@@ -340,6 +375,8 @@ final List? produceproductavilable = [
   {'text': 'PULLETS', 'value': 'PULLETS'},
   {'text': 'CALF', 'value': 'CALF'},
   {'text': 'BEIFER', 'value': 'BEIFER'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
 final List? mode_of_marketing = [
@@ -349,24 +386,53 @@ final List? mode_of_marketing = [
   {'text': 'SOCIETY', 'value': 'SOCIETY'},
   {'text': 'CLUSTER', 'value': 'CLUSTER'},
   {'text': 'ONLINE', 'value': 'ONLINE'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
-List<String> cowlist = [
-  'H F',
-  'INDIGENOUS',
-  'JERSEY',
-];
-List<String> calfgender = ["FEMALE", "MALE"];
-List<String> fooderitems = ["FOR SALE", "OWN USE"];
 
-List<String> goatlist = [
-  "ATTAPADI BLACK",
-  "ATTAPADI BLACK KID",
-  "MALABARI",
-  "MALABARI KID",
-  "OTHERS"
+final List? cowlist = [
+
+  {'text': 'H F', 'value': 'H F'},
+  {'text': 'INDIGENOUS', 'value': 'INDIGENOUS'},
+  {'text': 'JERSEY', 'value': 'JERSEY'},
+  {'text': 'NO Value', 'value': ' '}
+
 ];
 
-List<String> manuritems = ["DRY", "FRESH"];
+final List? calfgender = [
+  {'text':"FEMALE", 'value' : "FEMALE"},
+  {'text':"MALE", 'value' : "MALE"},
+  {'text': 'NO Value', 'value': ' '}
 
-List<String> poultrylist = ["EGG PRODUCTION", "MARKETING"];
+];
+final List? fooderitems = [
+  {'text': "FOR SALE",'value': "FOR SALE",},
+  {'text': "OWN USE",'value': "OWN USE"},
+  {'text': 'NO Value', 'value': ' '}
+
+];
+
+final List? goatlist = [
+  {'text': "ATTAPADI BLACK",'value': "ATTAPADI BLACK"},
+  {'text': "ATTAPADI BLACK KID",'value': "ATTAPADI BLACK KID"},
+  {'text': "MALABARI",'value': "MALABARI"},
+  {'text': "MALABARI KID",'value': "MALABARI KID"},
+  {'text': "OTHERS",'value': "OTHERS"},
+  {'text': 'NO Value', 'value': ' '}
+
+];
+
+final List? manuritems = [
+  {'text': "DRY",'value': "DRY",},
+  {'text': "FRESH",'value': "FRESH"},
+  {'text': 'NO Value', 'value': ' '}
+
+];
+
+final List? poultrylist = [
+  {'text': "EGG PRODUCTION",'value':"EGG PRODUCTION" },
+  { 'text':"MARKETING", 'value':"MARKETING"},
+  {'text': 'NO Value', 'value': ' '}
+
+];

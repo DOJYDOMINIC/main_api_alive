@@ -23,8 +23,6 @@ class _SalesState extends State<UpdateSalesData> {
   @override
   void initState() {
     super.initState();
-    getsaleData();
-    changeData();
   }
 
   // List? productavilable;
@@ -93,10 +91,7 @@ class _SalesState extends State<UpdateSalesData> {
                     // hintText: 'Please select one or more options',
                     initialValue: productavilable,
                     onSaved: (value) {
-                      setState(() {
-                        getsaleData();
                         productavilable  = value;
-                      });
                       if (value == null) return;
                       providerone.updateDataSalesprdct2(value);
                     },
@@ -108,8 +103,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: milkqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataMilkQnty(valuee);
+                        providerone.updateDataMilkQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('MEAT'))
                   InputField(
@@ -117,8 +111,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: meatqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataMeatQnty(valuee);
+                        providerone.updateDataMeatQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('EGG'))
                   InputField(
@@ -126,8 +119,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: eggqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataEggQnty(valuee);
+                        providerone.updateDataEggQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('MANURE'))
                   InputField(
@@ -135,8 +127,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: manuerqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataManureQnty(valuee);
+                        providerone.updateDataManureQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('FEED'))
                   InputField(
@@ -144,8 +135,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: feedqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataFeedQnty(valuee);
+                        providerone.updateDataFeedQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('MALE BUFFALO CALF'))
                   InputField(
@@ -153,8 +143,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: malebeffeloqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataMaleBuffaloCalfQnty(valuee);
+                        providerone.updateDataMaleBuffaloCalfQnty(int.tryParse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('GRASS FOODER'))
                   InputField(
@@ -162,8 +151,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: grassfooderqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataGrasFooderQnty(valuee);
+                        providerone.updateDataGrasFooderQnty(int.tryParse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('TREE FOODER'))
                   InputField(
@@ -171,8 +159,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: treefooderqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataTreeFooderQnty(valuee);
+                        providerone.updateDataTreeFooderQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('KID'))
                   InputField(
@@ -180,8 +167,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: kidqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataKidQnty(valuee);
+                        providerone.updateDataKidQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('DAY OLD CHICK'))
                   InputField(
@@ -189,8 +175,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: daychickqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataDayOldChickQnty(valuee);
+                        providerone.updateDataDayOldChickQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('PULLETS'))
                   InputField(
@@ -198,8 +183,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: pulletsqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataPulletsQnty(valuee);
+                        providerone.updateDataPulletsQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('CALF'))
                   InputField(
@@ -207,8 +191,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: calfqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataCalfQnty(valuee);
+                        providerone.updateDataCalfQnty(int.parse(value));
                       }),
                 if(productavilable != null && productavilable!.contains('BEIFER'))
                   InputField(
@@ -216,8 +199,7 @@ class _SalesState extends State<UpdateSalesData> {
                       keytype: TextInputType.number,
                       controller: beiferqty,
                       onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataBeiferQnty(valuee);
+                        providerone.updateDataBeiferQnty(int.parse(value));
                       }),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
@@ -237,9 +219,7 @@ class _SalesState extends State<UpdateSalesData> {
                     // hintText: 'Please select one or more options',
                     initialValue: modeof_markrting,
                     onSaved: (value) {
-                      setState(() {
                         modeofmarkrting  = value;
-                      });
                       if (value == null) return;
                       providerone.updateDataDataSalesSalesmethod(value);
                     },
@@ -257,40 +237,37 @@ class _SalesState extends State<UpdateSalesData> {
     );
   }
 
-  void getsaleData() {
-    try {
-      var dataup = widget.items['sales'][0];
+  // void getsaleData() {
+  //   try {
+  //     var dataup = widget.items['sales'][0];
+  //
+  //       // productavilable = dataup["data_Sales_prdct2"];
+  //       // modeof_markrting = dataup ["data_Sales_salesmethod"];
+  //       milkqty.text= dataup["MILK_qnty"].toString();
+  //       meatqty.text= dataup["MEAT_qnty"].toString();
+  //       eggqty.text= dataup["EGG_qnty"].toString();
+  //       manuerqty.text= dataup["Sales_MANURE_qnty"].toString();
+  //       feedqty.text= dataup["FEED_qnty"].toString();
+  //       malebeffeloqty .text= dataup["male_buffalo_calf_qnty"].toString();
+  //       grassfooderqty .text= dataup["Gras_fooder_qnty"].toString();
+  //       treefooderqty .text= dataup["tree_fooder_qnty"].toString();
+  //       kidqty.text= dataup["kid_qnty"].toString();
+  //       daychickqty.text= dataup["day_old_chick_qnty"].toString();
+  //       pulletsqty.text= dataup["pullets_qnty"].toString();
+  //       calfqty.text= dataup["calf_qnty"].toString();
+  //       beiferqty.text= dataup["beifer_qnty"].toString();
+  //
+  //   } catch (e) {
+  //     // Handle error
+  //     print('Error retrieving sale data: $e');
+  //     // Perform any necessary error handling or display a message to the user
+  //   }
+  // }
 
-      setState(() {
-        productavilable = dataup["data_Sales_prdct2"];
-        modeof_markrting = dataup ["data_Sales_salesmethod"];
-
-        milkqty.text= dataup["MILK_qnty"].toString();
-        meatqty.text= dataup["MEAT_qnty"].toString();
-        eggqty.text= dataup["EGG_qnty"].toString();
-        manuerqty.text= dataup["Sales_MANURE_qnty"].toString();
-        feedqty.text= dataup["FEED_qnty"].toString();
-        malebeffeloqty .text= dataup["male_buffalo_calf_qnty"].toString();
-        grassfooderqty .text= dataup["Gras_fooder_qnty"].toString();
-        treefooderqty .text= dataup["tree_fooder_qnty"].toString();
-        kidqty.text= dataup["kid_qnty"].toString();
-        daychickqty.text= dataup["day_old_chick_qnty"].toString();
-        pulletsqty.text= dataup["pullets_qnty"].toString();
-        calfqty.text= dataup["calf_qnty"].toString();
-        beiferqty.text= dataup["beifer_qnty"].toString();
-
-      });
-    } catch (e) {
-      // Handle error
-      print('Error retrieving sale data: $e');
-      // Perform any necessary error handling or display a message to the user
-    }
-  }
-
-  void changeData() {
-   // var providerone = Provider.of<TextMain>(context);
-    var providerone = context.read<TextMain>();
-    // providerone.updateDataSalesprdct2(productavilable);
-  }
+  // void changeData() {
+  //  // var providerone = Provider.of<TextMain>(context);
+  //   var providerone = context.read<TextMain>();
+  //   // providerone.updateDataSalesprdct2(productavilable);
+  // }
 
 }
