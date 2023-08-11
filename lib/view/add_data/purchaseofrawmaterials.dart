@@ -384,6 +384,104 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataKidStarterQnty(valuee);
                         }),
+                  if (rawmaterial != null && rawmaterial!.contains('LAYER'))
+                    NoSearchDropdown(
+                      onChanged: (value) {
+                        setState(() {
+                          layerselected = value;
+                        });
+                        providerone.updateDataLayerList(value);
+                      },
+                      items: layeritems,
+                      item: 'LAYER',
+                    ),
+
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('CATTLE FEED'))
+                    NoSearchDropdown(
+                      onChanged: (value) {
+                        setState(() {
+                          cattlefeedlist = value;
+                        });
+                        providerone.updateDataCattleFeedList(value);
+                      },
+                      items: cattlefeed,
+                      item: 'CATTLE FEED',
+                    ),
+                  if (cattlefeedlist != null &&
+                      cattlefeedlist!.isNotEmpty)
+                    InputField(
+                        hint: 'CATTLE  FEED QTY/KG',
+                        keytype: TextInputType.number,
+                        controller: cattlefeedqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataCattleFeedQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('MILK REPLACER'))
+                    NoSearchDropdown(
+                      onChanged: (value) {
+                        setState(() {
+                          selectmilkreplacer = value;
+                        });
+                        providerone.updateDataMilkReplacerList(value);
+                      },
+                      items: milkreplacer,
+                      item: 'MILK REPLACER',
+                    ),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('MILK REPLACER'))
+                    InputField(
+                        hint: 'MILK REPLACER QTY (5 KG)',
+                        keytype: TextInputType.number,
+                        controller: selectedmilkreplacer,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataMilkReplacerQnty(valuee);
+                        }),
+                  if (rawmaterial != null &&
+                      rawmaterial!.contains('ENERGY RICH FEED'))
+                    NoSearchDropdown(
+                      onChanged: (value) {
+                        setState(() {
+                          energyrichfeed = value;
+                        });
+                        providerone.updateDataEnergyRichFeedList(value);
+                      },
+                      items: enrgyrichfeed,
+                      item: 'ENERGY RICH FEED',
+                    ),
+                  if (energyrichfeed != null)
+                    InputField(
+                        hint: 'ENERGY RICH FEED QTY/KG',
+                        keytype: TextInputType.number,
+                        controller: milmaqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataEnergyRichFeedQnty(valuee);
+                        }),
+                  // if (rawmaterial != null &&
+                  //     rawmaterial!.contains('BY PASS PROTEIN'))
+                  //   InputField(
+                  //       hint: 'BY PASS PROTEIN QTY',
+                  //       keytype: TextInputType.number,
+                  //       controller: bypassprotine,
+                  //       onchanged: (value) {
+                  //         int? valuee = int.tryParse(value);
+                  //         providerone.updateDataByPassProteinQnty(valuee);
+                  //       }),
+                  //
+                  if (rawmaterial != null && rawmaterial!.contains('TMR'))
+                    InputField(
+                        hint: 'TMR QTY',
+                        keytype: TextInputType.number,
+                        controller: tmr,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataTmrQnty(valuee);
+                        }),
+
                   if (rawmaterial != null && rawmaterial!.contains('CALVES'))
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
@@ -765,103 +863,6 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           providerone.updateDataCongoSignalQnty(valuee);
                         }),
                   // if(rawmaterial != null && rawmaterial!.contains('BRAND'))
-                  if (rawmaterial != null && rawmaterial!.contains('LAYER'))
-                    NoSearchDropdown(
-                      onChanged: (value) {
-                        setState(() {
-                          layerselected = value;
-                        });
-                        providerone.updateDataLayerList(value);
-                      },
-                      items: layeritems,
-                      item: 'LAYER',
-                    ),
-
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('CATTLE FEED'))
-                    NoSearchDropdown(
-                      onChanged: (value) {
-                        setState(() {
-                          cattlefeedlist = value;
-                        });
-                        providerone.updateDataCattleFeedList(value);
-                      },
-                      items: cattlefeed,
-                      item: 'CATTLE FEED',
-                    ),
-                  if (cattlefeedlist != null &&
-                      cattlefeedlist!.isNotEmpty)
-                    InputField(
-                        hint: 'CATTLE  FEED QTY/KG',
-                        keytype: TextInputType.number,
-                        controller: cattlefeedqty,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataCattleFeedQnty(valuee);
-                        }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('MILK REPLACER'))
-                    NoSearchDropdown(
-                      onChanged: (value) {
-                        setState(() {
-                          selectmilkreplacer = value;
-                        });
-                        providerone.updateDataMilkReplacerList(value);
-                      },
-                      items: milkreplacer,
-                      item: 'MILK REPLACER',
-                    ),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('MILK REPLACER'))
-                    InputField(
-                        hint: 'MILK REPLACER QTY (5 KG)',
-                        keytype: TextInputType.number,
-                        controller: selectedmilkreplacer,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataMilkReplacerQnty(valuee);
-                        }),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('ENERGY RICH FEED'))
-                    NoSearchDropdown(
-                      onChanged: (value) {
-                        setState(() {
-                          energyrichfeed = value;
-                        });
-                        providerone.updateDataEnergyRichFeedList(value);
-                      },
-                      items: enrgyrichfeed,
-                      item: 'ENERGY RICH FEED',
-                    ),
-                  if (energyrichfeed != null)
-                    InputField(
-                        hint: 'ENERGY RICH FEED QTY/KG',
-                        keytype: TextInputType.number,
-                        controller: milmaqty,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataEnergyRichFeedQnty(valuee);
-                        }),
-                  // if (rawmaterial != null &&
-                  //     rawmaterial!.contains('BY PASS PROTEIN'))
-                  //   InputField(
-                  //       hint: 'BY PASS PROTEIN QTY',
-                  //       keytype: TextInputType.number,
-                  //       controller: bypassprotine,
-                  //       onchanged: (value) {
-                  //         int? valuee = int.tryParse(value);
-                  //         providerone.updateDataByPassProteinQnty(valuee);
-                  //       }),
-                  //
-                  if (rawmaterial != null && rawmaterial!.contains('TMR'))
-                    InputField(
-                        hint: 'TMR QTY',
-                        keytype: TextInputType.number,
-                        controller: tmr,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataTmrQnty(valuee);
-                        }),
 
 
                   ElevateClick(

@@ -160,7 +160,7 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
               children: [
                 // Display the list of family members
                 Container(
-                  height: 600,
+                  height: MediaQuery.of(context).size.height/1.5,
                   child: ListView.separated(
                     // shrinkWrap: true,
                     itemCount: updatefamilyMembers.length,

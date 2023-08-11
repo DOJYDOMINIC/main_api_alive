@@ -608,6 +608,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
     // providerone.updateDataLivelihoodGoatList(goatlistitems);
     // providerone.updateDataLivelihoodCalfList(int.parse(livelihoodCowsHfQnty.text));
     // providerone.updateDataLivelihoodCalfList(int.parse(livelihoodCowsHfQnty.text));
+
     if(livelihoodCowsHfQnty.text == null || livelihoodCowsHfQnty.text == 'null' ){
       livelihoodCowsHfQnty.text = "0";
       providerone.updateDataLivelihoodCowsHF(int.parse(livelihoodCowsHfQnty.text));}else{

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/control/text_controller.dart';
 import 'package:main200623/view/update/search_edit.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Documentation/report_page.dart';
@@ -15,14 +16,19 @@ class Screenone extends StatefulWidget {
   State<Screenone> createState() => _ScreenoneState();
 }
 
-
 class _ScreenoneState extends State<Screenone> {
-
   Future<void> clearAuthTokenFromPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
     // prefs.remove('authToken');
     // print(clearAuthTokenFromPreferences());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Permission.notification.request();
+    // requestPermissions();
   }
 
   @override
@@ -35,8 +41,12 @@ class _ScreenoneState extends State<Screenone> {
           Padding(
             padding: const EdgeInsets.only(right: 25),
             child: GestureDetector(
-              onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  Login(),));
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Login(),
+                    ));
                 clearAuthTokenFromPreferences();
               },
               child: Row(
@@ -51,20 +61,23 @@ class _ScreenoneState extends State<Screenone> {
           )
         ],
       ),
-
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   providerone.clearData();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalPage(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PersonalPage(),
+                      ));
                 },
                 child: SizedBox(
                   height: 150,
-                  width: MediaQuery.of(context).size.width*.8,
+                  width: MediaQuery.of(context).size.width * .8,
                   child: Card(
                     elevation: 25,
                     shadowColor: Colors.black,
@@ -78,25 +91,42 @@ class _ScreenoneState extends State<Screenone> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.person,size: 75,color: Colors.white,),
-                            Icon(Icons.add,size: 50,color: Colors.white,)
+                            Icon(
+                              Icons.person,
+                              size: 75,
+                              color: Colors.white,
+                            ),
+                            Icon(
+                              Icons.add,
+                              size: 50,
+                              color: Colors.white,
+                            )
                           ],
                         ),
-                        Text("ADD NEW",style: bold_white,)
+                        Text(
+                          "ADD NEW",
+                          style: bold_white,
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   providerone.clearData();
-                  Navigator.push(context, MaterialPageRoute(builder:  (context) => SearchEdit(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchEdit(),
+                      ));
                 },
                 child: SizedBox(
                   height: 150,
-                  width: MediaQuery.of(context).size.width*.8,
+                  width: MediaQuery.of(context).size.width * .8,
                   child: Card(
                     elevation: 25,
                     shadowColor: Colors.black,
@@ -110,24 +140,41 @@ class _ScreenoneState extends State<Screenone> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.person,size: 75,color: Colors.white,),
-                            Icon(Icons.update,size: 50,color: Colors.white,)
+                            Icon(
+                              Icons.person,
+                              size: 75,
+                              color: Colors.white,
+                            ),
+                            Icon(
+                              Icons.update,
+                              size: 50,
+                              color: Colors.white,
+                            )
                           ],
                         ),
-                        Text("UPDATE",style: bold_white,)
+                        Text(
+                          "UPDATE",
+                          style: bold_white,
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPage(),));
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReportPage(),
+                      ));
                 },
                 child: SizedBox(
                   height: 150,
-                  width: MediaQuery.of(context).size.width*.8,
+                  width: MediaQuery.of(context).size.width * .8,
                   child: Card(
                     elevation: 25,
                     shadowColor: Colors.black,
@@ -141,11 +188,22 @@ class _ScreenoneState extends State<Screenone> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.person,size: 75,color: Colors.white,),
-                            Icon(Icons.file_copy,size: 50,color: Colors.white,)
+                            Icon(
+                              Icons.person,
+                              size: 75,
+                              color: Colors.white,
+                            ),
+                            Icon(
+                              Icons.file_copy,
+                              size: 50,
+                              color: Colors.white,
+                            )
                           ],
                         ),
-                        Text("DOCUMENTATION",style: bold_white,)
+                        Text(
+                          "DOCUMENTATION",
+                          style: bold_white,
+                        )
                       ],
                     ),
                   ),
@@ -157,4 +215,24 @@ class _ScreenoneState extends State<Screenone> {
       ),
     );
   }
+
+  // Future<void> requestPermissions() async {
+  //   Map<Permission, PermissionStatus> statuses = await [
+  //     Permission.storage,
+  //     Permission.notification,
+  //     Permission.manageExternalStorage,
+  //     Permission.mediaLibrary,
+  //   ].request();
+  //
+  //   // Check the status of each permission
+  //   statuses.forEach((permission, status) {
+  //     if (status.isGranted) {
+  //       print('${permission.toString()} is granted.');
+  //     } else if (status.isDenied) {
+  //       print('${permission.toString()} is denied.');
+  //     } else if (status.isPermanentlyDenied) {
+  //       print('${permission.toString()} is permanently denied.');
+  //     }
+  //   });
+  // }
 }

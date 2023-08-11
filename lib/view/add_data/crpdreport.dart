@@ -33,37 +33,19 @@ class CrpDetail extends StatefulWidget {
 }
 
 class _SalesState extends State<CrpDetail> {
+  @override
+  void initState() {
+    super.initState();
+
+  }
 
   TextEditingController datacomments = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
 
-  // Future<void> postData(AddData addData) async {
-  //   const apiUrl = '${api}user/insert'; // Replace with your API endpoint
-  //
-  //   final headers = {
-  //     'Content-Type': 'application/json',
-  //
-  //     // Add any additional headers if required
-  //   };
-  //
-  //   final jsonBody = json.encode(addData.toJson());
-  //
-  //   final response = await http.post(Uri.parse(apiUrl), headers: headers, body: jsonBody);
-  //
-  //   if (response.statusCode == 201) {
-  //     print(response);
-  //     // Post request was successful
-  //
-  //     print('Data posted successfully');
-  //     // var providerone = Provider.of<TextMain>(context, listen: false);
-  //     // providerone.
-  //   } else {
-  //     // Error occurred during the post request
-  //     print('Error: ${response.statusCode}');
-  //   }
-  // }
+
+
 
   void submitForm() async {
     var providerone = Provider.of<TextMain>(context, listen: false);
@@ -247,6 +229,8 @@ class _SalesState extends State<CrpDetail> {
       malabariGoatKidsQnty: providerone.malabariGoatKidsQnty,
       materialForPoultryCageFabricationQnty: providerone.materialForPoultryCageFabricationQnty,
       totalMixedRationQnty: providerone.totalMixedRationQnty,
+      ureaTreatedMolassBlock: providerone.ureaTreatedMolassBlock,
+
       familyDetails : familyMembers,
     );
 
@@ -345,6 +329,7 @@ class _SalesState extends State<CrpDetail> {
                               child: Text('OK'),
                               onPressed: () {
                                 submitForm();
+                                Navigator.of(context).pop();
                               },
                             ),
                             TextButton(

@@ -29,13 +29,32 @@ class _SalesState extends State<UpdateCrpDetail> {
   void initState() {
     super.initState();
     getproductData();
-    // TextMain();
+    fetchDistricts();
   }
+
 
   TextEditingController dataComments = TextEditingController();
   TextEditingController dataNameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
   bool isLoading = false;
+  bool changedata = false;
+
+  Future<void> fetchDistricts() async {
+    try {
+      final response = await http.get(Uri.parse('${api}user/district'));
+
+      if (response.statusCode == 200) {
+        changeData();
+      } else {
+        throw Exception('Failed to fetch districts');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching districts: $e');
+    }
+  }
+
+
   void updateForm(String id) async {
     if (isLoading) return; // Prevent multiple updates
 
@@ -229,6 +248,22 @@ try{
       other: providerone.other,
       otherQnty: providerone.otherQnty,
 
+      addDataTreeFooderQnty: providerone.addDataTreeFooderQnty,
+      addDataUreaTreatedStrawQnty: providerone.addDataUreaTreatedStrawQnty,
+      caffStarterQnty: providerone.caffStarterQnty,
+      chemicalFertilizersQnty: providerone.chemicalFertilizersQnty,
+      fodderSeedsQnty: providerone.fodderSeedsQnty,
+      grassFooderQnty: providerone.grassFooderQnty,
+      growerQnty: providerone.growerQnty,
+      ingredientsForCttleFeedQnty: providerone.ingredientsForCattleFeedQnty,
+      ingredientsForPoultryFeedQnty: providerone.ingredientsForPoultryFeedQnty,
+      livelihoodGoatOthers: providerone.livelihoodGoatOthers,
+      malabariGoatKidsQnty: providerone.malabariGoatKidsQnty,
+      materialForPoultryCageFabricationQnty: providerone.materialForPoultryCageFabricationQnty,
+      totalMixedRationQnty: providerone.totalMixedRationQnty,
+      ureaTreatedMolassBlock: providerone.ureaTreatedMolassBlock,
+      livelihoodDUCKqnty: providerone.livelihoodduckqty,
+
       familyDetails: updatefamilyMembers,
     );
 
@@ -250,15 +285,14 @@ try{
         log(updateData.toJson().toString());
         print('Data submitted successfully.');
 
-        var providerone = Provider.of<TextMain>(context, listen: false);
+        // var providerone = Provider.of<TextMain>(context, listen: false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.green,
             content: Text('Update completed!'),
           ),
         );
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Screenone()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone()));
       } else {
         print(id);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -325,13 +359,13 @@ try{
                     onchanged: (value) {
                       providerone.updateDataNameofrespondent(value);
                     }),
+            SizedBox(height: 20,),
             Center(
               child: isLoading
                   ? CircularProgressIndicator()
                   :
               ElevateClick(
                   ontap: () {
-                    changeData();
                     var id = widget.items['data'][0]['_id'];
                     print(id);
                     showDialog(
@@ -346,7 +380,9 @@ try{
                               child: Text('OK'),
                               onPressed: () {
                                 updateForm(id);
-                              },
+                                Navigator.of(context).pop();
+
+                              }
                             ),
                             TextButton(
                               child: Text('Back'),
@@ -391,10 +427,10 @@ try{
   }
 
   changeData() {
-    // var providerone = Provider.of<TextMain>(context);
     var providerone = context.read<TextMain>();
-    providerone.updateDataNameofcrp(dataNameofcrp.text);
-    providerone.updateDataComments(dataComments.text);
-    providerone.updateDataNameofrespondent(dataNameofrespondent.text);
+      providerone.updateDataNameofcrp(dataNameofcrp.text);
+      providerone.updateDataComments(dataComments.text);
+      providerone.updateDataNameofrespondent(dataNameofrespondent.text);
+
   }
 }

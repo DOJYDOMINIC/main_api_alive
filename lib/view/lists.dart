@@ -133,58 +133,109 @@ final List sourceofinvestment = [
 
 ];
 
-final List datasupprtlist = [
-  {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
-  {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
-  {'text': ' സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
-  {'text': 'പഞ്ചായത്ത് രജിസ്ട്രേഷൻ', 'value': 'Panchayat Registration'},
-  {'text': 'FSSI', 'value': 'FSSI'},
-  {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
-  {'text': 'ലീഗൽ മെട്രേളജി', 'value': 'Legalmetrology'},
-  {'text': 'പൊല്യൂഷൻ സർട്ടിഫിക്കേറ്റ്', 'value': 'Polution Certification'},
-  {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem- Registration'},
-  {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
-  {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
-  {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
-  {'text': 'വൈദഗ്ത്യ പരിശീലനം', 'value': 'Skill training'},
-  {'text': 'മാർക്കറ്റിംഗ് സപ്പോർട്ട്', 'value': 'Marketing Support'},
-  {'text': 'തൊഴുത്ത് നിർമ്മാണം', 'value': 'Stable Construction'},
-  {'text': 'കാലിത്തീറ്റ', 'value': 'Fodder'},
-  {'text': 'ഉപകരണങ്ങൾ', 'value': 'Equipment'},
-  {'text': 'ലൈവ് സ്റ്റോക്ക് രജിസ്ട്രേഷൻ', 'value': 'Live stock registration'},
-  {'text': 'ഇൻഷുറൻസ്', 'value': 'Insurance'},
-  {'text': 'K-Swift', 'value': 'K Swift'},
-  {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
-  {'text': 'പാൻ കാർഡ്', 'value': 'Pan Card'},
-  {'text': 'ആധാർ മൊബൈൽ ലിങ്ക്', 'value': 'Aadhar Mobile Link'},
-  {'text': ' അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
-  {'text': 'ട്രേഡ് മാർക്ക്', 'value': 'Trad Mark'},
-  {'text': 'സോൾ പ്രൊപ്രൈറ്റർ ഷിപ്പ്', 'value': 'Sole Propritership'},
-  {'text': 'എൽ.എൽ.പി', 'value': 'LLP'},
-  {'text': 'പാർട്ട്ണർ ഷിപ്പ്', 'value': 'Partnership'},
-  {'text': 'സൊസൈറ്റി രജിസ്ട്രേഷൻ', 'value': 'Socity Registration'},
-  {'text': 'കമ്പനി രജിസ്ട്രേഷൻ', 'value': 'Company Registration'},
-  {'text': 'പാക്കിംഗ് ആന്റ് ലേബലിംഗ്', 'value': 'Packing and labeling'},
-  {'text': 'ഡിസൈനിംഗ്', 'value': 'Desings'},
-  {'text': 'ലോഗോ', 'value': 'Logo'},
-  {'text': 'അസംസ്കൃത പദാർത്ഥങ്ങൾ', 'value': 'Raw-materials'},
-  {'text': 'മെഷിനറി', 'value': 'Machinery'},
-  {'text': 'വെബ് സ്റ്റോർ', 'value': 'Web Store'},
-  {'text': 'വിദഗ്ദ്ധ തൊഴിലാളികൾ', 'value': 'Skilled work'},
-  {'text': 'ഡിജിറ്റൽ മാർക്കറ്റിംഗ്', 'value': 'Digital Marketing'},
-  {'text': 'കിസാൻ ക്രഡിറ്റ്', 'value': 'Kissan Credit'},
-  {'text': 'പ്രൊജക്ട് തയ്യാറാക്കൽ', 'value': 'Project Preparation'},
-  {'text': 'കാലിത്തീറ്റ വാങ്ങൽ', 'value': 'Purchase of fodder'},
-  {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
-  {'text': 'വെർമി കമ്പോസ്റ്റ്', 'value': 'Vermicompost'},
-  {'text': 'ഉപകരണങ്ങൾ വാങ്ങൽ', 'value': 'Purchase of equipment'},
-  {'text': 'തൊഴിൽ കാർഡ്', 'value': 'Job Card'},
-  {'text': 'തൊഴിലുറപ്പ് സഹായം', 'value': 'Employment assistance'},
-  {'text': 'ബിസിനസ്സ് എക്സ്പാൻഷൻ', 'value': 'Business Expansion'},
-  {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
-  {'text': 'NO Value', 'value': ' '}
+final List datasupprtlistss = [
+  "AADHAR  LINKING WITH MOBILE"
+ 	"AGRO MARKET"
+ 	"ASSISTANCE THROUGH MGNREGS"
+ 	"BANK ACCOUNT"
+ 	"BUSINESS EXPANSION"
+ 	"CATTLE FEED"
+ 	"CATTLE SHED CONSTRUCTION"
+ 	"DESIGNING LOGO	"
+ 	"DESIGNING OF PACKAGE"
+ 	"DIGITAL MARKETING SUPPORT"
+ 	"E-SHRAM"
+ 	"EQUIPMENTS"
+ 	"FINANCIAL ASSISTANCE/SUPPORT"
+ 	"FSSAI"
+ 	"G S T REGISTRATION"
+ 	"GEM REGISTRATION"
+ 	"INSURANCE"
+ 	"K S.E.B"
+ 	"K-SWIFT"
+ 	"KISSAN CREDIT"
+ 	"LABOR CARD"
+ 	"LEGAL METROLOGY AUTHORITY"
+ 	"LIVESTOCK REGISTRATION"
+ 	"LIVESTOCK REGISTRATION/FARMER REGISTRATION"
+ 	"MACHINERY"
+ 	"MARKETING SUPPORT"
+      "MANURE PRODUCTION"
+ 	"NNP"
+ 	"OTHERS"
+ 	"PACKING AND LABELLING"
+ 	"PAN CARD"
+ 	"PARTNERSHIP"
+ 	"POLLUTION UNDER CONTROL CERTIFICATE"
+ 	"PRODUCTION OF VERMICOMPOST "
+ 	"PROJECT PREPARATION"
+ 	"PURCHASE OF CATTLE FEED"
+ 	"PURCHASE OF MACHINERY AND EQUIPMENTS"
+ 	"RAW MATERIAL"
+ 	"REGISTRATION FOR SOCIETY"
+ 	"REGISTRATION FROM C D S "
+ 	"REGISTRATION FROM PANCHAYATH"
+ 	"REGISTRATION OF COMPANY"
+ 	"SKILL TRAINING"
+ 	"SKILLED LABORERS"
+ 	"STORE PROPRITERSHIP"
+ 	"TRADE MARKET"
+ 	"UDHYAM AADHAR"
+ 	"WEB STORE"
 
 ];
+
+// final List datasupprtlistss = [
+//   {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
+//   {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
+//   {'text': ' സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
+//   {'text': 'പഞ്ചായത്ത് രജിസ്ട്രേഷൻ', 'value': 'Panchayat Registration'},
+//   {'text': 'FSSI', 'value': 'FSSI'},
+//   {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
+//   {'text': 'ലീഗൽ മെട്രേളജി', 'value': 'Legalmetrology'},
+//   {'text': 'പൊല്യൂഷൻ സർട്ടിഫിക്കേറ്റ്', 'value': 'Polution Certification'},
+//   {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem- Registration'},
+//   {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
+//   {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
+//   {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
+//   {'text': 'വൈദഗ്ത്യ പരിശീലനം', 'value': 'Skill training'},
+//   {'text': 'മാർക്കറ്റിംഗ് സപ്പോർട്ട്', 'value': 'Marketing Support'},
+//   {'text': 'തൊഴുത്ത് നിർമ്മാണം', 'value': 'Stable Construction'},
+//   {'text': 'കാലിത്തീറ്റ', 'value': 'Fodder'},
+//   {'text': 'ഉപകരണങ്ങൾ', 'value': 'Equipment'},
+//   {'text': 'ലൈവ് സ്റ്റോക്ക് രജിസ്ട്രേഷൻ', 'value': 'Live stock registration'},
+//   {'text': 'ഇൻഷുറൻസ്', 'value': 'Insurance'},
+//   {'text': 'K-Swift', 'value': 'K Swift'},
+//   {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
+//   {'text': 'പാൻ കാർഡ്', 'value': 'Pan Card'},
+//   {'text': 'ആധാർ മൊബൈൽ ലിങ്ക്', 'value': 'Aadhar Mobile Link'},
+//   {'text': ' അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
+//   {'text': 'ട്രേഡ് മാർക്ക്', 'value': 'Trad Mark'},
+//   {'text': 'സോൾ പ്രൊപ്രൈറ്റർ ഷിപ്പ്', 'value': 'Sole Propritership'},
+//   {'text': 'എൽ.എൽ.പി', 'value': 'LLP'},
+//   {'text': 'പാർട്ട്ണർ ഷിപ്പ്', 'value': 'Partnership'},
+//   {'text': 'സൊസൈറ്റി രജിസ്ട്രേഷൻ', 'value': 'Socity Registration'},
+//   {'text': 'കമ്പനി രജിസ്ട്രേഷൻ', 'value': 'Company Registration'},
+//   {'text': 'പാക്കിംഗ് ആന്റ് ലേബലിംഗ്', 'value': 'Packing and labeling'},
+//   {'text': 'ഡിസൈനിംഗ്', 'value': 'Desings'},
+//   {'text': 'ലോഗോ', 'value': 'Logo'},
+//   {'text': 'അസംസ്കൃത പദാർത്ഥങ്ങൾ', 'value': 'Raw-materials'},
+//   {'text': 'മെഷിനറി', 'value': 'Machinery'},
+//   {'text': 'വെബ് സ്റ്റോർ', 'value': 'Web Store'},
+//   {'text': 'വിദഗ്ദ്ധ തൊഴിലാളികൾ', 'value': 'Skilled work'},
+//   {'text': 'ഡിജിറ്റൽ മാർക്കറ്റിംഗ്', 'value': 'Digital Marketing'},
+//   {'text': 'കിസാൻ ക്രഡിറ്റ്', 'value': 'Kissan Credit'},
+//   {'text': 'പ്രൊജക്ട് തയ്യാറാക്കൽ', 'value': 'Project Preparation'},
+//   {'text': 'കാലിത്തീറ്റ വാങ്ങൽ', 'value': 'Purchase of fodder'},
+//   {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
+//   {'text': 'വെർമി കമ്പോസ്റ്റ്', 'value': 'Vermicompost'},
+//   {'text': 'ഉപകരണങ്ങൾ വാങ്ങൽ', 'value': 'Purchase of equipment'},
+//   {'text': 'തൊഴിൽ കാർഡ്', 'value': 'Job Card'},
+//   {'text': 'തൊഴിലുറപ്പ് സഹായം', 'value': 'Employment assistance'},
+//   {'text': 'ബിസിനസ്സ് എക്സ്പാൻഷൻ', 'value': 'Business Expansion'},
+//   {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
+//
+// ];
 
 final List datamgnregasupportlist = [
   {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
@@ -227,6 +278,7 @@ final List? rawmaterials = [
   {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
   {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
   {'text': 'LAYER', 'value': 'LAYER'},
+  {'text': 'TMR', 'value': 'TMR'},
   {'text': 'GROWER', 'value': 'GROWER'},
   {'text': 'CATTLE FEED', 'value': 'CATTLE FEED'},
   {'text': 'CAFF STARTER', 'value': 'CAFF STARTER'},

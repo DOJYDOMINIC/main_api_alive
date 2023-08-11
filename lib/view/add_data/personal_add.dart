@@ -138,7 +138,7 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController data_Animalhusbendary_others0 = TextEditingController();
   TextEditingController dateofLoanApplication = TextEditingController();
   List animalBusiness = [];
-  List traningrequaredlist = [];
+  List _traningrequaredlist = [];
   List dataSupport = [];
   List dataMgnregasupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
@@ -760,7 +760,7 @@ class _PersonalPageState extends State<PersonalPage> {
                           'ആവശ്യമായ പിൻതുണ/സഹായം ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        dataSource: datasupprtlist,
+                        dataSource: datasupprtlistss,
                         textField: 'text',
                         valueField: 'value',
                         okButtonLabel: 'OK',
@@ -808,13 +808,13 @@ class _PersonalPageState extends State<PersonalPage> {
                             'പരിശീലനം വേണ്ട മേഘല ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          dataSource: traingrequared,
+                          dataSource:traingrequared,
                           textField: 'text',
                           valueField: 'value',
                           okButtonLabel: 'OK',
                           cancelButtonLabel: 'CANCEL',
                           // hintText: 'Please select one or more options',
-                          initialValue: traningrequaredlist,
+                          initialValue: _traningrequaredlist,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'This field is required.';

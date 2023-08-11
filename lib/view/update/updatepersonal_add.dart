@@ -886,7 +886,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           'ആവശ്യമായ പിൻതുണ/സഹായം ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        dataSource: datasupprtlist,
+                        dataSource: datasupprtlistss,
                         textField: 'text',
                         valueField: 'value',
                         okButtonLabel: 'OK',
@@ -898,12 +898,14 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: dataSupport.isNotEmpty && datasupprtlist.contains(dataSupport)
+                        initialValue: dataSupport.isNotEmpty && datasupprtlistss.contains(dataSupport)
                             ? dataSupport
                             : [],
                         onSaved: (value) {
                           try {
-                            // dataSupport = value;
+                            setState(() {
+                              dataSupport = value;
+                            });
                             providerone.updateDataSupport(value);
                           } catch (e) {
                             // dataSupport.clear();

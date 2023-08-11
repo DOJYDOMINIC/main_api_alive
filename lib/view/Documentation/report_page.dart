@@ -914,7 +914,7 @@ class _ReportPageState extends State<ReportPage> {
     // print('$url');
 
     // Check if the storage permission is granted
-    if (await Permission.storage.isGranted) {
+    if (await Permission.storage.isGranted ) {
       // Permission is granted, proceed with the download
       try {
         Response response = await dio.download(
@@ -1379,7 +1379,7 @@ String? liveli_sublist;
                               width: MediaQuery.of(context).size.width * .8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.black),
+                                // border: Border.all(color: Colors.black),
                               ),
                               child: DropdownSearch<String>(
                                 popupProps: PopupProps<String>.menu(
@@ -1392,11 +1392,12 @@ String? liveli_sublist;
                                     dataone = value;
                                   });
                                 },
-                                selectedItem: 'കുടുംബ അവസ്ഥ',
+                                // selectedItem: 'കുടുംബ അവസ്ഥ',
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'കുടുംബ അവസ്ഥ',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.white)))),
@@ -1431,7 +1432,7 @@ String? liveli_sublist;
                               width: MediaQuery.of(context).size.width * .8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.black),
+                                // border: Border.all(color: Colors.black),
                               ),
                               child: DropdownSearch<String>(
                                 popupProps: PopupProps<String>.menu(
@@ -1444,11 +1445,12 @@ String? liveli_sublist;
                                     datatwo = value;
                                   });
                                 },
-                                selectedItem: 'വിഭാഗം',
+                                // selectedItem: 'വിഭാഗം',
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'വിഭാഗം',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.white)))),
@@ -1485,7 +1487,7 @@ String? liveli_sublist;
                               width: MediaQuery.of(context).size.width * .8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.black),
+                                // border: Border.all(color: Colors.black),
                               ),
                               child: DropdownSearch<String>(
                                 popupProps: PopupProps<String>.menu(
@@ -1498,11 +1500,12 @@ String? liveli_sublist;
                                     datathree = value;
                                   });
                                 },
-                                selectedItem: 'പ്രത്യേക വിഭാഗം',
+                                // selectedItem: 'പ്രത്യേക വിഭാഗം',
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'പ്രത്യേക വിഭാഗം',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.white)))),
@@ -1620,6 +1623,7 @@ String? liveli_sublist;
                               icon: Icon(Icons.download))
                         ],
                       ),
+                      SizedBox(height: 10,),
                       Row(
                         children: [
                           Container(
@@ -1712,7 +1716,7 @@ String? liveli_sublist;
                               width: MediaQuery.of(context).size.width * .8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.black),
+                                // border: Border.all(color: Colors.black),
                               ),
                               child: DropdownSearch<String>(
                                 popupProps: PopupProps<String>.menu(
@@ -1725,11 +1729,12 @@ String? liveli_sublist;
                                     productname = value;
                                   });
                                 },
-                                selectedItem: 'ഉല്‍പ്പന്നം',
+                                // selectedItem: 'ഉല്‍പ്പന്നം',
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
+                                      labelText:  'ഉല്‍പ്പന്നം',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.white)))),
@@ -1761,7 +1766,7 @@ String? liveli_sublist;
                             width: MediaQuery.of(context).size.width * .8,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.black),
+                              // border: Border.all(color: Colors.black),
                             ),
                             child: DropdownSearch<String>(
                               popupProps: PopupProps<String>.menu(
@@ -1774,11 +1779,12 @@ String? liveli_sublist;
                                   salesvalue = value;
                                 });
                               },
-                              selectedItem: 'Sales',
+                              // selectedItem: 'Sales',
                               dropdownDecoratorProps: DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
+                                    labelText: 'Sales',
                                       enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide.none),
+                                          borderSide: BorderSide(color: Colors.black)),
                                       border: OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.white)))),
@@ -1806,7 +1812,7 @@ String? liveli_sublist;
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.black),
+                              // border: Border.all(color: Colors.black),
                             ),
                             child: Column(
                               children: [
@@ -1815,8 +1821,7 @@ String? liveli_sublist;
                                   width: MediaQuery.of(context).size.width * .8,
                                   decoration: BoxDecoration(
                                       border: Border(
-                                          bottom:
-                                              BorderSide(color: Colors.black))),
+                                          bottom: BorderSide(color: Colors.black))),
                                   child: DropdownSearch<String>(
                                     popupProps: PopupProps<String>.menu(
                                       showSelectedItems: true,
@@ -1831,16 +1836,16 @@ String? liveli_sublist;
                                         print(purchase);
                                       });
                                     },
-                                    selectedItem: 'purcaahse',
+                                    // selectedItem: 'purcaahse',
                                     dropdownDecoratorProps:
                                         DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
+                                        labelText: 'purcaahse',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        border: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.white),
-                                        ),
+
+                                            borderSide: BorderSide(color: Colors.black)),
+                                        border: OutlineInputBorder()
+                                        //
                                       ),
                                     ),
                                   ),
@@ -1861,19 +1866,17 @@ String? liveli_sublist;
                                         },
                                       );
                                     },
-                                    selectedItem: 'purchase Sublist',
+                                    // selectedItem: 'purchase Sublist',
                                     dropdownDecoratorProps:
                                         DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
+                                        labelText: 'purchase Sublist',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        border: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.white),
-                                        ),
-                                      ),
+                                            borderSide: BorderSide(color: Colors.black)),
+
                                     ),
                                   ),
+                                ),
                                 ),
                               ],
                             ),
