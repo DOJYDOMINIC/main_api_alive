@@ -217,7 +217,7 @@ class _SalesState extends State<CrpDetail> {
 
 
       addDataTreeFooderQnty: providerone.addDataTreeFooderQnty,
-      addDataUreaTreatedStrawQnty: providerone.addDataUreaTreatedStrawQnty,
+      // addDataUreaTreatedStrawQnty: providerone.ureaTreatedStrawQnty,
       caffStarterQnty: providerone.caffStarterQnty,
       chemicalFertilizersQnty: providerone.chemicalFertilizersQnty,
       fodderSeedsQnty: providerone.fodderSeedsQnty,
@@ -261,7 +261,7 @@ class _SalesState extends State<CrpDetail> {
         print('..........................');
         log(response.body);
         print('Data submitted successfully.');
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Screenone(),));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
 
       } else {
         print('Failed to submit data. Status code: ${response.statusCode}');

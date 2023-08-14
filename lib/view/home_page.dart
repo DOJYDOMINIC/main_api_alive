@@ -36,6 +36,25 @@ class _ScreenoneState extends State<Screenone> {
     var providerone = Provider.of<TextMain>(context);
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(onPressed: (){
+        //   showDialog(
+        //     context: context,
+        //     builder: (BuildContext context) {
+        //       return AlertDialog(
+        //         title:Text('name:${''}'),
+        //         content:Text('Email:${''}'),
+        //         actions: [
+        //           TextButton(
+        //             child: Text('OK'),
+        //             onPressed: () {
+        //               Navigator.of(context).pop();
+        //             },
+        //           ),
+        //         ],
+        //       );
+        //     },
+        //   );
+        // }, icon: Icon(Icons.info)),
         backgroundColor: app_theam,
         actions: [
           Padding(
@@ -69,6 +88,7 @@ class _ScreenoneState extends State<Screenone> {
               GestureDetector(
                 onTap: () {
                   providerone.clearData();
+                  providerone.clearfamilydata();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -118,6 +138,7 @@ class _ScreenoneState extends State<Screenone> {
               GestureDetector(
                 onTap: () {
                   providerone.clearData();
+                  providerone.clearfamilydata();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

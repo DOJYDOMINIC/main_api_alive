@@ -103,6 +103,17 @@ class _UpdatePurchaseofrawmaterials
   TextEditingController ureaTreatedStrawQnty = TextEditingController();
   TextEditingController goatfeed = TextEditingController();
   TextEditingController kidstarter = TextEditingController();
+  TextEditingController bv380qty = TextEditingController();
+  TextEditingController gramalakshmiqty = TextEditingController();
+  TextEditingController gramapriyaqty = TextEditingController();
+  TextEditingController pulletother = TextEditingController();
+  TextEditingController pulletotherqty = TextEditingController();
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -208,7 +219,7 @@ class _UpdatePurchaseofrawmaterials
                       }),
                 if (rawmaterial!.contains('TREE FOODER'))
                   InputField(
-                      hint: 'TREE FOODER QTY',
+                      hint: 'TREE FOODER KG',
                       keytype: TextInputType.number,
                       controller: addDataTreeFooderQnty,
                       onchanged: (value) {
@@ -308,12 +319,12 @@ class _UpdatePurchaseofrawmaterials
                 if (rawmaterial!
                     .contains('MATERIAL FOR POULTRY CAGE FABRICATION'))
                   InputField(
-                      hint: 'MATERIAL FOR POULTRY QTY',
+                      hint: 'MATERIAL FOR POULTRY CAGE FABRICATION QTY',
                       keytype: TextInputType.number,
                       controller: materialforpoltry,
                       onchanged: (value) {
                         int? valuee = int.tryParse(value);
-                        providerone.updateDataMaterialForPoultryQnty(valuee);
+                        providerone.updateMaterialForPoultryCageFabricationQnty(valuee);
                       }),
                 if (rawmaterial!.contains('EGG TRAYS'))
                   InputField(
@@ -405,7 +416,7 @@ class _UpdatePurchaseofrawmaterials
                       },
                     ),
                   ),
-                if (calveslist!.contains('H F'))
+                if (calveslist!.contains('CALVES-H F'))
                   InputField(
                       hint: 'H F QTY',
                       keytype: TextInputType.number,
@@ -414,7 +425,7 @@ class _UpdatePurchaseofrawmaterials
                         int? valuee = int.tryParse(value);
                         providerone.updateDataCalvesHfQnty(valuee);
                       }),
-                if (calveslist!.contains('GERSEY'))
+                if (calveslist != null && calveslist!.contains('CALVES-GERSEY'))
                   InputField(
                       hint: 'GERSEY QTY',
                       keytype: TextInputType.number,
@@ -451,7 +462,7 @@ class _UpdatePurchaseofrawmaterials
                       },
                     ),
                   ),
-                if (heipers!.contains('H F'))
+                if (heipers!.contains('HEIFERS-H F'))
                   InputField(
                       hint: 'H F QTY',
                       keytype: TextInputType.number,
@@ -460,7 +471,7 @@ class _UpdatePurchaseofrawmaterials
                         int? valuee = int.tryParse(value);
                         providerone.updateDataHeipersHfQnty(valuee);
                       }),
-                if (heipers!.contains('GERSEY'))
+                if (heipers!.contains('HEIFERS-GERSEY'))
                   InputField(
                       hint: 'GERSEY QTY',
                       keytype: TextInputType.number,
@@ -504,7 +515,7 @@ class _UpdatePurchaseofrawmaterials
                       },
                     ),
                   ),
-                if (cowslist!.contains('H F'))
+                if (cowslist != null && cowslist!.contains('COWS-H F'))
                   InputField(
                     hint: 'H F QTY',
                     keytype: TextInputType.number,
@@ -514,7 +525,7 @@ class _UpdatePurchaseofrawmaterials
                       providerone.updateDataCowsHfQnty(valuee);
                     },
                   ),
-                if (cowslist!.contains('GERSEY'))
+                if (cowslist != null && cowslist!.contains('COWS-GERSEY'))
                   InputField(
                       hint: 'GERSEY QTY',
                       keytype: TextInputType.number,
@@ -524,8 +535,7 @@ class _UpdatePurchaseofrawmaterials
                         providerone.updateDataCowsGerseyQnty(valuee);
                       }),
 
-                if (rawmaterial!
-                    .contains('PULLETS')) // Conditional statement starts here
+                if (rawmaterial!.contains('PULLETS')) // Conditional statement starts here
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: MultiSelectFormField(
@@ -559,6 +569,50 @@ class _UpdatePurchaseofrawmaterials
                       },
                     ),
                   ),
+                if (pulletsselected!.contains('BV380'))
+                  InputField(
+                      hint: 'BV380 QTY',
+                      keytype: TextInputType.number,
+                      controller: bv380qty,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDatabv380Qnty(valuee);
+                      }),
+                if (pulletsselected!.contains('GRAMALAKSHMI'))
+                  InputField(
+                      hint: 'GRAMALAKSHMI QTY',
+                      keytype: TextInputType.number,
+                      controller: gramalakshmiqty,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDatagramalakshmiQnty(valuee);
+                      }),
+                if (pulletsselected!.contains('GRAMAPRIYA'))
+                  InputField(
+                      hint: 'GRAMAPRIYA QTY',
+                      keytype: TextInputType.number,
+                      controller: gramapriyaqty,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDatagramapriyaQnty(valuee);
+                      }),
+                if (pulletsselected!.contains('OTHER'))
+                  InputField(
+                      hint: 'OTHER',
+                      keytype: TextInputType.number,
+                      controller: pulletother,
+                      onchanged: (value) {
+                        providerone.updateDataothers(value);
+                      }),
+                if (pulletsselected!.contains('OTHER'))
+                  InputField(
+                      hint: 'OTHER QTY',
+                      keytype: TextInputType.number,
+                      controller: gramapriyaqty,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDataPulletsQnty(valuee);
+                      }),
 
                 if (rawmaterial!.contains('MANURE'))
                   Padding(
@@ -597,7 +651,7 @@ class _UpdatePurchaseofrawmaterials
 
                 if (manureselected!.contains('COW DUNG'))
                   InputField(
-                      hint: 'COW DUNG qty',
+                      hint: 'COW DUNG KG',
                       keytype: TextInputType.number,
                       controller: cowdungqnty,
                       onchanged: (value) {
@@ -606,7 +660,7 @@ class _UpdatePurchaseofrawmaterials
                       }),
                 if (manureselected!.contains('GOAT MANURE'))
                   InputField(
-                      hint: 'GOAT MANURE QTY',
+                      hint: 'GOAT MANURE KG',
                       keytype: TextInputType.number,
                       controller: goatmanureqnty,
                       onchanged: (value) {
@@ -615,7 +669,7 @@ class _UpdatePurchaseofrawmaterials
                       }),
                 if (manureselected!.contains('POULTRY MANURE'))
                   InputField(
-                      hint: 'POULTRY MANURE QTY',
+                      hint: 'POULTRY MANURE KG',
                       keytype: TextInputType.number,
                       controller: poultrymanureqnty,
                       onchanged: (value) {
@@ -624,7 +678,7 @@ class _UpdatePurchaseofrawmaterials
                       }),
                 if (manureselected!.contains('VERMY COMPOST'))
                   InputField(
-                      hint: 'VERMY COMPOST QTY',
+                      hint: 'VERMY COMPOST KG',
                       keytype: TextInputType.number,
                       controller: vermycompostqnty,
                       onchanged: (value) {
@@ -763,7 +817,7 @@ class _UpdatePurchaseofrawmaterials
                   ),
                 if (cattlefeedlist != null)
                   InputField(
-                      hint: 'CATTLE  FEED QTY/KG',
+                      hint: 'CATTLE  FEED  (50 KG)',
                       keytype: TextInputType.number,
                       controller: cattlefeedqty,
                       onchanged: (value) {
@@ -783,7 +837,7 @@ class _UpdatePurchaseofrawmaterials
                   ),
                 if (rawmaterial!.contains('MILK REPLACER'))
                   InputField(
-                      hint: 'MILK REPLACER QTY (5 KG)',
+                      hint: 'MILK REPLACER (5 KG)',
                       keytype: TextInputType.number,
                       controller: selectedmilkreplacer,
                       onchanged: (value) {
@@ -898,7 +952,7 @@ class _UpdatePurchaseofrawmaterials
   //       tmrQnty  = dataup["TMR_qnty"];
   //       silageQnty  = dataup["SILAGE_qnty"];
   //       hayQnty  = dataup["HAY_qnty"];
-  //       ureaTreatedStrawQnty  = dataup["UREA_TREATED_STRAW_qnty"];
+  //       ureaTreatedStrawQnty  = dataup["Urea_treated_Straw_qnty"];
   //       goatFeeDqnty  = dataup["GOAT_FEEDqnty"];
   //       kidStarterQnty  = dataup["KID_STARTER_qnty"];
   //       dataPurchaseofrawmaterialsBrand  = dataup["data_purchaseofrawmaterials_brand"];

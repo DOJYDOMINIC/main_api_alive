@@ -898,7 +898,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: dataSupport.isNotEmpty && datasupprtlistss.contains(dataSupport)
+                        initialValue: dataSupport.isNotEmpty && dataSupport.contains(datasupprtlistss)
                             ? dataSupport
                             : [],
                         onSaved: (value) {
@@ -942,7 +942,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                               borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(color: Colors.black)),
                           title: Text(
-                            'പരിശീലനം വേണ്ട മേഘല ',
+                            'പരിശീലനം വേണ്ട മേഖല ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           dataSource: traingrequared,

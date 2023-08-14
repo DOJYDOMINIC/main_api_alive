@@ -75,8 +75,11 @@ class _LoginState extends State<Login> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Login Failed'),
-              content: Text('Invalid credentials. Please try again.'),
+              title:  SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: Image(image: AssetImage('assets/alert.jpg'))),
+              content: Text('Login Failed. Please try again.'),
               actions: [
                 TextButton(
                   child: Text('OK'),
@@ -94,7 +97,10 @@ class _LoginState extends State<Login> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Error'),
+            title: SizedBox(
+                height: 100,
+                width: 100,
+                child: Image(image: AssetImage('assets/alert.jpg'))),
             content: Text('An error occurred. Please try again later.'),
             actions: [
               TextButton(

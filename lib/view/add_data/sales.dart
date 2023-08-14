@@ -132,7 +132,7 @@ TextEditingController meatqty = TextEditingController();
                         int? valuee = int.tryParse(value);
                         providerone.updateDataFeedQnty(valuee);
                       }),
-                if(productavilable != null && productavilable!.contains('MALE BUFFALO CALF'))
+                if(productavilable != null && productavilable!.contains('MALE BUFFALO'))
                   InputField(
                       hint: 'MALE BUFFALO CALF QTY',
                       keytype: TextInputType.number,

@@ -249,7 +249,7 @@ try{
       otherQnty: providerone.otherQnty,
 
       addDataTreeFooderQnty: providerone.addDataTreeFooderQnty,
-      addDataUreaTreatedStrawQnty: providerone.addDataUreaTreatedStrawQnty,
+      // addDataUreaTreatedStrawQnty: providerone.addDataUreaTreatedStrawQnty,
       caffStarterQnty: providerone.caffStarterQnty,
       chemicalFertilizersQnty: providerone.chemicalFertilizersQnty,
       fodderSeedsQnty: providerone.fodderSeedsQnty,

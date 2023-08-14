@@ -115,7 +115,7 @@ class AddData {
   int? treeFooderQnty;
   int? malabariGoatKidsQnty;
   int? materialForPoultryCageFabricationQnty;
-  int? addDataUreaTreatedStrawQnty;
+  // int? addDataUreaTreatedStrawQnty;
   List<dynamic>? pulletsList;
   int? bv380Qnty;
   int? gramalakshmiQnty;
@@ -281,7 +281,7 @@ class AddData {
      this.treeFooderQnty,
      this.malabariGoatKidsQnty,
      this.materialForPoultryCageFabricationQnty,
-     this.addDataUreaTreatedStrawQnty,
+     // this.addDataUreaTreatedStrawQnty,
      this.pulletsList,
      this.bv380Qnty,
      this.gramalakshmiQnty,
@@ -451,7 +451,7 @@ class AddData {
     treeFooderQnty: json["Tree_fooder_qnty"],
     malabariGoatKidsQnty: json["MALABARI_GOAT_KIDS_qnty"],
     materialForPoultryCageFabricationQnty: json["MATERIAL_FOR_POULTRY_CAGE_FABRICATION_qnty"],
-    addDataUreaTreatedStrawQnty: json["Urea_treated_Straw_qnty"],
+    // addDataUreaTreatedStrawQnty: json["Urea_treated_Straw_qnty"],
     pulletsList: List<String>.from(json["PULLETS_List"].map((x) => x)),
     bv380Qnty: json["BV380_qnty"],
     gramalakshmiQnty: json["GRAMALAKSHMI_qnty"],
@@ -499,7 +499,7 @@ class AddData {
     tmrQnty: json["TMR_qnty"],
     silageQnty: json["SILAGE_qnty"],
     hayQnty: json["HAY_qnty"],
-    ureaTreatedStrawQnty: json["UREA_TREATED_STRAW_qnty"],
+    ureaTreatedStrawQnty: json["Urea_treated_Straw_qnty"],
     goatFeeDqnty: json["GOAT_FEEDqnty"],
     kidStarterQnty: json["KID_STARTER_qnty"],
     growerQnty: json["GROWER_qnty"],
@@ -619,7 +619,7 @@ class AddData {
     "Tree_fooder_qnty": treeFooderQnty,
     "MALABARI_GOAT_KIDS_qnty": malabariGoatKidsQnty,
     "MATERIAL_FOR_POULTRY_CAGE_FABRICATION_qnty": materialForPoultryCageFabricationQnty,
-    "Urea_treated_Straw_qnty": addDataUreaTreatedStrawQnty,
+    "Urea_treated_Straw_qnty": ureaTreatedStrawQnty,
     "PULLETS_List": List<dynamic>.from(pulletsList!.map((x) => x)),
     "BV380_qnty": bv380Qnty,
     "GRAMALAKSHMI_qnty": gramalakshmiQnty,
@@ -667,7 +667,7 @@ class AddData {
     "TMR_qnty": tmrQnty,
     "SILAGE_qnty": silageQnty,
     "HAY_qnty": hayQnty,
-    "UREA_TREATED_STRAW_qnty": ureaTreatedStrawQnty,
+    // "UREA_TREATED_STRAW_qnty": ureaTreatedStrawQnty,
     "GOAT_FEEDqnty": goatFeeDqnty,
     "KID_STARTER_qnty": kidStarterQnty,
     "GROWER_qnty": growerQnty,

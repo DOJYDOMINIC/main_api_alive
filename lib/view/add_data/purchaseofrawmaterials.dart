@@ -92,6 +92,11 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   TextEditingController ureaTreatedStrawQnty = TextEditingController();
   TextEditingController goatfeed = TextEditingController();
   TextEditingController kidstarter = TextEditingController();
+  TextEditingController bv380qty = TextEditingController();
+  TextEditingController gramalakshmiqty = TextEditingController();
+  TextEditingController gramapriyaqty = TextEditingController();
+  TextEditingController pulletother = TextEditingController();
+  TextEditingController pulletotherqty = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -296,7 +301,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           providerone.updateDataUreaTreatedStrawQnty(valuee);
                         }),
                   if (rawmaterial != null &&
-                      rawmaterial!.contains('MALE BUFFALO CALVES'))
+                      rawmaterial!.contains('MALE BUFFALO'))
                     InputField(
                         hint: 'MALE BUFFALO CALVES QTY',
                         keytype: TextInputType.number,
@@ -319,12 +324,12 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       rawmaterial!
                           .contains('MATERIAL FOR POULTRY CAGE FABRICATION'))
                     InputField(
-                        hint: 'MATERIAL FOR POULTRY QTY',
+                        hint: 'MATERIAL FOR POULTRY CAGE FABRICATION QTY',
                         keytype: TextInputType.number,
                         controller: materialforpoltry,
                         onchanged: (value) {
                           int? valuee = int.tryParse(value);
-                          providerone.updateDataMaterialForPoultryQnty(valuee);
+                          providerone.updateMaterialForPoultryCageFabricationQnty(valuee);
                         }),
                   if (rawmaterial != null && rawmaterial!.contains('EGG TRAYS'))
                     InputField(
@@ -516,7 +521,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         },
                       ),
                     ),
-                  if (calveslist != null && calveslist!.contains('H F'))
+                  if (calveslist!.contains('CALVES-H F'))
                     InputField(
                         hint: 'H F QTY',
                         keytype: TextInputType.number,
@@ -525,7 +530,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataCalvesHfQnty(valuee);
                         }),
-                  if (calveslist != null && calveslist!.contains('GERSEY'))
+                  if (calveslist != null && calveslist!.contains('CALVES-GERSEY'))
                     InputField(
                         hint: 'GERSEY QTY',
                         keytype: TextInputType.number,
@@ -562,7 +567,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         },
                       ),
                     ),
-                  if (heipers != null && heipers!.contains('H F'))
+                  if (heipers!.contains('HEIFERS-H F'))
                     InputField(
                         hint: 'H F QTY',
                         keytype: TextInputType.number,
@@ -571,7 +576,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataHeipersHfQnty(valuee);
                         }),
-                  if (heipers != null && heipers!.contains('GERSEY'))
+                  if (heipers!.contains('HEIFERS-GERSEY'))
                     InputField(
                         hint: 'GERSEY QTY',
                         keytype: TextInputType.number,
@@ -615,7 +620,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         },
                       ),
                     ),
-                  if (cowslist != null && cowslist!.contains('H F'))
+                  if (cowslist != null && cowslist!.contains('COWS-H F'))
                     InputField(
                       hint: 'H F QTY',
                       keytype: TextInputType.number,
@@ -625,7 +630,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         providerone.updateDataCowsHfQnty(valuee);
                       },
                     ),
-                  if (cowslist != null && cowslist!.contains('GERSEY'))
+                  if (cowslist != null && cowslist!.contains('COWS-GERSEY'))
                     InputField(
                         hint: 'GERSEY QTY',
                         keytype: TextInputType.number,
@@ -671,7 +676,50 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         },
                       ),
                     ),
-
+                  if (pulletsselected!.contains('BV380'))
+                    InputField(
+                        hint: 'BV380 QTY',
+                        keytype: TextInputType.number,
+                        controller: bv380qty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDatabv380Qnty(valuee);
+                        }),
+                  if (pulletsselected!.contains('GRAMALAKSHMI'))
+                    InputField(
+                        hint: 'GRAMALAKSHMI QTY',
+                        keytype: TextInputType.number,
+                        controller: gramalakshmiqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDatagramalakshmiQnty(valuee);
+                        }),
+                  if (pulletsselected!.contains('GRAMAPRIYA'))
+                    InputField(
+                        hint: 'GRAMAPRIYA QTY',
+                        keytype: TextInputType.number,
+                        controller: gramapriyaqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDatagramapriyaQnty(valuee);
+                        }),
+                  if (pulletsselected!.contains('OTHER'))
+                    InputField(
+                        hint: 'OTHER',
+                        keytype: TextInputType.number,
+                        controller: pulletother,
+                        onchanged: (value) {
+                          providerone.updateDataothers(value);
+                        }),
+                  if (pulletsselected!.contains('OTHER'))
+                    InputField(
+                        hint: 'OTHER QTY',
+                        keytype: TextInputType.number,
+                        controller: gramapriyaqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataPulletsQnty(valuee);
+                        }),
                   if (rawmaterial != null && rawmaterial!.contains('MANURE'))
                     Padding(
                       padding: const EdgeInsets.only(top: 10),

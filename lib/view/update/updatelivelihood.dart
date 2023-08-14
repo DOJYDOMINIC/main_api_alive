@@ -31,7 +31,8 @@ class _SalesState extends State<UpdateLivelihoodValue> {
   @override
   void initState() {
     super.initState();
-    getproductData();
+    // getproductData();
+    // print(dataLivelihoodIncomesource);
     // fetchlivelihood();
   }
 
@@ -131,7 +132,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                         }
                         return null;
                       },
-                      // initialValue: dataLivelihoodIncomesource,
+                      initialValue: dataLivelihoodIncomesource,
                       onSaved: (value) {
                         setState(() {
                           dataLivelihoodIncomesource = value;
@@ -538,7 +539,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                   ),
                 ElevateClick(
                     ontap: () {
-                      changeData();
+                      // changeData();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -558,7 +559,6 @@ class _SalesState extends State<UpdateLivelihoodValue> {
     var dataup = widget.items['livelihoods'][0];
     setState(() {
 
-      dataLivelihoodIncomesource = dataup["data_livelihood_incomesource"];
 
       dataLivelihoodIncomesource = dataup["data_livelihood_incomesource"];
       selectcowlist = dataup["livelihood_cows_list"];
@@ -567,6 +567,8 @@ class _SalesState extends State<UpdateLivelihoodValue> {
       poultrylistselcted = dataup["livelihood_poultry_list"];
       manuerlistselcted = dataup["livelihood_manure_list"];
       fooderlist = dataup["livelihood_fodder_list"];
+
+      // dataLivelihoodIncomesource = dataup["data_livelihood_incomesource"];
 
       livelihoodCowsHfQnty.text = dataup["livelihood_cows_HF_qnty"].toString();
       livelihoodCowsJerseyQnty.text =dataup["livelihood_cows_JERSEY_qnty"].toString();
@@ -588,7 +590,6 @@ class _SalesState extends State<UpdateLivelihoodValue> {
       livelihoodPoultryManureQnty.text =dataup["livelihood_POULTRY_MANURE_qnty"].toString();
       lilivelihoodDuckqnty.text =dataup['livelihood_DUCK_qnty'].toString();
       livelihoodgoatothers.text =dataup['livelihood_goat_OTHERS'].toString();
-
 
     });
   }

@@ -80,7 +80,6 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -343,7 +342,7 @@ class _ReportPageState extends State<ReportPage> {
         '${api}search/TrainingsRequired?data_Panchayath=$panchayth&data_Trainingsrequired=$traning';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String trainingsrequired = "Trainingsrequired${timeStamp}.xlsx";
+    String trainingsrequired = "Trainingsrequired_${timeStamp}.xlsx";
 
     String path = await _getFilePath(trainingsrequired);
     print('Download Path: $path');
@@ -532,7 +531,7 @@ class _ReportPageState extends State<ReportPage> {
         '${api}search/productDetails?panchayath=$panchayth&products_Name=$productname';
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
-    String product = "product detail${timeStamp}.xlsx";
+    String product = "product_detail${timeStamp}.xlsx";
     String path = await _getFilePath(product);
     print('Download Path: $path');
 
@@ -1819,9 +1818,9 @@ String? liveli_sublist;
                                 Container(
                                   height: 60,
                                   width: MediaQuery.of(context).size.width * .8,
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(color: Colors.black))),
+                                  // decoration: BoxDecoration(
+                                  //     border: Border(
+                                  //         bottom: BorderSide(color: Colors.black))),
                                   child: DropdownSearch<String>(
                                     popupProps: PopupProps<String>.menu(
                                       showSelectedItems: true,
@@ -1842,9 +1841,10 @@ String? liveli_sublist;
                                       dropdownSearchDecoration: InputDecoration(
                                         labelText: 'purcaahse',
                                         enabledBorder: OutlineInputBorder(
-
                                             borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder()
+                                        // border: OutlineInputBorder(
+                                        //   borderSide: BorderSide.none
+                                        // )
                                         //
                                       ),
                                     ),
@@ -1866,11 +1866,11 @@ String? liveli_sublist;
                                         },
                                       );
                                     },
-                                    // selectedItem: 'purchase Sublist',
+                                    selectedItem: 'purchase Sublist',
                                     dropdownDecoratorProps:
                                         DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
-                                        labelText: 'purchase Sublist',
+                                        // labelText: 'purchase Sublist',
                                         enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(color: Colors.black)),
 
@@ -1903,17 +1903,17 @@ String? liveli_sublist;
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.black),
+                              // border: Border.all(color: Colors.black),
                             ),
                             child: Column(
                               children: [
                                 Container(
                                   height: 60,
                                   width: MediaQuery.of(context).size.width * .8,
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom:
-                                          BorderSide(color: Colors.black))),
+                                  // decoration: BoxDecoration(
+                                  //     border: Border(
+                                  //         bottom:
+                                  //         BorderSide(color: Colors.black))),
                                   child: DropdownSearch<String>(
                                     popupProps: PopupProps<String>.menu(
                                       showSelectedItems: true,
@@ -1926,12 +1926,13 @@ String? liveli_sublist;
                                         FetchLivelihood_sub_Api(liveli_list!);
                                       });
                                     },
-                                    selectedItem: 'Livelihood',
+                                    // selectedItem: 'Livelihood',
                                     dropdownDecoratorProps:
                                     DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
+                                        labelText: 'Livelihood',
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                           borderSide:
                                           BorderSide(color: Colors.white),
@@ -1960,7 +1961,7 @@ String? liveli_sublist;
                                     DropDownDecoratorProps(
                                       dropdownSearchDecoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                            borderSide: BorderSide(color: Colors.black)),
                                         border: OutlineInputBorder(
                                           borderSide:
                                           BorderSide(color: Colors.white),
