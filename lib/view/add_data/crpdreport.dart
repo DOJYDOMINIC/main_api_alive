@@ -40,7 +40,7 @@ class _SalesState extends State<CrpDetail> {
   }
 
   TextEditingController datacomments = TextEditingController();
-  TextEditingController datanameof_crp_number = TextEditingController();
+  TextEditingController datnumber_of_crp_number = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
@@ -231,7 +231,7 @@ class _SalesState extends State<CrpDetail> {
       materialForPoultryCageFabricationQnty: providerone.materialForPoultryCageFabricationQnty,
       totalMixedRationQnty: providerone.totalMixedRationQnty,
       ureaTreatedMolassBlock: providerone.ureaTreatedMolassBlock,
-
+      PhonenumberofCRP: providerone.PhonenumberofCRP,
       familyDetails : familyMembers,
     );
 
@@ -302,8 +302,8 @@ class _SalesState extends State<CrpDetail> {
                       providerone.updateDataNameofcrp(value);
                     }),
                   InputField(
-                    hint: 'CRP Phone Number',
-                    controller: datanameof_crp_number,
+                    hint: 'CRP യുടെ ഫോൺ നമ്പർ ',
+                    controller: datnumber_of_crp_number,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
                       providerone.updateDataLivelihoodCowsJerseyQnty(valuee);

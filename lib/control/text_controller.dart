@@ -216,7 +216,7 @@ class TextMain extends ChangeNotifier {
     _materialForPoultryCageFabricationQnty = 0;
     _totalMixedRationQnty = 0;
     _ureaTreatedMolassBlock =0;
-
+    _PhonenumberofCRP =0;
     notifyListeners();
   }
   //
@@ -531,6 +531,13 @@ class TextMain extends ChangeNotifier {
   int? get ureaTreatedMolassBlock => _ureaTreatedMolassBlock;
   void updateureaTreatedMolassBlock(int? value) {
     _ureaTreatedMolassBlock = value;
+    notifyListeners();
+  }
+
+  int? _PhonenumberofCRP;
+  int? get PhonenumberofCRP => _PhonenumberofCRP;
+  void updatPhonenumberofCRP(int? value) {
+    _PhonenumberofCRP = value;
     notifyListeners();
   }
 

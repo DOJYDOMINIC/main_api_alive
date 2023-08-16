@@ -18,6 +18,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
+  bool obscureText = true;
+  void toggleVisibility() {
+    setState(() {
+      obscureText = !obscureText;
+    });
+  }
+  bool obscureTextone = true;
+  void toggleVisibilityone() {
+    setState(() {
+      obscureTextone = !obscureTextone;
+    });
+  }
+
   Future<void> resetPassword() async {
     final String email = _emailController.text;
     final String newPassword = _newPasswordController.text;
@@ -123,21 +136,33 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             SizedBox(height: 16.0),
             TextFormField(
               controller: _newPasswordController,
-              obscureText: true,
+              obscureText: obscureText,
               decoration: InputDecoration(
                 labelText: 'New Password',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    obscureText ? Icons.visibility : Icons.visibility_off,color: Colors.black,
+                  ),
+                  onPressed: toggleVisibility,
+                ),
               ),
             ),
             SizedBox(height: 16.0),
             TextFormField(
               controller: _confirmPasswordController,
-              obscureText: true,
+              obscureText: obscureTextone,
               decoration: InputDecoration(
                 labelText: 'Confirm Password',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    obscureTextone ? Icons.visibility : Icons.visibility_off,color: Colors.black,
+                  ),
+                  onPressed: toggleVisibilityone,
+                ),
               ),
             ),
             SizedBox(height: 16.0),

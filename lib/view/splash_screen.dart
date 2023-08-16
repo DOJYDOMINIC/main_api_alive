@@ -34,11 +34,11 @@ class _SlpashScreenState extends State<SlpashScreen> {
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-        email = prefs.getString('email')!;
+        email = prefs.getString('email')??'';
         authToken =  prefs.getString('authToken');
       });
     } catch(e){
-      print(e);
+      print( 'get Data email : $e');
     }
 
 

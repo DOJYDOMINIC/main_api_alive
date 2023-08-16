@@ -18,6 +18,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  bool obscureText = true;
+  void toggleVisibility() {
+    setState(() {
+      obscureText = !obscureText;
+    });
+  }
+  bool obscureTextone = true;
+  void toggleVisibilityone() {
+    setState(() {
+      obscureTextone = !obscureTextone;
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   Future<void> _registerUser() async {
@@ -195,11 +208,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     }
                                     return null;
                                   },
-                                  obscureText: true,
+                                  obscureText: obscureText,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        obscureText ? Icons.visibility : Icons.visibility_off,color: Colors.black,
+                                      ),
+                                      onPressed: toggleVisibility,
+                                    ),
                                   ),
                                 ),
                                 Divider(color: Colors.grey),
@@ -213,11 +232,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     }
                                     return null;
                                   },
-                                  obscureText: true,
+                                  obscureText: obscureTextone,
                                   decoration: InputDecoration(
                                     hintText: 'Confirm Password',
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        obscureTextone ? Icons.visibility : Icons.visibility_off,color: Colors.black,
+                                      ),
+                                      onPressed: toggleVisibilityone,
+                                    ),
                                   ),
                                 ),
                               ],

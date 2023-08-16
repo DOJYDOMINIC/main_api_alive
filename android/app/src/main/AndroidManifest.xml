@@ -10,7 +10,7 @@
 
     <application
         android:requestLegacyExternalStorage="true"
-        android:label="A live"
+        android:label="ALIVE"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

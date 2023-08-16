@@ -56,8 +56,6 @@ class _LoginState extends State<Login> {
         prefs.setString('authToken', authToken!);
         prefs.setString('email', _emailController.text);
 
-
-
         // Process the data or navigate to the next screen
         _emailController.clear();
         _passwordController.clear();
@@ -114,6 +112,12 @@ class _LoginState extends State<Login> {
         },
       );
     }
+  }
+  bool obscureText = true;
+  void toggleVisibility() {
+    setState(() {
+      obscureText = !obscureText;
+    });
   }
 
   @override
@@ -216,11 +220,17 @@ class _LoginState extends State<Login> {
                                 Divider(color: Colors.grey),
                                 TextFormField(
                                   controller: _passwordController,
-                                  obscureText: true,
+                                  obscureText: obscureText,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        obscureText ? Icons.visibility : Icons.visibility_off,color: Colors.black,
+                                      ),
+                                      onPressed: toggleVisibility,
+                                  ),
                                   ),
                                 ),
                               ],

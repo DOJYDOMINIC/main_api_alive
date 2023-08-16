@@ -133,6 +133,38 @@ final List sourceofinvestment = [
 
 ];
 
+// final List traingrequared = [
+// {'text': 'MARKETING', 'value': 'MARKETING'},
+// {'text': 'BEEKEEPING', 'value': 'BEEKEEPING'},
+// {'text': 'BREEDING OF LAYING HENS', 'value': 'BREEDING OF LAYING HENS'},
+// {'text': 'BROILER FARMING', 'value': 'BROILER FARMING'},
+// {'text': 'BUFFALO REARING', 'value': 'BUFFALO REARING'},
+// {'text': 'CATTLE BREEDING', 'value': 'CATTLE BREEDING'},
+// {'text': 'CATTLE REARING', 'value': 'CATTLE REARING'},
+// {'text': 'CULTIVATION OF GRASS', 'value': 'CULTIVATION OF GRASS'},
+// {'text': 'DUCK FARMING', 'value': 'DUCK FARMING'},
+// {'text': 'EGGER NURSERY', 'value': 'EGGER NURSERY'},
+// {
+// 'text': 'FERTILIZER MANUFACTURING TRAINING',
+// 'value': 'FERTILIZER MANUFACTURING TRAINING'
+// },
+// {'text': 'FISH FARMING', 'value': 'FISH FARMING'},
+// {'text': 'FODDER MANUFACTURING', 'value': 'FODDER MANUFACTURING'},
+// {'text': 'GOAT REARING', 'value': 'GOAT REARING'},
+// {'text': 'HATCHERY', 'value': 'HATCHERY'},
+// {'text': 'INTEGRATED FARMING', 'value': 'INTEGRATED FARMING'},
+// {'text': 'KEEPING PETS', 'value': 'KEEPING PETS'},
+// {'text': 'MANAGEMENT', 'value': 'MANAGEMENT'},
+// {'text': 'MARKETING OF MILK', 'value': 'MARKETING OF MILK'},
+// {'text': 'MEAT SALES', 'value': 'MEAT SALES'},
+// {'text': 'PARENT STOKE', 'value': 'PARENT STOKE'},
+// {'text': 'PHARMACY', 'value': 'PHARMACY'},
+// {'text': 'PIG FARMING', 'value': 'PIG FARMING'},
+// {'text': 'QUAIL BREEDING', 'value': 'QUAIL BREEDING'},
+// {'text': 'RAISING PET BIRDS', 'value': 'RAISING PET BIRDS'},
+// {'text': 'VALUE PRODUCT CREATION', 'value': 'VALUE PRODUCT CREATION'},
+// {'text': 'OTHER', 'value': 'OTHER'},
+// ];
 final List traingrequared = [
   {'text': 'Marketing', 'value': 'Marketing'},
   {'text': 'Beekeeping', 'value': 'Beekeeping'},
@@ -219,6 +251,7 @@ final List traingrequared = [
 // ];
 
 final List datasupprtlistss = [
+
   {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
   {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
   {'text': 'സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
@@ -227,7 +260,7 @@ final List datasupprtlistss = [
   {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
   {'text': 'ലീഗൽ മെട്രേളജി', 'value': 'Legalmetrology'},
   {'text': 'പൊല്യൂഷൻ സർട്ടിഫിക്കേറ്റ്', 'value': 'Polution Certification'},
-  {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem- Registration'},
+  {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem-Registration'},
   {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
   {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
   {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
@@ -269,51 +302,52 @@ final List datasupprtlistss = [
 
 ];
 
-final List datamgnregasupportlist = [
-  {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
-  {'text': 'ആട്ടിൻ കൂട്', 'value': 'Sheep Shed'},
-  {'text': 'കോഴിക്കൂട്', 'value': 'Kozhikood'},
-  {'text': 'കമ്പമ്പോസ്റ്റ് പിറ്റ്', 'value': 'Compost pit'},
-  {'text': 'വർക്ക് ഷെഡ്', 'value': 'Work Shed'},
-  {'text': 'പുൽകൃഷി ഭൂമിയൊരിക്കൽ', 'value': 'Fodder grass land preparation'},
-  {'text': 'ജൈവ വേലി', 'value': 'Geofencing'},
-  {'text': 'സോക്ക് പിറ്റ്', 'value': 'Sock pit'},
-  {'text': 'അസസോള ടാങ്ക് /കുളം', 'value': 'Asola Tank / Pond'},
-  {'text': 'കുളം വെട്ട്', 'value': 'Pond renovation'},
-  {'text': 'കിണർ റീച്ചാർജ്', 'value': 'Well Recharging'},
-  {'text': 'കിണർ നിർമ്മാണം', 'value': 'Construction of wells'},
-  {'text': 'NO Value', 'value': ''}
-  // {'text': 'other','value': 'source'},
-];
+// final List datamgnregasupportlist = [
+//   {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
+//   {'text': 'ആട്ടിൻ കൂട്', 'value': 'Sheep Shed'},
+//   {'text': 'കോഴിക്കൂട്', 'value': 'Kozhikood'},
+//   {'text': 'കമ്പമ്പോസ്റ്റ് പിറ്റ്', 'value': 'Compost pit'},
+//   {'text': 'വർക്ക് ഷെഡ്', 'value': 'Work Shed'},
+//   {'text': 'പുൽകൃഷി ഭൂമിയൊരിക്കൽ', 'value': 'Fodder grass land preparation'},
+//   {'text': 'ജൈവ വേലി', 'value': 'Geofencing'},
+//   {'text': 'സോക്ക് പിറ്റ്', 'value': 'Sock pit'},
+//   {'text': 'അസസോള ടാങ്ക് /കുളം', 'value': 'Asola Tank / Pond'},
+//   {'text': 'കുളം വെട്ട്', 'value': 'Pond renovation'},
+//   {'text': 'കിണർ റീച്ചാർജ്', 'value': 'Well Recharging'},
+//   {'text': 'കിണർ നിർമ്മാണം', 'value': 'Construction of wells'},
+//   {'text': 'NO Value', 'value': ''}
+//   // {'text': 'other','value': 'source'},
+// ];
 
-[
-{'text': "APIARY",
-{'text': "AZOLA TANK",
-{'text': "BIOFENCING",
-{'text': "CATTLE FEED PRODUCTION",
-{'text': "CATTLE SHED",
-{'text': "DIGGING A POND",
-{'text': "EGGER NURSERY",
-{'text': "FODDER CULTIVATION",
-{'text': "GOAT SHED",
-{'text': "HATCHERY",
-{'text': "INTEGRATED FARMING",
-{'text': "MANURE PIT",
-{'text': "MANURE PRODUCTION",
-{'text': "MARKETING",
-{'text': "MEAT SALES",
-{'text': "MILK MARKETING",
-{'text': "PARENT STOCK",
-{'text': "PHARMACY",
-{'text': "POULTRY CAGES/SHED",
-{'text': "PREPARATION OF LAND FOR FODDER CULTIVATION",
-{'text': "RECHARGING OF WELL",
-{'text': "SINKING OF WELL",
-{'text': "SOAK PIT",
-{'text': "VALU ADDITION OF PRODUCE",
-{'text': "WORK SHED"
-{'text': "OTHERS",
-]
+final List datamgnregasupportlist = [
+
+{'text': "APIARY", "value": "APIARY"},
+{'text': "AZOLA TANK", "value": "AZOLA TANK"},
+{'text': "BIOFENCING", "value": "BIOFENCING"},
+{'text': "CATTLE FEED PRODUCTION", "value": "CATTLE FEED PRODUCTION"},
+{'text': "CATTLE SHED", "value": "CATTLE SHED"},
+{'text': "DIGGING A POND", "value": "DIGGING A POND"},
+{'text': "EGGER NURSERY", "value": "EGGER NURSERY"},
+{'text': "FODDER CULTIVATION", "value": "FODDER CULTIVATION"},
+{'text': "GOAT SHED", "value": "GOAT SHED"},
+{'text': "HATCHERY", "value": "HATCHERY"},
+{'text': "INTEGRATED FARMING", "value": "INTEGRATED FARMING"},
+{'text': "MANURE PIT", "value": "MANURE PIT"},
+{'text': "MANURE PRODUCTION", "value": "MANURE PRODUCTION"},
+{'text': "MARKETING", "value": "MARKETING"},
+{'text': "MEAT SALES", "value": "MEAT SALES"},
+{'text': "MILK MARKETING", "value": "MILK MARKETING"},
+{'text': "PARENT STOCK", "value": "PARENT STOCK"},
+{'text': "PHARMACY", "value": "PHARMACY"},
+{'text': "POULTRY CAGES/SHED", "value": "POULTRY CAGES/SHED"},
+{'text': "PREPARATION OF LAND FOR FODDER CULTIVATION", "value": "PREPARATION OF LAND FOR FODDER CULTIVATION"},
+{'text': "RECHARGING OF WELL", "value": "RECHARGING OF WELL"},
+{'text': "SINKING OF WELL", "value": "SINKING OF WELL"},
+{'text': "SOAK PIT", "value": "SOAK PIT"},
+{'text': "VALU ADDITION OF PRODUCE", "value": "VALU ADDITION OF PRODUCE"},
+{'text': "WORK SHED", "value": "WORK SHED"},
+{'text': "OTHERS", "value": "OTHERS"},
+];
 
 final List? rawmaterials = [
   {
@@ -347,9 +381,9 @@ final List? rawmaterials = [
   {'text': 'TMR', 'value': 'TMR'},
   {'text': 'GROWER', 'value': 'GROWER'},
   {'text': 'CATTLE FEED', 'value': 'CATTLE FEED'},
-  {'text': 'CAFF STARTER', 'value': 'CAFF STARTER'},
+  {'text': 'CAFL STARTER', 'value': 'CAFL STARTER'},
   {'text': 'ENERGY RICH FEED', 'value': 'ENERGY RICH FEED'},
-  {'text': 'BYPASS PROTIN', 'value': 'BYPASS PROTIN'},
+  {'text': 'BYPASS PROTEIN', 'value': 'BYPASS PROTEIN'},
   {'text': 'BYPASS FAT', 'value': 'BYPASS FAT'},
   {'text': 'TOTAL MIXED RATION', 'value': 'TOTAL MIXED RATION'},
   {'text': 'SILAGE', 'value': 'SILAGE'},

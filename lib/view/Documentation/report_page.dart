@@ -45,6 +45,7 @@ class _ReportPageState extends State<ReportPage> {
   List<String> panchaths = [];
   List<String> listpurchase = [];
   List<String> sublistlist = [];
+  List<String> selectedsupport = [];
 
   Future<void> startDownloading(
       String panchayth, String dataone, String token) async {
@@ -1248,6 +1249,7 @@ String? liveli_sublist;
       print('Error fetching fetchLivelihood_List: $e');
     }
   }
+
   Future<void> FetchLivelihood_sub_Api(String _livelihood) async {
     try {
       final response = await http.get(Uri.parse(
@@ -1268,6 +1270,104 @@ String? liveli_sublist;
       print('Error fetching FetchLivelihood_sub_Api: $e');
     }
   }
+
+  List<dynamic>  data_support= [];
+  String? datasupprt_report;
+
+  Future<void> fetchDataSupport(
+      String panchayth, String datasupport, String token) async {
+    final String url =
+        '${api}report/dataSupport?data_Panchayath=$panchayth&data_supportrecived=$datasupport';
+
+    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String business = "data_support_${timeStamp}.xlsx";
+
+    String path = await _getFilePath(business);
+    print('Download Path: $path');
+
+    // Check if the storage permission is granted
+    if (await Permission.storage.isGranted) {
+      // Permission is granted, proceed with the download
+      try {
+        Response response = await dio.download(
+          url,
+          path,
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $authToken'
+            }, // Pass the token in the request headers
+          ),
+          onReceiveProgress: (receivedBytes, totalBytes) {
+            setState(() {
+              progress = receivedBytes / totalBytes;
+            });
+            print(progress);
+          },
+          deleteOnError: true,
+        );
+        if (response.statusCode == 200) {
+          // Download successful
+          print("Download completed!");
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text('Download completed!'),
+            ),
+          );
+        } else {
+          showNoDataAvailableDialog(context);
+        }
+      } catch (e) {
+        // Handle the error here (e.g., show an error message).
+        showNoDataAvailableDialog(context);
+
+        print("Error while downloading: $e");
+      }
+    } else {
+      // Permission is not granted, request the storage permission
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        // Permission granted by the user, start the download
+        await fetchDataSupport(panchayth, datasupport, authToken!);
+      } else if (status.isPermanentlyDenied) {
+        // Permission permanently denied, show a dialog to open app settings
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Permission Required'),
+              content: const Text(
+                  'Please grant storage permission in app settings to continue.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Open Settings'),
+                  onPressed: () {
+                    openAppSettings();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    // Navigator.of(context).pop(); // Close the dialog and the downloading dialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Permission denied by the user, show an error message or handle accordingly
+        print("Permission denied by the user");
+        Navigator.pop(
+            context); // Close the dialog if the download cannot be started
+      }
+    } // Navigator.pop(context);
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -1275,6 +1375,7 @@ String? liveli_sublist;
     Fetchpurchase();
     fetchsales();
     fetchLivelihood_List();
+    // fetchDataSupport();
   }
 
 // Function to show the "No data available" AlertDialog
@@ -1610,6 +1711,51 @@ String? liveli_sublist;
                                 try {
                                   TraningRequaredd(
                                       panchayth!, traning!, authToken!);
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * .8,
+                            child: MultiSelectFormField(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide:
+                                    BorderSide(color: Colors.black)),
+                                title: Text(
+                                  'ആവശ്യമായ പിൻതുണ/സഹായം',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                dataSource: datasupprtlistss,
+                                textField: 'text',
+                                valueField: 'value',
+                                okButtonLabel: 'OK',
+                                cancelButtonLabel: 'CANCEL',
+                                // hintText: 'Please select one or more options',
+                                initialValue: data_support,
+                                onSaved: (value) {
+                                  setState(() {
+                                    data_support = value;
+                                    datasupprt_report = data_support.join(',');
+                                  });
+                                }),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                try {
+                                  fetchDataSupport(
+                                      panchayth!, datasupprt_report!, authToken!);
                                 } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
