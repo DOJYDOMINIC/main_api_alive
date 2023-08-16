@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/login.dart';
 import 'package:http/http.dart' as http;
 import 'package:multiselect_formfield/multiselect_formfield.dart';
+import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
@@ -47,6 +49,36 @@ class _ReportPageState extends State<ReportPage> {
   List<String> sublistlist = [];
   List<String> selectedsupport = [];
 
+
+  Future<void> _openDownloadLocation() async {
+    String downloadPath = "/storage/emulated/0/Download/"; // Modify this to your actual download path
+    try {
+      await OpenFile.open(downloadPath);
+    } catch (e) {
+      // Handle any errors that occur while opening the file
+      print("Error opening download location: $e");
+    }
+  }
+
+  Future<void> _notification()async{
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
+        'Download Completed', 'Notification when download is completed',
+        importance: Importance.max,
+        priority: Priority.high,
+        showWhen: false,
+        playSound: true,
+    );
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Download Completed',
+      'Your file has been downloaded successfully!',
+      platformChannelSpecifics,
+      payload: 'item_id', // You can use a relevant payload here
+    );
+  }
+
   Future<void> startDownloading(
       String panchayth, String dataone, String token) async {
     final String url =
@@ -54,7 +86,6 @@ class _ReportPageState extends State<ReportPage> {
 
     String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
     String dataclass = "dataclass_${timeStamp}.xlsx";
-
     String path = await _getFilePath(dataclass);
     print('Download Path: $path');
 
@@ -81,6 +112,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -177,7 +209,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -278,7 +310,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -371,7 +403,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -466,7 +498,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -559,7 +591,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -652,7 +684,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -743,7 +775,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -838,7 +870,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -936,7 +968,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -1033,7 +1065,7 @@ class _ReportPageState extends State<ReportPage> {
         if (response.statusCode == 200) {
           // Download successful
           print("Download completed!");
-
+          _notification();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
@@ -1422,18 +1454,23 @@ String? liveli_sublist;
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 30, bottom: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.file_copy, size: 50, color: app_theam),
-                      Text(
-                        'Report',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: app_theam),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: (){
+                      _openDownloadLocation();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.file_copy, size: 50, color: app_theam),
+                        Text(
+                          'Report',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: app_theam),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 NoSearchDropdown(

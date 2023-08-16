@@ -381,7 +381,7 @@ class _SalesState extends State<UpdateCrpDetail> {
                   controller: datnumber_of_crp_number,
                   onchanged: (value) {
                     int? valuee = int.tryParse(value);
-                    providerone.updateDataLivelihoodCowsJerseyQnty(valuee);
+                    providerone.updatPhonenumberofCRP(valuee);
                   },
                   keytype: TextInputType.number,
                 ),
@@ -460,7 +460,7 @@ class _SalesState extends State<UpdateCrpDetail> {
     dataComments.text = dataup["data_comments"];
     dataNameofcrp.text = dataup["data_nameofcrp"];
     dataNameofrespondent.text = dataup["data_Nameofrespondent"];
-    datnumber_of_crp_number.text  = dataup['Phonenumber_ofCRP'] ?? '0';
+    datnumber_of_crp_number.text  = dataup['Phonenumber_ofCRP'].toString();
     // });
   }
 
@@ -469,6 +469,11 @@ class _SalesState extends State<UpdateCrpDetail> {
     providerone.updateDataNameofcrp(dataNameofcrp.text);
     providerone.updateDataComments(dataComments.text);
     providerone.updateDataNameofrespondent(dataNameofrespondent.text);
-    providerone.updatPhonenumberofCRP(int.tryParse(datnumber_of_crp_number.text));
+    if(datnumber_of_crp_number.text == 'null'){
+      datnumber_of_crp_number.text == '0';
+      providerone.updatPhonenumberofCRP(int.tryParse(datnumber_of_crp_number.text));
+    }else{
+      providerone.updatPhonenumberofCRP(int.tryParse(datnumber_of_crp_number.text));
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
@@ -245,27 +246,43 @@ class _SalesState extends State<CrpDetail> {
     final jsonData = jsonEncode(data.toJson());
 
     try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: headers,
-        body: jsonData,
-      );
-      if (response.statusCode == 201) {
-        // Data submitted successfully
+      final isConnected = await checkInternetConnectivity();
+
+      if (!isConnected) {
+        final box = Hive.box('data_box');
+        final int key = DateTime.now().millisecondsSinceEpoch % 0xFFFFFFFF; // Ensure it's within the valid range
+        box.put(key, jsonData);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.green,
-            content: Text('Data Created successful!'),
+            backgroundColor: Colors.yellow,
+            content: Text('Data saved offline and will be synced later.'),
           ),
         );
-        log(jsonData);
-        print('..........................');
-        log(response.body);
-        print('Data submitted successfully.');
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone(),));
-
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone()));
       } else {
-        print('Failed to submit data. Status code: ${response.statusCode}');
+        final response = await http.post(
+          Uri.parse(url),
+          headers: headers,
+          body: jsonData,
+        );
+        if (response.statusCode == 201) {
+          // Data submitted successfully
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text('Data Created successful!'),
+            ),
+          );
+          log(jsonData);
+          print('..........................');
+          log(response.body);
+          print('Data submitted successfully.');
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Screenone(),));
+        } else {
+          print('Failed to submit data. Status code: ${response.statusCode}');
+        }
       }
     } catch (error) {
       print('Error occurred while submitting data: $error');
