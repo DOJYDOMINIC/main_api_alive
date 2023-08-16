@@ -216,6 +216,7 @@ class TextMain extends ChangeNotifier {
     _materialForPoultryCageFabricationQnty = 0;
     _totalMixedRationQnty = 0;
     _ureaTreatedMolassBlock =0;
+
     notifyListeners();
   }
   //
@@ -1573,6 +1574,10 @@ class TextMain extends ChangeNotifier {
 
   void updateDataLayerList(String? value) {
     layerList = value;
+    notifyListeners();
+  }
+  void updateDataLayerqty(int? value) {
+    _layerQnty = value;
     notifyListeners();
   }
 

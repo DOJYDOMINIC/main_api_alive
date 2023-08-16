@@ -40,6 +40,7 @@ class _SalesState extends State<CrpDetail> {
   }
 
   TextEditingController datacomments = TextEditingController();
+  TextEditingController datanameof_crp_number = TextEditingController();
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
@@ -300,6 +301,16 @@ class _SalesState extends State<CrpDetail> {
                     onchanged: (value) {
                       providerone.updateDataNameofcrp(value);
                     }),
+                  InputField(
+                    hint: 'CRP Phone Number',
+                    controller: datanameof_crp_number,
+                    onchanged: (value) {
+                      int? valuee = int.tryParse(value);
+                      providerone.updateDataLivelihoodCowsJerseyQnty(valuee);
+                    },
+                    keytype: TextInputType.number,
+                  ),
+
                 InputField(
                     hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
                     controller: datacomments,

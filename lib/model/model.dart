@@ -173,6 +173,7 @@ class AddData {
   String? dataPurchaseofrawmaterialsBrand;
   int? brandQnty;
   int? ureaTreatedMolassBlock;
+  int? PhonenumberofCRP;
   List<FamilyDetail>? familyDetails;
 
   AddData({
@@ -341,6 +342,7 @@ class AddData {
      this.familyDetails,
     this.ureaTreatedMolassBlock,
     this.livelihoodDUCKqnty,
+    this.PhonenumberofCRP,
   });
 
   factory AddData.fromJson(Map<String, dynamic> json) => AddData(
@@ -508,6 +510,7 @@ class AddData {
     modePurchaseofrawmaterials: List<String>.from(json["Mode_purchaseofrawmaterials"].map((x) => x)),
     dataPurchaseofrawmaterialsBrand: json["data_purchaseofrawmaterials_brand"],
     brandQnty: json["BRAND_qnty"],
+    PhonenumberofCRP : json['Phonenumber_ofCRP'],
     familyDetails: List<FamilyDetail>.from(json["familyDetails"].map((x) => FamilyDetail.fromJson(x))),
   );
 
@@ -676,7 +679,8 @@ class AddData {
     "Mode_purchaseofrawmaterials": List<dynamic>.from(modePurchaseofrawmaterials!.map((x) => x)),
     "data_purchaseofrawmaterials_brand": dataPurchaseofrawmaterialsBrand,
     "BRAND_qnty": brandQnty,
-    "familyDetails": List<dynamic>.from(familyDetails!.map((x) => x.toJson())),
+    "Phonenumber_ofCRP" : PhonenumberofCRP,
+    "familyDetails" : List<dynamic>.from(familyDetails!.map((x) => x.toJson())),
   };
 }
 

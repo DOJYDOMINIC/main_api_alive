@@ -803,6 +803,17 @@ class _UpdatePurchaseofrawmaterials
                     items: layeritems,
                     item: 'LAYER',
                   ),
+                if (layerselected != null &&
+                    layerselected!.isNotEmpty)
+                  InputField(
+                      hint: 'LAYER QTY/KG',
+                      keytype: TextInputType.number,
+                      controller: layerqty,
+                      onchanged: (value) {
+                        int? valuee = int.tryParse(value);
+                        providerone.updateDataLayerqty(valuee);
+                      }),
+
 
                 if (rawmaterial!.contains('CATTLE FEED'))
                   NoSearchDropdown(

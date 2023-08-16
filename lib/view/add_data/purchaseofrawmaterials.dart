@@ -19,13 +19,13 @@ class Purchaseofrawmaterials extends StatefulWidget {
 }
 
 class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
-  List? rawmaterial;
-  List? pulletsselected;
-  List? manureselected;
-  List? fodderslipselected;
-  List? calveslist;
-  List? heipers;
-  List? cowslist;
+  List? rawmaterial = [];
+  List? pulletsselected = [];
+  List? manureselected = [];
+  List? fodderslipselected = [];
+  List? calveslist = [];
+  List? heipers = [];
+  List? cowslist = [];
 
   String? brandselected;
   String? layerselected;
@@ -154,8 +154,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         });
                         if (value == null) return;
                         providerone
-                            .updateDataDataPurchaseofrawmaterialsItemtype(
-                                value);
+                            .updateDataDataPurchaseofrawmaterialsItemtype(value);
                       },
                     ),
                   ),
@@ -389,6 +388,16 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           int? valuee = int.tryParse(value);
                           providerone.updateDataKidStarterQnty(valuee);
                         }),
+                  if (rawmaterial != null && rawmaterial!.contains('TMR'))
+                    InputField(
+                        hint: 'TMR QTY',
+                        keytype: TextInputType.number,
+                        controller: tmr,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataTmrQnty(valuee);
+                        }),
+
                   if (rawmaterial != null && rawmaterial!.contains('LAYER'))
                     NoSearchDropdown(
                       onChanged: (value) {
@@ -400,6 +409,16 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       items: layeritems,
                       item: 'LAYER',
                     ),
+                  if (layerselected != null &&
+                      layerselected!.isNotEmpty)
+                    InputField(
+                        hint: 'LAYER QTY/KG',
+                        keytype: TextInputType.number,
+                        controller: layerqty,
+                        onchanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataLayerqty(valuee);
+                        }),
 
                   if (rawmaterial != null &&
                       rawmaterial!.contains('CATTLE FEED'))
@@ -477,15 +496,6 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   //         providerone.updateDataByPassProteinQnty(valuee);
                   //       }),
                   //
-                  if (rawmaterial != null && rawmaterial!.contains('TMR'))
-                    InputField(
-                        hint: 'TMR QTY',
-                        keytype: TextInputType.number,
-                        controller: tmr,
-                        onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateDataTmrQnty(valuee);
-                        }),
 
                   if (rawmaterial != null && rawmaterial!.contains('CALVES'))
                     Padding(

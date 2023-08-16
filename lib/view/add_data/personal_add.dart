@@ -123,7 +123,7 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController dataDistrict = TextEditingController();
   TextEditingController dataBlock = TextEditingController();
   TextEditingController dataPanchayth = TextEditingController();
-  TextEditingController dataWard = TextEditingController();
+  // TextEditingController dataWard = TextEditingController();
   TextEditingController dataClass = TextEditingController();
   TextEditingController dataClass2 = TextEditingController();
   TextEditingController dataClass3 = TextEditingController();
@@ -273,15 +273,23 @@ class _PersonalPageState extends State<PersonalPage> {
                         },
                         items: panchaths,
                         item: 'പഞ്ചായത്ത്'),
-                    InputField(
-                      hint: 'വാർഡ്',
-                      controller: dataWard,
-                      keytype: TextInputType.number,
-                      onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataWard(valuee);
-                      },
-                    ),
+
+                    NoSearchDropdown(
+                        onChanged: (value) {
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataWard(valuee);
+                        },
+                        items: ward,
+                        item: 'വാർഡ്'),
+                    // InputField(
+                    //   hint: 'വാർഡ്',
+                    //   controller: dataWard,
+                    //   keytype: TextInputType.number,
+                    //   onchanged: (value) {
+                    //     int? valuee = int.tryParse(value);
+                    //     providerone.updateDataWard(valuee);
+                    //   },
+                    // ),
                     InputField(
                       hint: 'സംരംഭകയുടെ പേര്',
                       controller: dataName,
@@ -750,6 +758,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         ],
                       ),
                     ),
+
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: MultiSelectFormField(
@@ -757,7 +766,7 @@ class _PersonalPageState extends State<PersonalPage> {
                             borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(color: Colors.black)),
                         title: Text(
-                          'ആവശ്യമായ പിൻതുണ/സഹായം ',
+                          'ആവശ്യമായ പിൻതുണ/സഹായം',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         dataSource: datasupprtlistss,
@@ -766,7 +775,7 @@ class _PersonalPageState extends State<PersonalPage> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // hintText: 'Please select one or more options',
-                        initialValue: dataSupport,
+                        // initialValue: dataSupport,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'This field is required.';

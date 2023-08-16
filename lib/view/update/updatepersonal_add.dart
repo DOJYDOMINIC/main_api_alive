@@ -15,7 +15,7 @@ import '../widgets/input_field.dart';
 import 'package:http/http.dart' as http;
 import 'updatefamilydata.dart';
 
-enum CheckboxOption { applied, sanctioned, notApplied }
+enum  CheckboxOption { applied, sanctioned, notApplied }
 
 class UpdatePersonalPage extends StatefulWidget {
   const UpdatePersonalPage({Key? key, this.items}) : super(key: key);

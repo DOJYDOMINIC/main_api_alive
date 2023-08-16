@@ -55,10 +55,10 @@ List<String> datacls3 = [
 
 List<String> salesmethod = [
   'direct',
-      'localmarket',
-      'cluster',
-      'group',
-      'wholesale',
+  'localmarket',
+  'cluster',
+  'group',
+  'wholesale',
 ];
 List<String> familyincome = [
   "below2000",
@@ -69,7 +69,7 @@ List<String> familyincome = [
   "above30000",
 ];
 
-List<String> position = ['Member', 'familymember'];
+List<String> position = ['Member', 'Family Member'];
 List<String> house = ['Own', 'Rented'];
 List<String> tf = ['Yes', 'No'];
 List<String> enterpricetype = ['Individual', 'Group'];
@@ -134,33 +134,36 @@ final List sourceofinvestment = [
 ];
 
 final List traingrequared = [
-{'text': 'Marketing','value': 'Marketing'},
-{'text': 'Beekeeping','value': 'Beekeeping'},
-{'text': 'Breeding of laying hens','value': 'Breeding of laying hens'},
-{'text': 'Broiler farming','value': 'Broiler farming'},
-{'text': 'Buffalo rearing','value': 'Buffalo rearing'},
-{'text': 'Cattle breeding','value': 'Cattle breeding'},
-{'text': 'Cattle rearing','value': 'Cattle rearing'},
-{'text': 'Cultivation of grass','value': 'Cultivation of grass'},
-{'text': 'Duck farming','value': 'Duck farming'},
-{'text': 'Egger Nursery','value': 'Egger Nursery'},
-{'text': 'Fertilizer manufacturing training','value': 'Fertilizer manufacturing training'},
-{'text': 'Fish farming','value': 'Fish farming'},
-{'text': 'Fodder manufacturing','value': 'Fodder manufacturing'},
-{'text': 'Goat rearing','value': 'Goat rearing'},
-{'text': 'Hatchery','value': 'Hatchery'},
-{'text': 'integrated farming','value': 'integrated farming'},
-{'text': 'Keeping pets','value': 'Keeping pets'},
-{'text': 'Management','value': 'Management'},
-{'text': 'Marketing of milk','value': 'Marketing of milk'},
-{'text': 'Meat sales','value': 'Meat sales'},
-{'text': 'Parent stoke','value': 'Parent stoke'},
-{'text': 'Pharmacy','value': 'Pharmacy'},
-{'text': 'Pig farming','value': 'Pig farming'},
-{'text': 'Quailb reeding','value': 'Quailb reeding'},
-{'text': 'Raising Pet Birds','value': 'Raising Pet Birds'},
-{'text': 'Value product creation','value': 'Value product creation'},
-  {'text': 'Other','value': 'Other'},
+  {'text': 'Marketing', 'value': 'Marketing'},
+  {'text': 'Beekeeping', 'value': 'Beekeeping'},
+  {'text': 'Breeding of laying hens', 'value': 'Breeding of laying hens'},
+  {'text': 'Broiler farming', 'value': 'Broiler farming'},
+  {'text': 'Buffalo rearing', 'value': 'Buffalo rearing'},
+  {'text': 'Cattle breeding', 'value': 'Cattle breeding'},
+  {'text': 'Cattle rearing', 'value': 'Cattle rearing'},
+  {'text': 'Cultivation of grass', 'value': 'Cultivation of grass'},
+  {'text': 'Duck farming', 'value': 'Duck farming'},
+  {'text': 'Egger Nursery', 'value': 'Egger Nursery'},
+  {
+    'text': 'Fertilizer manufacturing training',
+    'value': 'Fertilizer manufacturing training'
+  },
+  {'text': 'Fish farming', 'value': 'Fish farming'},
+  {'text': 'Fodder manufacturing', 'value': 'Fodder manufacturing'},
+  {'text': 'Goat rearing', 'value': 'Goat rearing'},
+  {'text': 'Hatchery', 'value': 'Hatchery'},
+  {'text': 'integrated farming', 'value': 'integrated farming'},
+  {'text': 'Keeping pets', 'value': 'Keeping pets'},
+  {'text': 'Management', 'value': 'Management'},
+  {'text': 'Marketing of milk', 'value': 'Marketing of milk'},
+  {'text': 'Meat sales', 'value': 'Meat sales'},
+  {'text': 'Parent stoke', 'value': 'Parent stoke'},
+  {'text': 'Pharmacy', 'value': 'Pharmacy'},
+  {'text': 'Pig farming', 'value': 'Pig farming'},
+  {'text': 'Quailb reeding', 'value': 'Quailb reeding'},
+  {'text': 'Raising Pet Birds', 'value': 'Raising Pet Birds'},
+  {'text': 'Value product creation', 'value': 'Value product creation'},
+  {'text': 'Other', 'value': 'Other'},
 ];
 
 // final List datasupprtlistss = [
@@ -218,7 +221,7 @@ final List traingrequared = [
 final List datasupprtlistss = [
   {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
   {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
-  {'text': ' സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
+  {'text': 'സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
   {'text': 'പഞ്ചായത്ത് രജിസ്ട്രേഷൻ', 'value': 'Panchayat Registration'},
   {'text': 'FSSI', 'value': 'FSSI'},
   {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
@@ -239,7 +242,7 @@ final List datasupprtlistss = [
   {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
   {'text': 'പാൻ കാർഡ്', 'value': 'Pan Card'},
   {'text': 'ആധാർ മൊബൈൽ ലിങ്ക്', 'value': 'Aadhar Mobile Link'},
-  {'text': ' അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
+  {'text': 'അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
   {'text': 'ട്രേഡ് മാർക്ക്', 'value': 'Trad Mark'},
   {'text': 'സോൾ പ്രൊപ്രൈറ്റർ ഷിപ്പ്', 'value': 'Sole Propritership'},
   {'text': 'എൽ.എൽ.പി', 'value': 'LLP'},
@@ -257,7 +260,6 @@ final List datasupprtlistss = [
   {'text': 'കിസാൻ ക്രഡിറ്റ്', 'value': 'Kissan Credit'},
   {'text': 'പ്രൊജക്ട് തയ്യാറാക്കൽ', 'value': 'Project Preparation'},
   {'text': 'കാലിത്തീറ്റ വാങ്ങൽ', 'value': 'Purchase of fodder'},
-  {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
   {'text': 'വെർമി കമ്പോസ്റ്റ്', 'value': 'Vermicompost'},
   {'text': 'ഉപകരണങ്ങൾ വാങ്ങൽ', 'value': 'Purchase of equipment'},
   {'text': 'തൊഴിൽ കാർഡ്', 'value': 'Job Card'},
@@ -284,9 +286,44 @@ final List datamgnregasupportlist = [
   // {'text': 'other','value': 'source'},
 ];
 
+[
+{'text': "APIARY",
+{'text': "AZOLA TANK",
+{'text': "BIOFENCING",
+{'text': "CATTLE FEED PRODUCTION",
+{'text': "CATTLE SHED",
+{'text': "DIGGING A POND",
+{'text': "EGGER NURSERY",
+{'text': "FODDER CULTIVATION",
+{'text': "GOAT SHED",
+{'text': "HATCHERY",
+{'text': "INTEGRATED FARMING",
+{'text': "MANURE PIT",
+{'text': "MANURE PRODUCTION",
+{'text': "MARKETING",
+{'text': "MEAT SALES",
+{'text': "MILK MARKETING",
+{'text': "PARENT STOCK",
+{'text': "PHARMACY",
+{'text': "POULTRY CAGES/SHED",
+{'text': "PREPARATION OF LAND FOR FODDER CULTIVATION",
+{'text': "RECHARGING OF WELL",
+{'text': "SINKING OF WELL",
+{'text': "SOAK PIT",
+{'text': "VALU ADDITION OF PRODUCE",
+{'text': "WORK SHED"
+{'text': "OTHERS",
+]
+
 final List? rawmaterials = [
-  {'text': 'INGREDIENTS FOR CATTLE FEED', 'value': 'INGREDIENTS FOR CATTLE FEED'},
-  {'text': 'INGREDIENTS FOR POULTRY FEED', 'value': 'INGREDIENTS FOR POULTRY FEED'},
+  {
+    'text': 'INGREDIENTS FOR CATTLE FEED',
+    'value': 'INGREDIENTS FOR CATTLE FEED'
+  },
+  {
+    'text': 'INGREDIENTS FOR POULTRY FEED',
+    'value': 'INGREDIENTS FOR POULTRY FEED'
+  },
   {'text': 'PULLETS', 'value': 'PULLETS'},
   {'text': 'MANURE', 'value': 'MANURE'},
   {'text': 'CHEMICAL FERTILIZERS', 'value': 'CHEMICAL FERTILIZERS'},
@@ -300,7 +337,10 @@ final List? rawmaterials = [
   {'text': 'COWS', 'value': 'COWS'},
   {'text': 'MALABARI GOATS', 'value': 'MALABARI GOATS'},
   {'text': 'MALABARI GOAT-KIDS', 'value': 'MALABARI GOAT-KIDS'},
-  {'text': 'MATERIAL FOR POULTRY CAGE FABRICATION', 'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'},
+  {
+    'text': 'MATERIAL FOR POULTRY CAGE FABRICATION',
+    'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'
+  },
   {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
   {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
   {'text': 'LAYER', 'value': 'LAYER'},
@@ -339,7 +379,7 @@ final List? calves = [
   {'text': 'NO Value', 'value': ''}
 
 ];
-final List?  heifers= [
+final List? heifers = [
   {'text': 'H F', 'value': 'HEIFERS-H F'},
   {'text': 'GERSEY', 'value': 'HEIFERS-GERSEY'},
   {'text': 'NO Value', 'value': ''}
@@ -395,15 +435,15 @@ List<String> layeritems = [
 
 
 final List? livelihoods = [
-{'text': "BUFFALO", 'value':"BUFFALO",},
-{'text': "CALF", 'value':"CALF",},
-{'text': "COW", 'value': "COW",},
-{'text': "DUCK", 'value':"DUCK",},
-{'text': "FODDER", 'value': "FODDER",},
-{'text': "GOAT", 'value':"GOAT",},
-{'text': "MANURE", 'value':"MANURE",},
-{'text': "POULTRY",'value':"POULTRY",},
-{'text' :"POULTRY MANURE",'value':"POULTRY MANURE",},
+  {'text': "BUFFALO", 'value': "BUFFALO",},
+  {'text': "CALF", 'value': "CALF",},
+  {'text': "COW", 'value': "COW",},
+  {'text': "DUCK", 'value': "DUCK",},
+  {'text': "FODDER", 'value': "FODDER",},
+  {'text': "GOAT", 'value': "GOAT",},
+  {'text': "MANURE", 'value': "MANURE",},
+  {'text': "POULTRY", 'value': "POULTRY",},
+  {'text': "POULTRY MANURE", 'value': "POULTRY MANURE",},
   {'text': 'NO Value', 'value': ''},
 
 ];
@@ -481,39 +521,80 @@ final List? cowlist = [
 ];
 
 final List? calfgender = [
-  {'text':"FEMALE", 'value' : "FEMALE"},
-  {'text':"MALE", 'value' : "MALE"},
+  {'text': "FEMALE", 'value': "FEMALE"},
+  {'text': "MALE", 'value': "MALE"},
   {'text': 'NO Value', 'value': ''},
 ];
 
 
 final List? fooderitems = [
-  {'text': "FOR SALE",'value': "FOR SALE",},
-  {'text': "OWN USE",'value': "OWN USE"},
+  {'text': "FOR SALE", 'value': "FOR SALE",},
+  {'text': "OWN USE", 'value': "OWN USE"},
   {'text': 'NO Value', 'value': ''},
 
 ];
 
 final List? goatlist = [
-  {'text': "ATTAPADI BLACK",'value': "ATTAPADI BLACK"},
-  {'text': "ATTAPADI BLACK KID",'value': "ATTAPADI BLACK KID"},
-  {'text': "MALABARI",'value': "MALABARI"},
-  {'text': "MALABARI KID",'value': "MALABARI KID"},
-  {'text': "OTHERS",'value': "OTHERS"},
+  {'text': "ATTAPADI BLACK", 'value': "ATTAPADI BLACK"},
+  {'text': "ATTAPADI BLACK KID", 'value': "ATTAPADI BLACK KID"},
+  {'text': "MALABARI", 'value': "MALABARI"},
+  {'text': "MALABARI KID", 'value': "MALABARI KID"},
+  {'text': "OTHERS", 'value': "OTHERS"},
   {'text': 'NO Value', 'value': ''}
 
 ];
 
 final List? manuritems = [
-  {'text': "DRY",'value': "DRY",},
-  {'text': "FRESH",'value': "FRESH"},
+  {'text': "DRY", 'value': "DRY",},
+  {'text': "FRESH", 'value': "FRESH"},
   {'text': 'NO Value', 'value': ''}
 ];
 
 
 final List? poultrylist = [
-  {'text': "EGG PRODUCTION",'value':"EGG PRODUCTION" },
-  { 'text':"MARKETING", 'value':"MARKETING"},
+  {'text': "EGG PRODUCTION", 'value': "EGG PRODUCTION"},
+  { 'text': "MARKETING", 'value': "MARKETING"},
   {'text': 'NO Value', 'value': ''}
+
+
+];
+
+final List<String> ward =
+[
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+  "30",
+  "31",
+  "32",
+  "33",
+  "34",
+  "35",
 
 ];
