@@ -237,7 +237,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                   ),
                 if (calfgenderlist.contains('FEMALE'))
                   InputField(
-                    hint: 'FEMALE Qty',
+                    hint: 'FEMALE NUMBERS',
                     controller: livelihoodCalfFemaleQnty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
@@ -247,7 +247,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                   ),
                 if (calfgenderlist.contains('MALE'))
                   InputField(
-                    hint: 'MALE Qty',
+                    hint: 'MALE NUMBERS',
                     controller: livelihoodCalfMaleQnty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
@@ -489,7 +489,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
 
                 if (poultrylistselcted.contains('EGG PRODUCTION'))
                   InputField(
-                    hint: 'EGG PRODUCTION Qty',
+                    hint: 'EGG PRODUCTION NUMBERS',
                     controller: livelihoodPoultryEggProductionQnty,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);

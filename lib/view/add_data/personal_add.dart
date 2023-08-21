@@ -6,6 +6,7 @@ import 'package:main200623/model/model.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../control/text_controller.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
@@ -35,6 +36,7 @@ class _PersonalPageState extends State<PersonalPage> {
   void initState() {
     super.initState();
     fetchDistricts();
+    getSavedData();
   }
 
   List<String> districts = []; // Declare a global list variable
@@ -149,6 +151,10 @@ class _PersonalPageState extends State<PersonalPage> {
   String cdsName = '';
   String? group;
 
+  String? panchayth_;
+  String? district_;
+  String? block_;
+
   CheckboxOption selectedOption = CheckboxOption.notApplied;
   String totalInvestment = '';
   String dateOfLoanApplication = '';
@@ -215,6 +221,28 @@ class _PersonalPageState extends State<PersonalPage> {
     // print(yearagriculture);
   }
 
+  Future<void> getSavedData() async {
+    var providerone = Provider.of<TextMain>(context, listen: false);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String authToken = prefs.getString('authToken') ?? '';
+    String email = prefs.getString('email') ?? '';
+    String name = prefs.getString('name') ?? '';
+    String district = prefs.getString('district') ?? '';
+    String block = prefs.getString('block') ?? '';
+    String panchayath = prefs.getString('panchayath') ?? '';
+
+    if(panchayath != null || panchayath.isNotEmpty){
+      panchayth_ = panchayath;
+      block_ = block;
+      district_ = district;
+      providerone.updateDataDistrict(district_);
+      providerone.updateDataBlock(block_);
+      providerone.updateDataPanchayath(panchayth_);
+
+    }
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -240,39 +268,84 @@ class _PersonalPageState extends State<PersonalPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(children: [
-                    NoSearchDropdown(
-                      items: districts,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedDistrict = value;
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$district_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+                    SizedBox(height: 10,),
 
-                          fetchBlocks(selectedDistrict!);
-                        });
-                        providerone.updateDataDistrict(value);
-                      },
-                      item: 'ജില്ല',
-                    ),
-                    NoSearchDropdown(
-                      onChanged: (value) {
-                        setState(() {
-                          selectedBlocks = value;
-                          fetchPanchayth(selectedBlocks!);
-                        });
-                        providerone.updateDataBlock(value);
-                      },
-                      item: 'ബ്ലോക്ക്',
-                      items: blocks,
-                    ),
-                    NoSearchDropdown(
-                        onChanged: (value) {
-                          // setState(() {
-                          //   selectedBlocks = value;
-                          //   fetchPanchayth(selectedBlocks!);
-                          // });
-                          providerone.updateDataPanchayath(value);
-                        },
-                        items: panchaths,
-                        item: 'പഞ്ചായത്ത്'),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$block_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+                    SizedBox(height: 10,),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$panchayth_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+                    // NoSearchDropdown(
+                    //   items: districts,
+                    //   onChanged: (value) {
+                    //     setState(() {
+                    //       selectedDistrict = value;
+                    //
+                    //       fetchBlocks(selectedDistrict!);
+                    //     });
+                    //     providerone.updateDataDistrict(value);
+                    //   },
+                    //   item: 'ജില്ല',
+                    // ),
+                    // NoSearchDropdown(
+                    //   onChanged: (value) {
+                    //     setState(() {
+                    //       selectedBlocks = value;
+                    //       fetchPanchayth(selectedBlocks!);
+                    //     });
+                    //     providerone.updateDataBlock(value);
+                    //   },
+                    //   item: 'ബ്ലോക്ക്',
+                    //   items: blocks,
+                    // ),
+                    // NoSearchDropdown(
+                    //     onChanged: (value) {
+                    //       // setState(() {
+                    //       //   selectedBlocks = value;
+                    //       //   fetchPanchayth(selectedBlocks!);
+                    //       // });
+                    //       providerone.updateDataPanchayath(value);
+                    //     },
+                    //     items: panchaths,
+                    //     item: 'പഞ്ചായത്ത്'),
 
                     NoSearchDropdown(
                         onChanged: (value) {
@@ -420,6 +493,12 @@ class _PersonalPageState extends State<PersonalPage> {
                           okButtonLabel: 'OK',
                           cancelButtonLabel: 'CANCEL',
                           // hintText: 'Please select one or more options',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'This field is required';
+                            }
+                            return null;
+                          },
                           initialValue: dataAnimalhusbendaryBusinesstype,
                           onSaved: (value) {
                             setState(() {
@@ -814,7 +893,7 @@ class _PersonalPageState extends State<PersonalPage> {
                               borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(color: Colors.black)),
                           title: Text(
-                            'പരിശീലനം വേണ്ട മേഖല ',
+                            'പരിശീലനം വേണ്ട മേഖല',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           dataSource:traingrequared,
@@ -870,13 +949,13 @@ class _PersonalPageState extends State<PersonalPage> {
 
                     ElevateClick(
                         ontap: () {
-                          // if (_formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FamilyData(),
                                 ));
-                          // }
+                          }
                         },
                         text: 'Next'),
                   ]),

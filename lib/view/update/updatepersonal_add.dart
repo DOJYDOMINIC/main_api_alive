@@ -5,6 +5,7 @@ import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../control/text_controller.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
@@ -15,7 +16,7 @@ import '../widgets/input_field.dart';
 import 'package:http/http.dart' as http;
 import 'updatefamilydata.dart';
 
-enum  CheckboxOption { applied, sanctioned, notApplied }
+enum CheckboxOption { applied, sanctioned, notApplied }
 
 class UpdatePersonalPage extends StatefulWidget {
   const UpdatePersonalPage({Key? key, this.items}) : super(key: key);
@@ -37,6 +38,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     fetchDistricts();
     getData();
     Register();
+    getSavedData();
   }
 
   Register() {
@@ -52,11 +54,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
       final response = await http.get(Uri.parse('${api}user/district'));
 
       if (response.statusCode == 200) {
+        changeData();
         final data = json.decode(response.body);
         setState(() {
-          districts = List<String>.from(data);// Assign fetched data to the global list
+          districts =
+              List<String>.from(data); // Assign fetched data to the global list
         });
-        changeData();
       } else {
         throw Exception('Failed to fetch districts');
       }
@@ -135,6 +138,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? dataBlock;
   String? dataPanchayath;
   String? dataClass;
+  String? dataWard;
   String? dataClass2;
   List dataClass3 = [];
   String? dataFamilyincome;
@@ -145,10 +149,13 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   String? dataInfraWastage;
   String? dataInfraBiogas;
   String? dataInfraEquipments;
+  String? panchayth_;
+  String? district_;
+  String? block_;
 
   String? dataAnimalhusbendarycdsregistration;
 
-  TextEditingController dataWard = TextEditingController();
+  // TextEditingController dataWard = TextEditingController();
   TextEditingController dataName = TextEditingController();
   TextEditingController dataAddress = TextEditingController();
   TextEditingController dataPhonenumber = TextEditingController();
@@ -242,6 +249,23 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     // print(yearagriculture);
   }
 
+  Future<void> getSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String authToken = prefs.getString('authToken') ?? '';
+    String email = prefs.getString('email') ?? '';
+    String name = prefs.getString('name') ?? '';
+    String district = prefs.getString('district') ?? '';
+    String block = prefs.getString('block') ?? '';
+    String panchayath = prefs.getString('panchayath') ?? '';
+
+    if(panchayath != null || panchayath.isNotEmpty){
+      panchayth_ = panchayath;
+      block_ = block;
+      district_ = district;
+    }
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -268,53 +292,98 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                 // key: _formKey,
                 child: Column(
                   children: [
-                    NoSearchDropdown(
-                      items: districts,
-                      selecteditem: dataDistrict,
-                      onChanged: (value) {
-                          setState(() {
-                            dataDistrict = value;
-                            fetchBlocks(dataDistrict!);
-                          });
-                        // print(id);
-                        // });
-                        providerone.updateDataDistrict(value);
-                      },
-                      item: 'ജില്ല',
-                    ),
-                    NoSearchDropdown(
-                      selecteditem: dataBlock,
-                      onChanged: (value) {
-                        setState(() {
-                          dataBlock = value;
-                          fetchPanchayth(dataBlock!);
-                        });
+                    // NoSearchDropdown(
+                    //   items: districts,
+                    //   selecteditem: dataDistrict,
+                    //   onChanged: (value) {
+                    //     setState(() {
+                    //       dataDistrict = value;
+                    //       fetchBlocks(dataDistrict!);
+                    //     });
+                    //     // print(id);
+                    //     // });
+                    //     providerone.updateDataDistrict(value);
+                    //   },
+                    //   item: 'ജില്ല',
+                    // ),
+                    // NoSearchDropdown(
+                    //   selecteditem: dataBlock,
+                    //   onChanged: (value) {
+                    //     setState(() {
+                    //       dataBlock = value;
+                    //       fetchPanchayth(dataBlock!);
+                    //     });
+                    //
+                    //     providerone.updateDataBlock(value);
+                    //   },
+                    //   item: 'ബ്ലോക്ക്',
+                    //   items: blocks,
+                    // ),
+                    // NoSearchDropdown(
+                    //     selecteditem: dataPanchayath,
+                    //     onChanged: (value) {
+                    //       // setState(() {
+                    //       //   selectedBlocks = value;
+                    //       //   fetchPanchayth(selectedBlocks!);
+                    //       // });
+                    //       providerone.updateDataPanchayath(value);
+                    //     },
+                    //     items: panchaths,
+                    //     item: 'പഞ്ചായത്ത്'),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$district_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+                    SizedBox(height: 10,),
 
-                        providerone.updateDataBlock(value);
-                      },
-                      item: 'ബ്ലോക്ക്',
-                      items: blocks,
-                    ),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$block_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+                    SizedBox(height: 10,),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.black)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text('$panchayth_',style: TextStyle(fontSize: 15),),
+                            ],
+                          ),
+                        )),
+
                     NoSearchDropdown(
-                        selecteditem: dataPanchayath,
+                      selecteditem: dataWard,
                         onChanged: (value) {
-                          // setState(() {
-                          //   selectedBlocks = value;
-                          //   fetchPanchayth(selectedBlocks!);
-                          // });
-                          providerone.updateDataPanchayath(value);
+                          int? valuee = int.tryParse(value);
+                          providerone.updateDataWard(valuee);
                         },
-                        items: panchaths,
-                        item: 'പഞ്ചായത്ത്'),
-                    InputField(
-                      hint: 'വാർഡ്',
-                      controller: dataWard,
-                      keytype: TextInputType.number,
-                      onchanged: (value) {
-                        int? valuee = int.tryParse(value);
-                        providerone.updateDataWard(valuee);
-                      },
-                    ),
+                        items: ward,
+                        item: 'വാർഡ്'),
                     InputField(
                       hint: 'സംരംഭകയുടെ പേര്',
                       controller: dataName,
@@ -377,9 +446,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // hintText: 'Please select one or more options',
-                        initialValue: options.contains(dataClass3)
-                            ? dataClass3
-                            : [],
+                        initialValue:
+                            options.contains(dataClass3) ? dataClass3 : [],
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'This field is required';
@@ -472,7 +540,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           },
                           initialValue: animalhusbendaryBusinesstype
                                       .isNotEmpty &&
-                              businesstype.contains(animalhusbendaryBusinesstype)
+                                  businesstype
+                                      .contains(animalhusbendaryBusinesstype)
                               ? animalhusbendaryBusinesstype
                               : [],
                           onSaved: (value) {
@@ -706,8 +775,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             return null;
                           },
                           initialValue: dataSourceofinvestment.isNotEmpty &&
-                              sourceofinvestment.contains(dataSourceofinvestment)
-                              ? dataSourceofinvestment : [],
+                                  sourceofinvestment
+                                      .contains(dataSourceofinvestment)
+                              ? dataSourceofinvestment
+                              : [],
                           onSaved: (value) {
                             setState(() {
                               // dataSourceofinvestment = value;
@@ -898,7 +969,8 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return null;
                         },
-                        initialValue: dataSupport.isNotEmpty && dataSupport.contains(datasupprtlistss)
+                        initialValue: dataSupport.isNotEmpty &&
+                                dataSupport.contains(datasupprtlistss)
                             ? dataSupport
                             : [],
                         onSaved: (value) {
@@ -957,7 +1029,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                             }
                             return null;
                           },
-                          initialValue: _dataTrainingsrequired.isNotEmpty && traingrequared.contains(_dataTrainingsrequired)?_dataTrainingsrequired : [] ,
+                          initialValue: _dataTrainingsrequired.isNotEmpty &&
+                                  traingrequared
+                                      .contains(_dataTrainingsrequired)
+                              ? _dataTrainingsrequired
+                              : [],
                           onSaved: (value) {
                             try {
                               providerone.updateDataTrainingsrequired(value);
@@ -995,7 +1071,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           }
                           return '';
                         },
-                        initialValue:dataMgnregAsupport.isNotEmpty && datamgnregasupportlist.contains(dataMgnregAsupport.toList())? dataMgnregAsupport : [],
+                        initialValue: dataMgnregAsupport.isNotEmpty &&
+                                datamgnregasupportlist
+                                    .contains(dataMgnregAsupport.toList())
+                            ? dataMgnregAsupport
+                            : [],
                         onSaved: (value) {
                           providerone.updateDataMgnregAsupport(value);
                         },
@@ -1048,7 +1128,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     dataDistrict = dataup['data_district'];
     dataBlock = dataup['data_Block'];
     dataPanchayath = dataup['data_Panchayath'];
-    dataWard.text = dataup["data_Ward"].toString();
+    dataWard = dataup["data_Ward"].toString();
     dataName.text = dataup["data_Name"].toString();
     dataAddress.text = dataup["data_Address"].toString();
     dataPhonenumber.text = dataup["data_Phonenumber"].toString();
@@ -1105,29 +1185,31 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataMgnregAsupport(dataMgnregAsupport);
     providerone.updateDataSupport(dataSupport);
 
-      providerone.updateDataTrainingsrequired(_dataTrainingsrequired);
+    providerone.updateDataTrainingsrequired(_dataTrainingsrequired);
     providerone.updateDataClass3(dataClass3);
 
     providerone.updateDataDistrict(dataDistrict);
     providerone.updateDataBlock(dataBlock);
     providerone.updateDataPanchayath(dataPanchayath);
 
-    if (dataWard.text == null || dataWard.text == 'null') {
-      dataWard.text = "0";
-      providerone.updateDataTotalinvestment(int.parse(dataWard.text));
+    if (dataWard == 'null') {
+      dataWard == 0;
+      providerone.updateDataWard(int.tryParse(dataWard.toString()));
     } else {
-      providerone.updateDataTotalinvestment(int.parse(dataWard.text));
+      providerone.updateDataWard(int.tryParse(dataWard.toString()));
     }
 
     providerone.updateDataName(dataName.text);
     providerone.updateDataAddress(dataAddress.text);
 
-    if (dataPhonenumber.text == null || dataPhonenumber.text == 'null') {
-      dataPhonenumber.text = "0";
-      providerone.updateDataTotalinvestment(int.parse(dataPhonenumber.text));
+    if (dataPhonenumber.text == 'null') {
+      dataPhonenumber.text == '0';
+      providerone.updateDataPhonenumber(int.tryParse(dataPhonenumber.text));
+
     } else {
-      providerone.updateDataTotalinvestment(int.parse(dataPhonenumber.text));
+      providerone.updateDataPhonenumber(int.tryParse(dataPhonenumber.text));
     }
+
     providerone.updateDataClass(dataClass);
     providerone.updateDataClass2(dataClass2);
     providerone.updateDataFamilyincome(dataFamilyincome);
@@ -1137,24 +1219,22 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataRoleinNg(dataRoleinNg);
     providerone.updateDataHouseownership(dataHouseOwnership);
 
-    if (datalanddetailslandarea.text == null ||
-        datalanddetailslandarea.text == 'null') {
-      datalanddetailslandarea.text = "0";
+    if (datalanddetailslandarea.text == 'null') {
+      datalanddetailslandarea.text == "0";
       providerone
-          .updateDataTotalinvestment(int.parse(datalanddetailslandarea.text));
+          .updateDataLanddetailsLandarea(int.tryParse(datalanddetailslandarea.text));
     } else {
       providerone
-          .updateDataTotalinvestment(int.parse(datalanddetailslandarea.text));
+          .updateDataLanddetailsLandarea(int.tryParse(datalanddetailslandarea.text));
     }
 
-    if (datalanddetailsagricultureland.text == null ||
-        datalanddetailsagricultureland.text == 'null') {
-      datalanddetailsagricultureland.text = "0";
-      providerone.updateDataTotalinvestment(
-          int.parse(datalanddetailsagricultureland.text));
+    if (datalanddetailsagricultureland.text == 'null') {
+      datalanddetailsagricultureland.text == "0";
+      providerone.updateDataLanddetailsAgricultureland(
+          int.tryParse(datalanddetailsagricultureland.text));
     } else {
-      providerone.updateDataTotalinvestment(
-          int.parse(datalanddetailsagricultureland.text));
+      providerone.updateDataLanddetailsAgricultureland(
+          int.tryParse(datalanddetailsagricultureland.text));
     }
 
     providerone.updateDataEnterpisetype(dataEnterpisetype);
@@ -1163,11 +1243,11 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataYearofstartingagriculture(
         dataYearofstartingagriculture.text);
 
-    if (dataAmountinvested.text == null || dataAmountinvested.text == 'null') {
-      dataAmountinvested.text = "0";
-      providerone.updateDataTotalinvestment(int.parse(dataAmountinvested.text));
+    if (dataAmountinvested.text == 'null') {
+      dataAmountinvested.text == "0";
+      providerone.updateDataAmountinvested(int.tryParse(dataAmountinvested.text));
     } else {
-      providerone.updateDataTotalinvestment(int.parse(dataAmountinvested.text));
+      providerone.updateDataAmountinvested(int.tryParse(dataAmountinvested.text));
     }
     providerone.updateDataSupportrecived(dataSupportrecived.text);
     providerone.updateDataInfraShed(dataInfraShed);
@@ -1183,44 +1263,38 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone
         .updateDataAnimalhusbendaryOthers0(dataAnimalhusbendaryothers0.text);
 
-    if (datanumberofgroupmembers.text == null ||
-        datanumberofgroupmembers.text == 'null') {
-      datanumberofgroupmembers.text = "0";
+    if (datanumberofgroupmembers.text == 'null') {
+      datanumberofgroupmembers.text == "0";
       providerone
-          .updateDataNoofgroupmembers(int.parse(datanumberofgroupmembers.text));
+          .updateDataNoofgroupmembers(int.tryParse(datanumberofgroupmembers.text));
     } else {
       providerone
-          .updateDataNoofgroupmembers(int.parse(datanumberofgroupmembers.text));
+          .updateDataNoofgroupmembers(int.tryParse(datanumberofgroupmembers.text));
     }
 
-    if (dataloandetailstotalinvestment.text == null ||
-        dataloandetailstotalinvestment.text == 'null') {
-      dataloandetailstotalinvestment.text = "0";
-      providerone.updateDataTotalinvestment(
-          int.parse(dataloandetailstotalinvestment.text));
+    if (dataloandetailstotalinvestment.text == 'null') {
+      dataloandetailstotalinvestment.text == "0";
+      providerone.UpdateDtaLoandetailsTotalinvestment(int.tryParse(dataloandetailstotalinvestment.text));
     } else {
-      providerone.updateDataTotalinvestment(
-          int.parse(dataloandetailstotalinvestment.text));
+      providerone.UpdateDtaLoandetailsTotalinvestment(int.tryParse(dataloandetailstotalinvestment.text));
     }
 
-    if (dataLanddetails1Qtyofownland.text == null ||
-        dataLanddetails1Qtyofownland.text == 'null') {
-      dataLanddetails1Qtyofownland.text = "0";
-      providerone.updateDataNoofgroupmembers(
-          int.parse(dataLanddetails1Qtyofownland.text));
+    if (dataLanddetails1Qtyofownland.text == 'null') {
+      dataLanddetails1Qtyofownland.text == "0";
+      providerone.updateDataLanddetails1Qtyofownland(
+          int.tryParse(dataLanddetails1Qtyofownland.text));
     } else {
-      providerone.updateDataNoofgroupmembers(
-          int.parse(dataLanddetails1Qtyofownland.text));
+      providerone.updateDataLanddetails1Qtyofownland(
+          int.tryParse(dataLanddetails1Qtyofownland.text));
     }
 
-    if (dataLanddetails1Qtyofleasedland.text == null ||
-        dataLanddetails1Qtyofleasedland.text == 'null') {
-      dataLanddetails1Qtyofleasedland.text = "0";
-      providerone.updateDataNoofgroupmembers(
-          int.parse(dataLanddetails1Qtyofleasedland.text));
+    if (dataLanddetails1Qtyofleasedland.text == 'null') {
+      dataLanddetails1Qtyofleasedland.text == "0";
+      providerone.updateDataLanddetails1Qtyofleasedland(
+          int.tryParse(dataLanddetails1Qtyofleasedland.text));
     } else {
-      providerone.updateDataNoofgroupmembers(
-          int.parse(dataLanddetails1Qtyofleasedland.text));
+      providerone.updateDataLanddetails1Qtyofleasedland(
+          int.tryParse(dataLanddetails1Qtyofleasedland.text));
     }
     DateTime currentDate = DateTime.now();
     String formattedDate = DateFormat('yyyy-MM-dd').format(currentDate);

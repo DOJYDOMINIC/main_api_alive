@@ -38,7 +38,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   TextEditingController ingredientsForCattleFeedQntyn = TextEditingController();
   TextEditingController addDataTreeFooderQnty = TextEditingController();
   // TextEditingController addDataUreaTreatedStrawQnty = TextEditingController();
-  TextEditingController caffStarterQnty = TextEditingController();
+  TextEditingController calfStarterQnty = TextEditingController();
   TextEditingController chemicalFertilizersQnty = TextEditingController();
   TextEditingController fodderSeedsQnty = TextEditingController();
   TextEditingController grassFooderQnty = TextEditingController();
@@ -61,7 +61,6 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
   TextEditingController vermycompostqnty = TextEditingController();
   TextEditingController napier = TextEditingController();
   TextEditingController milmaqty = TextEditingController();
-
   TextEditingController cattlefeedqty = TextEditingController();
   TextEditingController co4 = TextEditingController();
   TextEditingController co5 = TextEditingController();
@@ -161,7 +160,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('INGREDIENTS FOR CTTLE FEED'))
                     InputField(
-                        hint: 'INGREDIENTS FOR CTTLE FEED QTY',
+                        hint: 'INGREDIENTS FOR CTTLE FEED (Qty)',
                         keytype: TextInputType.number,
                         controller: ingredientsForCattleFeedQntyn,
                         onchanged: (value) {
@@ -171,7 +170,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('INGREDIENTS FOR POULTRY FEED'))
                     InputField(
-                        hint: 'INGREDIENTS FOR POULTRY FEED QTY',
+                        hint: 'INGREDIENTS FOR POULTRY FEED (Qty)',
                         keytype: TextInputType.number,
                         controller: ingredientsForPoultryFeedQnty,
                         onchanged: (value) {
@@ -182,7 +181,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('CHEMICAL FERTILIZERS'))
                     InputField(
-                        hint: 'CHEMICAL FERTILIZERS QTY',
+                        hint: 'CHEMICAL FERTILIZERS (Qty)',
                         keytype: TextInputType.number,
                         controller: chemicalFertilizersQnty,
                         onchanged: (value) {
@@ -192,7 +191,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('FODDER SEEDS'))
                     InputField(
-                        hint: 'FODDER SEEDS QTY',
+                        hint: 'FODDER SEEDS (Qty)',
                         keytype: TextInputType.number,
                         controller:fodderSeedsQnty,
                         onchanged: (value) {
@@ -202,7 +201,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('GRASS FOODER'))
                     InputField(
-                        hint: 'GRASS FOODER QTY',
+                        hint: 'GRASS FOODER (Qty)',
                         keytype: TextInputType.number,
                         controller:grassFooderQnty,
                         onchanged: (value) {
@@ -212,7 +211,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('TREE FOODER'))
                     InputField(
-                        hint: 'TREE FOODER QTY',
+                        hint: 'TREE FOODER (Qty)',
                         keytype: TextInputType.number,
                         controller:addDataTreeFooderQnty,
                         onchanged: (value) {
@@ -222,7 +221,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MALABARI GOAT-KIDS'))
                     InputField(
-                        hint: 'MALABARI GOAT-KIDS QTY',
+                        hint: 'MALABARI GOAT-KIDS (Qty)',
                         keytype: TextInputType.number,
                         controller:malabariGoatKidsQnty,
                         onchanged: (value) {
@@ -232,7 +231,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('GROWER'))
                     InputField(
-                        hint: 'GROWER QTY',
+                        hint: 'GROWER (Kg)',
                         keytype: TextInputType.number,
                         controller:growerQnty,
                         onchanged: (value) {
@@ -240,19 +239,19 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           providerone.updateGrowerQnty(valuee);
                         }),
                   if (rawmaterial != null &&
-                      rawmaterial!.contains('CAFF STARTER'))
+                      rawmaterial!.contains('CALF STARTER'))
                     InputField(
-                        hint: 'CAFF STARTER QTY',
+                        hint: 'CALF STARTER (Qty)',
                         keytype: TextInputType.number,
-                        controller:caffStarterQnty,
+                        controller:calfStarterQnty,
                         onchanged: (value) {
                           int? valuee = int.tryParse(value);
                           providerone.updateCaffStarterQnty(valuee);
                         }),
                   if (rawmaterial != null &&
-                      rawmaterial!.contains('BYPASS PROTIN'))
+                      rawmaterial!.contains('BYPASS PROTEIN'))
                     InputField(
-                        hint: 'BYPASS PROTIN QTY',
+                        hint: 'BYPASS PROTEIN (Kg)',
                         keytype: TextInputType.number,
                         controller:bypassprotine,
                         onchanged: (value) {
@@ -262,7 +261,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('BYPASS FAT'))
                     InputField(
-                        hint: 'BYPASS FAT QTY',
+                        hint: 'BYPASS FAT (Kg)',
                         keytype: TextInputType.number,
                         controller:byPassFatQnty,
                         onchanged: (value) {
@@ -272,7 +271,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('TOTAL MIXED RATION'))
                     InputField(
-                        hint: 'TOTAL MIXED RATION QTY',
+                        hint: 'TOTAL MIXED RATION (Kg)',
                         keytype: TextInputType.number,
                         controller:totalMixedRationQnty,
                         onchanged: (value) {
@@ -282,7 +281,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('UREA MOLASS BLOCK'))
                     InputField(
-                        hint: 'UREA MOLASS BLOCK QTY',
+                        hint: 'UREA MOLASS BLOCK (Kg)',
                         keytype: TextInputType.number,
                         controller:ureaTreatedMolassBlock,
                         onchanged: (value) {
@@ -292,7 +291,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('UREA TREATED STRAW'))
                     InputField(
-                        hint: 'UREA TREATED STRAW QTY',
+                        hint: 'UREA TREATED STRAW (Kg)',
                         keytype: TextInputType.number,
                         controller: ureaTreatedStrawQnty,
                         onchanged: (value) {
@@ -302,7 +301,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MALE BUFFALO'))
                     InputField(
-                        hint: 'MALE BUFFALO CALVES QTY',
+                        hint: 'MALE BUFFALO CALVES (Qty)',
                         keytype: TextInputType.number,
                         controller: malebefallocalvesqty,
                         onchanged: (value) {
@@ -312,7 +311,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MALABARI GOATS'))
                     InputField(
-                        hint: 'MALABARI GOATS QTY',
+                        hint: 'MALABARI GOATS (Qty)',
                         keytype: TextInputType.number,
                         controller: malabarigoats,
                         onchanged: (value) {
@@ -323,7 +322,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       rawmaterial!
                           .contains('MATERIAL FOR POULTRY CAGE FABRICATION'))
                     InputField(
-                        hint: 'MATERIAL FOR POULTRY CAGE FABRICATION QTY',
+                        hint: 'MATERIAL FOR POULTRY CAGE FABRICATION (Qty)',
                         keytype: TextInputType.number,
                         controller: materialforpoltry,
                         onchanged: (value) {
@@ -332,7 +331,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (rawmaterial != null && rawmaterial!.contains('EGG TRAYS'))
                     InputField(
-                        hint: 'EGG TRAYS QTY',
+                        hint: 'EGG TRAYS (Qty)',
                         keytype: TextInputType.number,
                         controller: eggsqty,
                         onchanged: (value) {
@@ -342,7 +341,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('POULTRY FEED'))
                     InputField(
-                        hint: 'POULTRY FEED QTY',
+                        hint: 'POULTRY FEED (Kg)',
                         keytype: TextInputType.number,
                         controller: pol_feed_qty,
                         onchanged: (value) {
@@ -351,7 +350,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (rawmaterial != null && rawmaterial!.contains('SILAGE'))
                     InputField(
-                        hint: 'SILAGE QTY',
+                        hint: 'SILAGE (Kg)',
                         keytype: TextInputType.number,
                         controller: silage,
                         onchanged: (value) {
@@ -361,7 +360,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
 
                   if (rawmaterial != null && rawmaterial!.contains('HAY'))
                     InputField(
-                        hint: 'HAY QTY',
+                        hint: 'HAY (Kg)',
                         keytype: TextInputType.number,
                         controller: hay,
                         onchanged: (value) {
@@ -371,7 +370,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
 
                   if (rawmaterial != null && rawmaterial!.contains('GOAT FEED'))
                     InputField(
-                        hint: 'GOAT FEED QTY',
+                        hint: 'GOAT FEED (Kg)',
                         keytype: TextInputType.number,
                         controller: goatfeed,
                         onchanged: (value) {
@@ -381,7 +380,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('KID STARTER'))
                     InputField(
-                        hint: 'KID STARTER QTY',
+                        hint: 'KID STARTER (Kg)',
                         keytype: TextInputType.number,
                         controller: kidstarter,
                         onchanged: (value) {
@@ -390,7 +389,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (rawmaterial != null && rawmaterial!.contains('TMR'))
                     InputField(
-                        hint: 'TMR QTY',
+                        hint: 'TMR (Kg)',
                         keytype: TextInputType.number,
                         controller: tmr,
                         onchanged: (value) {
@@ -412,7 +411,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (layerselected != null &&
                       layerselected!.isNotEmpty)
                     InputField(
-                        hint: 'LAYER QTY/KG',
+                        hint: 'LAYER(Qty)',
                         keytype: TextInputType.number,
                         controller: layerqty,
                         onchanged: (value) {
@@ -430,12 +429,12 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         providerone.updateDataCattleFeedList(value);
                       },
                       items: cattlefeed,
-                      item: 'CATTLE FEED',
+                      item: 'CATTLE FEED (Kg)',
                     ),
                   if (cattlefeedlist != null &&
                       cattlefeedlist!.isNotEmpty)
                     InputField(
-                        hint: 'CATTLE  FEED QTY/KG',
+                        hint: 'CATTLE  FEED (Qty)',
                         keytype: TextInputType.number,
                         controller: cattlefeedqty,
                         onchanged: (value) {
@@ -457,7 +456,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (rawmaterial != null &&
                       rawmaterial!.contains('MILK REPLACER'))
                     InputField(
-                        hint: 'MILK REPLACER QTY (5 KG)',
+                        hint: 'MILK REPLACER (5 Kg)',
                         keytype: TextInputType.number,
                         controller: selectedmilkreplacer,
                         onchanged: (value) {
@@ -478,7 +477,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (energyrichfeed != null)
                     InputField(
-                        hint: 'ENERGY RICH FEED QTY/KG',
+                        hint: 'ENERGY RICH FEED (Kg)',
                         keytype: TextInputType.number,
                         controller: milmaqty,
                         onchanged: (value) {
@@ -533,7 +532,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (calveslist!.contains('CALVES-H F'))
                     InputField(
-                        hint: 'H F QTY',
+                        hint: 'H F (Qty)',
                         keytype: TextInputType.number,
                         controller: clhf,
                         onchanged: (value) {
@@ -542,7 +541,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (calveslist != null && calveslist!.contains('CALVES-GERSEY'))
                     InputField(
-                        hint: 'GERSEY QTY',
+                        hint: 'GERSEY (Qty)',
                         keytype: TextInputType.number,
                         controller: clgersey,
                         onchanged: (value) {
@@ -579,7 +578,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (heipers!.contains('HEIFERS-H F'))
                     InputField(
-                        hint: 'H F QTY',
+                        hint: 'H F (Qty)',
                         keytype: TextInputType.number,
                         controller: he_hf,
                         onchanged: (value) {
@@ -588,7 +587,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (heipers!.contains('HEIFERS-GERSEY'))
                     InputField(
-                        hint: 'GERSEY QTY',
+                        hint: 'GERSEY (Qty)',
                         keytype: TextInputType.number,
                         controller: he_gersey,
                         onchanged: (value) {
@@ -632,7 +631,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (cowslist != null && cowslist!.contains('COWS-H F'))
                     InputField(
-                      hint: 'H F QTY',
+                      hint: 'H F (Qty)',
                       keytype: TextInputType.number,
                       controller: cw_hf,
                       onchanged: (value) {
@@ -642,7 +641,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (cowslist != null && cowslist!.contains('COWS-GERSEY'))
                     InputField(
-                        hint: 'GERSEY QTY',
+                        hint: 'GERSEY (Qty)',
                         keytype: TextInputType.number,
                         controller: cw_gersey,
                         onchanged: (value) {
@@ -688,7 +687,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                     ),
                   if (pulletsselected!.contains('BV380'))
                     InputField(
-                        hint: 'BV380 QTY',
+                        hint: 'BV380 (Qty)',
                         keytype: TextInputType.number,
                         controller: bv380qty,
                         onchanged: (value) {
@@ -697,7 +696,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (pulletsselected!.contains('GRAMALAKSHMI'))
                     InputField(
-                        hint: 'GRAMALAKSHMI QTY',
+                        hint: 'GRAMALAKSHMI (Qty)',
                         keytype: TextInputType.number,
                         controller: gramalakshmiqty,
                         onchanged: (value) {
@@ -706,7 +705,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (pulletsselected!.contains('GRAMAPRIYA'))
                     InputField(
-                        hint: 'GRAMAPRIYA QTY',
+                        hint: 'GRAMAPRIYA (Qty)',
                         keytype: TextInputType.number,
                         controller: gramapriyaqty,
                         onchanged: (value) {
@@ -723,7 +722,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         }),
                   if (pulletsselected!.contains('OTHER'))
                     InputField(
-                        hint: 'OTHER QTY',
+                        hint: 'OTHER (Qty)',
                         keytype: TextInputType.number,
                         controller: gramapriyaqty,
                         onchanged: (value) {
@@ -768,7 +767,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (manureselected != null &&
                       manureselected!.contains('COW DUNG'))
                     InputField(
-                        hint: 'COW DUNG qty',
+                        hint: 'COW DUNG (Qty)',
                         keytype: TextInputType.number,
                         controller: cowdungqnty,
                         onchanged: (value) {
@@ -778,7 +777,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (manureselected != null &&
                       manureselected!.contains('GOAT MANURE'))
                     InputField(
-                        hint: 'GOAT MANURE QTY',
+                        hint: 'GOAT MANURE (Qty)',
                         keytype: TextInputType.number,
                         controller: goatmanureqnty,
                         onchanged: (value) {
@@ -788,7 +787,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (manureselected != null &&
                       manureselected!.contains('POULTRY MANURE'))
                     InputField(
-                        hint: 'POULTRY MANURE QTY',
+                        hint: 'POULTRY MANURE (Qty)',
                         keytype: TextInputType.number,
                         controller: poultrymanureqnty,
                         onchanged: (value) {
@@ -798,7 +797,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (manureselected != null &&
                       manureselected!.contains('VERMY COMPOST'))
                     InputField(
-                        hint: 'VERMY COMPOST QTY',
+                        hint: 'VERMY COMPOST (Qty)',
                         keytype: TextInputType.number,
                         controller: vermycompostqnty,
                         onchanged: (value) {
@@ -843,7 +842,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('NAPIER'))
                     InputField(
-                        hint: 'NAPIER QTY',
+                        hint: 'NAPIER (Qty)',
                         keytype: TextInputType.number,
                         controller: napier,
                         onchanged: (value) {
@@ -853,7 +852,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('CO4'))
                     InputField(
-                        hint: 'CO4 QTY',
+                        hint: 'CO4 (Qty)',
                         keytype: TextInputType.number,
                         controller: co4,
                         onchanged: (value) {
@@ -863,7 +862,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('CO5'))
                     InputField(
-                        hint: 'CO5 QTY',
+                        hint: 'CO5 (Qty)',
                         keytype: TextInputType.number,
                         controller: co5,
                         onchanged: (value) {
@@ -873,7 +872,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('RED NAPIER'))
                     InputField(
-                        hint: 'RED NAPIER QTY',
+                        hint: 'RED NAPIER (Qty)',
                         keytype: TextInputType.number,
                         controller: rednapier,
                         onchanged: (value) {
@@ -883,7 +882,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('SUPER NAPIER'))
                     InputField(
-                        hint: 'SUPER NAPIER QTY',
+                        hint: 'SUPER NAPIER (Qty)',
                         keytype: TextInputType.number,
                         controller: supernapier,
                         onchanged: (value) {
@@ -893,7 +892,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('GUINEA GRASS'))
                     InputField(
-                        hint: 'GUINEA GRASS QTY',
+                        hint: 'GUINEA GRASS (Qty)',
                         keytype: TextInputType.number,
                         controller: guineagrass,
                         onchanged: (value) {
@@ -903,7 +902,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('PARA GRASS'))
                     InputField(
-                        hint: 'PARA GRASS QTY',
+                        hint: 'PARA GRASS (Qty)',
                         keytype: TextInputType.number,
                         controller: paragrass,
                         onchanged: (value) {
@@ -913,7 +912,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   if (fodderslipselected != null &&
                       fodderslipselected!.contains('CONGO SIGNAL'))
                     InputField(
-                        hint: 'CONGO SIGNAL QTY',
+                        hint: 'CONGO SIGNAL (Qty)',
                         keytype: TextInputType.number,
                         controller: congosignal,
                         onchanged: (value) {
@@ -921,17 +920,15 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                           providerone.updateDataCongoSignalQnty(valuee);
                         }),
                   // if(rawmaterial != null && rawmaterial!.contains('BRAND'))
-
-
                   ElevateClick(
                       ontap: () {
-                        // if (_formKey.currentState!.validate()) {
+                        if (_formKey.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SalesData(),
                               ));
-                        // }
+                        }
                       },
                       text: 'Next'),
                 ],

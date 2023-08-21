@@ -23,7 +23,6 @@ class _FamilyDataState extends State<FamilyData> {
   @override
   void initState() {
     super.initState();
-
    familyMembers.isNotEmpty? familyMembers.clear() : null ;
   }
 
@@ -61,6 +60,8 @@ class _FamilyDataState extends State<FamilyData> {
       dataFamilydetailsSkill.clear();
       setState(() {});
   }
+  final _formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,147 +79,153 @@ class _FamilyDataState extends State<FamilyData> {
           centerTitle: true,
           backgroundColor: app_theam,
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InputField(
-                  hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
-                  controller: dataFamilydetailsNameoffailyfmember,
-                  onchanged: (value) {
-                    // setState(() {
-                    //   dataFamilydetailsNameoffailyfmember = value;
-                    // });
-                    print(value);
-                    providerone.updateDataFamilydetailsNameoffailyfmember(value);
-                  },
-                ),
-                InputField(
-                  hint: 'ബന്ധം',
-                  controller: datafamilydetailsrelation,
-                  onchanged: (value) {
-                    providerone.updateDataFamilydetailsRelation(value);
-                  },
-                ),
-                InputField(
-                  hint: 'വയസ്സ്‌',
-                  controller: datafamilydetailsageoffamilymember,
-                  onchanged: (value) {
-                    // setState(() {
-                    //   datafamilydetailsageoffamilymember  = value;
-                    // });
-                    int? parsedValue = int.tryParse(value);
-                    if (parsedValue != null) {
-                      providerone.updateDatadataFamilydetailsAgeoffamilymember(parsedValue);
-                    }
-                  },
-                  keytype: TextInputType.number,
-                ),
-                InputField(
-                  hint: 'വിദ്യാഭ്യാസം',
-                  controller: dataFamilydetailsEducation,
-                  onchanged: (value) {
-                    // setState(() {
-                    //   dataFamilydetailsEducation = value;
-                    // });
-                    providerone.updateDataFamilydetailsEducation(value);
-                  },
-                ),
-                InputField(
-                  hint: 'തൊഴില്‍',
-                  controller: dataFamilydetailsJob,
-                  onchanged: (value) {
-                    // setState(() {
-                    //   dataFamilydetailsJob = value;
-                    // });
-                    providerone.updateDataFamilydetailsJob(value);
-                  },
-                ),
-                InputField(
-                  hint: 'പ്രത്യേക കഴിവ്',
-                  controller: dataFamilydetailsSkill,
-                  onchanged: (value) {
-                    // setState(() {
-                    //   dataFamilydetailsSkill = value;
-                    // });
-                    providerone.updateDataFamilydetailsSkill(value);
-                  },
-                ),
-
-                // Display the list of family members
-                // ListView.builder(
-                //   shrinkWrap: true,
-                //   itemCount: familyMembers.length,
-                //   itemBuilder: (context, index) {
-                //     var member = familyMembers[index];
-                //     return ListTile(
-                //       title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
-                //       subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
-                //       trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
-                //     );
-                //   },
-                // ),
-                 ElevatedButton(
-                      style: buttonstyle_main,
-                    onPressed: _addMember,
-                    child: Text('Add Member'),
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InputField(
+                    hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
+                    controller: dataFamilydetailsNameoffailyfmember,
+                    onchanged: (value) {
+                      // setState(() {
+                      //   dataFamilydetailsNameoffailyfmember = value;
+                      // });
+                      print(value);
+                      providerone.updateDataFamilydetailsNameoffailyfmember(value);
+                    },
                   ),
-                ElevateClick(
-                  ontap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LivelihoodValue(),));
-                  },
-                  text:'Next',
-                ),
+                  InputField(
+                    hint: 'ബന്ധം',
+                    controller: datafamilydetailsrelation,
+                    onchanged: (value) {
+                      providerone.updateDataFamilydetailsRelation(value);
+                    },
+                  ),
+                  InputField(
+                    hint: 'വയസ്സ്‌',
+                    controller: datafamilydetailsageoffamilymember,
+                    onchanged: (value) {
+                      // setState(() {
+                      //   datafamilydetailsageoffamilymember  = value;
+                      // });
+                      int? parsedValue = int.tryParse(value);
+                      if (parsedValue != null) {
+                        providerone.updateDatadataFamilydetailsAgeoffamilymember(parsedValue);
+                      }
+                    },
+                    keytype: TextInputType.number,
+                  ),
+                  InputField(
+                    hint: 'വിദ്യാഭ്യാസം',
+                    controller: dataFamilydetailsEducation,
+                    onchanged: (value) {
+                      // setState(() {
+                      //   dataFamilydetailsEducation = value;
+                      // });
+                      providerone.updateDataFamilydetailsEducation(value);
+                    },
+                  ),
+                  InputField(
+                    hint: 'തൊഴില്‍',
+                    controller: dataFamilydetailsJob,
+                    onchanged: (value) {
+                      // setState(() {
+                      //   dataFamilydetailsJob = value;
+                      // });
+                      providerone.updateDataFamilydetailsJob(value);
+                    },
+                  ),
+                  InputField(
+                    hint: 'പ്രത്യേക കഴിവ്',
+                    controller: dataFamilydetailsSkill,
+                    onchanged: (value) {
+                      // setState(() {
+                      //   dataFamilydetailsSkill = value;
+                      // });
+                      providerone.updateDataFamilydetailsSkill(value);
+                    },
+                  ),
 
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: familyMembers.length,
-                    itemBuilder: (context,index){
-                    var items = familyMembers[index];
-                  return ExpansionTile(
-                    title: Text("Member ${index+1}"),
-                    expandedCrossAxisAlignment:CrossAxisAlignment.start,
-                    children: [
-                      Text('കുടുംബാംഗത്തിൻ്റെ പേര്',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsNameoffailyfmember}',style: TextStyle(fontSize:18)),
-                      ),
-                      Text('ബന്ധം',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsRelation}',style: TextStyle(fontSize:18)),
-                      ),
-                      Text('വയസ്സ്‌',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsAgeoffamilymember}',style: TextStyle(fontSize:18)),
-                      ),
-                      Text('വിദ്യാഭ്യാസം',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsEducation}',style: TextStyle(fontSize:18)),
-                      ),
-                      Text('തൊഴില്‍',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsJob}',style: TextStyle(fontSize:18)),
-                      ),
-                      Text('പ്രത്യേക കഴിവ്',style: TextStyle(fontWeight: FontWeight.bold),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5,bottom: 5),
-                        child: Text('${items.dataFamilydetailsSkill}',style: TextStyle(fontSize:18)),
-                      ),
-                    ],
-                  );
-                }
-                ),
+                  // Display the list of family members
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   itemCount: familyMembers.length,
+                  //   itemBuilder: (context, index) {
+                  //     var member = familyMembers[index];
+                  //     return ListTile(
+                  //       title: Text('name:${member.dataFamilydetailsNameoffailyfmember}'),
+                  //       subtitle: Text('relation : ${member.dataFamilydetailsRelation}'),
+                  //       trailing: Text('Age: ${member.dataFamilydetailsAgeoffamilymember}'),
+                  //     );
+                  //   },
+                  // ),
+                   ElevatedButton(
+                        style: buttonstyle_main,
+                      onPressed: _addMember,
+                      child: Text('Add Member'),
+                    ),
+                  ElevateClick(
+                    ontap: () {
+    // if (_formKey.currentState!.validate()) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+          LivelihoodValue(),));
+    // }
+                    },
+                    text:'Next',
+                  ),
+
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: familyMembers.length,
+                      itemBuilder: (context,index){
+                      var items = familyMembers[index];
+                    return ExpansionTile(
+                      title: Text("Member ${index+1}"),
+                      expandedCrossAxisAlignment:CrossAxisAlignment.start,
+                      children: [
+                        Text('കുടുംബാംഗത്തിൻ്റെ പേര്',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsNameoffailyfmember}',style: TextStyle(fontSize:18)),
+                        ),
+                        Text('ബന്ധം',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsRelation}',style: TextStyle(fontSize:18)),
+                        ),
+                        Text('വയസ്സ്‌',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsAgeoffamilymember}',style: TextStyle(fontSize:18)),
+                        ),
+                        Text('വിദ്യാഭ്യാസം',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsEducation}',style: TextStyle(fontSize:18)),
+                        ),
+                        Text('തൊഴില്‍',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsJob}',style: TextStyle(fontSize:18)),
+                        ),
+                        Text('പ്രത്യേക കഴിവ്',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5,bottom: 5),
+                          child: Text('${items.dataFamilydetailsSkill}',style: TextStyle(fontSize:18)),
+                        ),
+                      ],
+                    );
+                  }
+                  ),
 
 
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -1,22 +1,5 @@
-import 'package:flutter/material.dart';
 
-// List traingrequared = [
-//   {'text': 'MANAGEMENT', 'value': 'MANAGEMENT'},
-//   {'text': 'COW REARING', 'value': 'COW REARING'},
-//   {'text': 'GOAT KEEPING', 'value': 'GOAT KEEPING'},
-//   {'text': 'LAYER UNITS', 'value': 'LAYER UNITS'},
-//   {'text': 'BROILER UNITS', 'value': 'BROILER UNITS'},
-//   {'text': 'DUCK REARING', 'value': 'DUCK REARING'},
-//   {'text': 'PIGGERY', 'value': 'PIGGERY'},
-//   {'text': 'PISCICULTURE', 'value': 'PISCICULTURE'},
-//   {'text': 'BUFFALO MALE CALF REARING', 'value': 'BUFFALO MALE CALF REARING'},
-//   {'text': 'BUFFALO REARING', 'value': 'BUFFALO REARING'},
-//   {'text': 'QUAILREARING', 'value': 'QUAILREARING'},
-//   {'text': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT', 'value': 'KEEPING OF PET ANIMAL/PET ANIMAL MANAGEMENT'},
-//   {'text': 'KEEPING AND MANAGEMENT OF PET BIRDS.', 'value': 'KEEPING AND MANAGEMENT OF PET BIRDS.'},
-//   {'text': 'Breeding of layinghens', 'value': 'Breeding of layinghens'},
 
-// ];
 List<String> dataclass = ['APL', 'BPL', 'APL,BPL'];
 List<String> dataclassadd = ['APL', 'BPL'];
 List<String> dataclass2 = [
@@ -25,6 +8,7 @@ List<String> dataclass2 = [
   "OEC",
   "SC",
   "ST",
+  "N/A"
 ];
 List<String> products = [
   'MILK',
@@ -40,6 +24,7 @@ List<String> products = [
   'PULLETS',
   'CALF',
   'BEIFER',
+  'N/A'
 ];
 List<String> datacls3 = [
   "Coastal",
@@ -51,6 +36,7 @@ List<String> datacls3 = [
   "Thoseabove60yearsofage",
   "widow",
   "femaleleaded",
+  "N/A"
 ];
 
 List<String> salesmethod = [
@@ -76,27 +62,74 @@ List<String> enterpricetype = ['Individual', 'Group'];
 List<String> loan = ['Applied', 'Sanctioned', 'Notapplied'];
 List<String> condition = ['Yes Good', 'Yes Poor', 'No'];
 
+// final List options = [
+//   {'text': 'കോസ്റ്റൽ', 'value': 'Coastal'},
+//   {'text': 'ന്യൂനപക്ഷം', 'value': 'Minority'},
+//   {'text': 'അതി ദരിദ്രർ', 'value': 'Extreampoor'},
+//   {'text': 'ആശ്രയ', 'value': 'Asraya'},
+//   {'text': 'ശാരീരിക വെല്ലുവിളി ഉള്ളവർ', 'value': 'Physicallychallenged'},
+//   {'text': 'മാനസീക വെല്ലുവിളി /ബഡ്‌സ് ', 'value': 'MentalChallenge_Buds'},
+//   {'text': '60 വയസിനു മുകളിലുള്ളവർ', 'value': 'Thoseabove60yearsofage'},
+//   {'text': 'വിധവ', 'value': 'widow'},
+//   {'text': 'സ്ത്രീകൾ മാത്രമുള്ള കുടുംബം', 'value': 'femaleleaded'},
+//   // {'text': 'NO Value', 'value': ''}
+//
+// ];
+
 final List options = [
-  {'text': 'കോസ്റ്റൽ', 'value': 'Coastal'},
-  {'text': 'ന്യൂനപക്ഷം', 'value': 'Minority'},
-  {'text': 'അതി ദരിദ്രർ', 'value': 'Extreampoor'},
-  {'text': 'ആശ്രയ', 'value': 'Asraya'},
-  {'text': 'ശാരീരിക വെല്ലുവിളി ഉള്ളവർ', 'value': 'Physicallychallenged'},
-  {'text': 'മാനസീക വെല്ലുവിളി /ബഡ്‌സ് ', 'value': 'MentalChallenge_Buds'},
-  {'text': '60 വയസിനു മുകളിലുള്ളവർ', 'value': 'Thoseabove60yearsofage'},
-  {'text': 'വിധവ', 'value': 'widow'},
-  {'text': 'സ്ത്രീകൾ മാത്രമുള്ള കുടുംബം', 'value': 'femaleleaded'},
+  {'text': 'Coastal', 'value': 'Coastal'},
+  {'text': 'Minority', 'value': 'Minority'},
+  {'text': 'Extreampoor', 'value': 'Extreampoor'},
+  {'text': 'Asraya', 'value': 'Asraya'},
+  {'text': 'Physically challenged', 'value': 'Physicallychallenged'},
+  {'text': 'MentalChallenge/Buds ', 'value': 'MentalChallenge_Buds'},
+  {'text': 'Those above 60 years of age', 'value': 'Thoseabove60yearsofage'},
+  {'text': 'widow', 'value': 'widow'},
+  {'text': 'femaleleaded', 'value': 'femaleleaded'},
+  {'text': 'N/A', 'value': 'N/A'}
+
   // {'text': 'NO Value', 'value': ''}
 
 ];
 
+// final List businesstype = [
+//   {'disply': 'പശു വളർത്തൽ', 'value': 'Cowbreeding'},
+//   {'disply': 'ആട്  വളർത്തൽ ', 'value': 'Sheepfarming'},
+//   {'disply': 'മുട്ട കോഴി വളർത്തൽ ', 'value': 'Breedingoflayinghens'},
+//   {'disply': 'ഇറച്ചി കോഴി വളർത്തൽ ', 'value': 'Broilerfarming'},
+//   {'disply': 'താറാവ് വളർത്തൽ ', 'value': 'Duckfarming'},
+//   {'disply': 'പന്നി വളർത്തൽ ', 'value': 'Pigfarming'},
+//   {'disply': 'മത്സ്യം വളർത്തൽ ', 'value': 'Fishfarming'},
+//   {'disply': 'പോത്തു  വളർത്തൽ ', 'value': 'Cattlerearing'},
+//   {'disply': 'എരുമ വളർത്തൽ ', 'value': 'Buffalorearing'},
+//   {'disply': 'കാട വളർത്തൽ', 'value': 'Quailbreeding'},
+//   {'disply': 'പെറ്റ്മൃഗങ്ങൾ വളർത്തൽ', 'value': 'Keepingpets'},
+//   {'disply': 'പെറ്റ് ബേഡ്‌സ്  വളർത്തൽ   ', 'value': 'RaisingPetBirds'},
+//   {'disply': 'തേനീച്ച വളർത്തൽ  ', 'value': 'Beekeeping'},
+//   {'disply': 'വളം നിർമാണം  ', 'value': 'Fertilizermanufacturing'},
+//   {'disply': 'കാലിത്തീറ്റ നിർമാണം ', 'value': 'Foddermanufacturing'},
+//   {'disply': 'വാല്യൂ പ്രോഡക്റ്റ് നിർമാണം  ', 'value': 'valueproductcreation'},
+//   {'disply': 'പുല്ല് കൃഷി', 'value': 'Cultivationofgrass'},
+//   {'disply': 'പാൽ വിപണനം  ', 'value': 'Marketingofmilk'},
+//   {'disply': 'ഇറച്ചി വിൽപന  ', 'value': 'Meatsales'},
+//   {'disply': 'മാർക്കറ്റിങ് ', 'value': 'Marketing'},
+//   {'disply': 'ഫാർമസി  ', 'value': 'Pharmacy'},
+//   {'disply': 'പേരെൻറ് സ്റ്റോക്ക്', 'value': 'Parentstock'},
+//   {'disply': ' എഗ്ഗർ നഴ്‌സറി  ', 'value': 'EggerNursery'},
+//   {'disply': 'ഹാച്ചറി', 'value': 'Hatchery'},
+//   {'disply': 'സംയോജിത കൃഷി', 'value': 'Integratedfarming'},
+//   {'disply': 'മറ്റുള്ളവ ', 'value': 'Others'},
+//   // {'text': 'NO Value', 'value': ''}
+
+// ];
+
 final List businesstype = [
-  {'disply': 'പശു വളർത്തൽ', 'value': 'Cowbreeding'},
-  {'disply': 'ആട്  വളർത്തൽ ', 'value': 'Sheepfarming'},
-  {'disply': 'മുട്ട കോഴി വളർത്തൽ ', 'value': 'Breedingoflayinghens'},
-  {'disply': 'ഇറച്ചി കോഴി വളർത്തൽ ', 'value': 'Broilerfarming'},
-  {'disply': 'താറാവ് വളർത്തൽ ', 'value': 'Duckfarming'},
-  {'disply': 'പന്നി വളർത്തൽ ', 'value': 'Pigfarming'},
+  {'disply': 'Cowbreeding', 'value': 'Cowbreeding'},
+  {'disply': 'Sheepfarming', 'value': 'Sheepfarming'},
+  {'disply': 'Breedingoflayinghens', 'value': 'Breedingoflayinghens'},
+  {'disply': 'Broilerfarming', 'value': 'Broilerfarming'},
+  {'disply': 'Duckfarming', 'value': 'Duckfarming'},
+  {'disply': 'Pigfarming' , 'value': 'Pigfarming'},
   {'disply': 'മത്സ്യം വളർത്തൽ ', 'value': 'Fishfarming'},
   {'disply': 'പോത്തു  വളർത്തൽ ', 'value': 'Cattlerearing'},
   {'disply': 'എരുമ വളർത്തൽ ', 'value': 'Buffalorearing'},
@@ -117,6 +150,8 @@ final List businesstype = [
   {'disply': 'ഹാച്ചറി', 'value': 'Hatchery'},
   {'disply': 'സംയോജിത കൃഷി', 'value': 'Integratedfarming'},
   {'disply': 'മറ്റുള്ളവ ', 'value': 'Others'},
+  {'disply': 'N/A', 'value': 'N/A'}
+
   // {'text': 'NO Value', 'value': ''}
 
 ];
@@ -129,42 +164,13 @@ final List sourceofinvestment = [
   {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'private finance'},
   {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'privatefinance'},
   {'source': 'മറ്റുള്ളവ', 'value': 'other'},
+  {'source': 'N/A', 'value': 'N/A'}
+
   // {'text': 'NO Value', 'value': ''}
 
 ];
 
-// final List traingrequared = [
-// {'text': 'MARKETING', 'value': 'MARKETING'},
-// {'text': 'BEEKEEPING', 'value': 'BEEKEEPING'},
-// {'text': 'BREEDING OF LAYING HENS', 'value': 'BREEDING OF LAYING HENS'},
-// {'text': 'BROILER FARMING', 'value': 'BROILER FARMING'},
-// {'text': 'BUFFALO REARING', 'value': 'BUFFALO REARING'},
-// {'text': 'CATTLE BREEDING', 'value': 'CATTLE BREEDING'},
-// {'text': 'CATTLE REARING', 'value': 'CATTLE REARING'},
-// {'text': 'CULTIVATION OF GRASS', 'value': 'CULTIVATION OF GRASS'},
-// {'text': 'DUCK FARMING', 'value': 'DUCK FARMING'},
-// {'text': 'EGGER NURSERY', 'value': 'EGGER NURSERY'},
-// {
-// 'text': 'FERTILIZER MANUFACTURING TRAINING',
-// 'value': 'FERTILIZER MANUFACTURING TRAINING'
-// },
-// {'text': 'FISH FARMING', 'value': 'FISH FARMING'},
-// {'text': 'FODDER MANUFACTURING', 'value': 'FODDER MANUFACTURING'},
-// {'text': 'GOAT REARING', 'value': 'GOAT REARING'},
-// {'text': 'HATCHERY', 'value': 'HATCHERY'},
-// {'text': 'INTEGRATED FARMING', 'value': 'INTEGRATED FARMING'},
-// {'text': 'KEEPING PETS', 'value': 'KEEPING PETS'},
-// {'text': 'MANAGEMENT', 'value': 'MANAGEMENT'},
-// {'text': 'MARKETING OF MILK', 'value': 'MARKETING OF MILK'},
-// {'text': 'MEAT SALES', 'value': 'MEAT SALES'},
-// {'text': 'PARENT STOKE', 'value': 'PARENT STOKE'},
-// {'text': 'PHARMACY', 'value': 'PHARMACY'},
-// {'text': 'PIG FARMING', 'value': 'PIG FARMING'},
-// {'text': 'QUAIL BREEDING', 'value': 'QUAIL BREEDING'},
-// {'text': 'RAISING PET BIRDS', 'value': 'RAISING PET BIRDS'},
-// {'text': 'VALUE PRODUCT CREATION', 'value': 'VALUE PRODUCT CREATION'},
-// {'text': 'OTHER', 'value': 'OTHER'},
-// ];
+
 final List traingrequared = [
   {'text': 'Marketing', 'value': 'Marketing'},
   {'text': 'Beekeeping', 'value': 'Beekeeping'},
@@ -184,7 +190,7 @@ final List traingrequared = [
   {'text': 'Fodder manufacturing', 'value': 'Fodder manufacturing'},
   {'text': 'Goat rearing', 'value': 'Goat rearing'},
   {'text': 'Hatchery', 'value': 'Hatchery'},
-  {'text': 'integrated farming', 'value': 'integrated farming'},
+  {'text': 'Integrated farming', 'value': 'Integrated farming'},
   {'text': 'Keeping pets', 'value': 'Keeping pets'},
   {'text': 'Management', 'value': 'Management'},
   {'text': 'Marketing of milk', 'value': 'Marketing of milk'},
@@ -192,172 +198,152 @@ final List traingrequared = [
   {'text': 'Parent stoke', 'value': 'Parent stoke'},
   {'text': 'Pharmacy', 'value': 'Pharmacy'},
   {'text': 'Pig farming', 'value': 'Pig farming'},
-  {'text': 'Quailb reeding', 'value': 'Quailb reeding'},
+  {'text': 'Quail breeding', 'value': 'Quail breeding'},
   {'text': 'Raising Pet Birds', 'value': 'Raising Pet Birds'},
   {'text': 'Value product creation', 'value': 'Value product creation'},
   {'text': 'Other', 'value': 'Other'},
 ];
 
 // final List datasupprtlistss = [
-//   "AADHAR  LINKING WITH MOBILE"
-//  	"AGRO MARKET"
-//  	"ASSISTANCE THROUGH MGNREGS"
-//  	"BANK ACCOUNT"
-//  	"BUSINESS EXPANSION"
-//  	"CATTLE FEED"
-//  	"CATTLE SHED CONSTRUCTION"
-//  	"DESIGNING LOGO"
-//  	"DESIGNING OF PACKAGE"
-//  	"DIGITAL MARKETING SUPPORT"
-//  	"E-SHRAM"
-//  	"EQUIPMENTS"
-//  	"FINANCIAL ASSISTANCE/SUPPORT"
-//  	"FSSAI"
-//  	"G S T REGISTRATION"
-//  	"GEM REGISTRATION"
-//  	"INSURANCE"
-//  	"K S.E.B"
-//  	"K-SWIFT"
-//  	"KISSAN CREDIT"
-//  	"LABOR CARD"
-//  	"LEGAL METROLOGY AUTHORITY"
-//  	"LIVESTOCK REGISTRATION"
-//  	"LIVESTOCK REGISTRATION/FARMER REGISTRATION"
-//  	"MACHINERY"
-//  	"MARKETING SUPPORT"
-//     "MANURE PRODUCTION"
-//  	"NNP"
-//  	"OTHERS"
-//  	"PACKING AND LABELLING"
-//  	"PAN CARD"
-//  	"PARTNERSHIP"
-//  	"POLLUTION UNDER CONTROL CERTIFICATE"
-//  	"PRODUCTION OF VERMICOMPOST "
-//  	"PROJECT PREPARATION"
-//  	"PURCHASE OF CATTLE FEED"
-//  	"PURCHASE OF MACHINERY AND EQUIPMENTS"
-//  	"RAW MATERIAL"
-//  	"REGISTRATION FOR SOCIETY"
-//  	"REGISTRATION FROM C D S "
-//  	"REGISTRATION FROM PANCHAYATH"
-//  	"REGISTRATION OF COMPANY"
-//  	"SKILL TRAINING"
-//  	"SKILLED LABORERS"
-//  	"STORE PROPRITERSHIP"
-//  	"TRADE MARKET"
-//  	"UDHYAM AADHAR"
-//  	"WEB STORE"
+//
+//   {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
+//   {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
+//   {'text': 'സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
+//   {'text': 'പഞ്ചായത്ത് രജിസ്ട്രേഷൻ', 'value': 'Panchayat Registration'},
+//   {'text': 'FSSI', 'value': 'FSSI'},
+//   {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
+//   {'text': 'ലീഗൽ മെട്രേളജി', 'value': 'Legalmetrology'},
+//   {'text': 'പൊല്യൂഷൻ സർട്ടിഫിക്കേറ്റ്', 'value': 'Polution Certification'},
+//   {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem-Registration'},
+//   {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
+//   {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
+//   {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
+//   {'text': 'വൈദഗ്ത്യ പരിശീലനം', 'value': 'Skill training'},
+//   {'text': 'മാർക്കറ്റിംഗ് സപ്പോർട്ട്', 'value': 'Marketing Support'},
+//   {'text': 'തൊഴുത്ത് നിർമ്മാണം', 'value': 'Stable Construction'},
+//   {'text': 'കാലിത്തീറ്റ', 'value': 'Fodder'},
+//   {'text': 'ഉപകരണങ്ങൾ', 'value': 'Equipment'},
+//   {'text': 'ലൈവ് സ്റ്റോക്ക് രജിസ്ട്രേഷൻ', 'value': 'Live stock registration'},
+//   {'text': 'ഇൻഷുറൻസ്', 'value': 'Insurance'},
+//   {'text': 'K-Swift', 'value': 'K Swift'},
+//   {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
+//   {'text': 'പാൻ കാർഡ്', 'value': 'Pan Card'},
+//   {'text': 'ആധാർ മൊബൈൽ ലിങ്ക്', 'value': 'Aadhar Mobile Link'},
+//   {'text': 'അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
+//   {'text': 'ട്രേഡ് മാർക്ക്', 'value': 'Trad Mark'},
+//   {'text': 'സോൾ പ്രൊപ്രൈറ്റർ ഷിപ്പ്', 'value': 'Sole Propritership'},
+//   {'text': 'എൽ.എൽ.പി', 'value': 'LLP'},
+//   {'text': 'പാർട്ട്ണർ ഷിപ്പ്', 'value': 'Partnership'},
+//   {'text': 'സൊസൈറ്റി രജിസ്ട്രേഷൻ', 'value': 'Socity Registration'},
+//   {'text': 'കമ്പനി രജിസ്ട്രേഷൻ', 'value': 'Company Registration'},
+//   {'text': 'പാക്കിംഗ് ആന്റ് ലേബലിംഗ്', 'value': 'Packing and labeling'},
+//   {'text': 'ഡിസൈനിംഗ്', 'value': 'Desings'},
+//   {'text': 'ലോഗോ', 'value': 'Logo'},
+//   {'text': 'അസംസ്കൃത പദാർത്ഥങ്ങൾ', 'value': 'Raw-materials'},
+//   {'text': 'മെഷിനറി', 'value': 'Machinery'},
+//   {'text': 'വെബ് സ്റ്റോർ', 'value': 'Web Store'},
+//   {'text': 'വിദഗ്ദ്ധ തൊഴിലാളികൾ', 'value': 'Skilled work'},
+//   {'text': 'ഡിജിറ്റൽ മാർക്കറ്റിംഗ്', 'value': 'Digital Marketing'},
+//   {'text': 'കിസാൻ ക്രഡിറ്റ്', 'value': 'Kissan Credit'},
+//   {'text': 'പ്രൊജക്ട് തയ്യാറാക്കൽ', 'value': 'Project Preparation'},
+//   {'text': 'കാലിത്തീറ്റ വാങ്ങൽ', 'value': 'Purchase of fodder'},
+//   {'text': 'വെർമി കമ്പോസ്റ്റ്', 'value': 'Vermicompost'},
+//   {'text': 'ഉപകരണങ്ങൾ വാങ്ങൽ', 'value': 'Purchase of equipment'},
+//   {'text': 'തൊഴിൽ കാർഡ്', 'value': 'Job Card'},
+//   {'text': 'തൊഴിലുറപ്പ് സഹായം', 'value': 'Employment assistance'},
+//   {'text': 'ബിസിനസ്സ് എക്സ്പാൻഷൻ', 'value': 'Business Expansion'},
+//   {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
 //
 // ];
 
+
 final List datasupprtlistss = [
 
-  {'text': 'സാമ്പത്തിക പിന്തുണ', 'value': 'Financial Support'},
-  {'text': 'ബാങ്ക് അക്കൗണ്ട്', 'value': 'Bank Account'},
-  {'text': 'സി.ഡി.എസ്. രജിസ്ട്രേഷൻ', 'value': 'CDS Registration'},
-  {'text': 'പഞ്ചായത്ത് രജിസ്ട്രേഷൻ', 'value': 'Panchayat Registration'},
+  {'text': 'Financial Support', 'value': 'Financial Support'},
+  {'text': 'Bank Account', 'value': 'Bank Account'},
+  {'text': 'CDS Registration', 'value': 'CDS Registration'},
+  {'text': 'Panchayat Registration', 'value': 'Panchayat Registration'},
   {'text': 'FSSI', 'value': 'FSSI'},
-  {'text': 'ഇ- ശ്രം', 'value': 'E-shrm'},
-  {'text': 'ലീഗൽ മെട്രേളജി', 'value': 'Legalmetrology'},
-  {'text': 'പൊല്യൂഷൻ സർട്ടിഫിക്കേറ്റ്', 'value': 'Polution Certification'},
-  {'text': 'ജം രജിസ്ട്രേഷൻ', 'value': 'Gem-Registration'},
-  {'text': 'ജി.എസ്.ടി', 'value': 'GST'},
-  {'text': 'ഉദ്യം ആധാർ', 'value': '	Udyam Aadhar'},
-  {'text': 'കെ.എസ്.ഇ.ബി', 'value': 'K.S.E.B'},
-  {'text': 'വൈദഗ്ത്യ പരിശീലനം', 'value': 'Skill training'},
-  {'text': 'മാർക്കറ്റിംഗ് സപ്പോർട്ട്', 'value': 'Marketing Support'},
-  {'text': 'തൊഴുത്ത് നിർമ്മാണം', 'value': 'Stable Construction'},
-  {'text': 'കാലിത്തീറ്റ', 'value': 'Fodder'},
-  {'text': 'ഉപകരണങ്ങൾ', 'value': 'Equipment'},
-  {'text': 'ലൈവ് സ്റ്റോക്ക് രജിസ്ട്രേഷൻ', 'value': 'Live stock registration'},
-  {'text': 'ഇൻഷുറൻസ്', 'value': 'Insurance'},
+  {'text': 'E-shrm', 'value': 'E-shrm'},
+  {'text': 'Legalmetrology', 'value': 'Legalmetrology'},
+  {'text': 'Polution Certification', 'value': 'Polution Certification'},
+  {'text': 'Gem-Registration', 'value': 'Gem-Registration'},
+  {'text': 'GST', 'value': 'GST'},
+  {'text': 'Udyam Aadhar', 'value': 'Udyam Aadhar'},
+  {'text': 'K.S.E.B', 'value': 'K.S.E.B'},
+  {'text': 'Skill training', 'value': 'Skill training'},
+  {'text': 'Marketing Support', 'value': 'Marketing Support'},
+  {'text': 'Stable Construction', 'value': 'Stable Construction'},
+  {'text': 'Fodder', 'value': 'Fodder'},
+  {'text': 'Equipment', 'value': 'Equipment'},
+  {'text': 'Live stock registration', 'value': 'Live stock registration'},
+  {'text': 'Insurance', 'value': 'Insurance'},
   {'text': 'K-Swift', 'value': 'K Swift'},
-  {'text': 'വളം നിർമ്മാണം', 'value': 'Fertilizer Manufacturing'},
-  {'text': 'പാൻ കാർഡ്', 'value': 'Pan Card'},
-  {'text': 'ആധാർ മൊബൈൽ ലിങ്ക്', 'value': 'Aadhar Mobile Link'},
-  {'text': 'അഗ്രോ മാർക്കറ്റ്', 'value': 'Agro Marketing'},
-  {'text': 'ട്രേഡ് മാർക്ക്', 'value': 'Trad Mark'},
-  {'text': 'സോൾ പ്രൊപ്രൈറ്റർ ഷിപ്പ്', 'value': 'Sole Propritership'},
-  {'text': 'എൽ.എൽ.പി', 'value': 'LLP'},
-  {'text': 'പാർട്ട്ണർ ഷിപ്പ്', 'value': 'Partnership'},
-  {'text': 'സൊസൈറ്റി രജിസ്ട്രേഷൻ', 'value': 'Socity Registration'},
-  {'text': 'കമ്പനി രജിസ്ട്രേഷൻ', 'value': 'Company Registration'},
-  {'text': 'പാക്കിംഗ് ആന്റ് ലേബലിംഗ്', 'value': 'Packing and labeling'},
-  {'text': 'ഡിസൈനിംഗ്', 'value': 'Desings'},
-  {'text': 'ലോഗോ', 'value': 'Logo'},
-  {'text': 'അസംസ്കൃത പദാർത്ഥങ്ങൾ', 'value': 'Raw-materials'},
-  {'text': 'മെഷിനറി', 'value': 'Machinery'},
-  {'text': 'വെബ് സ്റ്റോർ', 'value': 'Web Store'},
-  {'text': 'വിദഗ്ദ്ധ തൊഴിലാളികൾ', 'value': 'Skilled work'},
-  {'text': 'ഡിജിറ്റൽ മാർക്കറ്റിംഗ്', 'value': 'Digital Marketing'},
-  {'text': 'കിസാൻ ക്രഡിറ്റ്', 'value': 'Kissan Credit'},
-  {'text': 'പ്രൊജക്ട് തയ്യാറാക്കൽ', 'value': 'Project Preparation'},
-  {'text': 'കാലിത്തീറ്റ വാങ്ങൽ', 'value': 'Purchase of fodder'},
-  {'text': 'വെർമി കമ്പോസ്റ്റ്', 'value': 'Vermicompost'},
-  {'text': 'ഉപകരണങ്ങൾ വാങ്ങൽ', 'value': 'Purchase of equipment'},
-  {'text': 'തൊഴിൽ കാർഡ്', 'value': 'Job Card'},
-  {'text': 'തൊഴിലുറപ്പ് സഹായം', 'value': 'Employment assistance'},
-  {'text': 'ബിസിനസ്സ് എക്സ്പാൻഷൻ', 'value': 'Business Expansion'},
-  {'text': 'മറ്റു പിന്തുണകൾ', 'value': 'Other Supports'},
+  {'text': 'Fertilizer Manufacturing', 'value': 'Fertilizer Manufacturing'},
+  {'text': 'Pan Card', 'value': 'Pan Card'},
+  {'text': 'Aadhar Mobile Link', 'value': 'Aadhar Mobile Link'},
+  {'text': 'Agro Marketing', 'value': 'Agro Marketing'},
+  {'text': 'Trad Mark', 'value': 'Trad Mark'},
+  {'text': 'Sole Propritership', 'value': 'Sole Propritership'},
+  {'text': 'LLP', 'value': 'LLP'},
+  {'text': 'Partnership', 'value': 'Partnership'},
+  {'text': 'Socity Registration', 'value': 'Socity Registration'},
+  {'text': 'Company Registration', 'value': 'Company Registration'},
+  {'text': 'Packing and labeling', 'value': 'Packing and labeling'},
+  {'text': 'Desings', 'value': 'Desings'},
+  {'text': 'Logo', 'value': 'Logo'},
+  {'text': 'Raw-materials', 'value': 'Raw-materials'},
+  {'text': 'Machinery', 'value': 'Machinery'},
+  {'text': 'Web Store', 'value': 'Web Store'},
+  {'text': 'Skilled work', 'value': 'Skilled work'},
+  {'text': 'Digital Marketing', 'value': 'Digital Marketing'},
+  {'text': 'Kissan Credit', 'value': 'Kissan Credit'},
+  {'text': 'Project Preparation', 'value': 'Project Preparation'},
+  {'text': 'Purchase of fodder', 'value': 'Purchase of fodder'},
+  {'text': 'Vermicompost', 'value': 'Vermicompost'},
+  {'text': 'Purchase of equipment', 'value': 'Purchase of equipment'},
+  {'text': 'Job Card', 'value': 'Job Card'},
+  {'text': 'Employment assistance', 'value': 'Employment assistance'},
+  {'text': 'Business Expansion', 'value': 'Business Expansion'},
+  {'text': 'Other Supports', 'value': 'Other Supports'},
 
 ];
 
-// final List datamgnregasupportlist = [
-//   {'text': 'പശു തൊഴുത്', 'value': 'Cattleshed'},
-//   {'text': 'ആട്ടിൻ കൂട്', 'value': 'Sheep Shed'},
-//   {'text': 'കോഴിക്കൂട്', 'value': 'Kozhikood'},
-//   {'text': 'കമ്പമ്പോസ്റ്റ് പിറ്റ്', 'value': 'Compost pit'},
-//   {'text': 'വർക്ക് ഷെഡ്', 'value': 'Work Shed'},
-//   {'text': 'പുൽകൃഷി ഭൂമിയൊരിക്കൽ', 'value': 'Fodder grass land preparation'},
-//   {'text': 'ജൈവ വേലി', 'value': 'Geofencing'},
-//   {'text': 'സോക്ക് പിറ്റ്', 'value': 'Sock pit'},
-//   {'text': 'അസസോള ടാങ്ക് /കുളം', 'value': 'Asola Tank / Pond'},
-//   {'text': 'കുളം വെട്ട്', 'value': 'Pond renovation'},
-//   {'text': 'കിണർ റീച്ചാർജ്', 'value': 'Well Recharging'},
-//   {'text': 'കിണർ നിർമ്മാണം', 'value': 'Construction of wells'},
-//   {'text': 'NO Value', 'value': ''}
-//   // {'text': 'other','value': 'source'},
-// ];
-
 final List datamgnregasupportlist = [
 
-{'text': "APIARY", "value": "APIARY"},
+// {'text': "APIARY", "value": "APIARY"},
 {'text': "AZOLA TANK", "value": "AZOLA TANK"},
-{'text': "BIOFENCING", "value": "BIOFENCING"},
+{'text': "BIO FENCING", "value": "BIO FENCING"},
 {'text': "CATTLE FEED PRODUCTION", "value": "CATTLE FEED PRODUCTION"},
 {'text': "CATTLE SHED", "value": "CATTLE SHED"},
 {'text': "DIGGING A POND", "value": "DIGGING A POND"},
-{'text': "EGGER NURSERY", "value": "EGGER NURSERY"},
+// {'text': "EGGER NURSERY", "value": "EGGER NURSERY"},
 {'text': "FODDER CULTIVATION", "value": "FODDER CULTIVATION"},
 {'text': "GOAT SHED", "value": "GOAT SHED"},
-{'text': "HATCHERY", "value": "HATCHERY"},
-{'text': "INTEGRATED FARMING", "value": "INTEGRATED FARMING"},
+// {'text': "HATCHERY", "value": "HATCHERY"},
+// {'text': "INTEGRATED FARMING", "value": "INTEGRATED FARMING"},
 {'text': "MANURE PIT", "value": "MANURE PIT"},
-{'text': "MANURE PRODUCTION", "value": "MANURE PRODUCTION"},
-{'text': "MARKETING", "value": "MARKETING"},
-{'text': "MEAT SALES", "value": "MEAT SALES"},
-{'text': "MILK MARKETING", "value": "MILK MARKETING"},
-{'text': "PARENT STOCK", "value": "PARENT STOCK"},
-{'text': "PHARMACY", "value": "PHARMACY"},
+// {'text': "MANURE PRODUCTION", "value": "MANURE PRODUCTION"},
+// {'text': "MARKETING", "value": "MARKETING"},
+// {'text': "MEAT SALES", "value": "MEAT SALES"},
+// {'text': "MILK MARKETING", "value": "MILK MARKETING"},
+// {'text': "PARENT STOCK", "value": "PARENT STOCK"},
+// {'text': "PHARMACY", "value": "PHARMACY"},
 {'text': "POULTRY CAGES/SHED", "value": "POULTRY CAGES/SHED"},
 {'text': "PREPARATION OF LAND FOR FODDER CULTIVATION", "value": "PREPARATION OF LAND FOR FODDER CULTIVATION"},
 {'text': "RECHARGING OF WELL", "value": "RECHARGING OF WELL"},
-{'text': "SINKING OF WELL", "value": "SINKING OF WELL"},
+// {'text': "SINKING OF WELL", "value": "SINKING OF WELL"},
 {'text': "SOAK PIT", "value": "SOAK PIT"},
 {'text': "VALU ADDITION OF PRODUCE", "value": "VALU ADDITION OF PRODUCE"},
 {'text': "WORK SHED", "value": "WORK SHED"},
 {'text': "OTHERS", "value": "OTHERS"},
+  {'text': 'N/A', 'value': 'N/A'}
+
 ];
 
 final List? rawmaterials = [
-  {
-    'text': 'INGREDIENTS FOR CATTLE FEED',
-    'value': 'INGREDIENTS FOR CATTLE FEED'
-  },
-  {
-    'text': 'INGREDIENTS FOR POULTRY FEED',
-    'value': 'INGREDIENTS FOR POULTRY FEED'
-  },
+  {'text': 'INGREDIENTS FOR CATTLE FEED', 'value': 'INGREDIENTS FOR CATTLE FEED'},
+  {'text': 'INGREDIENTS FOR POULTRY FEED', 'value': 'INGREDIENTS FOR POULTRY FEED'},
   {'text': 'PULLETS', 'value': 'PULLETS'},
   {'text': 'MANURE', 'value': 'MANURE'},
   {'text': 'CHEMICAL FERTILIZERS', 'value': 'CHEMICAL FERTILIZERS'},
@@ -371,9 +357,7 @@ final List? rawmaterials = [
   {'text': 'COWS', 'value': 'COWS'},
   {'text': 'MALABARI GOATS', 'value': 'MALABARI GOATS'},
   {'text': 'MALABARI GOAT-KIDS', 'value': 'MALABARI GOAT-KIDS'},
-  {
-    'text': 'MATERIAL FOR POULTRY CAGE FABRICATION',
-    'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'
+  {'text': 'MATERIAL FOR POULTRY CAGE FABRICATION', 'value': 'MATERIAL FOR POULTRY CAGE FABRICATION'
   },
   {'text': 'EGG TRAYS', 'value': 'EGG TRAYS'},
   {'text': 'POULTRY FEED', 'value': 'POULTRY FEED'},
@@ -381,7 +365,7 @@ final List? rawmaterials = [
   {'text': 'TMR', 'value': 'TMR'},
   {'text': 'GROWER', 'value': 'GROWER'},
   {'text': 'CATTLE FEED', 'value': 'CATTLE FEED'},
-  {'text': 'CAFL STARTER', 'value': 'CAFL STARTER'},
+  {'text': 'CALF STARTER', 'value': 'CALF STARTER'},
   {'text': 'ENERGY RICH FEED', 'value': 'ENERGY RICH FEED'},
   {'text': 'BYPASS PROTEIN', 'value': 'BYPASS PROTEIN'},
   {'text': 'BYPASS FAT', 'value': 'BYPASS FAT'},
@@ -393,7 +377,8 @@ final List? rawmaterials = [
   {'text': 'GOAT FEED', 'value': 'GOAT FEED'},
   {'text': 'KID STARTER', 'value': 'KID STARTER'},
   {'text': 'MILK REPLACER', 'value': 'MILK REPLACER'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -402,7 +387,8 @@ final List? pullets = [
   {'text': 'GRAMALAKSHMI', 'value': 'GRAMALAKSHMI'},
   {'text': 'GRAMAPRIYA', 'value': 'GRAMAPRIYA'},
   {'text': 'OTHER', 'value': 'OTHER'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 
 ];
@@ -410,20 +396,23 @@ final List? pullets = [
 final List? calves = [
   {'text': 'H F', 'value': 'CALVES-H F'},
   {'text': 'GERSEY', 'value': 'CALVES-GERSEY'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 final List? heifers = [
   {'text': 'H F', 'value': 'HEIFERS-H F'},
   {'text': 'GERSEY', 'value': 'HEIFERS-GERSEY'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 
 ];
 final List? cows = [
   {'text': 'H F', 'value': 'COWS-H F'},
   {'text': 'GERSEY', 'value': 'COWS-GERSEY'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -433,7 +422,8 @@ final List? manure = [
   {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
   {'text': 'POULTRY MANURE', 'value': 'POULTRY MANURE'},
   {'text': 'VERMY COMPOST', 'value': 'VERMY COMPOST'},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -446,7 +436,8 @@ final List? fodderslip = [
   {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
   {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
   {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -478,7 +469,8 @@ final List? livelihoods = [
   {'text': "MANURE", 'value': "MANURE",},
   {'text': "POULTRY", 'value': "POULTRY",},
   {'text': "POULTRY MANURE", 'value': "POULTRY MANURE",},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -512,7 +504,8 @@ final List? produceproduction = [
   {'text': 'GUINEA GRASS', 'value': 'GUINEA GRASS'},
   {'text': 'PARA GRASS', 'value': 'PARA GRASS'},
   {'text': 'CONGO SIGNAL', 'value': 'CONGO SIGNAL'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -530,7 +523,8 @@ final List? produceproductavilable = [
   {'text': 'PULLETS', 'value': 'PULLETS'},
   {'text': 'CALF', 'value': 'CALF'},
   {'text': 'BEIFER', 'value': 'BEIFER'},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -541,7 +535,8 @@ final List? mode_of_marketing = [
   {'text': 'SOCIETY', 'value': 'SOCIETY'},
   {'text': 'CLUSTER', 'value': 'CLUSTER'},
   {'text': 'ONLINE', 'value': 'ONLINE'},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
@@ -550,21 +545,24 @@ final List? cowlist = [
   {'text': 'H F', 'value': 'H F'},
   {'text': 'INDIGENOUS', 'value': 'INDIGENOUS'},
   {'text': 'JERSEY', 'value': 'JERSEY'},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
 final List? calfgender = [
   {'text': "FEMALE", 'value': "FEMALE"},
   {'text': "MALE", 'value': "MALE"},
-  {'text': 'NO Value', 'value': ''},
+
 ];
 
 
 final List? fooderitems = [
   {'text': "FOR SALE", 'value': "FOR SALE",},
   {'text': "OWN USE", 'value': "OWN USE"},
-  {'text': 'NO Value', 'value': ''},
+  {'text': 'N/A', 'value': 'N/A'}
+
+
 
 ];
 
@@ -574,21 +572,23 @@ final List? goatlist = [
   {'text': "MALABARI", 'value': "MALABARI"},
   {'text': "MALABARI KID", 'value': "MALABARI KID"},
   {'text': "OTHERS", 'value': "OTHERS"},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 
 ];
 
 final List? manuritems = [
   {'text': "DRY", 'value': "DRY",},
   {'text': "FRESH", 'value': "FRESH"},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
+
 ];
 
 
 final List? poultrylist = [
   {'text': "EGG PRODUCTION", 'value': "EGG PRODUCTION"},
   { 'text': "MARKETING", 'value': "MARKETING"},
-  {'text': 'NO Value', 'value': ''}
+  {'text': 'N/A', 'value': 'N/A'}
 
 
 ];

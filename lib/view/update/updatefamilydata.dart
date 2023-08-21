@@ -92,14 +92,6 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
 
 
       updatefamilyMembers.add(
-          // {
-          //   "data_familydetails_nameoffailyfmember": '',
-          //   "data_familydetails_ageoffamilymember" : '',
-          // "data_familydetails_relation" : '',
-          // "data_familydetails_education" : '',
-          // "data_familydetails_skill" : '',
-          // "data_familydetails_job" : '',
-          // }
           FamilyDetail(
         dataFamilydetailsNameoffailyfmember: providerone.dataFamilydetailsNameoffailyfmember,
         dataFamilydetailsRelation:providerone.dataFamilydetailsRelation,
@@ -109,9 +101,6 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
         dataFamilydetailsSkill: providerone.dataFamilydetailsSkill,
       )
       );
-
-
-
     });
 
     // providerone.clearfamilydata();

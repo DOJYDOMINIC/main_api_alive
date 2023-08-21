@@ -257,7 +257,6 @@ class _SalesState extends State<UpdateSalesData> {
   // void getsaleData() {
   //   try {
   //     var dataup = widget.items['sales'][0];
-  //
   //       productavilable = dataup["data_Sales_prdct2"];
   //       modeof_markrting = dataup ["data_Sales_salesmethod"];
   //       milkqty.text= dataup["MILK_qnty"].toString();

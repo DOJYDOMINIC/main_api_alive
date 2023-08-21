@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:main200623/view/widgets/dropdown_nosearch.dart';
 import 'dart:convert';
 import '../constant/color_text.dart';
 import '../services/add_api.dart';
@@ -17,6 +18,86 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _districtController = TextEditingController();
+  TextEditingController _blockController = TextEditingController();
+  TextEditingController _panchaythController = TextEditingController();
+
+  String? selectedDistrict;
+  String? selectedBlocks;
+String? selectedPanchath;
+
+
+  List<String> districts = []; // Declare a global list variable
+
+  Future<void> fetchDistricts() async {
+    try {
+      final response = await http.get(Uri.parse('${api}user/district'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          districts =
+          List<String>.from(data); // Assign fetched data to the global list
+          // selectedDistrict;
+          // print(selectedDistrict);
+        });
+      } else {
+        throw Exception('Failed to fetch districts');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching districts: $e');
+    }
+  }
+
+  List<String> blocks = [];
+
+  Future<void> fetchBlocks(String selectedDistrict) async {
+    try {
+      final response =
+      await http.get(Uri.parse('${api}user/blocks/$selectedDistrict'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          blocks = List<String>.from(data);
+          print(blocks);
+        });
+      } else {
+        throw Exception('Failed to fetch blocks');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching blocks: $e');
+    }
+  }
+
+  List<String> panchaths = [];
+
+  Future<void> fetchPanchayth(String selectedBlocks) async {
+    try {
+      final response =
+      await http.get(Uri.parse('${api}user/Panchayat/$selectedBlocks'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          panchaths = List<String>.from(data);
+          print(panchaths);
+        });
+      } else {
+        throw Exception('Failed to fetch blocks');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching blocks: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDistricts();
+  }
 
   bool obscureText = true;
   void toggleVisibility() {
@@ -39,7 +120,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         "name": _nameController.text,
         "email": _emailController.text,
         "password": _passwordController.text,
-      };
+        "district" : selectedDistrict,
+        "block": selectedBlocks,
+        "panchayath": selectedPanchath,
+       };
 
       const apiUrl = "${api}auth/register";
 
@@ -166,6 +250,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             key: _formKey,
                             child: Column(
                               children: [
+                                NoSearchDropdown(
+                                  items: districts,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedDistrict = value;
+                                      fetchBlocks(selectedDistrict!);
+                                    });
+                                  },
+                                  item: 'ജില്ല',
+                                ),
+                                NoSearchDropdown(
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedBlocks = value;
+                                      fetchPanchayth(selectedBlocks!);
+                                    });
+                                  },
+                                  item: 'ബ്ലോക്ക്',
+                                  items: blocks,
+                                ),
+                                NoSearchDropdown(
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedPanchath =value;
+                                      });
+                                    },
+                                    items: panchaths,
+                                    item: 'പഞ്ചായത്ത്'),
+
+                                Divider(color: Colors.grey),
                                 TextFormField(
                                   controller: _nameController,
                                   validator: (value) {

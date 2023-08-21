@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
 import '../widgets/dropdown_nosearch.dart';
@@ -49,6 +51,7 @@ class _ReportPageState extends State<ReportPage> {
   List<String> sublistlist = [];
   List<String> selectedsupport = [];
 
+String panchayath = '';
 
   Future<void> _openDownloadLocation() async {
     String downloadPath = "/storage/emulated/0/Download/"; // Modify this to your actual download path
@@ -60,16 +63,20 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-  Future<void> _notification()async{
+  Future<void> _notification() async {
+    // Create a new FlutterLocalNotificationsPlugin object.
     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    // Create an AndroidNotificationDetails object.
     const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'Download Completed', 'Notification when download is completed',
-        importance: Importance.max,
-        priority: Priority.high,
-        showWhen: false,
-        playSound: true,
+      'Download Completed', 'Notification when download is completed',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: false,
+      playSound: true,
     );
+    // Create a NotificationDetails object.
     const NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
+    // Show the notification.
     await flutterLocalNotificationsPlugin.show(
       0,
       'Download Completed',
@@ -77,6 +84,40 @@ class _ReportPageState extends State<ReportPage> {
       platformChannelSpecifics,
       payload: 'item_id', // You can use a relevant payload here
     );
+    // Open the file when the notification is clicked.
+    // await _openDownloadLocation();
+  }
+
+  bool permissionGranted = false;
+
+  Future<void> _getStoragePermission() async {
+    DeviceInfoPlugin plugin = DeviceInfoPlugin();
+    AndroidDeviceInfo android = await plugin.androidInfo;
+    if (android.version.sdkInt < 33) {
+      if (await Permission.storage.request().isGranted) {
+        setState(() {
+          permissionGranted = true;
+        });
+      } else if (await Permission.storage.request().isPermanentlyDenied) {
+        await openAppSettings();
+      } else if (await Permission.audio.request().isDenied) {
+        setState(() {
+          permissionGranted = false;
+        });
+      }
+    } else {
+      if (await Permission.photos.request().isGranted) {
+        setState(() {
+          permissionGranted = true;
+        });
+      } else if (await Permission.photos.request().isPermanentlyDenied) {
+        await openAppSettings();
+      } else if (await Permission.photos.request().isDenied) {
+        setState(() {
+          permissionGranted = false;
+        });
+      }
+    }
   }
 
   Future<void> startDownloading(
@@ -84,7 +125,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/class1?data_Panchayath=$panchayth&data_Class=$dataone';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String dataclass = "dataclass_${timeStamp}.xlsx";
     String path = await _getFilePath(dataclass);
     print('Download Path: $path');
@@ -179,7 +220,7 @@ class _ReportPageState extends State<ReportPage> {
       String panchayth, String datatwo, String token) async {
     final String url =
         '${api}search/class2?data_Panchayath=$panchayth&data_Class2=$datatwo';
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String class2 = "dataclass2_${timeStamp}.xlsx";
 
     String path = await _getFilePath(class2);
@@ -281,7 +322,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/detailsofAnimalHusbandryBusiness?selectedPanchayath=$panchayth&selectedBusinessType=$businessString';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String business = "business type ${timeStamp}.xlsx";
 
     String path = await _getFilePath(business);
@@ -374,7 +415,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/TrainingsRequired?data_Panchayath=$panchayth&data_Trainingsrequired=$traning';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String trainingsrequired = "Trainingsrequired_${timeStamp}.xlsx";
 
     String path = await _getFilePath(trainingsrequired);
@@ -383,6 +424,7 @@ class _ReportPageState extends State<ReportPage> {
     // Check if the storage permission is granted
     if (await Permission.storage.isGranted) {
       // Permission is granted, proceed with the download
+
       try {
         Response response = await dio.download(
           url,
@@ -424,6 +466,8 @@ class _ReportPageState extends State<ReportPage> {
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
+        TraningRequaredd(
+            panchayth, traning, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -469,7 +513,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/class3?data_Panchayath=$panchayth&data_Class3=$datathree';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String class3 = "data_class3_${timeStamp}.xlsx";
 
     String path = await _getFilePath(class3);
@@ -519,6 +563,8 @@ class _ReportPageState extends State<ReportPage> {
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
+        dtaclassThree(
+            panchayth, datathree, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -563,7 +609,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/productDetails?panchayath=$panchayth&products_Name=$productname';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String product = "product_detail${timeStamp}.xlsx";
     String path = await _getFilePath(product);
     print('Download Path: $path');
@@ -612,6 +658,8 @@ class _ReportPageState extends State<ReportPage> {
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
+        productName(
+            panchayth, productname, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -655,7 +703,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/salesReport?panchayath=$panchayth&products_Name=$sales';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String product = "Sales_${timeStamp}.xlsx";
     String path = await _getFilePath(product);
     print('Download Path: $path');
@@ -705,6 +753,7 @@ class _ReportPageState extends State<ReportPage> {
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
+        await   Sales(panchayth, salesvalue!, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -795,6 +844,7 @@ class _ReportPageState extends State<ReportPage> {
       var status = await Permission.storage.request();
       if (status.isGranted) {
         // Permission granted by the user, start the download
+        await landdetails(panchayth, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -841,7 +891,7 @@ class _ReportPageState extends State<ReportPage> {
     final String url =
         '${api}search/detailsofMGNREGASupport?selectedPanchayath=$panchayth&MGNREGA_Support=$mgnreg';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String mgnre = "Mgnreg ${timeStamp}.xlsx";
 
     String path = await _getFilePath(mgnre);
@@ -938,7 +988,7 @@ class _ReportPageState extends State<ReportPage> {
       url += '&subList=$item2';
     }
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String purchase = "purchase_item${timeStamp}.xlsx";
 
     String path = await _getFilePath(purchase);
@@ -1035,7 +1085,7 @@ class _ReportPageState extends State<ReportPage> {
       url += '&subList=$_item2';
     }
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String purchase = "Livelihood${timeStamp}.xlsx";
 
     String path = await _getFilePath(purchase);
@@ -1137,8 +1187,33 @@ class _ReportPageState extends State<ReportPage> {
 
   List<String> districts = []; // Declare a global list variable
 
+
+
+  Future<void> getSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String authToken = prefs.getString('authToken') ?? '';
+    String email = prefs.getString('email') ?? '';
+    String name = prefs.getString('name') ?? '';
+    String district = prefs.getString('district') ?? '';
+    String block = prefs.getString('block') ?? '';
+    String panchayath = prefs.getString('panchayath') ?? '';
+
+    if(panchayath != null || panchayath.isNotEmpty){
+      panchayth = panchayath;
+    }
+
+  }
+
+
+
   Future<void> fetchDistricts() async {
     try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        panchayath = prefs.getString("panchayath").toString();
+      });
       final response = await http.get(Uri.parse('${api}search/listDistricts'));
 
       if (response.statusCode == 200) {
@@ -1311,7 +1386,7 @@ String? liveli_sublist;
     final String url =
         '${api}report/dataSupport?data_Panchayath=$panchayth&data_supportrecived=$datasupport';
 
-    String timeStamp = DateFormat("yyyyMMdd_HHmmss").format(DateTime.now());
+    String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String business = "data_support_${timeStamp}.xlsx";
 
     String path = await _getFilePath(business);
@@ -1407,8 +1482,11 @@ String? liveli_sublist;
     Fetchpurchase();
     fetchsales();
     fetchLivelihood_List();
+    getSavedData();
     // fetchDataSupport();
+    // _getStoragePermission();
   }
+
 
 // Function to show the "No data available" AlertDialog
   void showNoDataAvailableDialog(BuildContext context) {
@@ -1431,6 +1509,44 @@ String? liveli_sublist;
     );
   }
 
+  Future<void> download() async {
+    if (await Permission.storage.request().isGranted) {
+      _openDownloadLocation();
+      print('Storage permission granted');
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Permission Required'),
+            content: const Text(
+                'Please grant storage permission in app settings to continue.'),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Open Settings'),
+                onPressed: () {
+                  openAppSettings();
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  // Navigator.of(context).pop(); // Close the dialog and the downloading dialog
+                },
+              ),
+            ],
+          );
+        },
+      );
+      // Permission not granted, show a dialog or take appropriate action
+      print('Storage permission denied');
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     String downloadingprogress = (progress * 100).toInt().toString();
@@ -1446,6 +1562,11 @@ String? liveli_sublist;
           title: Text('Documentation'),
           centerTitle: true,
           backgroundColor: app_theam,
+          actions: [
+            IconButton(onPressed: (){
+      download();
+      }, icon:Icon(Icons.download_for_offline,size: 30,)),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -1454,57 +1575,52 @@ String? liveli_sublist;
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 30, bottom: 20),
-                  child: GestureDetector(
-                    onTap: (){
-                      _openDownloadLocation();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.file_copy, size: 50, color: app_theam),
-                        Text(
-                          'Report',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: app_theam),
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.file_copy, size: 50, color: app_theam),
+                      Text(
+                        'Report',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: app_theam),
+                      ),
+                    ],
                   ),
                 ),
-                NoSearchDropdown(
-                  items: districts,
-                  onChanged: (value) {
-                    setState(() {
-                      dist = value;
-                      fetchBlocks(dist!);
-                    });
-                  },
-                  item: 'ജില്ല',
-                ),
-                NoSearchDropdown(
-                  onChanged: (value) {
-                    setState(() {
-                      blockss = value;
-                      fetchPanchayth(blockss!);
-                    });
-                  },
-                  item: 'ബ്ലോക്ക്',
-                  items: blocklist,
-                ),
-                NoSearchDropdown(
-                    onChanged: (value) {
-                      setState(() {
-                        panchayth = value;
-                        // fetchPanchayth(panchayth!);
-                      });
-                    },
-                    items: panchaths,
-                    item: 'പഞ്ചായത്ത്'),
-                SizedBox(
-                  height: 10,
-                ),
+                // NoSearchDropdown(
+                //   items: districts,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       dist = value;
+                //       fetchBlocks(dist!);
+                //     });
+                //   },
+                //   item: 'ജില്ല',
+                // ),
+                // NoSearchDropdown(
+                //   onChanged: (value) {
+                //     setState(() {
+                //       blockss = value;
+                //       fetchPanchayth(blockss!);
+                //     });
+                //   },
+                //   item: 'ബ്ലോക്ക്',
+                //   items: blocklist,
+                // ),
+                // NoSearchDropdown(
+                //     onChanged: (value) {
+                //       setState(() {
+                //         panchayth = value;
+                //         // fetchPanchayth(panchayth!);
+                //       });
+                //     },
+                //     items: panchaths,
+                //     item: 'പഞ്ചായത്ത്'),
+                // SizedBox(
+                //   height: 10,
+                // ),
                 // if (panchayth != null)
                   Column(
                     children: [
@@ -2183,3 +2299,7 @@ String? liveli_sublist;
     );
   }
 }
+
+
+
+

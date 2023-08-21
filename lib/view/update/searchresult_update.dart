@@ -1,7 +1,10 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/updatepersonal_add.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../model/model.dart';
 import '../../services/add_api.dart';
 import '../login.dart';
@@ -9,8 +12,8 @@ import 'package:http/http.dart' as http;
 
 
 class SerachresultUpsate extends StatefulWidget {
-  const SerachresultUpsate({Key? key, this.item}) : super(key: key);
-final List<dynamic>? item;
+  const SerachresultUpsate({Key? key}) : super(key: key);
+
 
 
   @override
@@ -18,6 +21,45 @@ final List<dynamic>? item;
 }
 
 class _SerachresultUpsateState extends State<SerachresultUpsate> {
+
+  List<Map<String, dynamic>> peopleData = [];
+  bool isLoading = true;
+
+  Future<void> fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var name = prefs.getString('name');
+    var token = prefs.getString('authToken');
+    print("name: $name");
+
+    try {
+      final response = await http.get(
+        Uri.parse('${api}search/searchByCpr?data_nameofcrp=$name'),
+        headers: {'Authorization': 'Bearer $token'},
+      );
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          peopleData = List<Map<String, dynamic>>.from(data);
+        });
+        // Delay the navigation by 1 second to show the circular progress bar for a short duration
+        await Future.delayed(Duration(seconds: 1));
+        
+      } else {
+        throw Exception('Failed to fetch data');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching data: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   Future<void> deleteDataonId(String dataId, String token) async {
     final apiUrl = '${api}search/deleteById?dataId=$dataId';
@@ -46,28 +88,40 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
       print('Error occurred during data deletion: $error');
     }
   }
+  
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (!FocusScope.of(context).hasPrimaryFocus) {
-          FocusScope.of(context).unfocus();
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('വ്യക്തികളുടെ ലിസ്റ്റ് '),
-          backgroundColor: app_theam,
-        ),
-        body: ListView.builder(
-          itemCount: widget.item!.length,
-          itemBuilder: (context, index) { Map<String, dynamic> data = widget.item![index]['data'][0];
+    if(isLoading){
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return  GestureDetector(
+        onTap: () {
+          if (!FocusScope.of(context).hasPrimaryFocus) {
+            FocusScope.of(context).unfocus();
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('വ്യക്തികളുടെ ലിസ്റ്റ് '),
+            backgroundColor: app_theam,
+          ),
+          body: ListView.builder(
+            itemCount:peopleData.length,
+            itemBuilder: (context, index) { Map<String, dynamic> data =peopleData[index]['data'][0];
             // print(data);
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(items: widget.item![index],),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePersonalPage(items:peopleData[index],),));
                 },
                 child: Container(
                   width: 300,
@@ -111,9 +165,11 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                                   TextButton(
                                     child: Text('OK',style: TextStyle(color: Colors.red),),
                                     onPressed: () {
-                                      var id = widget.item![index]['data'][0]['_id'];
-                                      print(id);
-                                      deleteDataonId(id, authToken!);
+                                      var id =peopleData[index]['data'][0]['_id'];
+                                      // print(id);
+                                      setState(() {
+                                        deleteDataonId(id, authToken!);
+                                      });
                                       // Perform delete operation
                                       // Add your delete logic here
                                       Navigator.of(context).pop(); // Close the dialog
@@ -131,8 +187,10 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                 ),
               ),
             );
-        },),
-      ),
-    );
+            },),
+        ),
+      );
+    }
+    
   }
 }

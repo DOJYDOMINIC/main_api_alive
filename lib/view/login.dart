@@ -11,6 +11,7 @@ import 'forgotpass.dart';
 
 String? authToken;
 
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -22,16 +23,26 @@ class _LoginState extends State<Login> {
 
   String? dropdownValue;
 
+  String? crp_name;
+  String? district_login;
+  String? block_login;
+  String? panchayth_login;
+
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _districtController = TextEditingController();
+  TextEditingController _blockController = TextEditingController();
+  TextEditingController _panchaythController = TextEditingController();
+  TextEditingController _namecontroller = TextEditingController();
+
   List<String> dropdownOptions = ['Admin', 'User'];
 
 
-  Future<void> saveAuthTokenToPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('authToken', authToken!);
-  }
+  // Future<void> saveAuthTokenToPreferences() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('authToken', authToken!);
+  // }
 
 
   Future<void> login() async {
@@ -47,14 +58,33 @@ class _LoginState extends State<Login> {
     try {
       final response = await http.post(Uri.parse(url), body: body);
 
+      print(response.statusCode);
+      print(response.body);
+
       if (response.statusCode == 200) {
-        saveAuthTokenToPreferences();
+        // saveAuthTokenToPreferences();
         // Successful login
         var data = json.decode(response.body);
-        authToken = data['token'];
+
+        print(data['user']['name']!);
+
+        authToken = data['token']!;
+
+        // crp_name = data['user']['name'].toString()
+        // district_login = data['district'];
+        // block_login = data['block'];
+        // panchayth_login = data['panchayath'];
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('authToken', authToken!);
         prefs.setString('email', _emailController.text);
+        prefs.setString('name', data['user']['name'].toString());
+        prefs.setString('district', data['user']['district'].toString());
+        prefs.setString('block', data['user']['block'].toString());
+        prefs.setString('panchayath', data['user']['panchayath'].toString());
+
+
+
 
         // Process the data or navigate to the next screen
         _emailController.clear();
@@ -91,6 +121,7 @@ class _LoginState extends State<Login> {
         );
       }
     } catch (e) {
+      print(e);
       showDialog(
         context: context,
         builder: (BuildContext context) {

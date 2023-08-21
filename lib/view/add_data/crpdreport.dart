@@ -17,14 +17,11 @@ import 'package:connectivity/connectivity.dart';
 
 import 'familydata.dart';
 
-
-
 Future<bool> checkInternetConnectivity() async {
   var connectivityResult = await Connectivity().checkConnectivity();
   return connectivityResult == ConnectivityResult.mobile ||
       connectivityResult == ConnectivityResult.wifi;
 }
-
 
 class CrpDetail extends StatefulWidget {
   const CrpDetail({Key? key}) : super(key: key);
@@ -37,7 +34,6 @@ class _SalesState extends State<CrpDetail> {
   @override
   void initState() {
     super.initState();
-
   }
 
   TextEditingController datacomments = TextEditingController();
@@ -45,15 +41,10 @@ class _SalesState extends State<CrpDetail> {
   TextEditingController datanameofcrp = TextEditingController();
   TextEditingController dataNameofrespondent = TextEditingController();
 
-
-
-
-
   void submitForm() async {
     var providerone = Provider.of<TextMain>(context, listen: false);
 
     final AddData data = AddData(
-
       dataName: providerone.dataName,
       dataAddress: providerone.dataAddress,
       dataDistrict: providerone.dataDistrict,
@@ -62,19 +53,23 @@ class _SalesState extends State<CrpDetail> {
       dataWard: providerone.dataWard,
       dataClass: providerone.dataClass,
       dataClass2: providerone.dataClass2,
-      dataClass3 : providerone.dataClass3,
-            // ?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataClass3: providerone.dataClass3,
+      // ?.map((dynamic item) => item.toString()).toList() ?? [],
       dataAmountinvested: providerone.dataAmountinvested,
       dataRoleinNg: providerone.dataRoleinNg,
       dataFamilyincome: providerone.dataFamilyincome,
       dataHouseOwnership: providerone.dataHouseownership,
-      dataAnimalhusbendaryBusinesstype: providerone.dataAnimalhusbendaryBusinesstype?.map((dynamic item) => item.toString()).toList() ?? [],
-      dataAnimalhusbendaryCdsregistration: providerone
-          .dataAnimalhusbendaryCdsregistration,
-      dataAnimalhusbendaryRegdetailsRegnumber: providerone
-          .dataAnimalhusbendaryRegdetailsRegnumber,
-      dataAnimalhusbendaryRegdetailsCdsunitname: providerone
-          .dataAnimalhusbendaryRegdetailsCdsunitname,
+      dataAnimalhusbendaryBusinesstype: providerone
+              .dataAnimalhusbendaryBusinesstype
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
+      dataAnimalhusbendaryCdsregistration:
+          providerone.dataAnimalhusbendaryCdsregistration,
+      dataAnimalhusbendaryRegdetailsRegnumber:
+          providerone.dataAnimalhusbendaryRegdetailsRegnumber,
+      dataAnimalhusbendaryRegdetailsCdsunitname:
+          providerone.dataAnimalhusbendaryRegdetailsCdsunitname,
       dataAnimalhusbendaryOthers0: providerone.dataAnimalhusbendaryOthers0,
       dataBusinessidea: providerone.dataBusinessidea,
       dataDateofsurvey: providerone.dataDateofsurvey,
@@ -92,81 +87,132 @@ class _SalesState extends State<CrpDetail> {
       dataInfraOthers: providerone.dataInfraOthers,
       dataInfraWastage: providerone.dataInfraWastage,
       dataLanddetails1Landforgrass: providerone.dataLanddetails1Landforgrass,
-      dataTrainingsrequired: providerone.dataTrainingsrequired?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataTrainingsrequired: providerone.dataTrainingsrequired
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       dataSupportrecived: providerone.dataSupportrecived,
       // dataSupport: providerone.dataSupport?.join(','),
-      dataSupport: providerone.dataSupport?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataSupport: providerone.dataSupport
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       dataStarttime: providerone.dataStarttime,
-      dataSourceofinvestment: providerone.dataSourceofinvestment?.map((dynamic item) => item.toString()).toList() ?? [],
-      dataLanddetailsAgricultureland: providerone.dataLanddetailsAgricultureland,
-      dataSalesPrdct2: providerone.dataSalesprdct2?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataSourceofinvestment: providerone.dataSourceofinvestment
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
+      dataLanddetailsAgricultureland:
+          providerone.dataLanddetailsAgricultureland,
+      dataSalesPrdct2: providerone.dataSalesprdct2
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       // dataLivelihoodNumbers: providerone.datalivelihoodnumbers,
       dataNameofcrp: providerone.dataNameofcrp,
       dataNameofNg: providerone.dataNameofNg,
       // dataLivelihoodRevenue: providerone.datalivelihoodrevenue,
       dataNameofNGmember: providerone.dataNameofNGmember,
-      dataMgnregAsupport: providerone.dataMgnregAsupport?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataMgnregAsupport: providerone.dataMgnregAsupport
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       // dataProductsQuantum: providerone.dataProductsQuantum,
       // dataProductsPrdct: providerone.dataProductsPrdct,
-      dataLanddetails1Qtyofleasedland: providerone.dataLanddetails1Qtyofleasedland,
+      dataLanddetails1Qtyofleasedland:
+          providerone.dataLanddetails1Qtyofleasedland,
       dataLanddetails1Qtyofownland: providerone.dataLanddetails1Qtyofownland,
       dataLanddetails2Qtyofownland: providerone.dataLanddetails2Qtyofownland,
-      dataLanddetails2Siteforworkshed: providerone
-          .dataLanddetails2Siteforworkshed,
+      dataLanddetails2Siteforworkshed:
+          providerone.dataLanddetails2Siteforworkshed,
       // dataLivelihoodCapitalsource: providerone.datalivelihoodcapitalsource,
-      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource?.map((dynamic item) => item.toString()).toList() ?? [],
-      dataLoandetailsDateofLoanApplication: providerone.dataDateofLoanApplication,
-      dataLoandetailsTotalinvestment: providerone.dataLoandetailsTotalinvestment,
+      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
+      dataLoandetailsDateofLoanApplication:
+          providerone.dataDateofLoanApplication,
+      dataLoandetailsTotalinvestment:
+          providerone.dataLoandetailsTotalinvestment,
       dataNameofrespondent: providerone.dataNameofrespondent,
       dataNoofgroupmembers: providerone.dataNoofgroupmembers,
       dataOthers2: providerone.dataOthers2,
       dataOthers3: providerone.dataOthers3,
       dataOthers4: providerone.dataOthers4,
       // dataProductsPrice2: providerone.dataProductsPrice2,
-      dataPurchaseofrawmaterialsBrand: providerone.dataPurchaseofrawmaterialsBrand,
-      dataSalesSalesmethod: providerone.dataSalesSalesmethod?.map((dynamic item) => item.toString()).toList() ?? [],
+      dataPurchaseofrawmaterialsBrand:
+          providerone.dataPurchaseofrawmaterialsBrand,
+      dataSalesSalesmethod: providerone.dataSalesSalesmethod
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       beiferQnty: providerone.beiferQnty,
       brandQnty: providerone.brandQnty,
       byPassFatQnty: providerone.byPassFatQnty,
       byPassProteinQnty: providerone.byPassProteinQnty,
       calfQnty: providerone.calfQnty,
-      calvesList: providerone.calvesList?.map((dynamic item) => item.toString()).toList() ?? [],
+      calvesList: providerone.calvesList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       cattleFeedList: providerone.cattleFeedList,
       cattleFeedQnty: providerone.cattleFeedQnty,
-      cowsList: providerone.cowsList?.map((dynamic item) => item.toString()).toList() ?? [],
-      dataPurchaseofrawmaterialsItemtype: providerone.dataPurchaseofrawmaterialsItemtype?.map((dynamic item) => item.toString()).toList() ?? [],
+      cowsList: providerone.cowsList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
+      dataPurchaseofrawmaterialsItemtype: providerone
+              .dataPurchaseofrawmaterialsItemtype
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       dayOldChickQnty: providerone.dayOldChickQnty,
       eggQnty: providerone.eggQnty,
       eggTraysQnty: providerone.eggTraysQnty,
       energyRichFeedList: providerone.energyRichFeedList,
       energyRichFeedQnty: providerone.energyRichFeedQnty,
       feedQnty: providerone.feedQnty,
-      fodderSlipsList: providerone.fodderSlipsList?.map((dynamic item) => item.toString()).toList() ?? [],
+      fodderSlipsList: providerone.fodderSlipsList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       goatFeeDqnty: providerone.goatFeeDqnty,
       grasFooderQnty: providerone.grasFooderQnty,
       hayQnty: providerone.hayQnty,
-      heipersList: providerone.heipersList?.map((dynamic item) => item.toString()).toList() ?? [],
+      heipersList: providerone.heipersList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       kidQnty: providerone.kidQnty,
       kidStarterQnty: providerone.kidStarterQnty,
       layerList: providerone.layerList,
       malabariGoatsQnty: providerone.malabariGoatsQnty,
       maleBuffaloCalfQnty: providerone.maleBuffaloCalfQnty,
       maleBuffaloCalvesQnty: providerone.maleBuffaloCalvesQnty,
-      manureList:providerone.manureList?.map((dynamic item) => item.toString()).toList() ?? [],
+      manureList: providerone.manureList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       materialForPoultryQnty: providerone.materialForPoultryQnty,
       meatQnty: providerone.meatQnty,
       milkQnty: providerone.milkQnty,
       milkReplacerList: providerone.milkReplacerList,
-      modePurchaseofrawmaterials: providerone.modePurchaseofrawmaterials?.map((dynamic item) => item.toString()).toList() ?? [],
+      modePurchaseofrawmaterials: providerone.modePurchaseofrawmaterials
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       poultryFeedQnty: providerone.poultryFeedQnty,
-      pulletsList: providerone.pulletsList?.map((dynamic item) => item.toString()).toList() ?? [],
+      pulletsList: providerone.pulletsList
+              ?.map((dynamic item) => item.toString())
+              .toList() ??
+          [],
       pulletsQnty: providerone.pulletsQnty,
       salesManureQnty: providerone.salesManureQnty,
       silageQnty: providerone.silageQnty,
       tmrQnty: providerone.tmrQnty,
       treeFooderQnty: providerone.treeFooderQnty,
       ureaTreatedStrawQnty: providerone.ureaTreatedStrawQnty,
-      calvesGerseyQnty:providerone.calvesGerseyQnty,
+      calvesGerseyQnty: providerone.calvesGerseyQnty,
       calvesHfQnty: providerone.calvesHfQnty,
       vermyCompostQnty: providerone.vermyCompostQnty,
       superNapierQnty: providerone.superNapierQnty,
@@ -187,28 +233,32 @@ class _SalesState extends State<CrpDetail> {
       co4Qnty: providerone.co5Qnty,
       livelihoodBuffaloQnty: providerone.livelihoodBuffaloQnty,
       livelihoodCalfFemaleQnty: providerone.livelihoodCalfFemaleQnty,
-      livelihoodCalfList: providerone.livelihoodCalfList ,
-      livelihoodCalfMaleQnty: providerone.livelihoodCalfMaleQnty ,
+      livelihoodCalfList: providerone.livelihoodCalfList,
+      livelihoodCalfMaleQnty: providerone.livelihoodCalfMaleQnty,
       livelihoodCowsHfQnty: providerone.livelihoodCowsHfQnty,
-      livelihoodCowsIndigenousQnty: providerone.livelihoodCowsIndigenousQnty ,
-      livelihoodCowsJerseyQnty: providerone.livelihoodCowsJerseyQnty ,
+      livelihoodCowsIndigenousQnty: providerone.livelihoodCowsIndigenousQnty,
+      livelihoodCowsJerseyQnty: providerone.livelihoodCowsJerseyQnty,
       livelihoodCowsList: providerone.livelihoodCowsList,
-      livelihoodFodderForSaleQnty:providerone.livelihoodFodderForSaleQnty,
+      livelihoodFodderForSaleQnty: providerone.livelihoodFodderForSaleQnty,
       livelihoodFodderList: providerone.livelihoodFodderList,
-      livelihoodFodderOwnUseQnty: providerone.livelihoodFodderOwnUseQnty ,
-      livelihoodGoatAttapadiBlackKidQnty: providerone.livelihoodGoatAttapadiBlackKidQnty ,
-      livelihoodGoatAttapadiBlackQnty: providerone.livelihoodGoatAttapadiBlackQnty,
+      livelihoodFodderOwnUseQnty: providerone.livelihoodFodderOwnUseQnty,
+      livelihoodGoatAttapadiBlackKidQnty:
+          providerone.livelihoodGoatAttapadiBlackKidQnty,
+      livelihoodGoatAttapadiBlackQnty:
+          providerone.livelihoodGoatAttapadiBlackQnty,
       livelihoodGoatList: providerone.livelihoodGoatList,
       livelihoodGoatMalabariKidQnty: providerone.livelihoodGoatMalabariKidQnty,
       livelihoodGoatMalabariQnty: providerone.livelihoodGoatMalabariQnty,
       livelihoodGoatOthersQnty: providerone.livelihoodGoatOthersQnty,
       livelihoodManureDryQnty: providerone.livelihoodManureDryQnty,
-      livelihoodManureFreshQnty:providerone.livelihoodManureFreshQnty,
+      livelihoodManureFreshQnty: providerone.livelihoodManureFreshQnty,
       livelihoodManureList: providerone.livelihoodManureList,
-      livelihoodPoultryEggProductionQnty: providerone.livelihoodPoultryEggProductionQnty,
+      livelihoodPoultryEggProductionQnty:
+          providerone.livelihoodPoultryEggProductionQnty,
       livelihoodPoultryList: providerone.livelihoodPoultryList,
       livelihoodPoultryManureQnty: providerone.livelihoodPoultryManureQnty,
-      livelihoodPoultryMarketingQnty: providerone.livelihoodPoultryMarketingQnty,
+      livelihoodPoultryMarketingQnty:
+          providerone.livelihoodPoultryMarketingQnty,
       livelihoodDUCKqnty: providerone.livelihoodduckqty,
       bv380Qnty: providerone.bv380Qnty,
       gramalakshmiQnty: providerone.gramalakshmiQnty,
@@ -216,7 +266,6 @@ class _SalesState extends State<CrpDetail> {
       layerQnty: providerone.layerQnty,
       other: providerone.other,
       otherQnty: providerone.otherQnty,
-
 
       addDataTreeFooderQnty: providerone.addDataTreeFooderQnty,
       // addDataUreaTreatedStrawQnty: providerone.ureaTreatedStrawQnty,
@@ -229,13 +278,13 @@ class _SalesState extends State<CrpDetail> {
       ingredientsForPoultryFeedQnty: providerone.ingredientsForPoultryFeedQnty,
       livelihoodGoatOthers: providerone.livelihoodGoatOthers,
       malabariGoatKidsQnty: providerone.malabariGoatKidsQnty,
-      materialForPoultryCageFabricationQnty: providerone.materialForPoultryCageFabricationQnty,
+      materialForPoultryCageFabricationQnty:
+          providerone.materialForPoultryCageFabricationQnty,
       totalMixedRationQnty: providerone.totalMixedRationQnty,
       ureaTreatedMolassBlock: providerone.ureaTreatedMolassBlock,
       PhonenumberofCRP: providerone.PhonenumberofCRP,
-      familyDetails : familyMembers,
+      familyDetails: familyMembers,
     );
-
 
     const url = '$api/user/insert'; // Replace with your API endpoint URL
     final headers = {
@@ -250,8 +299,7 @@ class _SalesState extends State<CrpDetail> {
 
       if (!isConnected) {
         final box = Hive.box('data_box');
-        final int key = DateTime.now().millisecondsSinceEpoch % 0xFFFFFFFF; // Ensure it's within the valid range
-        box.put(key, jsonData);
+        box.put(1, jsonData);
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -259,7 +307,8 @@ class _SalesState extends State<CrpDetail> {
             content: Text('Data saved offline and will be synced later.'),
           ),
         );
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Screenone()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Screenone()));
       } else {
         final response = await http.post(
           Uri.parse(url),
@@ -279,7 +328,10 @@ class _SalesState extends State<CrpDetail> {
           log(response.body);
           print('Data submitted successfully.');
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Screenone(),));
+              context,
+              MaterialPageRoute(
+                builder: (context) => Screenone(),
+              ));
         } else {
           print('Failed to submit data. Status code: ${response.statusCode}');
         }
@@ -287,12 +339,13 @@ class _SalesState extends State<CrpDetail> {
     } catch (error) {
       print('Error occurred while submitting data: $error');
     }
-
   }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var providerone = Provider.of<TextMain>(context,listen: false);
+    var providerone = Provider.of<TextMain>(context, listen: false);
 
     return GestureDetector(
       onTap: () {
@@ -305,75 +358,79 @@ class _SalesState extends State<CrpDetail> {
           title: Text('സി.ആർ.പിയുടെ\nനിർദേശങ്ങൾ'),
           backgroundColor: app_theam,
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Text(DocumentId),
-                InputField(
-                    hint: 'CRP യുടെ പേര് ',
-                    controller: datanameofcrp,
-                    onchanged: (value) {
-                      providerone.updateDataNameofcrp(value);
-                    }),
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Text(DocumentId),
+                  InputField(
+                      hint: 'CRP യുടെ പേര് ',
+                      controller: datanameofcrp,
+                      onchanged: (value) {
+                        providerone.updateDataNameofcrp(value);
+                      }),
                   InputField(
                     hint: 'CRP യുടെ ഫോൺ നമ്പർ ',
                     controller: datnumber_of_crp_number,
                     onchanged: (value) {
                       int? valuee = int.tryParse(value);
-                      providerone.updateDataLivelihoodCowsJerseyQnty(valuee);
+                      providerone.updatPhonenumberofCRP(valuee);
                     },
                     keytype: TextInputType.number,
                   ),
 
-                InputField(
-                    hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
-                    controller: datacomments,
-                    onchanged: (value) {
-                      setState(() {
-                        providerone.updateDataComments(value);
-                      });
-                    }),
-                InputField(
-                    hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
-                    controller: dataNameofrespondent,
-                    onchanged: (value) {
-                      providerone.updateDataNameofrespondent(value);
-
-                    }),
-                ElevateClick(
-                  ontap: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        // print(data);
-                        return AlertDialog(
-                          title: Text('Submit Data'),
-                          content: Text('Are you sure you want to submit?'),
-                          actions: [
-                            TextButton(
-                              child: Text('OK'),
-                              onPressed: () {
-                                submitForm();
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                            TextButton(
-                              child: Text('Back'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
+                  InputField(
+                      hint: 'CRP യുടെ അഭിപ്രായങ്ങൾ രേഖപ്പെടുത്താം',
+                      controller: datacomments,
+                      onchanged: (value) {
+                        setState(() {
+                          providerone.updateDataComments(value);
+                        });
+                      }),
+                  InputField(
+                      hint: 'വിവരം നൽകിയ വ്യക്തിയുടെ പേര് ',
+                      controller: dataNameofrespondent,
+                      onchanged: (value) {
+                        providerone.updateDataNameofrespondent(value);
+                      }),
+                  ElevateClick(
+                    ontap: () {
+                      if (_formKey.currentState!.validate()) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            // print(data);
+                            return AlertDialog(
+                              title: Text('Submit Data'),
+                              content: Text('Are you sure you want to submit?'),
+                              actions: [
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    submitForm();
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                TextButton(
+                                  child: Text('Back'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
                         );
-                      },
-                    );
-                  },
-                  text: 'Submit',
-                )
-              ],
+                      }
+                    },
+                    text: 'Submit',
+                  )
+                ],
+              ),
             ),
           ),
         ),

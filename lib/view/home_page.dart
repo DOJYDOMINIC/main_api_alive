@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/control/text_controller.dart';
 import 'package:main200623/view/update/search_edit.dart';
+import 'package:main200623/view/update/searchresult_update.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,26 +31,36 @@ class _ScreenoneState extends State<Screenone> {
   }
 
   Future<void> syncDataWithServer() async {
-    bool isConnected = await checkInternetConnectivity(); // Use your existing connectivity check function
-    if (isConnected) {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var name = prefs.getString('name');
+      var email = prefs.getString('email');
+
+      bool isConnected =
+          await checkInternetConnectivity(); // Use your existing connectivity check function
       final box = Hive.box('data_box');
-      for (var key in box.keys) {
-        final jsonData = box.get(key);
+      if (isConnected && box.isNotEmpty) {
+        final jsonData = box.get(1);
         await sendToServer(jsonData);
-        print(jsonData); // Send data to the server using your existing logic
-        box.delete(key); // Remove the synced data from Hive
+        //  // Send data to the server using your existing logic
+        // Remove the synced data from Hive
+      } else {
+        print('NO Data Avilable');
       }
+    } catch (e) {
+      print('no data to update $e');
     }
   }
 
   Future<void> sendToServer(String jsonData) async {
-    const url = '$api/user/insert'; // Replace with your API endpoint URL
-    final headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $authToken', // Include the token in the headers
-    };
-
     try {
+      const url = '$api/user/insert'; // Replace with your API endpoint URL
+      final headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $authToken',
+        // Include the token in the headers
+      };
+
       final response = await http.post(
         Uri.parse(url),
         headers: headers,
@@ -57,6 +68,8 @@ class _ScreenoneState extends State<Screenone> {
       );
 
       if (response.statusCode == 201) {
+        var box = Hive.box('data_box');
+        box.clear();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.blue,
@@ -66,24 +79,40 @@ class _ScreenoneState extends State<Screenone> {
         // Data submitted successfully
         print('Data submitted successfully to the server.');
       } else {
-        print('Failed to submit data to the server. Status code: ${response.statusCode}');
+        print(
+            'Failed to submit data to the server. Status code: ${response.statusCode}');
       }
     } catch (error) {
       print('Error occurred while submitting data to the server: $error');
     }
   }
 
+  String? name_;
+  String? email_;
+
+  Future<void> getSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String authToken = prefs.getString('authToken') ?? '';
+    String email = prefs.getString('email') ?? '';
+    String name = prefs.getString('name') ?? '';
+    String district = prefs.getString('district') ?? '';
+    String block = prefs.getString('block') ?? '';
+    String panchayath = prefs.getString('panchayath') ?? '';
+
+    if(panchayath != null || panchayath.isNotEmpty){
+      name_ = name;
+      email_ = email;
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-      if (result != ConnectivityResult.none) {
-        syncDataWithServer();
-      }
-    });
     // Permission.notification.request();
     // requestPermissions();
+    syncDataWithServer();
+    getSavedData();
   }
 
   @override
@@ -91,26 +120,58 @@ class _ScreenoneState extends State<Screenone> {
     var providerone = Provider.of<TextMain>(context);
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(onPressed: (){
-        //   showDialog(
-        //     context: context,
-        //     builder: (BuildContext context) {
-        //       return AlertDialog(
-        //         title:Text('name:${''}'),
-        //         content:Text('Email:${''}'),
-        //         actions: [
-        //           TextButton(
-        //             child: Text('OK'),
-        //             onPressed: () {
-        //               Navigator.of(context).pop();
-        //             },
-        //           ),
-        //         ],
-        //       );
-        //     },
-        //   );
-        // }, icon: Icon(Icons.info)),
         backgroundColor: app_theam,
+        leading: IconButton(onPressed: (){
+          showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title:  Text('Name: $name_'),
+                    content:  Text('Email: $email_'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+
+                      // ),
+                    ],
+                  );
+                },
+              );
+            }, icon: Icon(Icons.info)),
+        // IconButton(
+        //     onPressed: () {
+        //       var box = Hive.box('data_box');
+        //       print(box.get(1));
+        //       if (box.isEmpty) {
+        //         showDialog(
+        //           context: context,
+        //           builder: (BuildContext context) {
+        //             return AlertDialog(
+        //               title: const Text('No Data Avilable'),
+        //               content: const Text('No data to Update.'),
+        //               actions: <Widget>[
+        //                 TextButton(
+        //                   child: const Text('OK'),
+        //                   onPressed: () {
+        //                     Navigator.of(context).pop();
+        //                   },
+        //                 ),
+        //
+        //                 // ),
+        //               ],
+        //             );
+        //           },
+        //         );
+        //       } else {
+        //         syncDataWithServer();
+        //       }
+        //     },
+        //     icon: Icon(Icons.upload)),
+        // backgroundColor: app_theam,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 25),
@@ -144,6 +205,7 @@ class _ScreenoneState extends State<Screenone> {
                 onTap: () {
                   providerone.clearData();
                   providerone.clearfamilydata();
+                  syncDataWithServer();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -197,7 +259,7 @@ class _ScreenoneState extends State<Screenone> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SearchEdit(),
+                        builder: (context) => SerachresultUpsate(),
                       ));
                 },
                 child: SizedBox(
@@ -284,31 +346,11 @@ class _ScreenoneState extends State<Screenone> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
   }
-
-  // Future<void> requestPermissions() async {
-  //   Map<Permission, PermissionStatus> statuses = await [
-  //     Permission.storage,
-  //     Permission.notification,
-  //     Permission.manageExternalStorage,
-  //     Permission.mediaLibrary,
-  //   ].request();
-  //
-  //   // Check the status of each permission
-  //   statuses.forEach((permission, status) {
-  //     if (status.isGranted) {
-  //       print('${permission.toString()} is granted.');
-  //     } else if (status.isDenied) {
-  //       print('${permission.toString()} is denied.');
-  //     } else if (status.isPermanentlyDenied) {
-  //       print('${permission.toString()} is permanently denied.');
-  //     }
-  //   });
-  // }
 }

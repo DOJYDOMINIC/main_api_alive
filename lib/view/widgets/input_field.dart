@@ -23,6 +23,12 @@ class InputField extends StatelessWidget {
         onChanged: onchanged,
         keyboardType: keytype,
         controller: controller,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'This field is required.';
+          }
+          return null;
+        },
         decoration: InputDecoration(
           focusedBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
