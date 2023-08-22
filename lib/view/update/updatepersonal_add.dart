@@ -250,21 +250,27 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   }
 
   Future<void> getSavedData() async {
+    var providerone = Provider.of<TextMain>(context, listen: false);
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String authToken = prefs.getString('authToken') ?? '';
-    String email = prefs.getString('email') ?? '';
-    String name = prefs.getString('name') ?? '';
     String district = prefs.getString('district') ?? '';
     String block = prefs.getString('block') ?? '';
     String panchayath = prefs.getString('panchayath') ?? '';
 
     if(panchayath != null || panchayath.isNotEmpty){
-      panchayth_ = panchayath;
-      block_ = block;
-      district_ = district;
+      setState(() {
+        panchayth_ = panchayath;
+        block_ = block;
+        district_ = district;
+      });
+
+      providerone.updateDataDistrict(district_);
+      providerone.updateDataBlock(block_);
+      providerone.updateDataPanchayath(panchayth_);
+
     }
   }
+
 
   final _formKey = GlobalKey<FormState>();
 

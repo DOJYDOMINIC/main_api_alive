@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/control/text_controller.dart';
+import 'package:main200623/view/registed%20people.dart';
 import 'package:main200623/view/update/search_edit.dart';
 import 'package:main200623/view/update/searchresult_update.dart';
+import 'package:main200623/view/widgets/elevate_click_button.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -89,6 +91,7 @@ class _ScreenoneState extends State<Screenone> {
 
   String? name_;
   String? email_;
+  String? roll_;
 
   Future<void> getSavedData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -99,10 +102,14 @@ class _ScreenoneState extends State<Screenone> {
     String district = prefs.getString('district') ?? '';
     String block = prefs.getString('block') ?? '';
     String panchayath = prefs.getString('panchayath') ?? '';
+    String roll = prefs.getString('roll') ?? '';
 
-    if(panchayath != null || panchayath.isNotEmpty){
-      name_ = name;
-      email_ = email;
+    if (panchayath != null || panchayath.isNotEmpty) {
+      setState(() {
+        name_ = name;
+        email_ = email;
+        roll_ = roll;
+      });
     }
   }
 
@@ -121,13 +128,14 @@ class _ScreenoneState extends State<Screenone> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: app_theam,
-        leading: IconButton(onPressed: (){
-          showDialog(
+        leading: IconButton(
+            onPressed: () {
+              showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title:  Text('Name: $name_'),
-                    content:  Text('Email: $email_'),
+                    title: Text('Name: $name_'),
+                    content: Text('Email: $email_'),
                     actions: <Widget>[
                       TextButton(
                         child: const Text('OK'),
@@ -141,7 +149,8 @@ class _ScreenoneState extends State<Screenone> {
                   );
                 },
               );
-            }, icon: Icon(Icons.info)),
+            },
+            icon: Icon(Icons.info)),
         // IconButton(
         //     onPressed: () {
         //       var box = Hive.box('data_box');
@@ -347,6 +356,22 @@ class _ScreenoneState extends State<Screenone> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              if (roll_ == 'Admin')
+                Padding(
+                  padding: const EdgeInsets.only(left: 40,right: 40),
+                  child: ElevateClick(
+                      ontap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisteredPeopleList(),
+                            ));
+                      },
+                      text: 'Registed Users'),
+                )
             ],
           ),
         ),

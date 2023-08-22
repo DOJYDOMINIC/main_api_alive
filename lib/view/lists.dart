@@ -16,9 +16,6 @@ List<String> products = [
   'EGG',
   'MANURE',
   'FEED',
-  // male buffalo calf
-  // Gras fooder
-  // tree fooder
   'KID',
   'DAY OLD CHICK',
   'PULLETS',
@@ -31,11 +28,11 @@ List<String> datacls3 = [
   "Minority",
   "Extreampoor",
   "Asraya",
-  "Physicallychallenged",
-  "MentalChallenge_Buds",
-  "Thoseabove60yearsofage",
+  "Physically challenged",
+  "Mental Challenge Buds",
+  "Thoseabove 60 yearsofage",
   "widow",
-  "femaleleaded",
+  "A Women - only family",
   "N/A"
 ];
 
@@ -124,32 +121,32 @@ final List options = [
 // ];
 
 final List businesstype = [
-  {'disply': 'Cowbreeding', 'value': 'Cowbreeding'},
-  {'disply': 'Sheepfarming', 'value': 'Sheepfarming'},
-  {'disply': 'Breedingoflayinghens', 'value': 'Breedingoflayinghens'},
-  {'disply': 'Broilerfarming', 'value': 'Broilerfarming'},
-  {'disply': 'Duckfarming', 'value': 'Duckfarming'},
-  {'disply': 'Pigfarming' , 'value': 'Pigfarming'},
-  {'disply': 'മത്സ്യം വളർത്തൽ ', 'value': 'Fishfarming'},
-  {'disply': 'പോത്തു  വളർത്തൽ ', 'value': 'Cattlerearing'},
-  {'disply': 'എരുമ വളർത്തൽ ', 'value': 'Buffalorearing'},
-  {'disply': 'കാട വളർത്തൽ', 'value': 'Quailbreeding'},
-  {'disply': 'പെറ്റ്മൃഗങ്ങൾ വളർത്തൽ', 'value': 'Keepingpets'},
-  {'disply': 'പെറ്റ് ബേഡ്‌സ്  വളർത്തൽ   ', 'value': 'RaisingPetBirds'},
-  {'disply': 'തേനീച്ച വളർത്തൽ  ', 'value': 'Beekeeping'},
-  {'disply': 'വളം നിർമാണം  ', 'value': 'Fertilizermanufacturing'},
-  {'disply': 'കാലിത്തീറ്റ നിർമാണം ', 'value': 'Foddermanufacturing'},
-  {'disply': 'വാല്യൂ പ്രോഡക്റ്റ് നിർമാണം  ', 'value': 'valueproductcreation'},
-  {'disply': 'പുല്ല് കൃഷി', 'value': 'Cultivationofgrass'},
-  {'disply': 'പാൽ വിപണനം  ', 'value': 'Marketingofmilk'},
-  {'disply': 'ഇറച്ചി വിൽപന  ', 'value': 'Meatsales'},
-  {'disply': 'മാർക്കറ്റിങ് ', 'value': 'Marketing'},
-  {'disply': 'ഫാർമസി  ', 'value': 'Pharmacy'},
-  {'disply': 'പേരെൻറ് സ്റ്റോക്ക്', 'value': 'Parentstock'},
-  {'disply': ' എഗ്ഗർ നഴ്‌സറി  ', 'value': 'EggerNursery'},
-  {'disply': 'ഹാച്ചറി', 'value': 'Hatchery'},
-  {'disply': 'സംയോജിത കൃഷി', 'value': 'Integratedfarming'},
-  {'disply': 'മറ്റുള്ളവ ', 'value': 'Others'},
+  {'disply': 'Cow breeding', 'value': 'Cow breeding'},
+  {'disply': 'Sheep farming', 'value': 'Sheep farming'},
+  {'disply': 'Breeding of laying hens', 'value': 'Breeding of laying hens'},
+  {'disply': 'Broiler farming', 'value': 'Broiler farming'},
+  {'disply': 'Duck farming', 'value': 'Duck farming'},
+  {'disply': 'Pig farming' , 'value': 'Pig farming'},
+  {'disply': 'Fish farming', 'value': 'Fish farming'},
+  {'disply': 'Cattle rearing ', 'value': 'Cattle rearing'},
+  {'disply': 'Buffalo rearing', 'value': 'Buffalo rearing'},
+  {'disply': 'Quail breeding', 'value': 'Quail breeding'},
+  {'disply': 'Keeping pets', 'value': 'Keeping pets'},
+  {'disply': 'Raising PetBirds', 'value': 'Raising PetBirds'},
+  {'disply': 'Bee keeping', 'value': 'Bee keeping'},
+  {'disply': 'Fertilizer manufacturing', 'value': 'Fertilizer manufacturing'},
+  {'disply': 'Fodder manufacturing', 'value': 'Fodder manufacturing'},
+  {'disply': 'value product creation', 'value': 'value product creation'},
+  {'disply': 'Cultivation of grass', 'value': 'Cultivation of grass'},
+  {'disply': 'Marketing of milk', 'value': 'Marketing of milk'},
+  {'disply': 'Meat sales', 'value': 'Meat sales'},
+  {'disply': 'Marketing ', 'value': 'Marketing'},
+  {'disply': 'Pharmacy', 'value': 'Pharmacy'},
+  {'disply': 'Parent stock', 'value': 'Parent stock'},
+  {'disply': 'Egger Nursery', 'value': 'Egger Nursery'},
+  {'disply': 'Hatchery', 'value': 'Hatchery'},
+  {'disply': 'Integrated farming', 'value': 'Integrated farming'},
+  {'disply': 'Others ', 'value': 'Others'},
   {'disply': 'N/A', 'value': 'N/A'}
 
   // {'text': 'NO Value', 'value': ''}
@@ -157,13 +154,12 @@ final List businesstype = [
 ];
 
 final List sourceofinvestment = [
-  {'source': 'ബാങ്ക് ലോൺ', 'value': 'bankloan'},
-  {'source': 'അയൽക്കൂട്ടം', 'value': 'Ng'},
-  {'source': 'കുടുംബത്തിൽ നിന്ന്', 'value': 'family'},
-  {'source': 'കൂട്ടുകാരിൽ നിന്ന്', 'value': 'Asraya'},
-  {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'private finance'},
-  {'source': 'പ്രൈവറ്റ് ഫിനാൻസ്', 'value': 'privatefinance'},
-  {'source': 'മറ്റുള്ളവ', 'value': 'other'},
+  {'source': 'Bankloan', 'value': 'Bankloan'},
+  {'source': 'NHG', 'value': 'NHG'},
+  {'source': 'From Family', 'value': 'From Family'},
+  {'source': 'Friends', 'value': 'Friends'},
+  {'source': 'Private Finance', 'value': 'Private Finance'},
+  {'source': 'Other', 'value': 'Other'},
   {'source': 'N/A', 'value': 'N/A'}
 
   // {'text': 'NO Value', 'value': ''}
@@ -524,7 +520,6 @@ final List? produceproductavilable = [
   {'text': 'CALF', 'value': 'CALF'},
   {'text': 'BEIFER', 'value': 'BEIFER'},
   {'text': 'N/A', 'value': 'N/A'}
-
 
 ];
 

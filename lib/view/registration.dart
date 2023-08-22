@@ -223,10 +223,10 @@ String? selectedPanchath;
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60),
-                      topRight: Radius.circular(60),
-                    ),
+                    // borderRadius: BorderRadius.only(
+                    //   topLeft: Radius.circular(60),
+                    //   topRight: Radius.circular(60),
+                    // ),
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(30),

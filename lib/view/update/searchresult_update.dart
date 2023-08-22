@@ -74,6 +74,9 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
       );
       print(response.body.toString());
       if (response.statusCode == 200) {
+        setState(() {
+          peopleData;
+        });
         print('Data deletion successful');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -115,7 +118,7 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
           ),
           body: ListView.builder(
             itemCount:peopleData.length,
-            itemBuilder: (context, index) { Map<String, dynamic> data =peopleData[index]['data'][0];
+            itemBuilder: (context, index) { Map<String, dynamic> data = peopleData[index]['data'][0];
             // print(data);
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -165,10 +168,11 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                                   TextButton(
                                     child: Text('OK',style: TextStyle(color: Colors.red),),
                                     onPressed: () {
-                                      var id =peopleData[index]['data'][0]['_id'];
+                                      var id = peopleData[index]['data'][0]['_id'];
                                       // print(id);
                                       setState(() {
                                         deleteDataonId(id, authToken!);
+                                        peopleData.removeAt(index);
                                       });
                                       // Perform delete operation
                                       // Add your delete logic here

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
@@ -51,31 +52,25 @@ class _ReportPageState extends State<ReportPage> {
   List<String> sublistlist = [];
   List<String> selectedsupport = [];
 
-String panchayath = '';
-
-  Future<void> _openDownloadLocation() async {
-    String downloadPath = "/storage/emulated/0/Download/"; // Modify this to your actual download path
-    try {
-      await OpenFile.open(downloadPath);
-    } catch (e) {
-      // Handle any errors that occur while opening the file
-      print("Error opening download location: $e");
-    }
-  }
+  String panchayath = '';
 
   Future<void> _notification() async {
     // Create a new FlutterLocalNotificationsPlugin object.
-    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
     // Create an AndroidNotificationDetails object.
-    const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'Download Completed', 'Notification when download is completed',
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'Download Completed',
+      'Notification when download is completed',
       importance: Importance.max,
       priority: Priority.high,
       showWhen: false,
       playSound: true,
     );
     // Create a NotificationDetails object.
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
     // Show the notification.
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -90,35 +85,35 @@ String panchayath = '';
 
   bool permissionGranted = false;
 
-  Future<void> _getStoragePermission() async {
-    DeviceInfoPlugin plugin = DeviceInfoPlugin();
-    AndroidDeviceInfo android = await plugin.androidInfo;
-    if (android.version.sdkInt < 33) {
-      if (await Permission.storage.request().isGranted) {
-        setState(() {
-          permissionGranted = true;
-        });
-      } else if (await Permission.storage.request().isPermanentlyDenied) {
-        await openAppSettings();
-      } else if (await Permission.audio.request().isDenied) {
-        setState(() {
-          permissionGranted = false;
-        });
-      }
-    } else {
-      if (await Permission.photos.request().isGranted) {
-        setState(() {
-          permissionGranted = true;
-        });
-      } else if (await Permission.photos.request().isPermanentlyDenied) {
-        await openAppSettings();
-      } else if (await Permission.photos.request().isDenied) {
-        setState(() {
-          permissionGranted = false;
-        });
-      }
-    }
-  }
+  // Future<void> _getStoragePermission() async {
+  //   DeviceInfoPlugin plugin = DeviceInfoPlugin();
+  //   AndroidDeviceInfo android = await plugin.androidInfo;
+  //   if (android.version.sdkInt < 33) {
+  //     if (await Permission.storage.request().isGranted) {
+  //       setState(() {
+  //         permissionGranted = true;
+  //       });
+  //     } else if (await Permission.storage.request().isPermanentlyDenied) {
+  //       await openAppSettings();
+  //     } else if (await Permission.audio.request().isDenied) {
+  //       setState(() {
+  //         permissionGranted = false;
+  //       });
+  //     }
+  //   } else {
+  //     if (await Permission.photos.request().isGranted) {
+  //       setState(() {
+  //         permissionGranted = true;
+  //       });
+  //     } else if (await Permission.photos.request().isPermanentlyDenied) {
+  //       await openAppSettings();
+  //     } else if (await Permission.photos.request().isDenied) {
+  //       setState(() {
+  //         permissionGranted = false;
+  //       });
+  //     }
+  //   }
+  // }
 
   Future<void> startDownloading(
       String panchayth, String dataone, String token) async {
@@ -466,8 +461,7 @@ String panchayath = '';
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
-        TraningRequaredd(
-            panchayth, traning, authToken!);
+        TraningRequaredd(panchayth, traning, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -563,8 +557,7 @@ String panchayath = '';
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
-        dtaclassThree(
-            panchayth, datathree, authToken!);
+        dtaclassThree(panchayth, datathree, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -658,8 +651,7 @@ String panchayath = '';
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
-        productName(
-            panchayth, productname, authToken!);
+        productName(panchayth, productname, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -753,7 +745,7 @@ String panchayath = '';
       if (status.isGranted) {
         // Permission granted by the user, start the download
         // await startDownloading();
-        await   Sales(panchayth, salesvalue!, authToken!);
+        await Sales(panchayth, salesvalue!, authToken!);
       } else if (status.isPermanentlyDenied) {
         // Permission permanently denied, show a dialog to open app settings
         showDialog(
@@ -996,7 +988,7 @@ String panchayath = '';
     // print('$url');
 
     // Check if the storage permission is granted
-    if (await Permission.storage.isGranted ) {
+    if (await Permission.storage.isGranted) {
       // Permission is granted, proceed with the download
       try {
         Response response = await dio.download(
@@ -1077,10 +1069,12 @@ String panchayath = '';
     }
     // Navigator.pop(context);
   }
+
   //==================================
-  Future<void> livelihoodApi(String _panchayth, String _item, String? _item2) async {
-    String url =
-        '${api}''search/livelihoodReport?panchayath=$_panchayth&itemtype=$_item';
+  Future<void> livelihoodApi(
+      String _panchayth, String _item, String? _item2) async {
+    String url = '${api}'
+        'search/livelihoodReport?panchayath=$_panchayth&itemtype=$_item';
     if (_item2 != null) {
       url += '&subList=$_item2';
     }
@@ -1187,8 +1181,6 @@ String panchayath = '';
 
   List<String> districts = []; // Declare a global list variable
 
-
-
   Future<void> getSavedData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -1199,39 +1191,36 @@ String panchayath = '';
     String block = prefs.getString('block') ?? '';
     String panchayath = prefs.getString('panchayath') ?? '';
 
-    if(panchayath != null || panchayath.isNotEmpty){
+    if (panchayath != null || panchayath.isNotEmpty) {
       panchayth = panchayath;
     }
-
   }
 
-
-
-  Future<void> fetchDistricts() async {
-    try {
-
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      setState(() {
-        panchayath = prefs.getString("panchayath").toString();
-      });
-      final response = await http.get(Uri.parse('${api}search/listDistricts'));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-
-        setState(() {
-          districts = List.from(data); // Assign fetched data to the global list
-          // selectedDistrict;
-          print(districts);
-        });
-      } else {
-        throw Exception('Failed to fetch districts');
-      }
-    } catch (e) {
-      // Handle error
-      print('Error fetching districts: $e');
-    }
-  }
+  // Future<void> fetchDistricts() async {
+  //   try {
+  //
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     setState(() {
+  //       panchayath = prefs.getString("panchayath").toString();
+  //     });
+  //     final response = await http.get(Uri.parse('${api}search/listDistricts'));
+  //
+  //     if (response.statusCode == 200) {
+  //       final data = json.decode(response.body);
+  //
+  //       setState(() {
+  //         districts = List.from(data); // Assign fetched data to the global list
+  //         // selectedDistrict;
+  //         print(districts);
+  //       });
+  //     } else {
+  //       throw Exception('Failed to fetch districts');
+  //     }
+  //   } catch (e) {
+  //     // Handle error
+  //     print('Error fetching districts: $e');
+  //   }
+  // }
 
   Future<void> fetchBlocks(String selectedDistrict) async {
     try {
@@ -1335,14 +1324,16 @@ String panchayath = '';
       print('Error fetching blocks: $e');
     }
   }
-  List <String> Livelihood_sublistlist = [];
-  List<String> livelihood_api =[];
-String? liveli_list;
-String? liveli_sublist;
+
+  List<String> Livelihood_sublistlist = [];
+  List<String> livelihood_api = [];
+  String? liveli_list;
+  String? liveli_sublist;
 
   Future<void> fetchLivelihood_List() async {
     try {
-      final response = await http.get(Uri.parse('${api}report//livelihood_list'));
+      final response =
+          await http.get(Uri.parse('${api}report//livelihood_list'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -1366,7 +1357,8 @@ String? liveli_sublist;
         final data = json.decode(response.body);
 
         setState(() {
-          Livelihood_sublistlist = List.from(data); // Assign fetched data to the global list
+          Livelihood_sublistlist =
+              List.from(data); // Assign fetched data to the global list
           // selectedDistrict;
         });
       } else {
@@ -1378,7 +1370,7 @@ String? liveli_sublist;
     }
   }
 
-  List<dynamic>  data_support= [];
+  List<dynamic> data_support = [];
   String? datasupprt_report;
 
   Future<void> fetchDataSupport(
@@ -1474,11 +1466,39 @@ String? liveli_sublist;
     } // Navigator.pop(context);
   }
 
+  // Future<void> _openDownloadLocatio() async {
+  //   String downloadPath = await ExternalPath.DIRECTORY_DOWNLOADS; // download path
+  //   try {
+  //     await OpenFile.open(downloadPath);
+  //   } catch (e) {
+  //     // Handle any errors that occur while opening the file
+  //     print("Error opening download location: $e");
+  //   }
+  // }
+
+  bool _permissionGranted = false;
+
+  void _requestPermission() async {
+    PermissionStatus permissionStatus =
+        await Permission.manageExternalStorage.request();
+
+    if (permissionStatus.isGranted) {
+      setState(() {
+        _permissionGranted = true;
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Storage permission denied'),
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    fetchDistricts();
+    // fetchDistricts();
     Fetchpurchase();
     fetchsales();
     fetchLivelihood_List();
@@ -1486,7 +1506,6 @@ String? liveli_sublist;
     // fetchDataSupport();
     // _getStoragePermission();
   }
-
 
 // Function to show the "No data available" AlertDialog
   void showNoDataAvailableDialog(BuildContext context) {
@@ -1510,7 +1529,9 @@ String? liveli_sublist;
   }
 
   Future<void> download() async {
+    _requestPermission();
     if (await Permission.storage.request().isGranted) {
+      _requestPermission();
       _openDownloadLocation();
       print('Storage permission granted');
     } else {
@@ -1545,7 +1566,12 @@ String? liveli_sublist;
     }
   }
 
-
+  void _openDownloadLocation() async {
+    if (_permissionGranted = true) {
+      String downloadPath = "/storage/emulated/0/Download/";
+      await OpenFile.open(downloadPath);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1563,9 +1589,16 @@ String? liveli_sublist;
           centerTitle: true,
           backgroundColor: app_theam,
           actions: [
-            IconButton(onPressed: (){
-      download();
-      }, icon:Icon(Icons.download_for_offline,size: 30,)),
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    download();
+                  });
+                },
+                icon: Icon(
+                  Icons.download_for_offline,
+                  size: 30,
+                )),
           ],
         ),
         body: SingleChildScrollView(
@@ -1622,201 +1655,377 @@ String? liveli_sublist;
                 //   height: 10,
                 // ),
                 // if (panchayth != null)
-                  Column(
-                    children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 60,
-                              width: MediaQuery.of(context).size.width * .8,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                // border: Border.all(color: Colors.black),
+                Column(
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
                               ),
-                              child: DropdownSearch<String>(
-                                popupProps: PopupProps<String>.menu(
-                                  showSelectedItems: true,
-                                  // disabledItemFn: (String s) => s.startsWith('I'),
-                                ),
-                                items: dataclass,
-                                onChanged: (value) {
-                                  setState(() {
-                                    dataone = value;
-                                  });
-                                },
-                                // selectedItem: 'കുടുംബ അവസ്ഥ',
-                                dropdownDecoratorProps: DropDownDecoratorProps(
-                                    dropdownSearchDecoration: InputDecoration(
+                              items: dataclass,
+                              onChanged: (value) {
+                                setState(() {
+                                  dataone = value;
+                                });
+                              },
+                              // selectedItem: 'കുടുംബ അവസ്ഥ',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
                                       labelText: 'കുടുംബ അവസ്ഥ',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white)))),
-                              ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
                             ),
-                            IconButton(
-                                onPressed: () {
-                                  try {
-                                    startDownloading(panchayth!, dataone!, authToken!);
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Text('Please provide data!'),
-                                      ),
-                                    );
-                                  }
-                                },
-                                icon: Icon(Icons.download))
-                          ],
-                        ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                try {
+                                  startDownloading(
+                                      panchayth!, dataone!, authToken!);
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: Icon(Icons.download))
+                        ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      //  =======================
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 60,
-                              width: MediaQuery.of(context).size.width * .8,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                // border: Border.all(color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //  =======================
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
                               ),
-                              child: DropdownSearch<String>(
-                                popupProps: PopupProps<String>.menu(
-                                  showSelectedItems: true,
-                                  // disabledItemFn: (String s) => s.startsWith('I'),
-                                ),
-                                items: dataclass2,
-                                onChanged: (value) {
-                                  setState(() {
-                                    datatwo = value;
-                                  });
-                                },
-                                // selectedItem: 'വിഭാഗം',
-                                dropdownDecoratorProps: DropDownDecoratorProps(
-                                    dropdownSearchDecoration: InputDecoration(
+                              items: dataclass2,
+                              onChanged: (value) {
+                                setState(() {
+                                  datatwo = value;
+                                });
+                              },
+                              // selectedItem: 'വിഭാഗം',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
                                       labelText: 'വിഭാഗം',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white)))),
-                              ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
                             ),
-                            IconButton(
-                                onPressed: () {
-                                  try {
-                                    dataclasstwo(
-                                        panchayth!, datatwo!, authToken!);
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Text('Please provide data!'),
-                                      ),
-                                    );
-                                  }
-                                  print(datatwo);
-                                },
-                                icon: Icon(Icons.download))
-                          ],
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                try {
+                                  dataclasstwo(
+                                      panchayth!, datatwo!, authToken!);
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
+                                print(datatwo);
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //=======================
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // border: Border.all(color: Colors.black),
+                            ),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps<String>.menu(
+                                showSelectedItems: true,
+                                // disabledItemFn: (String s) => s.startsWith('I'),
+                              ),
+                              items: datacls3,
+                              onChanged: (value) {
+                                setState(() {
+                                  datathree = value;
+                                });
+                              },
+                              // selectedItem: 'പ്രത്യേക വിഭാഗം',
+                              dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'പ്രത്യേക വിഭാഗം',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.white)))),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                try {
+                                  dtaclassThree(
+                                      panchayth!, datathree!, authToken!);
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Please provide data!'),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: Icon(Icons.download))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: businesstype,
+                              textField: 'disply',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: business,
+                              onSaved: (value) {
+                                setState(() {
+                                  business = value;
+                                  businessString = business!.join(',');
+                                });
+                              }),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      //=======================
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                Businesstype(
+                                    panchayth!, businessString!, authToken!);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'പരിശീലനം വേണ്ട മേഘല ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: traingrequared,
+                              textField: 'text',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: traninglist,
+                              onSaved: (value) {
+                                setState(() {
+                                  traninglist = value;
+                                  traning = traninglist!.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                TraningRequaredd(
+                                    panchayth!, traning!, authToken!);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'ആവശ്യമായ പിൻതുണ/സഹായം',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: datasupprtlistss,
+                              textField: 'text',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: data_support,
+                              onSaved: (value) {
+                                setState(() {
+                                  data_support = value;
+                                  datasupprt_report = data_support.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                fetchDataSupport(
+                                    panchayth!, datasupprt_report!, authToken!);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * .8,
+                          child: MultiSelectFormField(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(color: Colors.black)),
+                              title: Text(
+                                'MGNREG ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              dataSource: datamgnregasupportlist,
+                              textField: 'text',
+                              valueField: 'value',
+                              okButtonLabel: 'OK',
+                              cancelButtonLabel: 'CANCEL',
+                              // hintText: 'Please select one or more options',
+                              initialValue: mgnreg,
+                              onSaved: (value) {
+                                setState(() {
+                                  mgnreg = value;
+                                  mgnregstr = mgnreg!.join(',');
+                                });
+                              }),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                Mgnreg(
+                                  panchayth!,
+                                  mgnregstr!,
+                                );
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
                               height: 60,
                               width: MediaQuery.of(context).size.width * .8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                // border: Border.all(color: Colors.black),
+                                border: Border.all(color: Colors.black),
                               ),
-                              child: DropdownSearch<String>(
-                                popupProps: PopupProps<String>.menu(
-                                  showSelectedItems: true,
-                                  // disabledItemFn: (String s) => s.startsWith('I'),
-                                ),
-                                items: datacls3,
-                                onChanged: (value) {
-                                  setState(() {
-                                    datathree = value;
-                                  });
-                                },
-                                // selectedItem: 'പ്രത്യേക വിഭാഗം',
-                                dropdownDecoratorProps: DropDownDecoratorProps(
-                                    dropdownSearchDecoration: InputDecoration(
-                                      labelText: 'പ്രത്യേക വിഭാഗം',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white)))),
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  try {
-                                    dtaclassThree(
-                                        panchayth!, datathree!, authToken!);
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Text('Please provide data!'),
-                                      ),
-                                    );
-                                  }
-                                },
-                                icon: Icon(Icons.download))
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * .8,
-                            child: MultiSelectFormField(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                title: Text(
-                                  'മൃഗ സംരക്ഷണ മേഖലയിൽ ചെയ്യുന്ന ബിസിനസ്സ് ',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                dataSource: businesstype,
-                                textField: 'disply',
-                                valueField: 'value',
-                                okButtonLabel: 'OK',
-                                cancelButtonLabel: 'CANCEL',
-                                // hintText: 'Please select one or more options',
-                                initialValue: business,
-                                onSaved: (value) {
-                                  setState(() {
-                                    business = value;
-                                    businessString = business!.join(',');
-                                  });
-                                }),
-                          ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Text('പുരയിടം/നിലം'),
+                              )),
                           IconButton(
                               onPressed: () {
                                 try {
-                                  Businesstype(
-                                      panchayth!, businessString!, authToken!);
+                                  landdetails(panchayth!, authToken!);
                                 } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
@@ -1829,235 +2038,13 @@ String? liveli_sublist;
                               icon: Icon(Icons.download))
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * .8,
-                            child: MultiSelectFormField(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                title: Text(
-                                  'പരിശീലനം വേണ്ട മേഘല ',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                dataSource: traingrequared,
-                                textField: 'text',
-                                valueField: 'value',
-                                okButtonLabel: 'OK',
-                                cancelButtonLabel: 'CANCEL',
-                                // hintText: 'Please select one or more options',
-                                initialValue: traninglist,
-                                onSaved: (value) {
-                                  setState(() {
-                                    traninglist = value;
-                                    traning = traninglist!.join(',');
-                                  });
-                                }),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                try {
-                                  TraningRequaredd(
-                                      panchayth!, traning!, authToken!);
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Please provide data!'),
-                                    ),
-                                  );
-                                }
-                              },
-                              icon: Icon(Icons.download))
-                        ],
-                      ),
-                      SizedBox(height: 10,),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * .8,
-                            child: MultiSelectFormField(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide:
-                                    BorderSide(color: Colors.black)),
-                                title: Text(
-                                  'ആവശ്യമായ പിൻതുണ/സഹായം',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                dataSource: datasupprtlistss,
-                                textField: 'text',
-                                valueField: 'value',
-                                okButtonLabel: 'OK',
-                                cancelButtonLabel: 'CANCEL',
-                                // hintText: 'Please select one or more options',
-                                initialValue: data_support,
-                                onSaved: (value) {
-                                  setState(() {
-                                    data_support = value;
-                                    datasupprt_report = data_support.join(',');
-                                  });
-                                }),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                try {
-                                  fetchDataSupport(
-                                      panchayth!, datasupprt_report!, authToken!);
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Please provide data!'),
-                                    ),
-                                  );
-                                }
-                              },
-                              icon: Icon(Icons.download))
-                        ],
-                      ),
-                      SizedBox(height: 10,),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * .8,
-                            child: MultiSelectFormField(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                title: Text(
-                                  'MGNREG ',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                dataSource: datamgnregasupportlist,
-                                textField: 'text',
-                                valueField: 'value',
-                                okButtonLabel: 'OK',
-                                cancelButtonLabel: 'CANCEL',
-                                // hintText: 'Please select one or more options',
-                                initialValue: mgnreg,
-                                onSaved: (value) {
-                                  setState(() {
-                                    mgnreg = value;
-                                    mgnregstr = mgnreg!.join(',');
-                                  });
-                                }),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                try {
-                                  Mgnreg(
-                                    panchayth!,
-                                    mgnregstr!,
-                                  );
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Please provide data!'),
-                                    ),
-                                  );
-                                }
-                              },
-                              icon: Icon(Icons.download))
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
-                                height: 60,
-                                width: MediaQuery.of(context).size.width * .8,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Text('പുരയിടം/നിലം'),
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  try {
-                                    landdetails(panchayth!, authToken!);
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Text('Please provide data!'),
-                                      ),
-                                    );
-                                  }
-                                },
-                                icon: Icon(Icons.download))
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      //=======================
-                      Container(
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 65,
-                              width: MediaQuery.of(context).size.width * .8,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                // border: Border.all(color: Colors.black),
-                              ),
-                              child: DropdownSearch<String>(
-                                popupProps: PopupProps<String>.menu(
-                                  showSelectedItems: true,
-                                  // disabledItemFn: (String s) => s.startsWith('I'),
-                                ),
-                                items: products,
-                                onChanged: (value) {
-                                  setState(() {
-                                    productname = value;
-                                  });
-                                },
-                                // selectedItem: 'ഉല്‍പ്പന്നം',
-                                dropdownDecoratorProps: DropDownDecoratorProps(
-                                    dropdownSearchDecoration: InputDecoration(
-                                      labelText:  'ഉല്‍പ്പന്നം',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white)))),
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  try {
-                                    productName(
-                                        panchayth!, productname!, authToken!);
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Text('Please provide data!'),
-                                      ),
-                                    );
-                                  }
-                                },
-                                icon: Icon(Icons.download))
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Row(
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //=======================
+                    Container(
+                      child: Row(
                         children: [
                           Container(
                             height: 65,
@@ -2071,18 +2058,19 @@ String? liveli_sublist;
                                 showSelectedItems: true,
                                 // disabledItemFn: (String s) => s.startsWith('I'),
                               ),
-                              items: saleslist,
+                              items: products,
                               onChanged: (value) {
                                 setState(() {
-                                  salesvalue = value;
+                                  productname = value;
                                 });
                               },
-                              // selectedItem: 'Sales',
+                              // selectedItem: 'ഉല്‍പ്പന്നം',
                               dropdownDecoratorProps: DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
-                                    labelText: 'Sales',
+                                      labelText: 'ഉല്‍പ്പന്നം',
                                       enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.black)),
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
                                       border: OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.white)))),
@@ -2091,7 +2079,8 @@ String? liveli_sublist;
                           IconButton(
                               onPressed: () {
                                 try {
-                                  Sales(panchayth!, salesvalue!, authToken!);
+                                  productName(
+                                      panchayth!, productname!, authToken!);
                                 } catch (e) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
@@ -2104,193 +2093,249 @@ String? liveli_sublist;
                               icon: Icon(Icons.download))
                         ],
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              // border: Border.all(color: Colors.black),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 60,
-                                  width: MediaQuery.of(context).size.width * .8,
-                                  // decoration: BoxDecoration(
-                                  //     border: Border(
-                                  //         bottom: BorderSide(color: Colors.black))),
-                                  child: DropdownSearch<String>(
-                                    popupProps: PopupProps<String>.menu(
-                                      showSelectedItems: true,
-                                      // disabledItemFn: (String s) => s.startsWith('I'),
-                                    ),
-                                    items: listpurchase,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        purchase = value;
-                                        sublistlist.clear();
-                                        Fetchpurchasesublist(purchase!);
-                                        print(purchase);
-                                      });
-                                    },
-                                    // selectedItem: 'purcaahse',
-                                    dropdownDecoratorProps:
-                                        DropDownDecoratorProps(
-                                      dropdownSearchDecoration: InputDecoration(
-                                        labelText: 'purcaahse',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        // border: OutlineInputBorder(
-                                        //   borderSide: BorderSide.none
-                                        // )
-                                        //
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 60,
-                                  width: MediaQuery.of(context).size.width * .8,
-                                  child: DropdownSearch<String>(
-                                    popupProps: PopupProps<String>.menu(
-                                      showSelectedItems: true,
-                                      // disabledItemFn: (String s) => s.startsWith('I'),
-                                    ),
-                                    items: sublistlist,
-                                    onChanged: (value) {
-                                      setState(
-                                        () {
-                                          sublist = value;
-                                        },
-                                      );
-                                    },
-                                    selectedItem: 'purchase Sublist',
-                                    dropdownDecoratorProps:
-                                        DropDownDecoratorProps(
-                                      dropdownSearchDecoration: InputDecoration(
-                                        // labelText: 'purchase Sublist',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-
-                                    ),
-                                  ),
-                                ),
-                                ),
-                              ],
-                            ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Container(
+                          height: 65,
+                          width: MediaQuery.of(context).size.width * .8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            // border: Border.all(color: Colors.black),
                           ),
-                          IconButton(
-                              onPressed: () {
-                                try {
-                                  Purchasedata(panchayth!, purchase!, sublist);
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Please provide data!'),
-                                    ),
-                                  );
-                                }
-                              },
-                              icon: Icon(Icons.download))
-                        ],
-                      ),
-                      SizedBox(height: 10,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              // border: Border.all(color: Colors.black),
+                          child: DropdownSearch<String>(
+                            popupProps: PopupProps<String>.menu(
+                              showSelectedItems: true,
+                              // disabledItemFn: (String s) => s.startsWith('I'),
                             ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 60,
-                                  width: MediaQuery.of(context).size.width * .8,
-                                  // decoration: BoxDecoration(
-                                  //     border: Border(
-                                  //         bottom:
-                                  //         BorderSide(color: Colors.black))),
-                                  child: DropdownSearch<String>(
-                                    popupProps: PopupProps<String>.menu(
-                                      showSelectedItems: true,
-                                      // disabledItemFn: (String s) => s.startsWith('I'),
-                                    ),
-                                    items: livelihood_api,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        liveli_list = value;
-                                        FetchLivelihood_sub_Api(liveli_list!);
-                                      });
-                                    },
-                                    // selectedItem: 'Livelihood',
-                                    dropdownDecoratorProps:
-                                    DropDownDecoratorProps(
-                                      dropdownSearchDecoration: InputDecoration(
-                                        labelText: 'Livelihood',
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 60,
-                                  width: MediaQuery.of(context).size.width * .8,
-                                  child: DropdownSearch<String>(
-                                    popupProps: PopupProps<String>.menu(
-                                      showSelectedItems: true,
-                                      // disabledItemFn: (String s) => s.startsWith('I'),
-                                    ),
-                                    items: Livelihood_sublistlist,
-                                    onChanged: (value) {
-                                      setState(() {
-                                          liveli_sublist = value;
-                                        },
-                                      );
-                                    },
-                                    selectedItem: 'Livelihood Sublist',
-                                    dropdownDecoratorProps:
-                                    DropDownDecoratorProps(
-                                      dropdownSearchDecoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.black)),
-                                        border: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            items: saleslist,
+                            onChanged: (value) {
+                              setState(() {
+                                salesvalue = value;
+                              });
+                            },
+                            // selectedItem: 'Sales',
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                                dropdownSearchDecoration: InputDecoration(
+                                    labelText: 'Sales',
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black)),
+                                    border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white)))),
                           ),
-
-                          IconButton(
-                              onPressed: () {
-                                try {
-                                  livelihoodApi(panchayth!, liveli_list!, liveli_sublist);
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Please provide data!'),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                Sales(panchayth!, salesvalue!, authToken!);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            // border: Border.all(color: Colors.black),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width * .8,
+                                // decoration: BoxDecoration(
+                                //     border: Border(
+                                //         bottom: BorderSide(color: Colors.black))),
+                                child: DropdownSearch<String>(
+                                  popupProps: PopupProps<String>.menu(
+                                    showSelectedItems: true,
+                                    // disabledItemFn: (String s) => s.startsWith('I'),
+                                  ),
+                                  items: listpurchase,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      purchase = value;
+                                      sublistlist.clear();
+                                      Fetchpurchasesublist(purchase!);
+                                      print(purchase);
+                                    });
+                                  },
+                                  // selectedItem: 'purcaahse',
+                                  dropdownDecoratorProps:
+                                      DropDownDecoratorProps(
+                                    dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'purcaahse',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide.none
+                                      // )
+                                      //
                                     ),
-                                  );
-                                }
-                              },
-                              icon: Icon(Icons.download))
-                        ],
-                      ),
-                    ],
-                  ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width * .8,
+                                child: DropdownSearch<String>(
+                                  popupProps: PopupProps<String>.menu(
+                                    showSelectedItems: true,
+                                    // disabledItemFn: (String s) => s.startsWith('I'),
+                                  ),
+                                  items: sublistlist,
+                                  onChanged: (value) {
+                                    setState(
+                                      () {
+                                        sublist = value;
+                                      },
+                                    );
+                                  },
+                                  selectedItem: 'purchase Sublist',
+                                  dropdownDecoratorProps:
+                                      DropDownDecoratorProps(
+                                    dropdownSearchDecoration: InputDecoration(
+                                      // labelText: 'purchase Sublist',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                Purchasedata(panchayth!, purchase!, sublist);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            // border: Border.all(color: Colors.black),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width * .8,
+                                // decoration: BoxDecoration(
+                                //     border: Border(
+                                //         bottom:
+                                //         BorderSide(color: Colors.black))),
+                                child: DropdownSearch<String>(
+                                  popupProps: PopupProps<String>.menu(
+                                    showSelectedItems: true,
+                                    // disabledItemFn: (String s) => s.startsWith('I'),
+                                  ),
+                                  items: livelihood_api,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      liveli_list = value;
+                                      FetchLivelihood_sub_Api(liveli_list!);
+                                    });
+                                  },
+                                  // selectedItem: 'Livelihood',
+                                  dropdownDecoratorProps:
+                                      DropDownDecoratorProps(
+                                    dropdownSearchDecoration: InputDecoration(
+                                      labelText: 'Livelihood',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 60,
+                                width: MediaQuery.of(context).size.width * .8,
+                                child: DropdownSearch<String>(
+                                  popupProps: PopupProps<String>.menu(
+                                    showSelectedItems: true,
+                                    // disabledItemFn: (String s) => s.startsWith('I'),
+                                  ),
+                                  items: Livelihood_sublistlist,
+                                  onChanged: (value) {
+                                    setState(
+                                      () {
+                                        liveli_sublist = value;
+                                      },
+                                    );
+                                  },
+                                  selectedItem: 'Livelihood Sublist',
+                                  dropdownDecoratorProps:
+                                      DropDownDecoratorProps(
+                                    dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black)),
+                                      border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              try {
+                                livelihoodApi(
+                                    panchayth!, liveli_list!, liveli_sublist);
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Please provide data!'),
+                                  ),
+                                );
+                              }
+                            },
+                            icon: Icon(Icons.download))
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -2299,7 +2344,3 @@ String? liveli_sublist;
     );
   }
 }
-
-
-
-

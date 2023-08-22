@@ -82,6 +82,8 @@ class _LoginState extends State<Login> {
         prefs.setString('district', data['user']['district'].toString());
         prefs.setString('block', data['user']['block'].toString());
         prefs.setString('panchayath', data['user']['panchayath'].toString());
+        prefs.setString('roll', data['user']['roll'].toString());
+
 
 
 
@@ -194,10 +196,10 @@ class _LoginState extends State<Login> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(60),
-                        topRight: Radius.circular(60),
-                      ),
+                      // borderRadius: BorderRadius.only(
+                      //   topLeft: Radius.circular(60),
+                      //   topRight: Radius.circular(60),
+                      // ),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(30),

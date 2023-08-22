@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../control/text_controller.dart';
 import '../../global.dart';
 import '../../model/model.dart';
@@ -25,11 +26,35 @@ class UpdateCrpDetail extends StatefulWidget {
 }
 
 class _SalesState extends State<UpdateCrpDetail> {
+
+
+  String? name_;
+
+
+  Future<void> getSavedData() async {
+    var providerone = Provider.of<TextMain>(context, listen: false);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+    String name = prefs.getString('name') ?? '';
+
+    if(name.isNotEmpty){
+      setState(() {
+        name_ = name;
+        providerone.updateDataNameofcrp(name_);
+      });
+
+      changeData();
+    }
+  }
+
+
   @override
   void initState() {
     super.initState();
+    getSavedData();
     getproductData();
-    fetchDistricts();
+    // fetchDistricts();
   }
 
   TextEditingController dataComments = TextEditingController();
@@ -40,20 +65,19 @@ class _SalesState extends State<UpdateCrpDetail> {
   bool isLoading = false;
   bool changedata = false;
 
-  Future<void> fetchDistricts() async {
-    try {
-      final response = await http.get(Uri.parse('${api}user/district'));
-
-      if (response.statusCode == 200) {
-        changeData();
-      } else {
-        throw Exception('Failed to fetch districts');
-      }
-    } catch (e) {
-      // Handle error
-      print('Error fetching districts: $e');
-    }
-  }
+  // Future<void> fetchDistricts() async {
+  //   try {
+  //     final response = await http.get(Uri.parse('${api}user/district'));
+  //
+  //     if (response.statusCode == 200) {
+  //     } else {
+  //       throw Exception('Failed to fetch districts');
+  //     }
+  //   } catch (e) {
+  //     // Handle error
+  //     print('Error fetching districts: $e');
+  //   }
+  // }
 
   void updateForm(String id) async {
     if (isLoading) return; // Prevent multiple updates
@@ -710,13 +734,29 @@ class _SalesState extends State<UpdateCrpDetail> {
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(
+                            color: Colors.black)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Text('$name_',style: TextStyle(fontSize: 15),),
+                        ],
+                      ),
+                    )),
+                SizedBox(height: 10,),
                 // Text(DocumentId),
-                InputField(
-                    hint: 'CRP യുടെ പേര് ',
-                    controller: dataNameofcrp,
-                    onchanged: (value) {
-                      providerone.updateDataNameofcrp(value);
-                    }),
+                // InputField(
+                //     hint: 'CRP യുടെ പേര് ',
+                //     controller: dataNameofcrp,
+                //     onchanged: (value) {
+                //       providerone.updateDataNameofcrp(value);
+                //     }),
                 InputField(
                   hint: 'CRP യുടെ ഫോൺ നമ്പർ ',
                   controller: datnumber_of_crp_number,
@@ -799,7 +839,7 @@ class _SalesState extends State<UpdateCrpDetail> {
     // setState(() {
     // dataDistrict: dataDistrict.toString()
     dataComments.text = dataup["data_comments"];
-    dataNameofcrp.text = dataup["data_nameofcrp"];
+    // dataNameofcrp.text = dataup["data_nameofcrp"];
     dataNameofrespondent.text = dataup["data_Nameofrespondent"];
     datnumber_of_crp_number.text  = dataup['Phonenumber_ofCRP'].toString();
     // });
@@ -807,7 +847,7 @@ class _SalesState extends State<UpdateCrpDetail> {
 
   changeData() {
     var providerone = context.read<TextMain>();
-    providerone.updateDataNameofcrp(dataNameofcrp.text);
+    // providerone.updateDataNameofcrp(dataNameofcrp.text);
     providerone.updateDataComments(dataComments.text);
     providerone.updateDataNameofrespondent(dataNameofrespondent.text);
 

@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../control/text_controller.dart';
 import '../../global.dart';
 import '../../model/model.dart';
@@ -34,6 +35,7 @@ class _SalesState extends State<CrpDetail> {
   @override
   void initState() {
     super.initState();
+    getSavedData();
   }
 
   TextEditingController datacomments = TextEditingController();
@@ -341,6 +343,25 @@ class _SalesState extends State<CrpDetail> {
     }
   }
 
+  String? name_;
+  // String? district_;
+  // String? block_;
+
+
+  Future<void> getSavedData() async {
+    var providerone = Provider.of<TextMain>(context, listen: false);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+    String name = prefs.getString('name') ?? '';
+
+    if(name.isNotEmpty){
+      setState(() {
+        name_ = name;
+        providerone.updateDataNameofcrp(name_);
+      });
+    }
+  }
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -367,12 +388,28 @@ class _SalesState extends State<CrpDetail> {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Text(DocumentId),
-                  InputField(
-                      hint: 'CRP യുടെ പേര് ',
-                      controller: datanameofcrp,
-                      onchanged: (value) {
-                        providerone.updateDataNameofcrp(value);
-                      }),
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(
+                              color: Colors.black)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            Text('$name_',style: TextStyle(fontSize: 15),),
+                          ],
+                        ),
+                      )),
+                  SizedBox(height: 10,),
+                  // InputField(
+                  //     hint: 'CRP യുടെ പേര് ',
+                  //     controller: datanameofcrp,
+                  //     onchanged: (value) {
+                  //       providerone.updateDataNameofcrp(value);
+                  //     }),
                   InputField(
                     hint: 'CRP യുടെ ഫോൺ നമ്പർ ',
                     controller: datnumber_of_crp_number,
