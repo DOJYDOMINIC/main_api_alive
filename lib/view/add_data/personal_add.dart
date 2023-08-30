@@ -35,7 +35,7 @@ class _PersonalPageState extends State<PersonalPage> {
   @override
   void initState() {
     super.initState();
-    fetchDistricts();
+    // fetchDistricts();
     getSavedData();
   }
 
@@ -749,6 +749,7 @@ class _PersonalPageState extends State<PersonalPage> {
                               }
                             },
                           ),
+
                           if (selectedOption == CheckboxOption.applied ||
                               selectedOption == CheckboxOption.sanctioned) ...[
                             Padding(
@@ -949,13 +950,13 @@ class _PersonalPageState extends State<PersonalPage> {
 
                     ElevateClick(
                         ontap: () {
-                          if (_formKey.currentState!.validate()) {
+                          // if (_formKey.currentState!.validate()) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FamilyData(),
                                 ));
-                          }
+                          // }
                         },
                         text: 'Next'),
                   ]),

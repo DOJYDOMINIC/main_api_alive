@@ -690,13 +690,13 @@ class _SalesState extends State<LivelihoodValue> {
                     ),
                   ElevateClick(
                       ontap: () {
-                        if (_formKey.currentState!.validate()) {
+                        // if (_formKey.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Purchaseofrawmaterials(),
                               ));
-                        }
+                        // }
                       },
                       text: 'Next'),
                 ],

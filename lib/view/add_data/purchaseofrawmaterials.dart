@@ -922,13 +922,13 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                   // if(rawmaterial != null && rawmaterial!.contains('BRAND'))
                   ElevateClick(
                       ontap: () {
-                        if (_formKey.currentState!.validate()) {
+                        // if (_formKey.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SalesData(),
                               ));
-                        }
+                        // }
                       },
                       text: 'Next'),
                 ],

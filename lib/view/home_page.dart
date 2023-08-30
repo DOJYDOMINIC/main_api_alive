@@ -34,17 +34,21 @@ class _ScreenoneState extends State<Screenone> {
 
   Future<void> syncDataWithServer() async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      var name = prefs.getString('name');
-      var email = prefs.getString('email');
-
       bool isConnected =
           await checkInternetConnectivity(); // Use your existing connectivity check function
       final box = Hive.box('data_box');
+      List keys = box.keys.toList();
+
       if (isConnected && box.isNotEmpty) {
-        final jsonData = box.get(1);
-        await sendToServer(jsonData);
-        //  // Send data to the server using your existing logic
+        for (int key in keys){
+          final jsonData = box.get(key);
+          await sendToServer(jsonData);
+        }
+        box.clear();
+        if(box.isEmpty){
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.remove('lastIndex');
+        }
         // Remove the synced data from Hive
       } else {
         print('NO Data Avilable');
@@ -71,7 +75,6 @@ class _ScreenoneState extends State<Screenone> {
 
       if (response.statusCode == 201) {
         var box = Hive.box('data_box');
-        box.clear();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.blue,

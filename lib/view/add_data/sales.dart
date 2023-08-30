@@ -262,13 +262,13 @@ class _SalesState extends State<SalesData> {
                   ),
                   ElevateClick(
                       ontap: () {
-                        if (_formKey.currentState!.validate()) {
+                        // if (_formKey.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => CrpDetail(),
                               ));
-                        }
+                        // }
                       },
                       text: 'Next'),
                 ],

@@ -17,6 +17,7 @@ import '../widgets/input_field.dart';
 import 'package:connectivity/connectivity.dart';
 
 import 'familydata.dart';
+int? endindex;
 
 Future<bool> checkInternetConnectivity() async {
   var connectivityResult = await Connectivity().checkConnectivity();
@@ -300,9 +301,13 @@ class _SalesState extends State<CrpDetail> {
       final isConnected = await checkInternetConnectivity();
 
       if (!isConnected) {
-        final box = Hive.box('data_box');
-        box.put(1, jsonData);
-
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        int lastIndex = prefs.getInt('lastIndex') ?? 0;  // Default to 0 if not set
+        int start = lastIndex + 1;
+          final box = Hive.box('data_box');
+            box.put(start, jsonData);
+          await prefs.setInt('lastIndex', start);
+        // }
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.yellow,
@@ -436,7 +441,7 @@ class _SalesState extends State<CrpDetail> {
                       }),
                   ElevateClick(
                     ontap: () {
-                      if (_formKey.currentState!.validate()) {
+                      // if (_formKey.currentState!.validate()) {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -462,7 +467,7 @@ class _SalesState extends State<CrpDetail> {
                             );
                           },
                         );
-                      }
+                      // }
                     },
                     text: 'Submit',
                   )
