@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +13,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
-import '../widgets/dropdown_nosearch.dart';
 
 class ReportPage extends StatefulWidget {
   const ReportPage({Key? key}) : super(key: key);
@@ -141,7 +138,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -238,7 +234,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -339,7 +334,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -433,7 +427,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -529,7 +522,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -623,7 +615,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -716,7 +707,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -809,7 +799,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -905,7 +894,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -974,8 +962,7 @@ class _ReportPageState extends State<ReportPage> {
 
   Future<void> Purchasedata(
       String panchayth, String item, String? item2) async {
-    String url =
-        '${api}search/purchaseReport?panchayath=$panchayth&itemtype=$item';
+    String url = '${api}search/purchaseReport?panchayath=$panchayth&itemtype=$item';
     if (item2 != null) {
       url += '&subList=$item2';
     }
@@ -1003,7 +990,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -1102,7 +1088,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -1184,11 +1169,11 @@ class _ReportPageState extends State<ReportPage> {
   Future<void> getSavedData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String authToken = prefs.getString('authToken') ?? '';
-    String email = prefs.getString('email') ?? '';
-    String name = prefs.getString('name') ?? '';
-    String district = prefs.getString('district') ?? '';
-    String block = prefs.getString('block') ?? '';
+    // String authToken = prefs.getString('authToken') ?? '';
+    // String email = prefs.getString('email') ?? '';
+    // String name = prefs.getString('name') ?? '';
+    // String district = prefs.getString('district') ?? '';
+    // String block = prefs.getString('block') ?? '';
     String panchayath = prefs.getString('panchayath') ?? '';
 
     if (panchayath != null || panchayath.isNotEmpty) {
@@ -1400,7 +1385,6 @@ class _ReportPageState extends State<ReportPage> {
             setState(() {
               progress = receivedBytes / totalBytes;
             });
-            print(progress);
           },
           deleteOnError: true,
         );
@@ -1476,24 +1460,24 @@ class _ReportPageState extends State<ReportPage> {
   //   }
   // }
 
-  bool _permissionGranted = false;
-
-  void _requestPermission() async {
-    PermissionStatus permissionStatus =
-        await Permission.manageExternalStorage.request();
-
-    if (permissionStatus.isGranted) {
-      setState(() {
-        _permissionGranted = true;
-      });
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Storage permission denied'),
-        ),
-      );
-    }
-  }
+  // bool _permissionGranted = false;
+  //
+  // void _requestPermission() async {
+  //   PermissionStatus permissionStatus =
+  //       await Permission.manageExternalStorage.request();
+  //
+  //   if (permissionStatus.isGranted) {
+  //     setState(() {
+  //       _permissionGranted = true;
+  //     });
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('Storage permission denied'),
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   void initState() {
@@ -1529,9 +1513,7 @@ class _ReportPageState extends State<ReportPage> {
   }
 
   Future<void> download() async {
-    _requestPermission();
     if (await Permission.storage.request().isGranted) {
-      _requestPermission();
       _openDownloadLocation();
       print('Storage permission granted');
     } else {
@@ -1567,7 +1549,7 @@ class _ReportPageState extends State<ReportPage> {
   }
 
   void _openDownloadLocation() async {
-    if (_permissionGranted = true) {
+    if (await Permission.storage.request().isGranted) {
       String downloadPath = "/storage/emulated/0/Download/";
       await OpenFile.open(downloadPath);
     }

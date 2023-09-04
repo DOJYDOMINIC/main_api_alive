@@ -14,6 +14,7 @@ import '../services/add_api.dart';
 import 'Documentation/report_page.dart';
 import 'add_data/crpdreport.dart';
 import 'add_data/personal_add.dart';
+import 'hive_data.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,16 +40,17 @@ class _ScreenoneState extends State<Screenone> {
       final box = Hive.box('data_box');
       List keys = box.keys.toList();
 
-      if (isConnected && box.isNotEmpty) {
+      if (isConnected) {
         for (int key in keys){
           final jsonData = box.get(key);
           await sendToServer(jsonData);
+          box.deleteAt(key);
         }
         box.clear();
-        if(box.isEmpty){
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-          prefs.remove('lastIndex');
-        }
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.remove('lastIndex');
+        setState(() {
+        });
         // Remove the synced data from Hive
       } else {
         print('NO Data Avilable');
@@ -316,10 +318,7 @@ class _ScreenoneState extends State<Screenone> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ReportPage(),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ReportPage(),
                       ));
                 },
                 child: SizedBox(
@@ -347,7 +346,7 @@ class _ScreenoneState extends State<Screenone> {
                               Icons.file_copy,
                               size: 50,
                               color: Colors.white,
-                            )
+                            ),
                           ],
                         ),
                         Text(
@@ -359,6 +358,51 @@ class _ScreenoneState extends State<Screenone> {
                   ),
                 ),
               ),
+              // SizedBox(
+              //   height: 30,
+              // ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context) => HiveDataListPage(),
+              //     ));
+              //   },
+              //   child: SizedBox(
+              //     height: 150,
+              //     width: MediaQuery.of(context).size.width * .8,
+              //     child: Card(
+              //       elevation: 25,
+              //       shadowColor: Colors.black,
+              //       color: app_theam,
+              //       shape: OutlineInputBorder(
+              //           borderSide: BorderSide(color: Colors.grey),
+              //           borderRadius: BorderRadius.circular(10)),
+              //       child: Column(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Row(
+              //             mainAxisAlignment: MainAxisAlignment.center,
+              //             children: [
+              //               Icon(
+              //                 Icons.person,
+              //                 size: 75,
+              //                 color: Colors.white,
+              //               ),
+              //               Icon(
+              //                 Icons.file_copy,
+              //                 size: 50,
+              //                 color: Colors.white,
+              //               ),
+              //             ],
+              //           ),
+              //           Text(
+              //             "OFFLINE DATA",
+              //             style: bold_white,
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 20,
               ),

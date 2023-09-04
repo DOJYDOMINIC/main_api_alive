@@ -1,11 +1,9 @@
 
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/update/updatepersonal_add.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../model/model.dart';
 import '../../services/add_api.dart';
 import '../login.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +11,6 @@ import 'package:http/http.dart' as http;
 
 class SerachresultUpsate extends StatefulWidget {
   const SerachresultUpsate({Key? key}) : super(key: key);
-
 
 
   @override
@@ -60,6 +57,7 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
       });
     }
   }
+
 
   Future<void> deleteDataonId(String dataId, String token) async {
     final apiUrl = '${api}search/deleteById?dataId=$dataId';
@@ -133,7 +131,15 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      Icon(Icons.person,size: 50,color: app_theam,),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15,right: 10),
+                        child: Container(
+                          child: Text(
+                            '${index + 1}', // Display the index here
+                            style: TextStyle(fontSize: 25), // You can adjust the style
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -145,7 +151,6 @@ class _SerachresultUpsateState extends State<SerachresultUpsate> {
                               Text('Name  : ${data['data_Name']}',style: adj,overflow: TextOverflow.ellipsis,),
                               Text('Phone : ${data['data_Phonenumber']}',style: adj,overflow: TextOverflow.ellipsis,),
                               Text('Group : ${data['data_NameofNG']}',style: adj,overflow: TextOverflow.ellipsis,),
-                              // Text('Group : ${data['data_NameofNG']}',style: adj,overflow: TextOverflow.ellipsis,),
                             ],
                           ),
                         ),

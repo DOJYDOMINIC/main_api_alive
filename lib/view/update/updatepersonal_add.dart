@@ -117,6 +117,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
   List dataMgnregAsupport = [];
   List dataAnimalhusbendaryBusinesstype = [];
   List dataclass3 = [];
+  List? dataclasss3;
 
   // List sourceofinvestment = [];
   List dataSourceofinvestment = [];
@@ -426,12 +427,12 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                     NoSearchDropdown(
                         selecteditem: dataClass2,
                         onChanged: (value) {
-                          print(dataClass3);
-                          print(dataSourceofinvestment);
-                          print(dataAnimalhusbendaryBusinesstype);
-                          print(dataMgnregAsupport);
-                          print(dataSupport);
-                          print(_dataTrainingsrequired);
+                          // print(dataClass3);
+                          // print(dataSourceofinvestment);
+                          // print(dataAnimalhusbendaryBusinesstype);
+                          // print(dataMgnregAsupport);
+                          // print(dataSupport);
+                          // print(_dataTrainingsrequired);
                           providerone.updateDataClass2(value);
                         },
                         items: dataclass2,
@@ -452,10 +453,10 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // hintText: 'Please select one or more options',
-                        initialValue:
-                            options.contains(dataClass3) ? dataClass3 : [],
+                        initialValue: options.contains(dataclasss3) ? dataclasss3 : [],
+
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
+                          if (value == null || value.isEmpty){
                             return 'This field is required';
                           }
                           return null;
@@ -1123,13 +1124,14 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
 
     // providerone.updateDataBlock(dataup['data_Block'].toString());
 
-    dataClass3 = dataup["data_Class3"];
-    animalhusbendaryBusinesstype = dataup["data_Animalhusbendary_businesstype"];
+    dataclasss3 = dataup["data_Class3"];
 
+    animalhusbendaryBusinesstype = dataup["data_Animalhusbendary_businesstype"];
     dataSourceofinvestment = dataup["data_Sourceofinvestment"];
     dataMgnregAsupport = dataup["data_MGNREGAsupport"];
     dataSupport = dataup["data_support"];
     _dataTrainingsrequired = dataup["data_Trainingsrequired"];
+
 
     dataDistrict = dataup['data_district'];
     dataBlock = dataup['data_Block'];
