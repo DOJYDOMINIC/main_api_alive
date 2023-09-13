@@ -43,8 +43,7 @@ class _ScreenoneState extends State<Screenone> {
       if (isConnected) {
         for (int key in keys){
           final jsonData = box.get(key);
-          await sendToServer(jsonData);
-          box.deleteAt(key);
+          await sendToServer(jsonData,key);
         }
         box.clear();
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -60,7 +59,7 @@ class _ScreenoneState extends State<Screenone> {
     }
   }
 
-  Future<void> sendToServer(String jsonData) async {
+  Future<void> sendToServer(String jsonData, int key) async {
     try {
       const url = '$api/user/insert'; // Replace with your API endpoint URL
       final headers = {
@@ -74,13 +73,16 @@ class _ScreenoneState extends State<Screenone> {
         headers: headers,
         body: jsonData,
       );
-
       if (response.statusCode == 201) {
+
         var box = Hive.box('data_box');
+        box.deleteAt(key);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.blue,
             content: Text('Data Created successful!'),
+
           ),
         );
         // Data submitted successfully

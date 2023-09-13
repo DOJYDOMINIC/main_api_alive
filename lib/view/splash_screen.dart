@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page.dart';
 import 'login.dart';
 
-
 class SlpashScreen extends StatefulWidget {
   const SlpashScreen({Key? key}) : super(key: key);
 
@@ -13,34 +12,33 @@ class SlpashScreen extends StatefulWidget {
 }
 
 class _SlpashScreenState extends State<SlpashScreen> {
-
   var email = '';
+
   @override
   void initState() {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  AnimatedSplashScreen(
+    return AnimatedSplashScreen(
       splash: Center(child: Image(image: AssetImage('assets/logo.png'))),
       nextScreen: email == null || email == '' ? Login() : Screenone(),
-      duration:1500,
+      duration: 1500,
       splashIconSize: 200,
     );
   }
 
   void getData() async {
-    try{
+    try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-        email = prefs.getString('email')??'';
-        authToken =  prefs.getString('authToken');
+        email = prefs.getString('email') ?? '';
+        authToken = prefs.getString('authToken');
       });
-    } catch(e){
-      print( 'get Data email : $e');
+    } catch (e) {
+      print('get Data email : $e');
     }
-
-
   }
 }

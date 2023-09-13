@@ -1039,8 +1039,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
                           initialValue: _dataTrainingsrequired.isNotEmpty &&
                                   traingrequared
                                       .contains(_dataTrainingsrequired)
-                              ? _dataTrainingsrequired
-                              : [],
+                              ? _dataTrainingsrequired : [],
                           onSaved: (value) {
                             try {
                               providerone.updateDataTrainingsrequired(value);

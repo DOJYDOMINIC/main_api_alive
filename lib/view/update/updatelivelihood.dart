@@ -433,7 +433,6 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           providerone.updateDataLivelihoodManureList(value);
                         }),
                   ),
-
                 if (manuerlistselcted.contains('DRY'))
                   InputField(
                     hint: 'DRY KG',

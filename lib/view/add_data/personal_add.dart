@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:main200623/constant/color_text.dart';
-import 'package:main200623/model/model.dart';
 import 'package:main200623/view/widgets/withoutborder.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +34,6 @@ class _PersonalPageState extends State<PersonalPage> {
   @override
   void initState() {
     super.initState();
-    // fetchDistricts();
     getSavedData();
   }
 
@@ -50,8 +48,6 @@ class _PersonalPageState extends State<PersonalPage> {
         setState(() {
           districts =
               List<String>.from(data); // Assign fetched data to the global list
-          // selectedDistrict;
-          // print(selectedDistrict);
         });
       } else {
         throw Exception('Failed to fetch districts');

@@ -51,7 +51,7 @@ class _ReportPageState extends State<ReportPage> {
 
   String panchayath = '';
 
-  Future<void> _notification() async {
+  Future<void>  _notification() async {
     // Create a new FlutterLocalNotificationsPlugin object.
     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
@@ -960,8 +960,7 @@ class _ReportPageState extends State<ReportPage> {
     // Navigator.pop(context);
   }
 
-  Future<void> Purchasedata(
-      String panchayth, String item, String? item2) async {
+  Future<void> Purchasedata(String panchayth, String item, String? item2) async {
     String url = '${api}search/purchaseReport?panchayath=$panchayth&itemtype=$item';
     if (item2 != null) {
       url += '&subList=$item2';

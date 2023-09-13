@@ -16,8 +16,8 @@ import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 import 'package:connectivity/connectivity.dart';
 
-import 'familydata.dart';
-int? endindex;
+
+// int? endindex;
 
 Future<bool> checkInternetConnectivity() async {
   var connectivityResult = await Connectivity().checkConnectivity();
@@ -63,10 +63,10 @@ class _SalesState extends State<CrpDetail> {
       dataFamilyincome: providerone.dataFamilyincome,
       dataHouseOwnership: providerone.dataHouseownership,
       dataAnimalhusbendaryBusinesstype: providerone
-              .dataAnimalhusbendaryBusinesstype
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+              .dataAnimalhusbendaryBusinesstype,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataAnimalhusbendaryCdsregistration:
           providerone.dataAnimalhusbendaryCdsregistration,
       dataAnimalhusbendaryRegdetailsRegnumber:
@@ -90,36 +90,36 @@ class _SalesState extends State<CrpDetail> {
       dataInfraOthers: providerone.dataInfraOthers,
       dataInfraWastage: providerone.dataInfraWastage,
       dataLanddetails1Landforgrass: providerone.dataLanddetails1Landforgrass,
-      dataTrainingsrequired: providerone.dataTrainingsrequired
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataTrainingsrequired: providerone.dataTrainingsrequired,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataSupportrecived: providerone.dataSupportrecived,
       // dataSupport: providerone.dataSupport?.join(','),
-      dataSupport: providerone.dataSupport
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataSupport: providerone.dataSupport,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataStarttime: providerone.dataStarttime,
-      dataSourceofinvestment: providerone.dataSourceofinvestment
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataSourceofinvestment: providerone.dataSourceofinvestment,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataLanddetailsAgricultureland:
           providerone.dataLanddetailsAgricultureland,
-      dataSalesPrdct2: providerone.dataSalesprdct2
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataSalesPrdct2: providerone.dataSalesprdct2,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       // dataLivelihoodNumbers: providerone.datalivelihoodnumbers,
       dataNameofcrp: providerone.dataNameofcrp,
       dataNameofNg: providerone.dataNameofNg,
       // dataLivelihoodRevenue: providerone.datalivelihoodrevenue,
       dataNameofNGmember: providerone.dataNameofNGmember,
-      dataMgnregAsupport: providerone.dataMgnregAsupport
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataMgnregAsupport: providerone.dataMgnregAsupport,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       // dataProductsQuantum: providerone.dataProductsQuantum,
       // dataProductsPrdct: providerone.dataProductsPrdct,
       dataLanddetails1Qtyofleasedland:
@@ -129,10 +129,10 @@ class _SalesState extends State<CrpDetail> {
       dataLanddetails2Siteforworkshed:
           providerone.dataLanddetails2Siteforworkshed,
       // dataLivelihoodCapitalsource: providerone.datalivelihoodcapitalsource,
-      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataLivelihoodIncomesource: providerone.datalivelihoodincomesource,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataLoandetailsDateofLoanApplication:
           providerone.dataDateofLoanApplication,
       dataLoandetailsTotalinvestment:
@@ -145,70 +145,70 @@ class _SalesState extends State<CrpDetail> {
       // dataProductsPrice2: providerone.dataProductsPrice2,
       dataPurchaseofrawmaterialsBrand:
           providerone.dataPurchaseofrawmaterialsBrand,
-      dataSalesSalesmethod: providerone.dataSalesSalesmethod
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      dataSalesSalesmethod: providerone.dataSalesSalesmethod,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       beiferQnty: providerone.beiferQnty,
       brandQnty: providerone.brandQnty,
       byPassFatQnty: providerone.byPassFatQnty,
       byPassProteinQnty: providerone.byPassProteinQnty,
       calfQnty: providerone.calfQnty,
-      calvesList: providerone.calvesList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      calvesList: providerone.calvesList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       cattleFeedList: providerone.cattleFeedList,
       cattleFeedQnty: providerone.cattleFeedQnty,
-      cowsList: providerone.cowsList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      cowsList: providerone.cowsList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dataPurchaseofrawmaterialsItemtype: providerone
-              .dataPurchaseofrawmaterialsItemtype
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+              .dataPurchaseofrawmaterialsItemtype,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       dayOldChickQnty: providerone.dayOldChickQnty,
       eggQnty: providerone.eggQnty,
       eggTraysQnty: providerone.eggTraysQnty,
       energyRichFeedList: providerone.energyRichFeedList,
       energyRichFeedQnty: providerone.energyRichFeedQnty,
       feedQnty: providerone.feedQnty,
-      fodderSlipsList: providerone.fodderSlipsList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      fodderSlipsList: providerone.fodderSlipsList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       goatFeeDqnty: providerone.goatFeeDqnty,
       grasFooderQnty: providerone.grasFooderQnty,
       hayQnty: providerone.hayQnty,
-      heipersList: providerone.heipersList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      heipersList: providerone.heipersList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       kidQnty: providerone.kidQnty,
       kidStarterQnty: providerone.kidStarterQnty,
       layerList: providerone.layerList,
       malabariGoatsQnty: providerone.malabariGoatsQnty,
       maleBuffaloCalfQnty: providerone.maleBuffaloCalfQnty,
       maleBuffaloCalvesQnty: providerone.maleBuffaloCalvesQnty,
-      manureList: providerone.manureList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      manureList: providerone.manureList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       materialForPoultryQnty: providerone.materialForPoultryQnty,
       meatQnty: providerone.meatQnty,
       milkQnty: providerone.milkQnty,
       milkReplacerList: providerone.milkReplacerList,
-      modePurchaseofrawmaterials: providerone.modePurchaseofrawmaterials
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      modePurchaseofrawmaterials: providerone.modePurchaseofrawmaterials,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       poultryFeedQnty: providerone.poultryFeedQnty,
-      pulletsList: providerone.pulletsList
-              ?.map((dynamic item) => item.toString())
-              .toList() ??
-          [],
+      pulletsList: providerone.pulletsList,
+          //     ?.map((dynamic item) => item.toString())
+          //     .toList() ??
+          // [],
       pulletsQnty: providerone.pulletsQnty,
       salesManureQnty: providerone.salesManureQnty,
       silageQnty: providerone.silageQnty,
@@ -302,7 +302,7 @@ class _SalesState extends State<CrpDetail> {
 
       if (!isConnected) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        int lastIndex = prefs.getInt('lastIndex') ?? 0;  // Default to 0 if not set
+        int lastIndex = prefs.getInt('lastIndex') ?? 1;  // Default to 0 if not set
         int start = lastIndex + 1;
           final box = Hive.box('data_box');
             box.put(start, jsonData);
@@ -349,8 +349,6 @@ class _SalesState extends State<CrpDetail> {
   }
 
   String? name_;
-  // String? district_;
-  // String? block_;
 
 
   Future<void> getSavedData() async {
