@@ -4,19 +4,17 @@ import 'package:hive/hive.dart';
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/control/text_controller.dart';
 import 'package:main200623/view/registed%20people.dart';
-import 'package:main200623/view/update/search_edit.dart';
 import 'package:main200623/view/update/searchresult_update.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/add_api.dart';
 import 'Documentation/report_page.dart';
 import 'add_data/crpdreport.dart';
 import 'add_data/personal_add.dart';
-import 'hive_data.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
+
 
 class Screenone extends StatefulWidget {
   const Screenone({Key? key}) : super(key: key);

@@ -73,7 +73,7 @@ List<String> condition = ['Yes Good', 'Yes Poor', 'No'];
 //
 // ];
 
-final List options = [
+const List options = [
   {'text': 'Coastal', 'value': 'Coastal'},
   {'text': 'Minority', 'value': 'Minority'},
   {'text': 'Extreampoor', 'value': 'Extreampoor'},
@@ -120,7 +120,7 @@ final List options = [
 
 // ];
 
-final List businesstype = [
+const List businesstype = [
   {'disply': 'Cow breeding', 'value': 'Cow breeding'},
   {'disply': 'Sheep farming', 'value': 'Sheep farming'},
   {'disply': 'Breeding of laying hens', 'value': 'Breeding of laying hens'},
@@ -153,7 +153,7 @@ final List businesstype = [
 
 ];
 
-final List sourceofinvestment = [
+const List sourceofinvestment = [
   {'source': 'Bankloan', 'value': 'Bankloan'},
   {'source': 'NHG', 'value': 'NHG'},
   {'source': 'From Family', 'value': 'From Family'},
@@ -167,7 +167,7 @@ final List sourceofinvestment = [
 ];
 
 
-final List traingrequared = [
+const List traingrequared = [
   {'text': 'Marketing', 'value': 'Marketing'},
   {'text': 'Beekeeping', 'value': 'Beekeeping'},
   {'text': 'Breeding of laying hens', 'value': 'Breeding of laying hens'},
@@ -253,7 +253,7 @@ final List traingrequared = [
 // ];
 
 
-final List datasupprtlistss = [
+const List datasupprtlistss = [
 
   {'text': 'Financial Support', 'value': 'Financial Support'},
   {'text': 'Bank Account', 'value': 'Bank Account'},
@@ -305,7 +305,7 @@ final List datasupprtlistss = [
 
 ];
 
-final List datamgnregasupportlist = [
+const List datamgnregasupportlist = [
 
 // {'text': "APIARY", "value": "APIARY"},
 {'text': "AZOLA TANK", "value": "AZOLA TANK"},
@@ -337,7 +337,7 @@ final List datamgnregasupportlist = [
 
 ];
 
-final List? rawmaterials = [
+const List? rawmaterials = [
   {'text': 'INGREDIENTS FOR CATTLE FEED', 'value': 'INGREDIENTS FOR CATTLE FEED'},
   {'text': 'INGREDIENTS FOR POULTRY FEED', 'value': 'INGREDIENTS FOR POULTRY FEED'},
   {'text': 'PULLETS', 'value': 'PULLETS'},
@@ -378,7 +378,7 @@ final List? rawmaterials = [
 
 ];
 
-final List? pullets = [
+const List? pullets = [
   {'text': 'BV380', 'value': 'BV380'},
   {'text': 'GRAMALAKSHMI', 'value': 'GRAMALAKSHMI'},
   {'text': 'GRAMAPRIYA', 'value': 'GRAMAPRIYA'},
@@ -389,14 +389,14 @@ final List? pullets = [
 
 ];
 
-final List? calves = [
+const List? calves = [
   {'text': 'H F', 'value': 'CALVES-H F'},
   {'text': 'GERSEY', 'value': 'CALVES-GERSEY'},
   {'text': 'N/A', 'value': 'N/A'}
 
 
 ];
-final List? heifers = [
+const List? heifers = [
   {'text': 'H F', 'value': 'HEIFERS-H F'},
   {'text': 'GERSEY', 'value': 'HEIFERS-GERSEY'},
   {'text': 'N/A', 'value': 'N/A'}
@@ -404,7 +404,7 @@ final List? heifers = [
 
 
 ];
-final List? cows = [
+const List? cows = [
   {'text': 'H F', 'value': 'COWS-H F'},
   {'text': 'GERSEY', 'value': 'COWS-GERSEY'},
   {'text': 'N/A', 'value': 'N/A'}
@@ -413,7 +413,7 @@ final List? cows = [
 ];
 
 
-final List? manure = [
+const List? manure = [
   {'text': 'COW DUNG', 'value': 'COW DUNG'},
   {'text': 'GOAT MANURE', 'value': 'GOAT MANURE'},
   {'text': 'POULTRY MANURE', 'value': 'POULTRY MANURE'},
@@ -423,7 +423,7 @@ final List? manure = [
 
 ];
 
-final List? fodderslip = [
+const List? fodderslip = [
   {'text': 'NAPIER', 'value': 'NAPIER'},
   {'text': 'CO4', 'value': 'CO4'},
   {'text': 'CO5', 'value': 'CO5'},
@@ -455,7 +455,7 @@ List<String> layeritems = [
 ];
 
 
-final List? livelihoods = [
+const List? livelihoods = [
   {'text': "BUFFALO", 'value': "BUFFALO",},
   {'text': "CALF", 'value': "CALF",},
   {'text': "COW", 'value': "COW",},
@@ -491,7 +491,7 @@ List<String> enrgyrichfeed = [
   'GODREJ',
 ];
 
-final List? produceproduction = [
+const List? produceproduction = [
   {'text': 'NAPIER', 'value': 'NAPIER'},
   {'text': 'CO4', 'value': 'CO4'},
   {'text': 'CO5', 'value': 'CO5'},
@@ -505,7 +505,7 @@ final List? produceproduction = [
 
 ];
 
-final List? produceproductavilable = [
+const List? produceproductavilable = [
   {'text': 'MILK', 'value': 'MILK'},
   {'text': 'MEAT', 'value': 'MEAT'},
   {'text': 'EGG', 'value': 'EGG'},
@@ -523,7 +523,7 @@ final List? produceproductavilable = [
 
 ];
 
-final List? mode_of_marketing = [
+const List? mode_of_marketing = [
   {'text': 'DIRECT MARKET', 'value': 'DIRECT MARKET'},
   {'text': 'LOCAL MARKET', 'value': 'LOCAL MARKET'},
   {'text': 'WHOLESALE MARKET', 'value': 'WHOLESALE MARKET'},
@@ -535,7 +535,7 @@ final List? mode_of_marketing = [
 
 ];
 
-final List? cowlist = [
+const List? cowlist = [
 
   {'text': 'H F', 'value': 'H F'},
   {'text': 'INDIGENOUS', 'value': 'INDIGENOUS'},
@@ -545,14 +545,14 @@ final List? cowlist = [
 
 ];
 
-final List? calfgender = [
+const List? calfgender = [
   {'text': "FEMALE", 'value': "FEMALE"},
   {'text': "MALE", 'value': "MALE"},
 
 ];
 
 
-final List? fooderitems = [
+const List? fooderitems = [
   {'text': "FOR SALE", 'value': "FOR SALE",},
   {'text': "OWN USE", 'value': "OWN USE"},
   {'text': 'N/A', 'value': 'N/A'}
@@ -561,7 +561,7 @@ final List? fooderitems = [
 
 ];
 
-final List? goatlist = [
+const List? goatlist = [
   {'text': "ATTAPADI BLACK", 'value': "ATTAPADI BLACK"},
   {'text': "ATTAPADI BLACK KID", 'value': "ATTAPADI BLACK KID"},
   {'text': "MALABARI", 'value': "MALABARI"},
@@ -572,7 +572,7 @@ final List? goatlist = [
 
 ];
 
-final List? manuritems = [
+const List? manuritems = [
   {'text': "DRY", 'value': "DRY",},
   {'text': "FRESH", 'value': "FRESH"},
   {'text': 'N/A', 'value': 'N/A'}
@@ -580,7 +580,7 @@ final List? manuritems = [
 ];
 
 
-final List? poultrylist = [
+const List? poultrylist = [
   {'text': "EGG PRODUCTION", 'value': "EGG PRODUCTION"},
   { 'text': "MARKETING", 'value': "MARKETING"},
   {'text': 'N/A', 'value': 'N/A'}
@@ -588,7 +588,7 @@ final List? poultrylist = [
 
 ];
 
-final List<String> ward =
+const List<String> ward =
 [
   "1",
   "2",

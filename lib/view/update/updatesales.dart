@@ -2,12 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../constant/color_text.dart';
 import '../../control/text_controller.dart';
+import '../../services/add_api.dart';
 import '../lists.dart';
 import '../widgets/elevate_click_button.dart';
 import '../widgets/input_field.dart';
 import 'updatecrpdreport.dart';
+import 'package:http/http.dart' as http;
 
 class UpdateSalesData extends StatefulWidget {
   const UpdateSalesData({Key? key, this.items,}) : super(key: key);
@@ -23,6 +26,20 @@ class _SalesState extends State<UpdateSalesData> {
   @override
   void initState() {
     super.initState();
+    getsaleData();
+    getSavedData();
+  }
+
+  Future<void> getSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+    String name = prefs.getString('authToken') ?? '';
+
+    if(name.isNotEmpty){
+
+      changeData();
+    }
   }
 
   // List? productavilable;
@@ -30,7 +47,6 @@ class _SalesState extends State<UpdateSalesData> {
   String? selectedproduceproduct;
   List? productavilable;
   List? modeofmarkrting;
-  List? modeof_markrting;
 
 
   TextEditingController milkqty = TextEditingController();
@@ -91,9 +107,7 @@ class _SalesState extends State<UpdateSalesData> {
                     // hintText: 'Please select one or more options',
                     initialValue: productavilable,
                     onSaved: (value) {
-                      setState(() {
                         productavilable  = value;
-                      });
                       if (value == null) return;
                       providerone.updateDataSalesprdct2(value);
                     },
@@ -219,6 +233,7 @@ class _SalesState extends State<UpdateSalesData> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: MultiSelectFormField(
+                    hintWidget: Text(''),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide(color: Colors.black)),
@@ -231,12 +246,9 @@ class _SalesState extends State<UpdateSalesData> {
                     valueField: 'value',
                     okButtonLabel: 'OK',
                     cancelButtonLabel: 'CANCEL',
-                    // hintText: 'Please select one or more options',
                     initialValue: modeofmarkrting,
                     onSaved: (value) {
-                      setState(() {
                         modeofmarkrting  = value;
-                      });
                       if (value == null) return;
                       providerone.updateDataDataSalesSalesmethod(value);
                     },
@@ -254,36 +266,51 @@ class _SalesState extends State<UpdateSalesData> {
     );
   }
 
-  // void getsaleData() {
-  //   try {
-  //     var dataup = widget.items['sales'][0];
-  //       productavilable = dataup["data_Sales_prdct2"];
-  //       modeof_markrting = dataup ["data_Sales_salesmethod"];
-  //       milkqty.text= dataup["MILK_qnty"].toString();
-  //       meatqty.text= dataup["MEAT_qnty"].toString();
-  //       eggqty.text= dataup["EGG_qnty"].toString();
-  //       manuerqty.text= dataup["Sales_MANURE_qnty"].toString();
-  //       feedqty.text= dataup["FEED_qnty"].toString();
-  //       malebeffeloqty .text= dataup["male_buffalo_calf_qnty"].toString();
-  //       grassfooderqty .text= dataup["Gras_fooder_qnty"].toString();
-  //       treefooderqty .text= dataup["tree_fooder_qnty"].toString();
-  //       kidqty.text= dataup["kid_qnty"].toString();
-  //       daychickqty.text= dataup["day_old_chick_qnty"].toString();
-  //       pulletsqty.text= dataup["pullets_qnty"].toString();
-  //       calfqty.text= dataup["calf_qnty"].toString();
-  //       beiferqty.text= dataup["beifer_qnty"].toString();
-  //
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error retrieving sale data: $e');
-  //     // Perform any necessary error handling or display a message to the user
-  //   }
-  // }
+  void getsaleData() {
+    try {
+      var dataup = widget.items['sales'][0];
+        productavilable = dataup["data_Sales_prdct2"];
+        modeofmarkrting = dataup ["data_Sales_salesmethod"];
+        milkqty.text= dataup["MILK_qnty"].toString();
+        meatqty.text= dataup["MEAT_qnty"].toString();
+        eggqty.text= dataup["EGG_qnty"].toString();
+        manuerqty.text= dataup["Sales_MANURE_qnty"].toString();
+        feedqty.text= dataup["FEED_qnty"].toString();
+        malebeffeloqty .text= dataup["male_buffalo_calf_qnty"].toString();
+        grassfooderqty .text= dataup["Gras_fooder_qnty"].toString();
+        treefooderqty .text= dataup["tree_fooder_qnty"].toString();
+        kidqty.text= dataup["kid_qnty"].toString();
+        daychickqty.text= dataup["day_old_chick_qnty"].toString();
+        pulletsqty.text= dataup["pullets_qnty"].toString();
+        calfqty.text= dataup["calf_qnty"].toString();
+        beiferqty.text= dataup["beifer_qnty"].toString();
 
-  // void changeData() {
-  //  // var providerone = Provider.of<TextMain>(context);
-  //   var providerone = context.read<TextMain>();
-  //   // providerone.updateDataSalesprdct2(productavilable);
-  // }
+    } catch (e) {
+      // Handle error
+      print('Error retrieving sale data: $e');
+      // Perform any necessary error handling or display a message to the user
+    }
+  }
+
+  void changeData() {
+   // var providerone = Provider.of<TextMain>(context);
+    var providerone = context.read<TextMain>();
+    providerone.updateDataSalesprdct2(productavilable);
+    providerone.updateDataDataSalesSalesmethod(modeofmarkrting);
+    providerone.updateDataMilkQnty(int.tryParse(milkqty.text));
+    providerone.updateDataMeatQnty(int.tryParse(meatqty.text));
+    providerone.updateDataEggQnty(int.tryParse(eggqty.text));
+    providerone.updateDataManureQnty(int.tryParse(manuerqty.text));
+    providerone.updateDataFeedQnty(int.tryParse(feedqty.text));
+    providerone.updateDataMaleBuffaloCalfQnty(int.tryParse(malebeffeloqty.text));
+    providerone.updateGrassFooderQnty(int.tryParse(grassfooderqty.text));
+    providerone.updateDataTreeFooderQnty(int.tryParse(treefooderqty.text));
+    providerone.updateDataKidQnty(int.tryParse(kidqty.text));
+    providerone.updateDataDayOldChickQnty(int.tryParse(daychickqty.text));
+    providerone.updateDataPulletsQnty(int.tryParse(pulletsqty.text));
+    providerone.updateDataCalfQnty(int.tryParse(calfqty.text));
+    providerone.updateDataBeiferQnty(int.tryParse(beiferqty.text));
+
+  }
 
 }

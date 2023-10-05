@@ -316,6 +316,7 @@ class TextMain extends ChangeNotifier {
   String? _dataFamilydetailsEducation;
   String? _dataFamilydetailsJob;
   String? _dataFamilydetailsSkill;
+  String? _fam_id;
 
   //------------------product--------------
   List? _dataProductsPrdct;
@@ -975,6 +976,7 @@ class TextMain extends ChangeNotifier {
 
   int? get getBrandQnty => brandQnty;
 
+  String?  get fam_id => _fam_id;
   //----------------livelihood-----------------
   void updateDatalivelihoodincomesource(List? value) {
     _datalivelihoodincomesource = value;
@@ -1055,6 +1057,12 @@ class TextMain extends ChangeNotifier {
     _dataFamilydetailsRelation = value;
     notifyListeners();
   }
+
+  void updateDataFamilymemberid(String? value) {
+    _fam_id = value;
+    notifyListeners();
+  }
+
 
   //-----------------Data------------------------
   void updateDataDistrict(String? value) {

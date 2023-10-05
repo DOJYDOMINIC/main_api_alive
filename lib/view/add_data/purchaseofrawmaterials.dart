@@ -157,8 +157,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                       },
                     ),
                   ),
-                  if (rawmaterial != null &&
-                      rawmaterial!.contains('INGREDIENTS FOR CTTLE FEED'))
+                  if (rawmaterial != null && rawmaterial!.contains('INGREDIENTS FOR CATTLE FEED'))
                     InputField(
                         hint: 'INGREDIENTS FOR CTTLE FEED (Qty)',
                         keytype: TextInputType.number,
@@ -174,8 +173,7 @@ class _PurchaseofrawmaterialsState extends State<Purchaseofrawmaterials> {
                         keytype: TextInputType.number,
                         controller: ingredientsForPoultryFeedQnty,
                         onchanged: (value) {
-                          int? valuee = int.tryParse(value);
-                          providerone.updateIngredientsForCattleFeedQnty(valuee);
+                          providerone.updateIngredientsForPoultryFeedQnty(int.parse(value));
                         }),
 
                   if (rawmaterial != null &&

@@ -154,8 +154,10 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                     // shrinkWrap: true,
                     itemCount: updatefamilyMembers.length,
                     itemBuilder: (context, index) {
+
                       // var data = widget.items['familyDetails'][index];
                       var data = updatefamilyMembers[index];
+
                       TextEditingController dataFamilydetailsNameoffailyfmember = TextEditingController(text: data.dataFamilydetailsNameoffailyfmember??'');
                       TextEditingController dataFamilydetailsAgeoffamilymember = TextEditingController(text: data.dataFamilydetailsAgeoffamilymember.toString()??'0');
                       TextEditingController datafamilydetailsrelation = TextEditingController(text: data.dataFamilydetailsRelation??'');
@@ -181,13 +183,13 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                             children: [
                               // Text(new_id.text,style: TextStyle(color: Colors.white),),
                               Headings(text: "Member ${index+1}"),
+
                               InputField(
                                 hint: 'കുടുംബാംഗത്തിൻ്റെ പേര്',
                                 controller: dataFamilydetailsNameoffailyfmember,
                                 onchanged: (value) {
                                   data.dataFamilydetailsNameoffailyfmember = dataFamilydetailsNameoffailyfmember.text;
-                                  providerone
-                                      .updateDataFamilydetailsNameoffailyfmember(data.dataFamilydetailsNameoffailyfmember);
+                                  providerone.updateDataFamilydetailsNameoffailyfmember(data.dataFamilydetailsNameoffailyfmember);
                                   // setState(() {  });
                                 },
                               ),
@@ -232,6 +234,7 @@ class _UpdateFamilyDataState extends State<UpdateFamilyData> {
                                 onchanged: (value) {
                                   data.dataFamilydetailsSkill = dataFamilydetailsSkill.text;
                                   providerone.updateDataFamilydetailsSkill(data.dataFamilydetailsSkill);
+                                  providerone.updateDataFamilymemberid(data.dataFamilyid);
                                 },
                               ),
                               // ElevatedButton(

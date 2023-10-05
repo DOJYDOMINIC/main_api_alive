@@ -36,6 +36,7 @@ class _RegisteredPeopleListState extends State<RegisteredPeopleList> {
       );
 
       if (response.statusCode == 200) {
+        fetchRegisteredPeople();
         print('Data deletion successful');
       } else {
         print('Failed to delete data. Status code: ${response.statusCode}');

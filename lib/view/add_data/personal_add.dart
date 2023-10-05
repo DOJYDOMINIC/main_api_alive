@@ -83,8 +83,7 @@ class _PersonalPageState extends State<PersonalPage> {
 
   Future<void> fetchPanchayth(String selectedBlocks) async {
     try {
-      final response =
-          await http.get(Uri.parse('${api}user/Panchayat/$selectedBlocks'));
+      final response = await http.get(Uri.parse('${api}user/Panchayat/$selectedBlocks'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

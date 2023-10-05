@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:main200623/constant/color_text.dart';
 import 'package:main200623/view/widgets/elevate_click_button.dart';
+import '../services/add_api.dart';
+
 
 
 class ResetPasswordPage extends StatefulWidget {
@@ -59,7 +61,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       return;
     }
 
-    final url = Uri.parse('http://192.168.1.43:5000/api/auth/reset-password');
+    final url = Uri.parse('$api auth/reset-password');
 
     final headers = <String, String>{
       'Content-Type': 'application/json',
@@ -167,7 +169,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             ),
             SizedBox(height: 16.0),
             ElevateClick(
-              ontap:  resetPassword,
+              ontap: ()=>resetPassword(),
               text:'Reset Password',
             ),
           ],

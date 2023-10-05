@@ -691,6 +691,7 @@ class FamilyDetail {
   String? dataFamilydetailsEducation;
   String? dataFamilydetailsJob;
   String? dataFamilydetailsSkill;
+  String? dataFamilyid;
 
   FamilyDetail({
      this.dataFamilydetailsNameoffailyfmember,
@@ -699,6 +700,7 @@ class FamilyDetail {
      this.dataFamilydetailsEducation,
      this.dataFamilydetailsJob,
      this.dataFamilydetailsSkill,
+    this.dataFamilyid
   });
 
   factory FamilyDetail.fromJson(Map<String, dynamic> json) => FamilyDetail(
@@ -708,6 +710,7 @@ class FamilyDetail {
     dataFamilydetailsEducation: json["data_familydetails_education"],
     dataFamilydetailsJob: json["data_familydetails_job"],
     dataFamilydetailsSkill: json["data_familydetails_skill"],
+    dataFamilyid: json["_id"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -717,5 +720,6 @@ class FamilyDetail {
     "data_familydetails_education": dataFamilydetailsEducation,
     "data_familydetails_job": dataFamilydetailsJob,
     "data_familydetails_skill": dataFamilydetailsSkill,
+    "_id": dataFamilyid,
   };
 }

@@ -13,6 +13,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/add_api.dart';
 import '../lists.dart';
+import '../widgets/dropdown_nosearch.dart';
 
 class ReportPage extends StatefulWidget {
   const ReportPage({Key? key}) : super(key: key);
@@ -1180,31 +1181,31 @@ class _ReportPageState extends State<ReportPage> {
     }
   }
 
-  // Future<void> fetchDistricts() async {
-  //   try {
-  //
-  //     SharedPreferences prefs = await SharedPreferences.getInstance();
-  //     setState(() {
-  //       panchayath = prefs.getString("panchayath").toString();
-  //     });
-  //     final response = await http.get(Uri.parse('${api}search/listDistricts'));
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = json.decode(response.body);
-  //
-  //       setState(() {
-  //         districts = List.from(data); // Assign fetched data to the global list
-  //         // selectedDistrict;
-  //         print(districts);
-  //       });
-  //     } else {
-  //       throw Exception('Failed to fetch districts');
-  //     }
-  //   } catch (e) {
-  //     // Handle error
-  //     print('Error fetching districts: $e');
-  //   }
-  // }
+  Future<void> fetchDistricts() async {
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        panchayath = prefs.getString("panchayath").toString();
+      });
+      final response = await http.get(Uri.parse('${api}search/listDistricts'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        setState(() {
+          districts = List.from(data); // Assign fetched data to the global list
+          // selectedDistrict;
+          print(districts);
+        });
+      } else {
+        throw Exception('Failed to fetch districts');
+      }
+    } catch (e) {
+      // Handle error
+      print('Error fetching districts: $e');
+    }
+  }
 
   Future<void> fetchBlocks(String selectedDistrict) async {
     try {
@@ -1481,7 +1482,7 @@ class _ReportPageState extends State<ReportPage> {
   @override
   void initState() {
     super.initState();
-    // fetchDistricts();
+    fetchDistricts();
     Fetchpurchase();
     fetchsales();
     fetchLivelihood_List();
@@ -1603,38 +1604,38 @@ class _ReportPageState extends State<ReportPage> {
                     ],
                   ),
                 ),
-                // NoSearchDropdown(
-                //   items: districts,
-                //   onChanged: (value) {
-                //     setState(() {
-                //       dist = value;
-                //       fetchBlocks(dist!);
-                //     });
-                //   },
-                //   item: 'ജില്ല',
-                // ),
-                // NoSearchDropdown(
-                //   onChanged: (value) {
-                //     setState(() {
-                //       blockss = value;
-                //       fetchPanchayth(blockss!);
-                //     });
-                //   },
-                //   item: 'ബ്ലോക്ക്',
-                //   items: blocklist,
-                // ),
-                // NoSearchDropdown(
-                //     onChanged: (value) {
-                //       setState(() {
-                //         panchayth = value;
-                //         // fetchPanchayth(panchayth!);
-                //       });
-                //     },
-                //     items: panchaths,
-                //     item: 'പഞ്ചായത്ത്'),
-                // SizedBox(
-                //   height: 10,
-                // ),
+                NoSearchDropdown(
+                  items: districts,
+                  onChanged: (value) {
+                    setState(() {
+                      dist = value;
+                      fetchBlocks(dist!);
+                    });
+                  },
+                  item: 'ജില്ല',
+                ),
+                NoSearchDropdown(
+                  onChanged: (value) {
+                    setState(() {
+                      blockss = value;
+                      fetchPanchayth(blockss!);
+                    });
+                  },
+                  item: 'ബ്ലോക്ക്',
+                  items: blocklist,
+                ),
+                NoSearchDropdown(
+                    onChanged: (value) {
+                      setState(() {
+                        panchayth = value;
+                        // fetchPanchayth(panchayth!);
+                      });
+                    },
+                    items: panchaths,
+                    item: 'പഞ്ചായത്ത്'),
+                SizedBox(
+                  height: 10,
+                ),
                 // if (panchayth != null)
                 Column(
                   children: [

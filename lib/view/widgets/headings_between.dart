@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
 class Headings extends StatelessWidget {
   const Headings({Key? key, required this.text}) : super(key: key);
@@ -13,9 +13,7 @@ class Headings extends StatelessWidget {
         child: Container(
             decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.black))),
-            child: Text(
-              text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )),
       ),
     );

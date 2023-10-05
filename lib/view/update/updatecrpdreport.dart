@@ -41,7 +41,6 @@ class _SalesState extends State<UpdateCrpDetail> {
         name_ = name;
         providerone.updateDataNameofcrp(name_);
       });
-
       changeData();
     }
   }
@@ -319,6 +318,7 @@ class _SalesState extends State<UpdateCrpDetail> {
         headers: headers,
         body: jsonData,
       );
+
       if (response.statusCode == 200) {
         // print(jsonEncode(response));
         log(jsonData.toString());
