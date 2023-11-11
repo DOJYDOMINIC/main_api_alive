@@ -1260,7 +1260,7 @@ class _UpdatePersonalPageState extends State<UpdatePersonalPage> {
     providerone.updateDataClass2(dataClass2);
     providerone.updateDataFamilyincome(dataFamilyincome);
     providerone.updateDataNameofNg(dataNameofNg.text);
-    providerone.updateDataNameofNg(dataNameofNg.text);
+    // providerone.updateDataNameofNg(dataNameofNg.text);
     providerone.updateDataNameofNGmember(dataNameofNGmember.text);
     providerone.updateDataRoleinNg(dataRoleinNg);
     providerone.updateDataHouseownership(dataHouseOwnership);

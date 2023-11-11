@@ -11,7 +11,6 @@ void main() async {
   await Hive.initFlutter(); // Initialize Hive
   Hive.openBox('data_box'); // Open the Hive box
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
   runApp(MyApp());
 }
 

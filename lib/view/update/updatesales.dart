@@ -147,7 +147,7 @@ class _SalesState extends State<UpdateSalesData> {
                       controller: manuerqty,
                       onchanged: (value) {
                         int? valuee = int.tryParse(value);
-                        providerone.updateDataManureQnty(valuee);
+                        providerone.updateDataSalesManureQnty(valuee);
                       }),
                 if(productavilable != null && productavilable!.contains('FEED'))
                   InputField(
@@ -271,6 +271,7 @@ class _SalesState extends State<UpdateSalesData> {
       var dataup = widget.items['sales'][0];
         productavilable = dataup["data_Sales_prdct2"];
         modeofmarkrting = dataup ["data_Sales_salesmethod"];
+
         milkqty.text= dataup["MILK_qnty"].toString();
         meatqty.text= dataup["MEAT_qnty"].toString();
         eggqty.text= dataup["EGG_qnty"].toString();
@@ -300,7 +301,7 @@ class _SalesState extends State<UpdateSalesData> {
     providerone.updateDataMilkQnty(int.tryParse(milkqty.text));
     providerone.updateDataMeatQnty(int.tryParse(meatqty.text));
     providerone.updateDataEggQnty(int.tryParse(eggqty.text));
-    providerone.updateDataManureQnty(int.tryParse(manuerqty.text));
+    providerone.updateDataSalesManureQnty(int.tryParse(manuerqty.text));
     providerone.updateDataFeedQnty(int.tryParse(feedqty.text));
     providerone.updateDataMaleBuffaloCalfQnty(int.tryParse(malebeffeloqty.text));
     providerone.updateGrassFooderQnty(int.tryParse(grassfooderqty.text));

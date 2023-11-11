@@ -234,6 +234,8 @@ class _SalesState extends State<CrpDetail> {
       congoSignalQnty: providerone.congoSignalQnty,
       co5Qnty: providerone.co5Qnty,
       co4Qnty: providerone.co5Qnty,
+
+
       livelihoodBuffaloQnty: providerone.livelihoodBuffaloQnty,
       livelihoodCalfFemaleQnty: providerone.livelihoodCalfFemaleQnty,
       livelihoodCalfList: providerone.livelihoodCalfList,

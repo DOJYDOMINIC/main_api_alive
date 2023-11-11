@@ -133,10 +133,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                         'ഉപജീവന തൊഴിൽ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      // hintWidget: dataLivelihoodIncomesource== [''] ? Text('No Data') :  Padding(
-                      //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                      //   child: Text('${formatListWithIndex(dataLivelihoodIncomesource)}',style:TextStyle(fontSize: 16,),),
-                      // ),
+                      hintWidget: dataLivelihoodIncomesource.isEmpty ? Text('No Data') :  Padding(
+                        padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                        child: Text('${formatListWithIndex(dataLivelihoodIncomesource)}',style:TextStyle(fontSize: 16,),),
+                      ),
                       dataSource: livelihoods,
                       textField: 'text',
                       valueField: 'value',
@@ -149,7 +149,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                         }
                         return null;
                       },
-                      initialValue: dataLivelihoodIncomesource,
+                      // initialValue: dataLivelihoodIncomesource,
                       onSaved: (value) {
                         setState(() {
                           dataLivelihoodIncomesource = value;
@@ -170,10 +170,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'COW LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: selectcowlist== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(selectcowlist)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: selectcowlist.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(selectcowlist)}',style:TextStyle(fontSize: 16,),),
+                        ),
                         dataSource: cowlist,
                         textField: 'text',
                         valueField: 'value',
@@ -186,7 +186,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: selectcowlist,
+                        // initialValue: selectcowlist,
                         onSaved: (value) {
                           setState(() {
                             selectcowlist = value;
@@ -236,10 +236,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'CALF LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: calfgenderlist== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(calfgenderlist)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: calfgenderlist.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(calfgenderlist)}',style:TextStyle(fontSize: 16,),),
+                        ),
                         dataSource: calfgender,
                         textField: 'text',
                         valueField: 'value',
@@ -252,7 +252,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: calfgenderlist,
+                        // initialValue: calfgenderlist,
                         onSaved: (value) {
                           setState(() {
                             calfgenderlist = value;
@@ -293,10 +293,9 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'FODDER LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: fooderlist== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(fooderlist)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: fooderlist.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(fooderlist)}',style:TextStyle(fontSize: 16,),),),
                         dataSource: fooderitems,
                         textField: 'text',
                         valueField: 'value',
@@ -309,7 +308,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: fooderlist,
+                        // initialValue: fooderlist,
                         onSaved: (value) {
                           setState(() {
                             fooderlist = value;
@@ -348,10 +347,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'GOAT LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: goatlistitems== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(goatlistitems)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: goatlistitems.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(goatlistitems)}',style:TextStyle(fontSize: 16,),),
+                        ),
                         dataSource: goatlist,
                         textField: 'text',
                         valueField: 'value',
@@ -364,7 +363,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: goatlistitems,
+                        // initialValue: goatlistitems,
                         onSaved: (value) {
                           setState(() {
                             goatlistitems = value;
@@ -446,10 +445,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'MANURE LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: manuerlistselcted== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(manuerlistselcted)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: manuerlistselcted.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(manuerlistselcted)}',style:TextStyle(fontSize: 16,),),
+                        ),
                         dataSource: manuritems,
                         textField: 'text',
                         valueField: 'value',
@@ -462,7 +461,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: manuerlistselcted,
+                        // initialValue: manuerlistselcted,
                         onSaved: (value) {
                           setState(() {
                             manuerlistselcted = value;
@@ -502,10 +501,10 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           'POULTRY LIST',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        // hintWidget: poultrylistselcted== [''] ? Text('No Data') :  Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0,5,0,5),
-                        //   child: Text('${formatListWithIndex(poultrylistselcted)}',style:TextStyle(fontSize: 16,),),
-                        // ),
+                        hintWidget: poultrylistselcted.isEmpty ? Text('No Data') :  Padding(
+                          padding: const EdgeInsets.fromLTRB(0,5,0,5),
+                          child: Text('${formatListWithIndex(poultrylistselcted)}',style:TextStyle(fontSize: 16,),),
+                        ),
                         dataSource: poultrylist,
                         textField: 'text',
                         valueField: 'value',
@@ -518,7 +517,7 @@ class _SalesState extends State<UpdateLivelihoodValue> {
                           }
                           return null;
                         },
-                        initialValue: poultrylistselcted,
+                        // initialValue: poultrylistselcted,
                         onSaved: (value) {
                           setState(() {
                             poultrylistselcted = value;
@@ -641,7 +640,6 @@ class _SalesState extends State<UpdateLivelihoodValue> {
       livelihoodPoultryManureQnty.text =dataup["livelihood_POULTRY_MANURE_qnty"].toString();
       lilivelihoodDuckqnty.text =dataup['livelihood_DUCK_qnty'].toString();
       livelihoodgoatothers.text =dataup['livelihood_goat_OTHERS'].toString();
-
     });
   }
 

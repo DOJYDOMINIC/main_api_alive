@@ -443,8 +443,6 @@ class TextMain extends ChangeNotifier {
   int? _livelihoodduckqty;
   // String? _livelihoodgoatothers;
 
-// List? _dataPurchaseofrawmaterialsItemtype;
-// List? _pulletsList;
   int? _bv380Qnty;
   int? _gramalakshmiQnty;
   int? _gramapriyaQnty;
@@ -509,6 +507,7 @@ class TextMain extends ChangeNotifier {
   }
 
   int? _fodderSeedsQnty;
+
   int? get fodderSeedsQnty => _fodderSeedsQnty;
   void updateFodderSeedsQnty(int? value) {
     _fodderSeedsQnty = value;
@@ -541,7 +540,6 @@ class TextMain extends ChangeNotifier {
     _PhonenumberofCRP = value;
     notifyListeners();
   }
-
 
   int? _ingredientsForCattleFeedQnty;
   int? get ingredientsForCattleFeedQnty => _ingredientsForCattleFeedQnty;
@@ -875,7 +873,7 @@ class TextMain extends ChangeNotifier {
   int? get dataSalesquntum2 => _dataSalesquntum2;
 
 
-  //-------------------livelihood------------------------
+  //-------------------purchase------------------------
   List? get datalivelihoodincomesource => _datalivelihoodincomesource;
 
   // new

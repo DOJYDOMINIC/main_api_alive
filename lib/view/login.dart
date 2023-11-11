@@ -48,22 +48,14 @@ class _LoginState extends State<Login> {
   Future<void> login() async {
 
     String url = '${api}auth/login';
-
     Map<String, dynamic> body = {
       'email': _emailController.text,
       'password': _passwordController.text,
       'roll' : dropdownValue,
     };
-
     try {
       final response = await http.post(Uri.parse(url), body: body);
-
-      print(response.statusCode);
-      print(response.body);
-
       if (response.statusCode == 200) {
-        // saveAuthTokenToPreferences();
-        // Successful login
         var data = json.decode(response.body);
 
         print(data['user']['name']!);
@@ -83,8 +75,6 @@ class _LoginState extends State<Login> {
         prefs.setString('block', data['user']['block'].toString());
         prefs.setString('panchayath', data['user']['panchayath'].toString());
         prefs.setString('roll', data['user']['roll'].toString());
-
-
 
 
 
@@ -146,6 +136,7 @@ class _LoginState extends State<Login> {
       );
     }
   }
+
   bool obscureText = true;
   void toggleVisibility() {
     setState(() {

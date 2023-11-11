@@ -115,8 +115,7 @@ class _ReportPageState extends State<ReportPage> {
 
   Future<void> startDownloading(
       String panchayth, String dataone, String token) async {
-    final String url =
-        '${api}search/class1?data_Panchayath=$panchayth&data_Class=$dataone';
+    final String url = '${api}search/class1?data_Panchayath=$panchayth&data_Class=$dataone';
 
     String timeStamp = DateFormat("ddMMyyyy_hhmmss").format(DateTime.now());
     String dataclass = "dataclass_${timeStamp}.xlsx";
@@ -1136,8 +1135,7 @@ class _ReportPageState extends State<ReportPage> {
                   child: const Text('Cancel'),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.of(context)
-                        .pop(); // Close the dialog and the downloading dialog
+                    Navigator.of(context).pop(); // Close the dialog and the downloading dialog
                   },
                 ),
               ],
